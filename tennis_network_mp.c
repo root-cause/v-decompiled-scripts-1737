@@ -3609,7 +3609,7 @@ void __EntryFunction__()
 	}
 	if (bVar0)
 	{
-		func_1462(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+		CancelGame(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 	}
 	iVar3 = NETWORK::PARTICIPANT_ID_TO_INT();
 	func_1460(&uLocal_829);
@@ -3644,7 +3644,7 @@ void __EntryFunction__()
 	{
 		func_1445();
 		func_1444();
-		func_1462(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+		CancelGame(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 	}
 	MISC::CLEAR_AREA(Local_839.f_189.f_29, 50f, 1, 0, 0, false);
 	MISC::CLEAR_AREA_OF_OBJECTS(Local_839.f_189.f_29, 50f, 0);
@@ -3696,7 +3696,7 @@ void __EntryFunction__()
 		{
 			PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 			func_1444();
-			func_1462(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+			CancelGame(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 		}
 		else if (fVar9 > 15f)
 		{
@@ -3759,7 +3759,7 @@ void __EntryFunction__()
 				if (NETWORK::NETWORK_GET_PARTICIPANT_INDEX(NETWORK::NETWORK_GET_PLAYER_INDEX_FROM_PED(func_1457())) == -1)
 				{
 					func_1444();
-					func_1462(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+					CancelGame(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 				}
 				if (ENTITY::IS_ENTITY_A_PED(func_1457()))
 				{
@@ -3808,7 +3808,7 @@ void __EntryFunction__()
 			}
 			PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 			func_1444();
-			func_1462(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+			CancelGame(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 		}
 		PED::SET_SCENARIO_PED_DENSITY_MULTIPLIER_THIS_FRAME(0f, 0f);
 		HUD::SET_HUD_COMPONENT_POSITION(15, 0f, -0.0375f);
@@ -4561,7 +4561,7 @@ void __EntryFunction__()
 						func_661();
 						PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 						func_888(0);
-						func_1462(&Local_839, &Local_2290, iVar1, iVar2, func_697(&(Local_828[iVar3 /*64*/])), Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+						CancelGame(&Local_839, &Local_2290, iVar1, iVar2, func_697(&(Local_828[iVar3 /*64*/])), Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 					}
 				}
 				else if (func_1404(&(Local_828[iVar3 /*64*/]), 2097152) && !func_1404(&(Local_828[iVar3 /*64*/]), 1073741824))
@@ -4630,7 +4630,7 @@ void __EntryFunction__()
 					{
 						PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 						func_1444();
-						func_1462(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
+						CancelGame(&Local_839, &Local_2290, iVar1, iVar2, 2, Local_827.f_32, ScriptParam_3504.f_1, 0, 0);
 					}
 					fVar9 = (fVar9 + MISC::GET_FRAME_TIME());
 					if (func_1403(&uLocal_829))
@@ -7987,7 +7987,7 @@ void func_152(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 	}
 	if (bVar0)
 	{
-		func_1462(uParam0, uParam1, iParam3, iParam4, 2, uParam2->f_32, iParam5, 0, 0);
+		CancelGame(uParam0, uParam1, iParam3, iParam4, 2, uParam2->f_32, iParam5, 0, 0);
 	}
 }
 
@@ -9010,7 +9010,7 @@ void func_155(var uParam0, var uParam1, var uParam2, var uParam3, int iParam4, i
 				PLAYER::SET_PLAYER_CONTROL(PLAYER::PLAYER_ID(), false, 0);
 				func_661();
 				func_12();
-				func_1462(uParam0, uParam1, iParam4, iParam5, func_697(uParam3[NETWORK::PARTICIPANT_ID_TO_INT() /*64*/]), uParam2->f_32, iParam7, 0, 0);
+				CancelGame(uParam0, uParam1, iParam4, iParam5, func_697(uParam3[NETWORK::PARTICIPANT_ID_TO_INT() /*64*/]), uParam2->f_32, iParam7, 0, 0);
 			}
 			break;
 	}
@@ -139910,7 +139910,7 @@ void func_1461(var uParam0)
 	uParam0->f_9 = 0;
 }
 
-void func_1462(var uParam0, var uParam1, int iParam2, int iParam3, int iParam4, var uParam5, int iParam6, bool bParam7, bool bParam8)
+void CancelGame(var uParam0, var uParam1, int iParam2, int iParam3, int iParam4, var uParam5, int iParam6, bool bParam7, bool bParam8)
 {
 	int iVar0;
 	
@@ -145553,4 +145553,3 @@ void func_1769()
 	StringCopy(&(Global_2414402[iVar0 /*83*/].f_18[2 /*16*/]), "-LiveAreaLoadContent=", 64);
 	StringCopy(&(Global_2414402[iVar0 /*83*/].f_18[3 /*16*/]), "12", 64);
 }
-
