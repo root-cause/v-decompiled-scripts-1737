@@ -1771,7 +1771,7 @@ void func_32(int iParam0, bool bParam1, int iParam2, int iParam3)
 					{
 						ENTITY::FREEZE_ENTITY_POSITION(iVar25, false);
 					}
-					ENTITY::_SET_ENTITY_SOMETHING(iVar25, 1);
+					ENTITY::_SET_ENTITY_SOMETHING(iVar25, true);
 				}
 				else if (!bVar20)
 				{
@@ -1825,7 +1825,7 @@ void func_32(int iParam0, bool bParam1, int iParam2, int iParam3)
 						}
 						if (!bVar15)
 						{
-							ENTITY::_SET_ENTITY_SOMETHING(iVar25, 1);
+							ENTITY::_SET_ENTITY_SOMETHING(iVar25, true);
 						}
 					}
 					if (func_33(Global_4456448.f_161209))
@@ -2101,7 +2101,7 @@ void func_50(var uParam0)
 	}
 	if (AUDIO::HAS_SOUND_FINISHED(uParam0->f_7))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_7, "Game_Over_Blink", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_7, "Game_Over_Blink", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 	}
 	if (!func_12(&(uParam0->f_30)))
 	{
@@ -2228,7 +2228,7 @@ void func_59(var uParam0)
 	if (Local_215 == 10)
 	{
 		AUDIO::STOP_SOUND(uParam0->f_3);
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Game_Over", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Game_Over", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 		MISC::SET_BIT(&(uParam0->f_2), 4);
 		func_185(uParam0, 10);
 		func_51(1);
@@ -2263,7 +2263,7 @@ void func_60(var uParam0)
 		{
 			if (MISC::IS_BIT_SET(Local_216[iVar0 /*2*/].f_1, 3) && !MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 2))
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Insert_Coin", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Insert_Coin", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				MISC::SET_BIT(&(uParam0->f_35[iVar0 /*80*/].f_3), 2);
 				if (MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 3))
 				{
@@ -2272,7 +2272,7 @@ void func_60(var uParam0)
 			}
 			else if (MISC::IS_BIT_SET(Local_216[iVar0 /*2*/].f_1, 4) && !MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 3))
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Cancel", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Cancel", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				MISC::SET_BIT(&(uParam0->f_35[iVar0 /*80*/].f_3), 3);
 				if (MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 2))
 				{
@@ -2562,7 +2562,7 @@ void func_72(int iParam0)
 		if (Global_1383710[iParam0 /*5*/].f_2 != 0)
 		{
 			StringCopy(&cVar1, PED::GET_PEDHEADSHOT_TXD_STRING(Global_1383710[iParam0 /*5*/].f_2), 64);
-			HUD::_0x317EBA71D7543F52(&cVar1, &cVar1, &cVar0, &cVar0);
+			HUD::_THEFEED_ADD_TXD_REF(&cVar1, &cVar1, &cVar0, &cVar0);
 		}
 		PED::UNREGISTER_PEDHEADSHOT(Global_1383710[iParam0 /*5*/].f_2);
 	}
@@ -2754,7 +2754,7 @@ void func_83(var uParam0)
 		func_5(1, 0);
 		if (AUDIO::HAS_SOUND_FINISHED(uParam0->f_3))
 		{
-			AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_3, "Background", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_3, "Background", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 		}
 		iVar0 = func_123(3790, -1, 0);
 		iVar0++;
@@ -5257,7 +5257,7 @@ int func_118(int iParam0, int iParam1)
 	iVar1 = 0;
 	while (iVar1 < iVar2)
 	{
-		if (FILES::_0xFF56381874F82086(iParam1, iVar1, &Var3))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iParam1, iVar1, &Var3))
 		{
 			if (iParam0 == Var3.f_3)
 			{
@@ -14582,7 +14582,7 @@ void func_127(var uParam0)
 			iVar1 = NETWORK::NETWORK_GET_NUM_PARTICIPANTS();
 			if (iVar1 == 1)
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Game_Over", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Game_Over", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				func_185(uParam0, 10);
 				return;
 			}
@@ -14596,7 +14596,7 @@ void func_127(var uParam0)
 		}
 		if (Local_215 >= 8)
 		{
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Win", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Win", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			iVar0 = 0;
 			while (iVar0 <= 3)
 			{
@@ -15066,19 +15066,19 @@ void func_138(var uParam0, var uParam1, int iParam2)
 		{
 			if (Local_216[iParam2 /*2*/] == 0)
 			{
-				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_1", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_1", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			}
 			else if (Local_216[iParam2 /*2*/] == 1)
 			{
-				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_2", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_2", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			}
 			else if (Local_216[iParam2 /*2*/] == 2)
 			{
-				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_3", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_3", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			}
 			else
 			{
-				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_4", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_5, "Trail_4", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			}
 		}
 		if (!AUDIO::HAS_SOUND_FINISHED((uParam1[iParam2 /*80*/])->f_5))
@@ -15109,14 +15109,14 @@ void func_138(var uParam0, var uParam1, int iParam2)
 		{
 			if (iParam2 == iLocal_209)
 			{
-				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_7, "Turn", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_7, "Turn", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				func_128((uParam1[iParam2 /*80*/])->f_9, func_129((uParam1[iParam2 /*80*/])->f_15, (uParam1[iParam2 /*80*/])->f_16, 9974), iLocal_209, uLocal_208[iLocal_209]);
 				func_9(&uLocal_212);
 				uLocal_208[iLocal_209]++;
 			}
 			else
 			{
-				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_7, "Turn_NPC", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND((uParam1[iParam2 /*80*/])->f_7, "Turn_NPC", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			}
 			AUDIO::SET_VARIABLE_ON_SOUND((uParam1[iParam2 /*80*/])->f_7, "X", (uParam1[iParam2 /*80*/])->f_15);
 			AUDIO::SET_VARIABLE_ON_SOUND((uParam1[iParam2 /*80*/])->f_7, "Y", (uParam1[iParam2 /*80*/])->f_16);
@@ -16073,11 +16073,11 @@ void func_163(var uParam0, int iParam1)
 	}
 	if (iParam1 == iLocal_209)
 	{
-		AUDIO::PLAY_SOUND_FRONTEND((uParam0[iParam1 /*80*/])->f_6, "Crash", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND((uParam0[iParam1 /*80*/])->f_6, "Crash", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 	}
 	else
 	{
-		AUDIO::PLAY_SOUND_FRONTEND((uParam0[iParam1 /*80*/])->f_6, "Crash_NPC", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND((uParam0[iParam1 /*80*/])->f_6, "Crash_NPC", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 	}
 	AUDIO::SET_VARIABLE_ON_SOUND((uParam0[iParam1 /*80*/])->f_6, "X", (uParam0[iParam1 /*80*/])->f_15);
 	AUDIO::SET_VARIABLE_ON_SOUND((uParam0[iParam1 /*80*/])->f_6, "Y", (uParam0[iParam1 /*80*/])->f_16);
@@ -16110,7 +16110,7 @@ void func_164(var uParam0)
 	if (Local_215 >= 7)
 	{
 		AUDIO::STOP_SOUND(uParam0->f_3);
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Go", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Go", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 		func_9(&(uParam0->f_18));
 		func_165();
 		func_185(uParam0, 7);
@@ -16146,7 +16146,7 @@ void func_166(var uParam0)
 	{
 		if (!MISC::IS_BIT_SET(uParam0->f_2, 2))
 		{
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "321", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "321", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			MISC::SET_BIT(&(uParam0->f_2), 2);
 		}
 	}
@@ -16154,13 +16154,13 @@ void func_166(var uParam0)
 	{
 		if (!MISC::IS_BIT_SET(uParam0->f_2, 1))
 		{
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "321", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "321", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 			MISC::SET_BIT(&(uParam0->f_2), 1);
 		}
 	}
 	else if (!MISC::IS_BIT_SET(uParam0->f_2, 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "321", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "321", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 		MISC::SET_BIT(&(uParam0->f_2), 0);
 	}
 }
@@ -16214,7 +16214,7 @@ void func_168(var uParam0)
 	}
 	if (!MISC::IS_BIT_SET(uParam0->f_2, 18))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Ready", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Ready", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 		MISC::SET_BIT(&(uParam0->f_2), 18);
 	}
 	func_152(uParam0);
@@ -16289,7 +16289,7 @@ void func_170(var uParam0)
 				if (Local_215 == 10)
 				{
 					AUDIO::STOP_SOUND(uParam0->f_3);
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Game_Over", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Music_Game_Over", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 					func_185(uParam0, 10);
 					func_51(0);
 				}
@@ -16382,7 +16382,7 @@ void func_172(var uParam0)
 	}
 	else if (AUDIO::HAS_SOUND_FINISHED(uParam0->f_3))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_3, "Background", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_3, "Background", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 	}
 }
 
@@ -16398,7 +16398,7 @@ void func_173(var uParam0)
 		{
 			if (MISC::IS_BIT_SET(Local_216[iVar0 /*2*/].f_1, 3) && !MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 0))
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Insert_Coin", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Insert_Coin", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				MISC::SET_BIT(&(uParam0->f_35[iVar0 /*80*/].f_3), 0);
 				if (MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 1))
 				{
@@ -16407,7 +16407,7 @@ void func_173(var uParam0)
 			}
 			else if (MISC::IS_BIT_SET(Local_216[iVar0 /*2*/].f_1, 4) && !MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 1))
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Cancel", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "Cancel", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				MISC::SET_BIT(&(uParam0->f_35[iVar0 /*80*/].f_3), 1);
 				if (MISC::IS_BIT_SET(uParam0->f_35[iVar0 /*80*/].f_3, 0))
 				{
@@ -16464,14 +16464,14 @@ void func_176(var uParam0)
 		switch (uParam0->f_1)
 		{
 			case 0:
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Degenatron_Logo", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Degenatron_Logo", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 				func_177(uParam0, 1);
 				break;
 			
 			case 1:
 				if (func_8(&(uParam0->f_10), 1800, 0))
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Degenatron_Star", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Degenatron_Star", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 					func_177(uParam0, 2);
 				}
 				break;
@@ -16481,7 +16481,7 @@ void func_176(var uParam0)
 				{
 					if (AUDIO::HAS_SOUND_FINISHED(uParam0->f_3))
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_3, "Background", "DLC_EXEC_ARC_MAC_SOUNDS", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_3, "Background", "DLC_EXEC_ARC_MAC_SOUNDS", true);
 					}
 					func_177(uParam0, 3);
 				}
@@ -16635,14 +16635,14 @@ void func_186(var uParam0)
 	
 	PAD::_0x7F4724035FDCA1DD(0);
 	PAD::_0x7F4724035FDCA1DD(2);
-	GRAPHICS::_0xC6372ECD45D73BCD(0);
+	GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(0);
 	func_204(1);
 	func_203(4, -1);
 	HUD::HIDE_SCRIPTED_HUD_COMPONENT_THIS_FRAME(19);
 	func_202();
 	func_201();
 	func_200();
-	HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+	HUD::THEFEED_HIDE_THIS_FRAME();
 	if (!func_198(PLAYER::PLAYER_ID()) && !func_196(PLAYER::PLAYER_ID()))
 	{
 		func_185(uParam0, 11);
@@ -16656,7 +16656,7 @@ void func_186(var uParam0)
 		func_185(uParam0, 11);
 	}
 	func_195();
-	RECORDING::_0xEB2D525B57F42B40();
+	RECORDING::_STOP_RECORDING_THIS_FRAME();
 	if (Local_215 > 2)
 	{
 		func_189(0);

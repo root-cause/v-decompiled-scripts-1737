@@ -320,14 +320,14 @@ void func_2(int iParam0, int iParam1, int iParam2)
 	}
 	if (iLocal_94[iParam0] == 0)
 	{
-		if (OBJECT::_0x4BC2854478F3A749(iParam1) == -1)
+		if (OBJECT::DOOR_SYSTEM_GET_DOOR_PENDING_STATE(iParam1) == -1)
 		{
-			if (OBJECT::_0x160AA1B32F6139B8(iParam1) != iParam2)
+			if (OBJECT::DOOR_SYSTEM_GET_DOOR_STATE(iParam1) != iParam2)
 			{
 				if (NETWORK::NETWORK_HAS_CONTROL_OF_DOOR(iParam1))
 				{
 					MISC::SET_BIT(&(iLocal_94[iParam0]), iVar0);
-					OBJECT::_SET_DOOR_ACCELERATION_LIMIT(iParam1, iParam2, 1, 1);
+					OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(iParam1, iParam2, 1, 1);
 					func_34(&(Local_95[iParam0 /*2*/]), 1, 0);
 				}
 				else
@@ -336,12 +336,12 @@ void func_2(int iParam0, int iParam1, int iParam2)
 				}
 			}
 		}
-		else if (OBJECT::_0x4BC2854478F3A749(iParam1) != iParam2)
+		else if (OBJECT::DOOR_SYSTEM_GET_DOOR_PENDING_STATE(iParam1) != iParam2)
 		{
 			if (NETWORK::NETWORK_HAS_CONTROL_OF_DOOR(iParam1))
 			{
 				MISC::SET_BIT(&(iLocal_94[iParam0]), iVar0);
-				OBJECT::_SET_DOOR_ACCELERATION_LIMIT(iParam1, iParam2, 1, 1);
+				OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(iParam1, iParam2, 1, 1);
 				func_34(&(Local_95[iParam0 /*2*/]), 1, 0);
 			}
 			else
@@ -472,7 +472,7 @@ void func_9()
 	}
 	else if (fVar0 <= 20f)
 	{
-		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar1, Local_69[iLocal_72 /*17*/].f_3, Local_69[iLocal_72 /*17*/].f_6, Local_69[iLocal_72 /*17*/].f_9, 0, 1))
+		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar1, Local_69[iLocal_72 /*17*/].f_3, Local_69[iLocal_72 /*17*/].f_6, Local_69[iLocal_72 /*17*/].f_9, 0, true))
 		{
 			if (!MISC::IS_BIT_SET(Local_96[PLAYER::PLAYER_ID() /*4*/].f_2, iLocal_72))
 			{
@@ -483,7 +483,7 @@ void func_9()
 		{
 			if (Global_2460032)
 			{
-				if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar1, Local_69[iLocal_72 /*17*/].f_10, Local_69[iLocal_72 /*17*/].f_13, Local_69[iLocal_72 /*17*/].f_16, 0, 1))
+				if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar1, Local_69[iLocal_72 /*17*/].f_10, Local_69[iLocal_72 /*17*/].f_13, Local_69[iLocal_72 /*17*/].f_16, 0, true))
 				{
 					if (!MISC::IS_BIT_SET(Local_96[PLAYER::PLAYER_ID() /*4*/].f_2, iLocal_72))
 					{
@@ -503,7 +503,7 @@ void func_9()
 						MISC::SET_BIT(&(Local_96[PLAYER::PLAYER_ID() /*4*/].f_2), iLocal_72);
 					}
 				}
-				else if (MISC::IS_BIT_SET(Local_96[PLAYER::PLAYER_ID() /*4*/].f_2, iLocal_72) && !OBJECT::IS_POINT_IN_ANGLED_AREA(vVar1, Local_69[iLocal_72 /*17*/].f_3, Local_69[iLocal_72 /*17*/].f_6, Local_69[iLocal_72 /*17*/].f_9, 0, 1))
+				else if (MISC::IS_BIT_SET(Local_96[PLAYER::PLAYER_ID() /*4*/].f_2, iLocal_72) && !OBJECT::IS_POINT_IN_ANGLED_AREA(vVar1, Local_69[iLocal_72 /*17*/].f_3, Local_69[iLocal_72 /*17*/].f_6, Local_69[iLocal_72 /*17*/].f_9, 0, true))
 				{
 					MISC::CLEAR_BIT(&(Local_96[PLAYER::PLAYER_ID() /*4*/].f_2), iLocal_72);
 				}
@@ -550,7 +550,7 @@ int func_12()
 
 Vector3 func_13(int iParam0)
 {
-	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), 0);
+	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), false);
 }
 
 void func_14()
@@ -566,7 +566,7 @@ void func_14()
 	while (iVar0 < 4)
 	{
 		func_22(iVar0, &Var3);
-		if (MISC::GET_DISTANCE_BETWEEN_COORDS(func_13(PLAYER::PLAYER_ID()), Var3.f_1, 1) < 150f)
+		if (MISC::GET_DISTANCE_BETWEEN_COORDS(func_13(PLAYER::PLAYER_ID()), Var3.f_1, true) < 150f)
 		{
 			bVar2 = false;
 			iVar1 = 0;
@@ -575,7 +575,7 @@ void func_14()
 				iVar4 = PLAYER::INT_TO_PLAYERINDEX(iVar1);
 				if (func_7(iVar4, 1, 1))
 				{
-					if (func_15(iVar4) && ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::GET_PLAYER_PED(iVar4), Var3.f_4[0 /*3*/], Var3.f_4[1 /*3*/], Var3.f_11, 0, 1, 0))
+					if (func_15(iVar4) && ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::GET_PLAYER_PED(iVar4), Var3.f_4[0 /*3*/], Var3.f_4[1 /*3*/], Var3.f_11, 0, true, 0))
 					{
 						bVar2 = true;
 						iVar1 = 32;
@@ -593,8 +593,8 @@ void func_14()
 						fLocal_97[iVar0] = 1f;
 					}
 					AUDIO::SET_SCRIPT_UPDATE_DOOR_AUDIO(Var3, 1);
-					OBJECT::_SET_DOOR_AJAR_ANGLE(Var3, fLocal_97[iVar0], 0, 0);
-					OBJECT::_SET_DOOR_ACCELERATION_LIMIT(Var3, 0, 0, 1);
+					OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(Var3, fLocal_97[iVar0], 0, 0);
+					OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(Var3, 0, 0, 1);
 				}
 			}
 			else if (fLocal_97[iVar0] != 0f)
@@ -605,8 +605,8 @@ void func_14()
 					fLocal_97[iVar0] = 0f;
 				}
 				AUDIO::SET_SCRIPT_UPDATE_DOOR_AUDIO(Var3, 1);
-				OBJECT::_SET_DOOR_AJAR_ANGLE(Var3, fLocal_97[iVar0], 0, 0);
-				OBJECT::_SET_DOOR_ACCELERATION_LIMIT(Var3, 1, 0, 1);
+				OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(Var3, fLocal_97[iVar0], 0, 0);
+				OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(Var3, 1, 0, 1);
 			}
 		}
 		iVar0++;
@@ -3637,17 +3637,17 @@ void func_30(struct<15> Param0, int iParam1)
 		OBJECT::ADD_DOOR_TO_SYSTEM(Param0, Param0.f_2, Param0.f_3, 0, iParam1, Param0.f_11);
 		if (Param0.f_9)
 		{
-			OBJECT::_0xD9B71952F78A2640(Param0, 1);
+			OBJECT::DOOR_SYSTEM_SET_HOLD_OPEN(Param0, 1);
 		}
 		if (Param0.f_12 != 0f)
 		{
-			OBJECT::_SET_DOOR_AJAR_ANGLE(Param0, Param0.f_12, 0, iParam1);
+			OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(Param0, Param0.f_12, 0, iParam1);
 		}
 		if (!Param0.f_6)
 		{
 			if (Param0.f_7)
 			{
-				OBJECT::_SET_DOOR_ACCELERATION_LIMIT(Param0, Param0.f_8, iParam1, 0);
+				OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(Param0, Param0.f_8, iParam1, 0);
 			}
 		}
 		if (Param0.f_10)
@@ -3656,11 +3656,11 @@ void func_30(struct<15> Param0, int iParam1)
 		}
 		if (Param0.f_14 != 0f)
 		{
-			OBJECT::_0x03C27E13B42A0E82(Param0, Param0.f_14, iParam1, 0);
+			OBJECT::DOOR_SYSTEM_SET_AUTOMATIC_RATE(Param0, Param0.f_14, iParam1, 0);
 		}
 		if (Param0.f_13 != 0f)
 		{
-			OBJECT::_0x9BA001CB45CBF627(Param0, Param0.f_13, iParam1, 0);
+			OBJECT::DOOR_SYSTEM_SET_AUTOMATIC_DISTANCE(Param0, Param0.f_13, iParam1, 0);
 		}
 	}
 }
@@ -3907,7 +3907,7 @@ int func_45(int iParam0, var uParam1)
 			{
 				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(ENTITY::GET_ENTITY_MODEL(iParam0)))
 				{
-					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, 0, 1);
+					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, false, 1);
 					*uParam1 = 1;
 				}
 			}

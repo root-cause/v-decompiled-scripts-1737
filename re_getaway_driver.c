@@ -2264,9 +2264,9 @@ void func_3(int iParam0, bool bParam1)
 				break;
 		}
 		sVar1 = func_14(iParam0);
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("FEED_CREW_U");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("FEED_CREW_U");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(func_14(iParam0));
-		HUD::_SET_NOTIFICATION_MESSAGE_2(sVar1, sVar1, 0, iVar0, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(sVar1, sVar1, 0, iVar0, "", 0);
 		if (!func_13(45))
 		{
 			func_4("AM_H_CREWU", 2, 0, 20000, 10000, func_7(), 0, 131, 0);
@@ -3094,9 +3094,9 @@ void func_21(int iParam0)
 	if (bVar0)
 	{
 		StringCopy(&cVar1, "CHAR_LIFEINVADER", 64);
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("COUP_RED");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("COUP_RED");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(func_22(iParam0));
-		HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar1, &cVar1, 1, 0, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar1, &cVar1, 1, 0, "", 0);
 	}
 }
 
@@ -4880,7 +4880,7 @@ void func_80(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}
@@ -9538,7 +9538,7 @@ void func_165()
 					iLocal_262 = VEHICLE::CREATE_VEHICLE(joaat("police3"), vLocal_233, 0f, true, true, false);
 					vLocal_234 = { func_179(PLAYER::PLAYER_ID()) - ENTITY::GET_ENTITY_COORDS(iLocal_262, true) };
 					ENTITY::SET_ENTITY_HEADING(iLocal_262, MISC::GET_HEADING_FROM_VECTOR_2D(vLocal_234.x, vLocal_234.y));
-					VEHICLE::SET_VEHICLE_SIREN(iLocal_262, 1);
+					VEHICLE::SET_VEHICLE_SIREN(iLocal_262, true);
 				}
 				if (!ENTITY::DOES_ENTITY_EXIST(iLocal_260[2]))
 				{
@@ -10878,8 +10878,8 @@ void func_192(int iParam0, bool bParam1)
 
 void func_193(char* sParam0)
 {
-	HUD::_SET_NOTIFICATION_TEXT_ENTRY("");
-	HUD::_SET_NOTIFICATION_MESSAGE_3("CHAR_ACTING_UP", "CHAR_ACTING_UP", 0, 0, "DI_FEED_CHAR", sParam0);
+	HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("");
+	HUD::_END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT_GXT_ENTRY("CHAR_ACTING_UP", "CHAR_ACTING_UP", 0, 0, "DI_FEED_CHAR", sParam0);
 }
 
 char* func_194(int iParam0)

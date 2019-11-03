@@ -125,7 +125,7 @@ void func_1(int iParam0)
 void func_2()
 {
 	func_3(0);
-	MISC::SET_GAME_PAUSED(0);
+	MISC::SET_GAME_PAUSED(false);
 	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&iLocal_18);
 	SCRIPT::TERMINATE_THIS_THREAD();
 }

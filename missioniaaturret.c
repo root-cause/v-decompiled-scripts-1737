@@ -4551,7 +4551,7 @@ int func_71(bool bParam0)
 			{
 				if (func_14(iVar2, 1, 1))
 				{
-					if (!NETWORK::_0x919B3C98ED8292F9(iVar2))
+					if (!NETWORK::NETWORK_IS_PLAYER_CONCEALED(iVar2))
 					{
 						MISC::SET_BIT(&iVar0, iVar2);
 					}
@@ -4629,7 +4629,7 @@ int func_76(var uParam0, bool bParam1)
 		while (iVar1 < 32)
 		{
 			iVar2 = PLAYER::INT_TO_PLAYERINDEX(iVar1);
-			if (func_14(iVar2, 1, 1) && !NETWORK::_0x919B3C98ED8292F9(iVar2))
+			if (func_14(iVar2, 1, 1) && !NETWORK::NETWORK_IS_PLAYER_CONCEALED(iVar2))
 			{
 				if (iVar2 != PLAYER::PLAYER_ID())
 				{
@@ -19582,7 +19582,7 @@ int func_329()
 	while (iVar0 < 32)
 	{
 		iVar1 = PLAYER::INT_TO_PLAYERINDEX(iVar0);
-		if (func_14(iVar1, 1, 1) && !NETWORK::_0x919B3C98ED8292F9(iVar1))
+		if (func_14(iVar1, 1, 1) && !NETWORK::NETWORK_IS_PLAYER_CONCEALED(iVar1))
 		{
 			if (iVar1 != PLAYER::PLAYER_ID())
 			{

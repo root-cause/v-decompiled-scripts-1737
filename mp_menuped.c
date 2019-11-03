@@ -911,7 +911,7 @@ void func_19(var uParam0, var uParam1, var uParam2, var uParam3, var uParam4, va
 
 void func_20(var uParam0, char* sParam1)
 {
-	NETWORK::_0xF45352426FF3A4F0(uParam0, 35, sParam1);
+	NETWORK::NETWORK_CLAN_GET_UI_FORMATTED_TAG(uParam0, 35, sParam1);
 }
 
 void func_21(int iParam0)
@@ -2604,11 +2604,11 @@ int func_44(int iParam0)
 
 int func_45(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_44(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_44(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -6939,11 +6939,11 @@ void func_81(int iParam0, var uParam1, var uParam2)
 
 int func_82(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2539502[iParam0 /*3*/][func_44(iParam1)];
-	if (HUD::_0xEF4CED81CEBEDC6D(uVar0, &uVar1))
+	iVar0 = Global_2539502[iParam0 /*3*/][func_44(iParam1)];
+	if (HUD::_0xEF4CED81CEBEDC6D(iVar0, &uVar1))
 	{
 		return uVar1;
 	}
@@ -9028,7 +9028,7 @@ void func_98(int iParam0, bool bParam1, bool bParam2)
 		iVar7 = 0;
 		while (iVar7 < iVar8)
 		{
-			if (FILES::_0xFF56381874F82086(iVar2, iVar7, &Var9))
+			if (FILES::_GET_TATTOO_COLLECTION_DATA(iVar2, iVar7, &Var9))
 			{
 				if (!FILES::IS_CONTENT_ITEM_LOCKED(Var9))
 				{
@@ -14330,7 +14330,7 @@ int func_113(int iParam0, int iParam1)
 	iVar1 = 0;
 	while (iVar1 < iVar2)
 	{
-		if (FILES::_0xFF56381874F82086(iParam1, iVar1, &Var3))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iParam1, iVar1, &Var3))
 		{
 			if (iParam0 == Var3.f_3)
 			{
@@ -26643,7 +26643,7 @@ void func_120(char* sParam0, int iParam1, int iParam2, int iParam3)
 	iVar1 = FILES::_GET_NUM_DECORATIONS(iParam1);
 	if (iVar1 > 0 && iVar0 < iVar1)
 	{
-		if (FILES::_0xFF56381874F82086(iParam1, iVar0, &Var2))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iParam1, iVar0, &Var2))
 		{
 			if (!FILES::IS_CONTENT_ITEM_LOCKED(Var2))
 			{
@@ -29274,7 +29274,7 @@ void func_142(int iParam0, int iParam1)
 						iVar2 = 0;
 						while (iVar2 < iVar3)
 						{
-							if (FILES::_0xFF56381874F82086(3, iVar2, &Var4))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(3, iVar2, &Var4))
 							{
 								if (Var4.f_6 == 277073536)
 								{
@@ -29307,7 +29307,7 @@ void func_142(int iParam0, int iParam1)
 						iVar5 = 0;
 						while (iVar5 < iVar6)
 						{
-							if (FILES::_0xFF56381874F82086(4, iVar5, &Var7))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(4, iVar5, &Var7))
 							{
 								if (Var7.f_6 == 277073536)
 								{
@@ -29352,7 +29352,7 @@ void func_142(int iParam0, int iParam1)
 						iVar8 = 0;
 						while (iVar8 < iVar9)
 						{
-							if (FILES::_0xFF56381874F82086(3, iVar8, &Var10))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(3, iVar8, &Var10))
 							{
 								if (Var10.f_6 == 2140335355)
 								{
@@ -29399,7 +29399,7 @@ void func_142(int iParam0, int iParam1)
 						iVar11 = 0;
 						while (iVar11 < iVar12)
 						{
-							if (FILES::_0xFF56381874F82086(4, iVar11, &Var13))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(4, iVar11, &Var13))
 							{
 								if (Var13.f_6 == 2140335355)
 								{
@@ -36692,7 +36692,7 @@ int func_170(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -36722,7 +36722,7 @@ int func_170(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -36752,7 +36752,7 @@ int func_170(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -37359,7 +37359,7 @@ int func_170(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -37389,7 +37389,7 @@ int func_170(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -37419,7 +37419,7 @@ int func_170(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -68887,7 +68887,7 @@ void func_245(var uParam0, int iParam1, bool bParam2)
 	iVar6 = 0;
 	while (iVar6 < iVar7)
 	{
-		if (FILES::_0xFF56381874F82086(iVar1, iVar6, &Var8))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iVar1, iVar6, &Var8))
 		{
 			if (!FILES::IS_CONTENT_ITEM_LOCKED(Var8))
 			{
@@ -91846,7 +91846,7 @@ void func_349(var uParam0, int iParam1, bool bParam2, bool bParam3)
 	iVar6 = 0;
 	while (iVar6 < iVar7)
 	{
-		if (FILES::_0xFF56381874F82086(iVar1, iVar6, &Var8))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iVar1, iVar6, &Var8))
 		{
 			if (!FILES::IS_CONTENT_ITEM_LOCKED(Var8))
 			{
@@ -98425,7 +98425,7 @@ int func_405(int iParam0)
 	return 0;
 }
 
-void func_406(var uParam0, int iParam1)
+void func_406(var uParam0, bool bParam1)
 {
 	int iVar0;
 	
@@ -98435,25 +98435,25 @@ void func_406(var uParam0, int iParam1)
 		case 108:
 		case 89:
 		case 78:
-			func_407(iParam1, 1);
+			func_407(bParam1, 1);
 			break;
 		
 		case 17:
-			func_407(iParam1, 2);
+			func_407(bParam1, 2);
 			break;
 	}
 }
 
-void func_407(int iParam0, int iParam1)
+void func_407(bool bParam0, int iParam1)
 {
 	switch (iParam1)
 	{
 		case 1:
-			HUD::_0xC78E239AC5B2DDB9(iParam0, 16, 0);
+			HUD::_0xC78E239AC5B2DDB9(bParam0, 16, 0);
 			break;
 		
 		case 2:
-			HUD::_0xC78E239AC5B2DDB9(iParam0, 17, 1);
+			HUD::_0xC78E239AC5B2DDB9(bParam0, 17, 1);
 			break;
 	}
 }

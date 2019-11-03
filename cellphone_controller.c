@@ -47,7 +47,7 @@
 	int iLocal_45[4] = { 0, 0, 0, 0 };
 	int iLocal_46[4] = { 0, 0, 0, 0 };
 	int iLocal_47 = 0;
-	var uLocal_48 = 0;
+	int iLocal_48 = 0;
 	int iLocal_49 = 0;
 	int iLocal_50 = 0;
 	int iLocal_51 = 0;
@@ -832,8 +832,8 @@ int func_15()
 			if (DECORATOR::DECOR_EXIST_ON(PLAYER::PLAYER_PED_ID(), "Synched"))
 			{
 				sVar0 = HUD::_GET_LABEL_TEXT("CELL_ANTIH_A");
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_ANTIH");
-				HUD::_SET_NOTIFICATION_MESSAGE_2("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, sVar0, 0);
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_ANTIH");
+				HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, sVar0, 0);
 			}
 		}
 		if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
@@ -848,7 +848,7 @@ int func_15()
 		}
 		Global_16925 = 0;
 		Global_16926 = 0;
-		if (HUD::_GET_CURRENT_NOTIFICATION() == Global_16923 && HUD::_GET_CURRENT_NOTIFICATION() != -1)
+		if (HUD::_THEFEED_GET_CURRENT_NOTIFICATION() == Global_16923 && HUD::_THEFEED_GET_CURRENT_NOTIFICATION() != -1)
 		{
 			Global_16925 = Global_16924;
 			iLocal_58 = MISC::GET_GAME_TIMER();
@@ -937,14 +937,14 @@ void func_16()
 		fLocal_69 = (fLocal_72 - (fLocal_73 * 0.005f));
 		if (!func_18())
 		{
-			GRAPHICS::_0xC6372ECD45D73BCD(1);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(1);
 			GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(7);
 			if (MISC::IS_PC_VERSION())
 			{
 				GRAPHICS::_0xEFABC7722293DA7C();
 			}
 			GRAPHICS::DRAW_SCALEFORM_MOVIE(iLocal_37, fLocal_68, fLocal_69, 0.27f, 0.45f, 255, 255, 255, iVar0, 0);
-			GRAPHICS::_0xC6372ECD45D73BCD(0);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(0);
 			GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(4);
 		}
 	}
@@ -2082,8 +2082,8 @@ void func_33()
 		{
 			if (MISC::GET_PROFILE_SETTING(803) == 1)
 			{
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_EMAIL_EVENT");
-				HUD::_DRAW_NOTIFICATION(1, 1);
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_EMAIL_EVENT");
+				HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(1, 1);
 			}
 			else if (MISC::GET_PROFILE_SETTING(803) != 1)
 			{
@@ -2377,39 +2377,39 @@ void func_45()
 		switch (Global_4268043[Global_4269292 /*104*/].f_49)
 		{
 			case 1:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL01");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL01");
 				break;
 			
 			case 2:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL02");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL02");
 				break;
 			
 			case 3:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL03");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL03");
 				break;
 			
 			case 4:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL04");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL04");
 				break;
 			
 			case 5:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL05");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL05");
 				break;
 			
 			case 6:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL06");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL06");
 				break;
 			
 			case 7:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL07");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL07");
 				break;
 			
 			case 8:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL08");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL08");
 				break;
 			
 			case 9:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL09");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL09");
 				break;
 		}
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(&(Global_4268043[Global_4269292 /*104*/]));
@@ -2452,15 +2452,15 @@ void func_45()
 			iVar1++;
 		}
 		StringCopy(&cVar2, HUD::_GET_LABEL_TEXT(&(Global_106565.f_28044[Global_4268043[Global_4269292 /*104*/].f_17 /*29*/].f_3)), 64);
-		uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 2, &cVar2, 0);
+		iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 2, &cVar2, 0);
 		MISC::SET_BIT(&Global_4269308, 1);
 		Global_16924 = 1;
-		Global_16923 = uLocal_48;
+		Global_16923 = iLocal_48;
 		Global_16927 = 0;
 	}
 	else
 	{
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY(&(Global_4268043[Global_4269292 /*104*/]));
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(&(Global_4268043[Global_4269292 /*104*/]));
 		switch (Global_4268043[Global_4269292 /*104*/].f_32)
 		{
 			case 0:
@@ -2530,10 +2530,10 @@ void func_45()
 			StringCopy(&cVar3, "<C>", 64);
 			StringConCat(&cVar3, &Global_3111, 64);
 			StringConCat(&cVar3, "</C>", 64);
-			uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 2, &cVar3, 0);
+			iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 2, &cVar3, 0);
 			MISC::SET_BIT(&Global_4269308, 1);
 			Global_16924 = 1;
-			Global_16923 = uLocal_48;
+			Global_16923 = iLocal_48;
 		}
 		else
 		{
@@ -2542,19 +2542,19 @@ void func_45()
 			{
 				StringCopy(&cVar5, "~HUD_COLOUR_SOCIAL_CLUB~", 64);
 				StringConCat(&cVar5, &cVar4, 64);
-				uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 2, &cVar5, 0);
+				iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 2, &cVar5, 0);
 			}
 			else
 			{
-				uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 2, &cVar4, 0);
+				iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 2, &cVar4, 0);
 			}
 			MISC::SET_BIT(&Global_4269308, 1);
 			Global_16924 = 1;
-			Global_16923 = uLocal_48;
+			Global_16923 = iLocal_48;
 			Global_16927 = 0;
 		}
 	}
-	Global_4268043[Global_4269292 /*104*/].f_16 = uLocal_48;
+	Global_4268043[Global_4269292 /*104*/].f_16 = iLocal_48;
 }
 
 void func_46()
@@ -2566,16 +2566,16 @@ void func_46()
 	StringCopy(&cVar0, HUD::_GET_LABEL_TEXT(&(Global_106565.f_28044[Global_3109 /*29*/].f_7)), 64);
 	if (Global_3128 == 0)
 	{
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("");
 		StringCopy(&cVar1, HUD::_GET_LABEL_TEXT(&(Global_3033[1 /*6*/])), 64);
 		sVar2 = HUD::_GET_LABEL_TEXT("CELL_253");
-		HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 3, sVar2, &cVar1);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 3, sVar2, &cVar1);
 	}
 	else
 	{
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_255");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_255");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(&(Global_3033[1 /*6*/]));
-		HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 3, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 3, "", 0);
 	}
 	MISC::CLEAR_BIT(&Global_2423, 0);
 }
@@ -2710,39 +2710,39 @@ void func_50()
 		switch (Global_106565.f_14135[Global_16933 /*104*/].f_49)
 		{
 			case 1:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL01");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL01");
 				break;
 			
 			case 2:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL02");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL02");
 				break;
 			
 			case 3:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL03");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL03");
 				break;
 			
 			case 4:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL04");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL04");
 				break;
 			
 			case 5:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL05");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL05");
 				break;
 			
 			case 6:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL06");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL06");
 				break;
 			
 			case 7:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL07");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL07");
 				break;
 			
 			case 8:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL08");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL08");
 				break;
 			
 			case 9:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("CELL_CL09");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("CELL_CL09");
 				break;
 		}
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(&(Global_106565.f_14135[Global_16933 /*104*/]));
@@ -2785,14 +2785,14 @@ void func_50()
 			iVar1++;
 		}
 		StringCopy(&cVar2, HUD::_GET_LABEL_TEXT(&(Global_106565.f_28044[Global_106565.f_14135[Global_16933 /*104*/].f_17 /*29*/].f_3)), 64);
-		uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 1, &cVar2, 0);
+		iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 1, &cVar2, 0);
 		Global_16924 = 3;
-		Global_16923 = uLocal_48;
+		Global_16923 = iLocal_48;
 		Global_16927 = 0;
 	}
 	else
 	{
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY(&(Global_106565.f_14135[Global_16933 /*104*/]));
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(&(Global_106565.f_14135[Global_16933 /*104*/]));
 		switch (Global_106565.f_14135[Global_16933 /*104*/].f_32)
 		{
 			case 0:
@@ -2862,9 +2862,9 @@ void func_50()
 			StringCopy(&cVar3, "<C>", 64);
 			StringConCat(&cVar3, &Global_3111, 64);
 			StringConCat(&cVar3, "</C>", 64);
-			uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 1, &cVar3, 0);
+			iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 1, &cVar3, 0);
 			Global_16924 = 3;
-			Global_16923 = uLocal_48;
+			Global_16923 = iLocal_48;
 		}
 		else
 		{
@@ -2873,18 +2873,18 @@ void func_50()
 			{
 				StringCopy(&cVar5, "~HUD_COLOUR_SOCIAL_CLUB~", 64);
 				StringConCat(&cVar5, &cVar4, 64);
-				uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 1, &cVar5, 0);
+				iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 1, &cVar5, 0);
 			}
 			else
 			{
-				uLocal_48 = HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar0, &cVar0, 0, 1, &cVar4, 0);
+				iLocal_48 = HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar0, &cVar0, 0, 1, &cVar4, 0);
 			}
 			Global_16924 = 3;
-			Global_16923 = uLocal_48;
+			Global_16923 = iLocal_48;
 			Global_16927 = 0;
 		}
 	}
-	Global_106565.f_14135[Global_16933 /*104*/].f_16 = uLocal_48;
+	Global_106565.f_14135[Global_16933 /*104*/].f_16 = iLocal_48;
 }
 
 void func_51()
@@ -3449,7 +3449,7 @@ int func_57(var uParam0, char* sParam1, int iParam2, int iParam3, char* sParam4,
 		{
 			if (!func_58())
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Text_Arrive_Tone", &Global_14542, 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Text_Arrive_Tone", &Global_14542, true);
 			}
 		}
 	}
@@ -4048,7 +4048,7 @@ void func_75()
 {
 	float fVar0;
 	
-	MISC::SET_GAME_PAUSED(1);
+	MISC::SET_GAME_PAUSED(true);
 	PAD::SET_INPUT_EXCLUSIVE(2, 201);
 	PAD::SET_INPUT_EXCLUSIVE(2, 202);
 	fVar0 = 0f;
@@ -4058,7 +4058,7 @@ void func_75()
 		SYSTEM::WAIT(0);
 		fVar0 = (fVar0 + MISC::GET_FRAME_TIME());
 	}
-	MISC::SET_GAME_PAUSED(0);
+	MISC::SET_GAME_PAUSED(false);
 	if (PAD::IS_CONTROL_JUST_PRESSED(2, 201))
 	{
 		CAM::DO_SCREEN_FADE_OUT(0);
@@ -4071,7 +4071,7 @@ void func_76(int iParam0)
 	float fVar0;
 	int iVar1;
 	
-	MISC::SET_GAME_PAUSED(1);
+	MISC::SET_GAME_PAUSED(true);
 	PAD::SET_INPUT_EXCLUSIVE(2, 201);
 	fVar0 = 0f;
 	while (!PAD::IS_CONTROL_JUST_PRESSED(2, 201) || fVar0 < 1f)
@@ -4081,7 +4081,7 @@ void func_76(int iParam0)
 		SYSTEM::WAIT(0);
 		fVar0 = (fVar0 + MISC::GET_FRAME_TIME());
 	}
-	MISC::SET_GAME_PAUSED(0);
+	MISC::SET_GAME_PAUSED(false);
 }
 
 char* func_77(int iParam0, int iParam1)
@@ -4413,7 +4413,7 @@ int func_82(int iParam0)
 	{
 		if (SYSTEM::VDIST2(vVar0, -59.96629f, -1099.005f, 25.52088f) < 8f)
 		{
-			if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, -61.26628f, -1096.505f, 25.52088f, -58.43333f, -1101.147f, 29.24937f, 1.25f, 0, 1))
+			if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, -61.26628f, -1096.505f, 25.52088f, -58.43333f, -1101.147f, 29.24937f, 1.25f, 0, true))
 			{
 				return 9;
 			}
@@ -4421,28 +4421,28 @@ int func_82(int iParam0)
 	}
 	if (SYSTEM::VDIST2(vVar0, -740.9346f, 5599.426f, 40.71515f) < 11f)
 	{
-		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, -746.1299f, 5599.226f, 40.47561f, -737.632f, 5599.364f, 44.1693f, 3.375f, 0, 1))
+		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, -746.1299f, 5599.226f, 40.47561f, -737.632f, 5599.364f, 44.1693f, 3.375f, 0, true))
 		{
 			return 9;
 		}
 	}
 	if (SYSTEM::VDIST2(vVar0, -740.9346f, 5590.426f, 40.71515f) < 11f)
 	{
-		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, -746.1299f, 5590.667f, 40.4392f, -737.6585f, 5590.592f, 44.52327f, 3.375f, 0, 1))
+		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, -746.1299f, 5590.667f, 40.4392f, -737.6585f, 5590.592f, 44.52327f, 3.375f, 0, true))
 		{
 			return 9;
 		}
 	}
 	if (SYSTEM::VDIST2(vVar0, 446.3265f, 5566.35f, 780.2151f) < 11f)
 	{
-		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, 451.1661f, 5566.451f, 780.1703f, 442.5211f, 5566.374f, 783.9819f, 3.375f, 0, 1))
+		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, 451.1661f, 5566.451f, 780.1703f, 442.5211f, 5566.374f, 783.9819f, 3.375f, 0, true))
 		{
 			return 9;
 		}
 	}
 	if (SYSTEM::VDIST2(vVar0, 446.3265f, 5577.35f, 780.2151f) < 11f)
 	{
-		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, 451.1661f, 5577.867f, 780.1899f, 442.5765f, 5577.579f, 783.9086f, 3.375f, 0, 1))
+		if (OBJECT::IS_POINT_IN_ANGLED_AREA(vVar0, 451.1661f, 5577.867f, 780.1899f, 442.5765f, 5577.579f, 783.9086f, 3.375f, 0, true))
 		{
 			return 9;
 		}

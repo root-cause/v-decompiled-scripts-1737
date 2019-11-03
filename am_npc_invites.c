@@ -1309,7 +1309,7 @@ void func_15()
 				iVar1 = func_47(17);
 				if (iVar1 > 0)
 				{
-					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, 0, 1, 0, -1, 0))
+					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 					{
 						if (func_46())
 						{
@@ -1318,7 +1318,7 @@ void func_15()
 						else
 						{
 							func_31(-iVar1, 1, 1, 0f);
-							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, 1);
+							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, true);
 						}
 					}
 				}
@@ -1343,7 +1343,7 @@ void func_15()
 				iVar1 = func_47(18);
 				if (iVar1 > 0)
 				{
-					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, 0, 1, 0, -1, 0))
+					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 					{
 						if (func_46())
 						{
@@ -1352,7 +1352,7 @@ void func_15()
 						else
 						{
 							func_31(-iVar1, 1, 1, 0f);
-							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, 1);
+							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, true);
 						}
 					}
 				}
@@ -1377,7 +1377,7 @@ void func_15()
 				iVar1 = func_47(15);
 				if (iVar1 > 0)
 				{
-					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, 0, 1, 0, -1, 0))
+					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 					{
 						if (func_46())
 						{
@@ -1386,7 +1386,7 @@ void func_15()
 						else
 						{
 							func_31(-iVar1, 1, 1, 0f);
-							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, 1);
+							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, true);
 						}
 					}
 				}
@@ -1409,7 +1409,7 @@ void func_15()
 			if (!MISC::IS_BIT_SET(Global_1657217, 9))
 			{
 				iVar1 = func_47(36);
-				if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, 0, 1, 0, -1, 0))
+				if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 				{
 					if (iVar1 > 0)
 					{
@@ -1420,7 +1420,7 @@ void func_15()
 						else
 						{
 							func_31(-iVar1, 1, 1, 0f);
-							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, 1);
+							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, true);
 						}
 					}
 				}
@@ -1440,7 +1440,7 @@ void func_15()
 				iVar1 = func_47(19);
 				if (iVar1 > 0)
 				{
-					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, 0, 1, 0, -1, 0))
+					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 					{
 						if (func_46())
 						{
@@ -1449,7 +1449,7 @@ void func_15()
 						else
 						{
 							func_31(-iVar1, 1, 1, 0f);
-							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, 1);
+							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, true);
 						}
 					}
 				}
@@ -1474,7 +1474,7 @@ void func_15()
 				iVar1 = func_47(21);
 				if (iVar1 > 0)
 				{
-					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, 0, 1, 0, -1, 0))
+					if (MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 					{
 						if (func_46())
 						{
@@ -1483,7 +1483,7 @@ void func_15()
 						else
 						{
 							func_31(-iVar1, 1, 1, 0f);
-							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, 1);
+							MONEY::NETWORK_SPENT_REQUEST_JOB(iVar1, false, true);
 						}
 					}
 				}
@@ -3929,7 +3929,7 @@ void func_79(int iParam0, bool bParam1)
 	}
 	if (Global_2392006[iParam0 /*82*/].f_54 != -1)
 	{
-		HUD::_REMOVE_NOTIFICATION(Global_2392006[iParam0 /*82*/].f_54);
+		HUD::THEFEED_REMOVE_ITEM(Global_2392006[iParam0 /*82*/].f_54);
 	}
 	if (!Global_2392006[iParam0 /*82*/].f_19)
 	{
@@ -5286,7 +5286,7 @@ Vector3 func_110(int iParam0)
 
 Vector3 func_111(int iParam0)
 {
-	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), 0);
+	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), false);
 }
 
 bool func_112(int iParam0)
@@ -6441,11 +6441,11 @@ int func_198()
 
 int func_199(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_51(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_51(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -7020,7 +7020,7 @@ int func_217(struct<30> Param0, vector3 vParam1, bool bParam2)
 	{
 		HUD::SET_BLIP_ALPHA(iVar1, 120);
 	}
-	HUD::SHOW_HEIGHT_ON_BLIP(iVar1, 0);
+	HUD::SHOW_HEIGHT_ON_BLIP(iVar1, false);
 	if ((((((((Param0.f_1 == 445 || Param0.f_1 == 447) || Param0.f_1 == 448) || Param0.f_1 == 449) || Param0.f_1 == 450) || Param0.f_1 == 451) || Param0.f_1 == 452) || Param0.f_1 == 453) || Param0.f_1 == 454)
 	{
 		if (!func_223(1))

@@ -26297,14 +26297,14 @@ void func_246(var uParam0)
 void func_247(var uParam0)
 {
 	func_528(uParam0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", 0);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", false);
 	AUDIO::_0x2ACABED337622DF2("DLC_BTL_Nightclub_SCL");
 	func_248();
 }
@@ -26606,7 +26606,7 @@ void func_249(var uParam0)
 		case 3:
 			func_298(1);
 			HUD::HIDE_HELP_TEXT_THIS_FRAME();
-			HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+			HUD::THEFEED_HIDE_THIS_FRAME();
 			if (PED::IS_SYNCHRONIZED_SCENE_RUNNING(uParam0->f_7906.f_35) && PED::GET_SYNCHRONIZED_SCENE_PHASE(uParam0->f_7906.f_35) > 0f)
 			{
 				if (!AUDIO::IS_STREAM_PLAYING())
@@ -26631,7 +26631,7 @@ void func_249(var uParam0)
 		case 4:
 			func_298(1);
 			HUD::HIDE_HELP_TEXT_THIS_FRAME();
-			HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+			HUD::THEFEED_HIDE_THIS_FRAME();
 			if (iVar10 == 3 && iVar11 == 2)
 			{
 				if ((PED::IS_SYNCHRONIZED_SCENE_RUNNING(uParam0->f_7906.f_35) && PED::GET_SYNCHRONIZED_SCENE_PHASE(uParam0->f_7906.f_35) > 0.95f) && !uParam0->f_7953)
@@ -26749,7 +26749,7 @@ void func_249(var uParam0)
 		case 8:
 			func_298(1);
 			HUD::HIDE_HELP_TEXT_THIS_FRAME();
-			HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+			HUD::THEFEED_HIDE_THIS_FRAME();
 			if (!MISC::IS_STRING_NULL_OR_EMPTY(func_300(iVar10, iVar11, func_285(iVar10, uParam0->f_7906))))
 			{
 				STREAMING::REQUEST_ANIM_DICT(func_300(iVar10, iVar11, func_285(iVar10, uParam0->f_7906)));
@@ -26837,7 +26837,7 @@ void func_249(var uParam0)
 		case 9:
 			func_298(1);
 			HUD::HIDE_HELP_TEXT_THIS_FRAME();
-			HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+			HUD::THEFEED_HIDE_THIS_FRAME();
 			if (!func_5(&(uParam0->f_7906.f_3)))
 			{
 				func_4(&(uParam0->f_7906.f_3), 0, 0);
@@ -27032,7 +27032,7 @@ void func_256()
 	
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS() && func_5(&Global_2537098))
 	{
-		if (!func_3(&Global_2537098, 3500, 1) || NETWORK::_0x631DC5DFF4B110E3(PLAYER::PLAYER_ID()))
+		if (!func_3(&Global_2537098, 3500, 1) || NETWORK::NETWORK_IS_PLAYER_FADING(PLAYER::PLAYER_ID()))
 		{
 			if (!func_260())
 			{
@@ -27086,7 +27086,7 @@ void func_257(int iParam0)
 {
 	if (MISC::IS_BIT_SET(Global_2537102, iParam0) && NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
 	{
-		if (!func_3(&(Global_2537103[iParam0 /*2*/]), 3500, 1) || NETWORK::_0x631DC5DFF4B110E3(iParam0))
+		if (!func_3(&(Global_2537103[iParam0 /*2*/]), 3500, 1) || NETWORK::NETWORK_IS_PLAYER_FADING(iParam0))
 		{
 			if (!func_260())
 			{
@@ -27908,8 +27908,8 @@ void func_295(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4
 		PLAYER::SET_ALL_RANDOM_PEDS_FLEE(PLAYER::PLAYER_ID(), 1);
 		PLAYER::SET_POLICE_IGNORE_PLAYER(PLAYER::PLAYER_ID(), 1);
 		func_264(1);
-		HUD::_0xA8FDB297A8D25FBA();
-		HUD::_0xFDB423997FA30340();
+		HUD::THEFEED_FLUSH_QUEUE();
+		HUD::THEFEED_PAUSE();
 		if (Global_14553.f_1 > 3)
 		{
 			if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
@@ -27930,7 +27930,7 @@ void func_295(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4
 	else
 	{
 		func_264(0);
-		HUD::_0xE1CD1E48E025E661();
+		HUD::THEFEED_RESUME();
 		Global_56500 = 0;
 		if (bParam1)
 		{
@@ -52036,13 +52036,13 @@ void func_502()
 void func_503(var uParam0, var uParam1)
 {
 	char* sVar0;
-	var uVar1;
+	char* sVar1;
 	int iVar2;
 	int iVar3;
 	int iVar4;
 	int iVar5;
 	int iVar6;
-	var uVar7;
+	char* sVar7;
 	
 	if (Global_1316753 > 0)
 	{
@@ -52114,7 +52114,7 @@ void func_503(var uParam0, var uParam1)
 					uParam0->f_7253 = 0;
 					Global_1316758 = 0;
 					sVar0 = AUDIO::GET_RADIO_STATION_NAME(uParam0->f_7252);
-					uVar1 = func_232(MISC::GET_HASH_KEY(sVar0), 1);
+					sVar1 = func_232(MISC::GET_HASH_KEY(sVar0), 1);
 					AUDIO::FREEZE_RADIO_STATION(sVar0);
 					iVar2 = 0;
 					if (!func_508(uParam0))
@@ -52133,7 +52133,7 @@ void func_503(var uParam0, var uParam1)
 							func_505(iVar2);
 						}
 					}
-					AUDIO::_SET_RADIO_TRACK_MIX(sVar0, uVar1, iVar2);
+					AUDIO::_SET_RADIO_TRACK_MIX(sVar0, sVar1, iVar2);
 					AUDIO::UNFREEZE_RADIO_STATION(sVar0);
 					uParam0->f_7943 = iVar2;
 					uParam0->f_7942 = 0;
@@ -52183,14 +52183,14 @@ void func_503(var uParam0, var uParam1)
 					}
 					func_90(&(uParam1->f_1), 0, 1);
 					uParam1->f_1 = NETWORK::GET_TIME_OFFSET(uParam1->f_1, -iVar2);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", 1);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", true);
 					AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Bogs", sVar0);
 					AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Entry_Hall", sVar0);
 					AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Entry_Stairs", sVar0);
@@ -52211,24 +52211,24 @@ void func_503(var uParam0, var uParam1)
 					Global_1316758 = 0;
 					iVar6 = func_504(&(uParam1->f_1), 0, 1);
 					sVar0 = AUDIO::GET_RADIO_STATION_NAME(uParam0->f_7252);
-					uVar7 = func_232(MISC::GET_HASH_KEY(sVar0), 1);
+					sVar7 = func_232(MISC::GET_HASH_KEY(sVar0), 1);
 					if (func_6() != func_61() && func_6() == PLAYER::PLAYER_ID())
 					{
 						func_505(iVar6);
 					}
 					AUDIO::FREEZE_RADIO_STATION(sVar0);
-					AUDIO::_SET_RADIO_TRACK_MIX(sVar0, uVar7, iVar6);
+					AUDIO::_SET_RADIO_TRACK_MIX(sVar0, sVar7, iVar6);
 					AUDIO::UNFREEZE_RADIO_STATION(sVar0);
 					uParam0->f_7943 = iVar6;
 					uParam0->f_7942 = 0;
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", 1);
-					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", 1);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", true);
+					AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", true);
 					AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Bogs", sVar0);
 					AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Entry_Hall", sVar0);
 					AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Entry_Stairs", sVar0);
@@ -52253,14 +52253,14 @@ void func_503(var uParam0, var uParam1)
 				AUDIO::FREEZE_RADIO_STATION(sVar0);
 				AUDIO::_SET_RADIO_TRACK_MIX(sVar0, "DLC_BATTLE_MUSIC_BATTLE_MIX_WARMUP", 0);
 				AUDIO::UNFREEZE_RADIO_STATION(sVar0);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", 1);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", 1);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", true);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", true);
 				AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Bogs", sVar0);
 				AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Entry_Hall", sVar0);
 				AUDIO::SET_EMITTER_RADIO_STATION("SE_ba_dlc_int_01_Entry_Stairs", sVar0);
@@ -52280,14 +52280,14 @@ void func_503(var uParam0, var uParam1)
 				Global_1365417 = 1000;
 				Global_1365421 = 1;
 			}
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", 0);
-			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", 0);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", false);
+			AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", false);
 		}
 	}
 }
@@ -52354,14 +52354,14 @@ int func_508(var uParam0)
 
 void func_509()
 {
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", 0);
-	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", 0);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Bogs", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Hall", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_Entry_Stairs", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area_2", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_garage", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_main_area", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_office", false);
+	AUDIO::SET_STATIC_EMITTER_ENABLED("SE_ba_dlc_int_01_rear_L_corridor", false);
 }
 
 void func_510(var uParam0)

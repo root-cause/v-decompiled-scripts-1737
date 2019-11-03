@@ -1104,7 +1104,7 @@ void func_12(var uParam0, bool bParam1)
 	HUD::DISPLAY_CASH(1);
 	if (CAM::DOES_CAM_EXIST(uParam0->f_4))
 	{
-		CAM::RENDER_SCRIPT_CAMS(false, 0, 3000, 1, 0, 0);
+		CAM::RENDER_SCRIPT_CAMS(false, false, 3000, 1, 0, 0);
 	}
 	if (CAM::DOES_CAM_EXIST(uParam0->f_4))
 	{
@@ -1274,7 +1274,7 @@ void func_13(int iParam0, bool bParam1, int iParam2, int iParam3)
 					{
 						ENTITY::FREEZE_ENTITY_POSITION(iVar25, false);
 					}
-					ENTITY::_SET_ENTITY_SOMETHING(iVar25, 1);
+					ENTITY::_SET_ENTITY_SOMETHING(iVar25, true);
 				}
 				else if (!bVar20)
 				{
@@ -1328,7 +1328,7 @@ void func_13(int iParam0, bool bParam1, int iParam2, int iParam3)
 						}
 						if (!bVar15)
 						{
-							ENTITY::_SET_ENTITY_SOMETHING(iVar25, 1);
+							ENTITY::_SET_ENTITY_SOMETHING(iVar25, true);
 						}
 					}
 					if (func_14(Global_4456448.f_161209))
@@ -1849,7 +1849,7 @@ void func_47(var uParam0)
 				MISC::CLEAR_BIT(&(uParam0->f_10), 3);
 				MISC::SET_BIT(&(uParam0->f_5), 13);
 				MISC::SET_BIT(&(uParam0->f_10), 2);
-				GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("helicopterhud", 0);
+				GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("helicopterhud", false);
 				func_6(uParam0, 3);
 				MISC::SET_BIT(&(Global_2424047[PLAYER::PLAYER_ID() /*416*/].f_402), 0);
 			}
@@ -1902,7 +1902,7 @@ void func_47(var uParam0)
 		{
 			if (!func_51(&(uParam0->f_718), 5000, 0))
 			{
-				if (AUDIO::REQUEST_SCRIPT_AUDIO_BANK("DLC_CHRISTMAS2017/XM_ION_CANNON", 0, -1))
+				if (AUDIO::REQUEST_SCRIPT_AUDIO_BANK("DLC_CHRISTMAS2017/XM_ION_CANNON", false, -1))
 				{
 					uParam0->f_3 = 1;
 				}
@@ -2044,7 +2044,7 @@ int func_55(var uParam0)
 		MISC::CLEAR_BIT(&(uParam0->f_5), 3);
 	}
 	MISC::SET_BIT(&(uParam0->f_5), 13);
-	CAM::RENDER_SCRIPT_CAMS(false, 0, 3000, 1, 0, 0);
+	CAM::RENDER_SCRIPT_CAMS(false, false, 3000, 1, 0, 0);
 	return 1;
 }
 
@@ -2066,7 +2066,7 @@ int func_56(var uParam0)
 		if (func_51(&(uParam0->f_714), 3000, 0))
 		{
 			func_40(uParam0);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "cannon_active", "dlc_xm_orbital_cannon_sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "cannon_active", "dlc_xm_orbital_cannon_sounds", true);
 			func_36(&(uParam0->f_714));
 			MISC::SET_BIT(&(uParam0->f_5), 13);
 		}
@@ -2134,7 +2134,7 @@ int func_56(var uParam0)
 			bVar1 = false;
 			if ((PAD::IS_DISABLED_CONTROL_JUST_PRESSED(2, 24) && !MISC::IS_BIT_SET(uParam0->f_5, 15)) && !HUD::IS_WARNING_MESSAGE_ACTIVE())
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "inactive_fire_fail", "dlc_xm_orbital_cannon_sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "inactive_fire_fail", "dlc_xm_orbital_cannon_sounds", true);
 			}
 			uParam0->f_1 = 0;
 			func_42(uParam0);
@@ -2490,7 +2490,7 @@ void func_59(var uParam0)
 	if (uParam0->f_16 == -1)
 	{
 		uParam0->f_16 = AUDIO::GET_SOUND_ID();
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_16, "zoom_out_loop", "dlc_xm_orbital_cannon_sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_16, "zoom_out_loop", "dlc_xm_orbital_cannon_sounds", true);
 	}
 }
 
@@ -2499,7 +2499,7 @@ void func_60(var uParam0)
 	if (uParam0->f_15 == -1)
 	{
 		uParam0->f_15 = AUDIO::GET_SOUND_ID();
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_15, "zoom_out_loop", "dlc_xm_orbital_cannon_sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_15, "zoom_out_loop", "dlc_xm_orbital_cannon_sounds", true);
 	}
 }
 
@@ -2508,7 +2508,7 @@ void func_61(var uParam0)
 	if (uParam0->f_12 == -1)
 	{
 		uParam0->f_12 = AUDIO::GET_SOUND_ID();
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_12, "pan_loop", "dlc_xm_orbital_cannon_sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_12, "pan_loop", "dlc_xm_orbital_cannon_sounds", true);
 	}
 }
 
@@ -2635,7 +2635,7 @@ void func_66(vector3 vParam0)
 	if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 	{
 		MISC::GET_GROUND_Z_FOR_3D_COORD(vParam0, &(vParam0.f_2), 0, 0);
-		MISC::_GET_GROUND_Z_COORD_WITH_OFFSETS(vParam0, &uVar0, &vVar1);
+		MISC::GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD(vParam0, &uVar0, &vVar1);
 		iVar6 = 0;
 		while (iVar6 < 32)
 		{
@@ -2645,8 +2645,8 @@ void func_66(vector3 vParam0)
 				iVar4 = PLAYER::GET_PLAYER_PED(iVar5);
 				if (ENTITY::DOES_ENTITY_EXIST(iVar4))
 				{
-					vVar2 = { ENTITY::GET_ENTITY_COORDS(iVar4, 0) };
-					if (MISC::GET_DISTANCE_BETWEEN_COORDS(vParam0, vVar2, 0) < 15f && vVar2.z >= (vParam0.z - 15f))
+					vVar2 = { ENTITY::GET_ENTITY_COORDS(iVar4, false) };
+					if (MISC::GET_DISTANCE_BETWEEN_COORDS(vParam0, vVar2, false) < 15f && vVar2.z >= (vParam0.z - 15f))
 					{
 						FIRE::ADD_OWNED_EXPLOSION(PLAYER::PLAYER_PED_ID(), vVar2, 59, 1f, 1, 0, 1065353216);
 					}
@@ -2662,8 +2662,8 @@ void func_66(vector3 vParam0)
 			{
 				if (((func_70(Global_1315837[iVar8], 0) || func_69(Global_1315837[iVar8], 0)) || func_68(Global_1315837[iVar8], 0)) || func_67(Global_1315837[iVar8], 0))
 				{
-					vVar3 = { ENTITY::GET_ENTITY_COORDS(Global_1315837[iVar8], 0) };
-					if (MISC::GET_DISTANCE_BETWEEN_COORDS(vParam0, vVar3, 0) < 15f && vVar3.z >= (vParam0.z - 15f))
+					vVar3 = { ENTITY::GET_ENTITY_COORDS(Global_1315837[iVar8], false) };
+					if (MISC::GET_DISTANCE_BETWEEN_COORDS(vParam0, vVar3, false) < 15f && vVar3.z >= (vParam0.z - 15f))
 					{
 						FIRE::ADD_OWNED_EXPLOSION(PLAYER::PLAYER_PED_ID(), vVar3, 59, 1f, 1, 0, 1065353216);
 					}
@@ -3945,7 +3945,7 @@ void func_113(var uParam0)
 	if (uParam0->f_6 == -1)
 	{
 		uParam0->f_6 = AUDIO::GET_SOUND_ID();
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "cannon_charge_fire_loop", "dlc_xm_orbital_cannon_sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_6, "cannon_charge_fire_loop", "dlc_xm_orbital_cannon_sounds", true);
 	}
 }
 
@@ -4048,7 +4048,7 @@ int func_116(var uParam0)
 					MISC::CLEAR_BIT(&(uParam0->f_8), 0);
 				}
 			}
-			CAM::RENDER_SCRIPT_CAMS(false, 0, 3000, 1, 0, 0);
+			CAM::RENDER_SCRIPT_CAMS(false, false, 3000, 1, 0, 0);
 			if (CAM::DOES_CAM_EXIST(uParam0->f_4))
 			{
 				CAM::DESTROY_CAM(uParam0->f_4, 0);
@@ -4067,7 +4067,7 @@ int func_116(var uParam0)
 				MISC::SET_BIT(&(uParam0->f_10), 0);
 				MISC::CLEAR_BIT(&(uParam0->f_5), 4);
 				GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&(uParam0->f_22));
-				uParam0->f_723 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 0) };
+				uParam0->f_723 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 				uParam0->f_720 = { CAM::GET_GAMEPLAY_CAM_ROT(2) };
 				bVar0 = true;
 			}
@@ -4093,13 +4093,13 @@ int func_116(var uParam0)
 						}
 						MISC::SET_BIT(&(uParam0->f_10), 0);
 						MISC::SET_BIT(&(uParam0->f_5), 4);
-						uParam0->f_4 = CAM::CREATE_CAM("DEFAULT_SCRIPTED_CAMERA", 0);
+						uParam0->f_4 = CAM::CREATE_CAM("DEFAULT_SCRIPTED_CAMERA", false);
 						uParam0->f_723 = { Var4.f_1 };
 						CAM::SET_CAM_COORD(uParam0->f_4, Var4.f_1);
 						CAM::SET_CAM_ROT(uParam0->f_4, Var4.f_4, 2);
 						CAM::SET_CAM_FOV(uParam0->f_4, Var4);
 						CAM::SET_CAM_ACTIVE(uParam0->f_4, true);
-						CAM::RENDER_SCRIPT_CAMS(true, 0, 3000, 1, 0, 0);
+						CAM::RENDER_SCRIPT_CAMS(true, false, 3000, 1, 0, 0);
 						bVar0 = true;
 					}
 				}
@@ -4410,7 +4410,7 @@ void func_118(var uParam0, var uParam1, var uParam2, int iParam3)
 					{
 						iVar4 = uParam2->f_1[iVar0 /*56*/].f_53;
 						iVar5 = uParam2->f_1[iVar0 /*56*/].f_54;
-						func_122(PAD::_0x80C2FD58D720C801(iVar4, iVar5, true));
+						func_122(PAD::GET_CONTROL_GROUP_INSTRUCTIONAL_BUTTON(iVar4, iVar5, true));
 					}
 					if (MISC::IS_BIT_SET(uParam2->f_674, iVar0))
 					{
@@ -4519,9 +4519,9 @@ void func_119()
 	HUD::HIDE_HUD_COMPONENT_THIS_FRAME(9);
 }
 
-void func_120(var uParam0, var uParam1)
+void func_120(int iParam0, var uParam1)
 {
-	GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(uParam0, uParam1->f_4, uParam1->f_5, uParam1->f_6, uParam1->f_7, 0);
+	GRAPHICS::DRAW_SCALEFORM_MOVIE_FULLSCREEN(iParam0, uParam1->f_4, uParam1->f_5, uParam1->f_6, uParam1->f_7, 0);
 }
 
 void func_121(char* sParam0)
@@ -4727,7 +4727,7 @@ void func_140(var uParam0)
 	if (uParam0->f_14 == -1)
 	{
 		uParam0->f_14 = AUDIO::GET_SOUND_ID();
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_14, "background_loop", "dlc_xm_orbital_cannon_sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_14, "background_loop", "dlc_xm_orbital_cannon_sounds", true);
 	}
 }
 
@@ -4751,7 +4751,7 @@ void func_142(var uParam0)
 	if (uParam0->f_13 == -1)
 	{
 		uParam0->f_13 = AUDIO::GET_SOUND_ID();
-		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_13, "cannon_activating_loop", "dlc_xm_orbital_cannon_sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(uParam0->f_13, "cannon_activating_loop", "dlc_xm_orbital_cannon_sounds", true);
 	}
 }
 
@@ -4802,22 +4802,22 @@ void func_143(int iParam0, int iParam1)
 				{
 					if (!bVar2)
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "On", "GTAO_Vision_Modes_SoundSet", 0);
+						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "On", "GTAO_Vision_Modes_SoundSet", false);
 					}
 					else
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Switch", "GTAO_Vision_Modes_SoundSet", 0);
+						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Switch", "GTAO_Vision_Modes_SoundSet", false);
 					}
 				}
 				else if (bVar1)
 				{
 					if (!bVar2)
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "On", "GTAO_Vision_Modes_SoundSet", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "On", "GTAO_Vision_Modes_SoundSet", true);
 					}
 					else
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Switch", "GTAO_Vision_Modes_SoundSet", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Switch", "GTAO_Vision_Modes_SoundSet", true);
 					}
 				}
 			}
@@ -4847,11 +4847,11 @@ void func_143(int iParam0, int iParam1)
 			{
 				if (iParam1 == 1)
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Off", "GTAO_Vision_Modes_SoundSet", 0);
+					AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Off", "GTAO_Vision_Modes_SoundSet", false);
 				}
 				else if (bVar1)
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Off", "GTAO_Vision_Modes_SoundSet", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(Global_1656358, "Off", "GTAO_Vision_Modes_SoundSet", true);
 				}
 			}
 		}
@@ -4864,7 +4864,7 @@ void func_144(bool bParam0)
 	func_145(284, bParam0, -1, 1);
 }
 
-void func_145(int iParam0, int iParam1, int iParam2, int iParam3)
+void func_145(int iParam0, bool bParam1, int iParam2, int iParam3)
 {
 	int iVar0;
 	
@@ -4873,7 +4873,7 @@ void func_145(int iParam0, int iParam1, int iParam2, int iParam3)
 		iVar0 = Global_2571340[iParam0 /*3*/][func_146(iParam2)];
 		if (iVar0 != 0)
 		{
-			STATS::STAT_SET_BOOL(iVar0, iParam1, iParam3);
+			STATS::STAT_SET_BOOL(iVar0, bParam1, iParam3);
 		}
 	}
 }
@@ -5691,12 +5691,12 @@ int func_218(var uParam0)
 		{
 			if (func_219(vVar4))
 			{
-				if (ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::GET_PLAYER_PED(iVar6), vVar1, vVar2, fVar0, 0, 1, 0))
+				if (ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::GET_PLAYER_PED(iVar6), vVar1, vVar2, fVar0, 0, true, 0))
 				{
 					return 0;
 				}
 			}
-			else if (ENTITY::IS_ENTITY_AT_COORD(PLAYER::GET_PLAYER_PED(iVar6), vVar4, 1f, 1f, 1f, 0, 1, 0))
+			else if (ENTITY::IS_ENTITY_AT_COORD(PLAYER::GET_PLAYER_PED(iVar6), vVar4, 1f, 1f, 1f, false, true, 0))
 			{
 				return 0;
 			}
@@ -5726,7 +5726,7 @@ Vector3 func_220(var uParam0)
 		{
 			if (MISC::IS_BIT_SET(Global_2506016, iVar0))
 			{
-				if (Global_4456448.f_58134[iVar0 /*151*/].f_126 > -1 && ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Global_4456448.f_58134[iVar0 /*151*/], 1.5f, 1.5f, 1.5f, 0, 1, 0))
+				if (Global_4456448.f_58134[iVar0 /*151*/].f_126 > -1 && ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Global_4456448.f_58134[iVar0 /*151*/], 1.5f, 1.5f, 1.5f, false, true, 0))
 				{
 					*uParam0 = Global_4456448.f_58134[iVar0 /*151*/].f_126;
 					Global_2506018 = iVar0;
@@ -5738,7 +5738,7 @@ Vector3 func_220(var uParam0)
 	}
 	else if (MISC::IS_BIT_SET(Global_2506016, Global_2506018))
 	{
-		if (Global_4456448.f_58134[Global_2506018 /*151*/].f_126 > -1 && ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Global_4456448.f_58134[Global_2506018 /*151*/], 1.5f, 1.5f, 1.5f, 0, 1, 0))
+		if (Global_4456448.f_58134[Global_2506018 /*151*/].f_126 > -1 && ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Global_4456448.f_58134[Global_2506018 /*151*/], 1.5f, 1.5f, 1.5f, false, true, 0))
 		{
 			*uParam0 = Global_4456448.f_58134[Global_2506018 /*151*/].f_126;
 			return Global_4456448.f_58134[Global_2506018 /*151*/];
@@ -5829,7 +5829,7 @@ int func_222(float fParam0, float fParam1, float fParam2)
 
 bool func_223(int iParam0, vector3 vParam1, float fParam2)
 {
-	return func_224(ENTITY::GET_ENTITY_COORDS(iParam0, 1), ENTITY::GET_ENTITY_HEADING(iParam0), vParam1, fParam2);
+	return func_224(ENTITY::GET_ENTITY_COORDS(iParam0, true), ENTITY::GET_ENTITY_HEADING(iParam0), vParam1, fParam2);
 }
 
 bool func_224(vector3 vParam0, float fParam1, vector3 vParam2, float fParam3)

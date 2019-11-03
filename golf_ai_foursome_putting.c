@@ -2616,7 +2616,7 @@ void func_83(var uParam0, var uParam1, var uParam2)
 		{
 			if (fVar11 != 0f && SYSTEM::VMAG2(vVar2) > 9.5f)
 			{
-				MISC::_GET_GROUND_Z_COORD_WITH_OFFSETS(ENTITY::GET_ENTITY_COORDS(iVar0, true) + Vector(1f, 0f, 0f), &uVar4, &vVar15);
+				MISC::GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD(ENTITY::GET_ENTITY_COORDS(iVar0, true) + Vector(1f, 0f, 0f), &uVar4, &vVar15);
 				vVar16 = { FtoV(func_63(vLocal_377, vVar15)) * vVar15 };
 				vVar14 = { FtoV(-(1f + fVar11)) * vVar16 + vLocal_377 };
 				vVar17 = { vLocal_377 - vVar16 };
@@ -5904,7 +5904,7 @@ void func_204(var uParam0)
 {
 	if (ENTITY::DOES_ENTITY_EXIST(uParam0->f_4))
 	{
-		ENTITY::DETACH_ENTITY(uParam0->f_4, 1, 1);
+		ENTITY::DETACH_ENTITY(uParam0->f_4, 1, true);
 		OBJECT::DELETE_OBJECT(&(uParam0->f_4));
 	}
 }

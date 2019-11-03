@@ -2129,13 +2129,13 @@ void func_6(var uParam0, int iParam1, var uParam2, int iParam3, var uParam4)
 				{
 					iVar8 = 1;
 				}
-				MISC::_0x8FA9C42FC5D7C64B(iParam1, iVar8, func_10(uParam0), func_9(uParam0), 1065353216, 0);
+				MISC::PLAY_TENNIS_DIVE_ANIM(iParam1, iVar8, func_10(uParam0), func_9(uParam0), 1065353216, 0);
 				func_8(uParam0, MISC::GET_GAME_TIMER() + 2871);
 			}
 		}
 		else
 		{
-			MISC::_0xE266ED23311F24D4(iParam1, sVar1, &Var2, fVar5, func_7(uParam0), 0);
+			MISC::PLAY_TENNIS_SWING_ANIM(iParam1, sVar1, &Var2, fVar5, func_7(uParam0), 0);
 		}
 		func_58(uParam0, 1024);
 		if (uParam0->f_31 != 4)
@@ -2143,7 +2143,7 @@ void func_6(var uParam0, int iParam1, var uParam2, int iParam3, var uParam4)
 			Global_106565.f_20015.f_12++;
 		}
 	}
-	else if (MISC::_0x19BFED045C647C49(iParam1) || MISC::_0x17DF68D720AA77F8(iParam1))
+	else if (MISC::_0x19BFED045C647C49(iParam1) || MISC::GET_TENNIS_SWING_ANIM_COMPLETE(iParam1))
 	{
 		func_276(uParam0, 1024);
 		TASK::CLEAR_PED_TASKS(iParam1);
@@ -4764,7 +4764,7 @@ void func_137(var uParam0, var uParam1, var uParam2, int iParam3, int iParam4, i
 		sVar3 = func_195(fVar0 > 0f, "react_ball_out", "react_ball_out_lt");
 		bVar4 = false;
 		TASK::CLEAR_PED_TASKS(iVar1);
-		MISC::_0xE266ED23311F24D4(iVar1, sVar2, sVar3, 0f, 1f, 1);
+		MISC::PLAY_TENNIS_SWING_ANIM(iVar1, sVar2, sVar3, 0f, 1f, 1);
 		func_58(uParam1, 1024);
 		func_80(&(uParam1->f_4), 16);
 		func_8(uParam1, MISC::GET_GAME_TIMER() + 2442);
@@ -9896,7 +9896,7 @@ int func_331(int iParam0)
 	iVar0 = Global_84464[iParam0 /*5*/];
 	iVar1 = Global_71859.f_109[iVar0 /*4*/];
 	func_335(iVar1, 1);
-	PLAYER::_0xC9A763D8FE87436A(PLAYER::PLAYER_ID());
+	PLAYER::SPECIAL_ABILITY_CHARGE_ON_MISSION_FAILED(PLAYER::PLAYER_ID());
 	PLAYER::SPECIAL_ABILITY_DEACTIVATE(PLAYER::PLAYER_ID());
 	func_332(&(Global_106565.f_2357.f_539), iVar1);
 	if (Global_87887 == Global_93719)

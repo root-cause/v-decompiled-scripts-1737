@@ -572,7 +572,7 @@ float func_18(int iParam0)
 	{
 		return 51.77096f;
 	}
-	return VEHICLE::_0x00C09F246ABEDD82(iParam0);
+	return VEHICLE::GET_VEHICLE_CLASS_ESTIMATED_MAX_SPEED(iParam0);
 }
 
 int func_19(int iParam0, int iParam1)
@@ -1300,7 +1300,7 @@ void func_32(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}
@@ -7417,7 +7417,7 @@ void func_89(int iParam0, int iParam1, int iParam2, int iParam3, bool bParam4, b
 				}
 				else if (Global_17411.f_5039[iVar1] != 32)
 				{
-					StringCopy(&(Global_17411.f_4771[iVar1 /*16*/]), PAD::_0x80C2FD58D720C801(2, Global_17411.f_5039[iVar1], true), 64);
+					StringCopy(&(Global_17411.f_4771[iVar1 /*16*/]), PAD::GET_CONTROL_GROUP_INSTRUCTIONAL_BUTTON(2, Global_17411.f_5039[iVar1], true), 64);
 				}
 				iVar1++;
 			}
@@ -7859,7 +7859,7 @@ var func_103(int iParam0, bool bParam1)
 		if (MISC::GET_HASH_KEY(&(Global_17411.f_6997[iParam0 /*16*/])) == joaat("CREW_LOGO"))
 		{
 			Var2 = { func_105(PLAYER::PLAYER_ID()) };
-			if (NETWORK::_0x5835D9CD92E83184(&Var2, &uVar1))
+			if (NETWORK::NETWORK_CLAN_GET_EMBLEM_TXD_NAME(&Var2, &uVar1))
 			{
 				return func_104(&uVar1);
 			}
@@ -8116,7 +8116,7 @@ char* func_106(int iParam0)
 		if (MISC::GET_HASH_KEY(&(Global_17411.f_6020[iParam0 /*16*/])) == joaat("CREW_LOGO"))
 		{
 			Var1 = { func_105(PLAYER::PLAYER_ID()) };
-			NETWORK::_0x5835D9CD92E83184(&Var1, &uVar0);
+			NETWORK::NETWORK_CLAN_GET_EMBLEM_TXD_NAME(&Var1, &uVar0);
 			return func_104(&uVar0);
 		}
 		else
@@ -8573,8 +8573,8 @@ void func_123(bool bParam0, bool bParam1, bool bParam2, bool bParam3)
 	GRAPHICS::SET_SCRIPT_GFX_ALIGN_PARAMS(-0.05f, -0.05f, 0f, 0f);
 	fVar4 = fVar0;
 	fVar5 = fVar1;
-	GRAPHICS::_0x6DD8F5AA635EB4B2(fVar0, fVar1, &fVar0, &fVar1);
-	GRAPHICS::_0x6DD8F5AA635EB4B2(fVar2, fVar3, &fVar2, &fVar3);
+	GRAPHICS::_GET_SCRIPT_GFX_POSITION(fVar0, fVar1, &fVar0, &fVar1);
+	GRAPHICS::_GET_SCRIPT_GFX_POSITION(fVar2, fVar3, &fVar2, &fVar3);
 	GRAPHICS::RESET_SCRIPT_GFX_ALIGN();
 	func_125();
 	if (Global_4268040 == -6)
@@ -21140,11 +21140,11 @@ void func_226()
 								VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(iVar2, 1084227584);
 								if ((iLocal_160 == joaat("MONSTER") || iLocal_160 == joaat("MARSHALL")) || iLocal_160 == joaat("RHINO"))
 								{
-									VEHICLE::_0x428BACCDF5E26EAD(iVar2, false);
+									VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(iVar2, false);
 								}
 								else
 								{
-									VEHICLE::_0x428BACCDF5E26EAD(iVar2, true);
+									VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(iVar2, true);
 								}
 								if (PED::IS_PED_ON_ANY_BIKE(PLAYER::PLAYER_PED_ID()))
 								{
@@ -23698,8 +23698,8 @@ void func_290(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4
 		PLAYER::SET_ALL_RANDOM_PEDS_FLEE(PLAYER::PLAYER_ID(), 1);
 		PLAYER::SET_POLICE_IGNORE_PLAYER(PLAYER::PLAYER_ID(), 1);
 		func_295(1);
-		HUD::_0xA8FDB297A8D25FBA();
-		HUD::_0xFDB423997FA30340();
+		HUD::THEFEED_FLUSH_QUEUE();
+		HUD::THEFEED_PAUSE();
 		if (Global_14553.f_1 > 3)
 		{
 			if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
@@ -23720,7 +23720,7 @@ void func_290(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4
 	else
 	{
 		func_295(0);
-		HUD::_0xE1CD1E48E025E661();
+		HUD::THEFEED_RESUME();
 		Global_56500 = 0;
 		if (bParam1)
 		{
@@ -26714,19 +26714,19 @@ void func_315(int iParam0, int iParam1, int iParam2, char* sParam3, char* sParam
 		switch (iParam2)
 		{
 			case 72:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("PROPR_INCEMAIL1");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("PROPR_INCEMAIL1");
 				break;
 			
 			case 73:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("PROPR_INCEMAIL3");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("PROPR_INCEMAIL3");
 				break;
 			
 			case 74:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY("PROPR_INCEMAIL2");
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("PROPR_INCEMAIL2");
 				break;
 			
 			default:
-				HUD::_SET_NOTIFICATION_TEXT_ENTRY(sParam3);
+				HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(sParam3);
 				if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam4))
 				{
 					HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam4);
@@ -26771,11 +26771,11 @@ void func_315(int iParam0, int iParam1, int iParam2, char* sParam3, char* sParam
 		}
 		if (bVar1)
 		{
-			func_316(HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar2, &cVar2, 0, 2, HUD::_GET_LABEL_TEXT(func_317(iParam1)), 0));
+			func_316(HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar2, &cVar2, 0, 2, HUD::_GET_LABEL_TEXT(func_317(iParam1)), 0));
 		}
 		else
 		{
-			func_316(HUD::_SET_NOTIFICATION_MESSAGE_2("CHAR_DEFAULT", "CHAR_DEFAULT", 0, 2, HUD::_GET_LABEL_TEXT(func_317(iParam1)), 0));
+			func_316(HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT("CHAR_DEFAULT", "CHAR_DEFAULT", 0, 2, HUD::_GET_LABEL_TEXT(func_317(iParam1)), 0));
 		}
 		switch (Global_14553)
 		{
@@ -28204,9 +28204,9 @@ void func_331(int iParam0)
 	if (bVar0)
 	{
 		StringCopy(&cVar1, "CHAR_LIFEINVADER", 64);
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("COUP_RED");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("COUP_RED");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(func_332(iParam0));
-		HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar1, &cVar1, 1, 0, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar1, &cVar1, 1, 0, "", 0);
 	}
 }
 
@@ -30110,8 +30110,8 @@ void func_374(int iParam0, bool bParam1, bool bParam2)
 			{
 				Global_35548[iParam0 /*31*/].f_22 = 1f;
 			}
-			OBJECT::_SET_DOOR_AJAR_ANGLE(Global_35548[iParam0 /*31*/], Global_35548[iParam0 /*31*/].f_22, 0, 0);
-			OBJECT::_SET_DOOR_ACCELERATION_LIMIT(Global_35548[iParam0 /*31*/], 1, 0, 1);
+			OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(Global_35548[iParam0 /*31*/], Global_35548[iParam0 /*31*/].f_22, 0, 0);
+			OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(Global_35548[iParam0 /*31*/], 1, 0, 1);
 		}
 	}
 	else
@@ -30120,8 +30120,8 @@ void func_374(int iParam0, bool bParam1, bool bParam2)
 		if (bParam2)
 		{
 			Global_35548[iParam0 /*31*/].f_22 = 0f;
-			OBJECT::_SET_DOOR_AJAR_ANGLE(Global_35548[iParam0 /*31*/], Global_35548[iParam0 /*31*/].f_22, 0, 0);
-			OBJECT::_SET_DOOR_ACCELERATION_LIMIT(Global_35548[iParam0 /*31*/], 1, 0, 1);
+			OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(Global_35548[iParam0 /*31*/], Global_35548[iParam0 /*31*/].f_22, 0, 0);
+			OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(Global_35548[iParam0 /*31*/], 1, 0, 1);
 		}
 	}
 }
@@ -30341,7 +30341,7 @@ void func_376(int iParam0, var uParam1, bool bParam2, bool bParam3)
 				VEHICLE::SET_VEHICLE_EXTRA(iParam0, 1, false);
 			}
 		}
-		if (((VEHICLE::IS_THIS_MODEL_A_PLANE(uParam1->f_66) && VEHICLE::_0xE43701C36CAFF1A4(iParam0)) && !VEHICLE::IS_VEHICLE_MODEL(iParam0, joaat("avenger"))) && !((((Global_4456448.f_55685 == 6 || Global_4456448.f_55685 == 7) || Global_4456448.f_55685 == 18) || Global_4456448.f_55685 == 19) && Global_4456448.f_2 == 20))
+		if (((VEHICLE::IS_THIS_MODEL_A_PLANE(uParam1->f_66) && VEHICLE::_DOES_VEHICLE_HAVE_LANDING_GEAR(iParam0)) && !VEHICLE::IS_VEHICLE_MODEL(iParam0, joaat("avenger"))) && !((((Global_4456448.f_55685 == 6 || Global_4456448.f_55685 == 7) || Global_4456448.f_55685 == 18) || Global_4456448.f_55685 == 19) && Global_4456448.f_2 == 20))
 		{
 			if (!MISC::IS_BIT_SET(uParam1->f_77, 23))
 			{
@@ -32053,7 +32053,7 @@ void func_434(int iParam0)
 					func_455("No longer needed: Vehicle owned by other script");
 					if (((iParam0 == 24 && !func_63(Global_70409.f_139[iParam0])) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 					{
-						VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+						VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 					}
 					Global_70409.f_139[iParam0] = 0;
 					Global_70409[iParam0] = 1;
@@ -32065,7 +32065,7 @@ void func_434(int iParam0)
 					func_455("No longer needed: Player used vehicle");
 					if (((iParam0 == 24 && !func_63(Global_70409.f_139[iParam0])) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 					{
-						VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+						VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 					}
 					ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(Global_70409.f_139[iParam0]));
 					Global_70409.f_139[iParam0] = 0;
@@ -32080,7 +32080,7 @@ void func_434(int iParam0)
 						func_455("No longer needed: Player damaged vehicle");
 						if (((iParam0 == 24 && !func_63(Global_70409.f_139[iParam0])) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 						{
-							VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+							VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 						}
 						ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(Global_70409.f_139[iParam0]));
 						Global_70409.f_139[iParam0] = 0;
@@ -32099,7 +32099,7 @@ void func_434(int iParam0)
 					func_455("No longer needed: Vehicle has been moved");
 					if (((iParam0 == 24 && !func_63(Global_70409.f_139[iParam0])) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 					{
-						VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+						VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 					}
 					ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(Global_70409.f_139[iParam0]));
 					Global_70409.f_139[iParam0] = 0;
@@ -32112,7 +32112,7 @@ void func_434(int iParam0)
 					func_455("No longer needed: Vehicle gen no longer available");
 					if (((iParam0 == 24 && !func_63(Global_70409.f_139[iParam0])) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 					{
-						VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+						VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 					}
 					ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(Global_70409.f_139[iParam0]));
 					Global_70409.f_139[iParam0] = 0;
@@ -32127,7 +32127,7 @@ void func_434(int iParam0)
 						func_455("No longer needed: Mission vehicle gen moved to players garage");
 						if (ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 						{
-							VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+							VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 						}
 						Global_70409.f_139[iParam0] = 0;
 						Global_70409[iParam0] = 1;
@@ -32146,7 +32146,7 @@ void func_434(int iParam0)
 						{
 							if ((!func_63(Global_70409.f_139[iParam0]) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 							{
-								VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+								VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 							}
 							func_31(Global_70409.f_139[iParam0], Global_106565.f_32743.f_5591);
 							Global_70409[iParam0] = 1;
@@ -32226,7 +32226,7 @@ void func_434(int iParam0)
 					func_455("No longer needed: Ready to accept handover vehicle.");
 					if (((iParam0 == 24 && !func_63(Global_70409.f_139[iParam0])) && !func_62(Global_70409.f_139[iParam0])) && ENTITY::GET_ENTITY_MODEL(Global_70409.f_139[iParam0]) != joaat("MONSTER"))
 					{
-						VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], true);
+						VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], true);
 					}
 					ENTITY::SET_VEHICLE_AS_NO_LONGER_NEEDED(&(Global_70409.f_139[iParam0]));
 					Global_70409.f_139[iParam0] = 0;
@@ -32267,7 +32267,7 @@ void func_434(int iParam0)
 			ENTITY::SET_ENTITY_AS_MISSION_ENTITY(Global_70409.f_139[iParam0], true, 1);
 			if (iParam0 == 24)
 			{
-				VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], false);
+				VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], false);
 			}
 			Global_71315 = 0;
 			if (Global_2460052.f_66 != 0)
@@ -32646,7 +32646,7 @@ void func_434(int iParam0)
 		}
 		VEHICLE::SET_VEHICLE_DIRT_LEVEL(Global_70409.f_139[iParam0], 0f);
 		ENTITY::_SET_ENTITY_SOMETHING(Global_70409.f_139[iParam0], true);
-		VEHICLE::_0x428BACCDF5E26EAD(Global_70409.f_139[iParam0], MISC::IS_BIT_SET(Local_131.f_9, 5));
+		VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(Global_70409.f_139[iParam0], MISC::IS_BIT_SET(Local_131.f_9, 5));
 	}
 	MISC::CLEAR_BIT(&(uLocal_48[iParam0]), 0);
 	MISC::CLEAR_BIT(&(uLocal_48[iParam0]), 1);
@@ -32793,7 +32793,7 @@ int func_439(int iParam0, int iParam1, vector3 vParam2, float fParam3, bool bPar
 				*iParam0 = VEHICLE::CREATE_VEHICLE(Global_106565.f_2357.f_539.f_2407[0 /*295*/][iParam1 /*98*/], vParam2, fParam3, false, false, false);
 				VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(*iParam0, 1084227584);
 				VEHICLE::_0xAB04325045427AAE(*iParam0, 0);
-				VEHICLE::_0x428BACCDF5E26EAD(*iParam0, false);
+				VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(*iParam0, false);
 				VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(*iParam0, true);
 				ENTITY::SET_ENTITY_HEALTH(*iParam0, 1250, 0);
 				VEHICLE::SET_VEHICLE_ENGINE_HEALTH(*iParam0, 1250f);
@@ -32879,7 +32879,7 @@ int func_439(int iParam0, int iParam1, vector3 vParam2, float fParam3, bool bPar
 				*iParam0 = VEHICLE::CREATE_VEHICLE(Global_106565.f_2357.f_539.f_2407[1 /*295*/][iParam1 /*98*/], vParam2, fParam3, false, false, false);
 				VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(*iParam0, 1084227584);
 				VEHICLE::_0xAB04325045427AAE(*iParam0, 0);
-				VEHICLE::_0x428BACCDF5E26EAD(*iParam0, false);
+				VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(*iParam0, false);
 				VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(*iParam0, true);
 				ENTITY::SET_ENTITY_HEALTH(*iParam0, 1250, 0);
 				VEHICLE::SET_VEHICLE_ENGINE_HEALTH(*iParam0, 1250f);
@@ -32966,7 +32966,7 @@ int func_439(int iParam0, int iParam1, vector3 vParam2, float fParam3, bool bPar
 				*iParam0 = VEHICLE::CREATE_VEHICLE(Var2, vParam2, fParam3, true, true, false);
 				VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(*iParam0, 1084227584);
 				VEHICLE::_0xAB04325045427AAE(*iParam0, 0);
-				VEHICLE::_0x428BACCDF5E26EAD(*iParam0, false);
+				VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(*iParam0, false);
 				VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(*iParam0, true);
 				StringCopy(&cVar6, VEHICLE::GET_VEHICLE_NUMBER_PLATE_TEXT(*iParam0), 16);
 				ENTITY::SET_ENTITY_HEALTH(*iParam0, 1250, 0);

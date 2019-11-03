@@ -589,7 +589,7 @@ void __EntryFunction__()
 				}
 			}
 		}
-		if (((((PED::IS_PED_INJURED(iLocal_208) || MISC::IS_BULLET_IN_AREA(vVar15, 50f, 1)) || MISC::IS_BULLET_IN_AREA(vVar15, 50f, 0)) || MISC::IS_PROJECTILE_IN_AREA(vVar15, 20f, 20f, 20f, 0)) || FIRE::IS_EXPLOSION_IN_SPHERE(-1, vVar15, 50f)) || GRAPHICS::_0x2F09F7976C512404(vVar15, 1f))
+		if (((((PED::IS_PED_INJURED(iLocal_208) || MISC::IS_BULLET_IN_AREA(vVar15, 50f, 1)) || MISC::IS_BULLET_IN_AREA(vVar15, 50f, 0)) || MISC::IS_PROJECTILE_IN_AREA(vVar15, 20f, 20f, 20f, 0)) || FIRE::IS_EXPLOSION_IN_SPHERE(-1, vVar15, 50f)) || GRAPHICS::GET_IS_PETROL_DECAL_IN_RANGE(vVar15, 1f))
 		{
 			if (!func_83())
 			{
@@ -2460,10 +2460,10 @@ int func_66(int iParam0)
 	return 0;
 }
 
-void func_67(var uParam0)
+void func_67(char* sParam0)
 {
-	HUD::_SET_NOTIFICATION_TEXT_ENTRY("");
-	HUD::_SET_NOTIFICATION_MESSAGE_3("CHAR_ACTING_UP", "CHAR_ACTING_UP", 0, 0, "DI_FEED_CHAR", uParam0);
+	HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("");
+	HUD::_END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT_GXT_ENTRY("CHAR_ACTING_UP", "CHAR_ACTING_UP", 0, 0, "DI_FEED_CHAR", sParam0);
 }
 
 char* func_68(int iParam0)

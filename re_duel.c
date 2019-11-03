@@ -1654,7 +1654,7 @@ void func_32(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}
@@ -4072,7 +4072,7 @@ void func_58()
 												else
 												{
 													HUD::SET_BLIP_ALPHA(Local_47[iVar9 /*5*/].f_1, 0);
-													HUD::_0x54318C915D27E4CE(Local_47[iVar9 /*5*/].f_1, 1);
+													HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar9 /*5*/].f_1, 1);
 												}
 											}
 										}
@@ -5820,7 +5820,7 @@ int func_104(int iParam0, vector3 vParam1, float fParam2, bool bParam3)
 		}
 		if (fVar22 >= 0f)
 		{
-			VEHICLE::_0xAD2D28A1AFDFF131(Local_48[iParam0 /*4*/], fVar22);
+			VEHICLE::SET_PLANE_TURBULENCE_MULTIPLIER(Local_48[iParam0 /*4*/], fVar22);
 		}
 		if (fVar23 >= 0f)
 		{
@@ -6428,13 +6428,13 @@ void func_121()
 						if (HUD::GET_BLIP_ALPHA(Local_47[iVar0 /*5*/].f_1) > 0)
 						{
 							HUD::SET_BLIP_ALPHA(Local_47[iVar0 /*5*/].f_1, 0);
-							HUD::_0x54318C915D27E4CE(Local_47[iVar0 /*5*/].f_1, 1);
+							HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar0 /*5*/].f_1, 1);
 						}
 					}
 					else if (HUD::GET_BLIP_ALPHA(Local_47[iVar0 /*5*/].f_1) == 0)
 					{
 						HUD::SET_BLIP_ALPHA(Local_47[iVar0 /*5*/].f_1, 255);
-						HUD::_0x54318C915D27E4CE(Local_47[iVar0 /*5*/].f_1, 0);
+						HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar0 /*5*/].f_1, 0);
 					}
 				}
 			}
@@ -6445,7 +6445,7 @@ void func_121()
 				if (HUD::GET_BLIP_ALPHA(Local_47[iVar0 /*5*/].f_1) == 0)
 				{
 					HUD::SET_BLIP_ALPHA(Local_47[iVar0 /*5*/].f_1, 255);
-					HUD::_0x54318C915D27E4CE(Local_47[iVar0 /*5*/].f_1, 0);
+					HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar0 /*5*/].f_1, 0);
 				}
 			}
 			if (PED::IS_PED_INJURED(Local_47[iVar0 /*5*/]))
@@ -9570,7 +9570,7 @@ void func_218(bool bParam0)
 		PLAYER::SET_PLAYER_WANTED_LEVEL_NOW(PLAYER::PLAYER_ID(), 0);
 		PLAYER::SET_WANTED_LEVEL_MULTIPLIER(0f);
 		PLAYER::SET_DISPATCH_COPS_FOR_PLAYER(PLAYER::PLAYER_ID(), 0);
-		PED::SET_CREATE_RANDOM_COPS(0);
+		PED::SET_CREATE_RANDOM_COPS(false);
 		MISC::ENABLE_DISPATCH_SERVICE(3, false);
 		MISC::ENABLE_DISPATCH_SERVICE(1, false);
 		MISC::ENABLE_DISPATCH_SERVICE(8, false);
@@ -9587,7 +9587,7 @@ void func_218(bool bParam0)
 		PLAYER::SET_MAX_WANTED_LEVEL(5);
 		PLAYER::SET_WANTED_LEVEL_MULTIPLIER(1f);
 		PLAYER::SET_DISPATCH_COPS_FOR_PLAYER(PLAYER::PLAYER_ID(), 1);
-		PED::SET_CREATE_RANDOM_COPS(1);
+		PED::SET_CREATE_RANDOM_COPS(true);
 		MISC::ENABLE_DISPATCH_SERVICE(3, true);
 		MISC::ENABLE_DISPATCH_SERVICE(1, true);
 		MISC::ENABLE_DISPATCH_SERVICE(8, true);

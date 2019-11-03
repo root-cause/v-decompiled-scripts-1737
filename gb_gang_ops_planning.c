@@ -825,7 +825,7 @@ void func_14(bool bParam0, bool bParam1)
 		{
 			if (ENTITY::IS_ENTITY_ATTACHED(PLAYER::PLAYER_PED_ID()))
 			{
-				ENTITY::DETACH_ENTITY(PLAYER::PLAYER_PED_ID(), 1, 1);
+				ENTITY::DETACH_ENTITY(PLAYER::PLAYER_PED_ID(), 1, true);
 			}
 		}
 	}
@@ -4966,11 +4966,11 @@ void func_168()
 
 void func_169(var uParam0)
 {
-	GRAPHICS::_0xC6372ECD45D73BCD(1);
+	GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(1);
 	HUD::SET_TEXT_RENDER_ID(uParam0->f_704);
 	GRAPHICS::DRAW_RECT(0.501f, 0.5f, 1f, 1f, 0, 0, 0, 255, 0);
 	HUD::SET_TEXT_RENDER_ID(HUD::GET_DEFAULT_SCRIPT_RENDERTARGET_RENDER_ID());
-	GRAPHICS::_0xC6372ECD45D73BCD(0);
+	GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(0);
 }
 
 void func_170(var uParam0)
@@ -5344,7 +5344,7 @@ void func_183(char* sParam0, int iParam1)
 
 void func_184()
 {
-	HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+	HUD::THEFEED_HIDE_THIS_FRAME();
 	HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 	HUD::HIDE_HUD_AND_RADAR_THIS_FRAME();
 	func_185(0);
@@ -7504,7 +7504,7 @@ void func_223(int iParam0)
 		if (Global_1383710[iParam0 /*5*/].f_2 != 0)
 		{
 			StringCopy(&cVar1, PED::GET_PEDHEADSHOT_TXD_STRING(Global_1383710[iParam0 /*5*/].f_2), 64);
-			HUD::_0x317EBA71D7543F52(&cVar1, &cVar1, &cVar0, &cVar0);
+			HUD::_THEFEED_ADD_TXD_REF(&cVar1, &cVar1, &cVar0, &cVar0);
 		}
 		PED::UNREGISTER_PEDHEADSHOT(Global_1383710[iParam0 /*5*/].f_2);
 	}
@@ -9856,12 +9856,12 @@ int func_280(int iParam0)
 int func_281(int iParam0)
 {
 	var uVar0;
-	var uVar1;
+	int iVar1;
 	var uVar2;
 	
 	uVar0 = Global_1382550[iParam0];
-	uVar1 = uVar0;
-	if (STATS::STAT_GET_BOOL(uVar1, &uVar2, -1))
+	iVar1 = uVar0;
+	if (STATS::STAT_GET_BOOL(iVar1, &uVar2, -1))
 	{
 		return uVar2;
 	}
@@ -10105,7 +10105,7 @@ void func_285(var uParam0)
 			uParam0->f_781.f_5 = 1;
 		}
 	}
-	else if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(uParam0->f_781.f_7))
+	else if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(uParam0->f_781.f_7))
 	{
 		iVar0 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(uParam0->f_781.f_7);
 		if (uParam0->f_781 != iVar0)
@@ -10161,12 +10161,12 @@ void func_287(var uParam0)
 	{
 		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(uParam0->f_701))
 		{
-			GRAPHICS::_0xC6372ECD45D73BCD(1);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(1);
 			HUD::SET_TEXT_RENDER_ID(uParam0->f_704);
 			GRAPHICS::_0xE6A9F00D4240B519(uParam0->f_701, 1);
 			GRAPHICS::DRAW_SCALEFORM_MOVIE(uParam0->f_701, 0.501f, 0.5f, 1f, 1f, 255, 255, 255, 255, 0);
 			HUD::SET_TEXT_RENDER_ID(HUD::GET_DEFAULT_SCRIPT_RENDERTARGET_RENDER_ID());
-			GRAPHICS::_0xC6372ECD45D73BCD(0);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(0);
 			if (!uParam0->f_1228)
 			{
 				uParam0->f_1228.f_1 = AUDIO::GET_SOUND_ID();
@@ -10735,7 +10735,7 @@ void func_296(var uParam0, var uParam1, var uParam2, int iParam3)
 					{
 						iVar4 = uParam2->f_1[iVar0 /*56*/].f_53;
 						iVar5 = uParam2->f_1[iVar0 /*56*/].f_54;
-						func_299(PAD::_0x80C2FD58D720C801(iVar4, iVar5, true));
+						func_299(PAD::GET_CONTROL_GROUP_INSTRUCTIONAL_BUTTON(iVar4, iVar5, true));
 					}
 					if (MISC::IS_BIT_SET(uParam2->f_674, iVar0))
 					{
@@ -21824,7 +21824,7 @@ void func_573(var uParam0, int iParam1)
 	}
 	else
 	{
-		MONEY::_0xDA947AE8880D5C18(iParam1, func_284(), 0, 1);
+		MONEY::_NETWORK_SPENT_GANGOPS_START_MISSION(iParam1, func_284(), 0, 1);
 	}
 	AUDIO::PLAY_SOUND_FROM_COORD(-1, "Pay", func_128(), func_127(), 0, 0, 0);
 	func_580(1, 6517);
@@ -22605,12 +22605,12 @@ void func_595(var uParam0)
 	{
 		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(uParam0->f_701))
 		{
-			GRAPHICS::_0xC6372ECD45D73BCD(1);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(1);
 			HUD::SET_TEXT_RENDER_ID(uParam0->f_704);
 			GRAPHICS::_0xE6A9F00D4240B519(uParam0->f_701, 1);
 			GRAPHICS::DRAW_SCALEFORM_MOVIE(uParam0->f_701, 0.501f, 0.5f, 1f, 1f, 255, 255, 255, 255, 0);
 			HUD::SET_TEXT_RENDER_ID(HUD::GET_DEFAULT_SCRIPT_RENDERTARGET_RENDER_ID());
-			GRAPHICS::_0xC6372ECD45D73BCD(0);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(0);
 			if (!uParam0->f_2806)
 			{
 				uParam0->f_2806.f_1 = AUDIO::GET_SOUND_ID();
@@ -23047,7 +23047,7 @@ void func_606(var uParam0)
 			uParam0->f_781.f_5 = 1;
 		}
 	}
-	else if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(uParam0->f_781.f_7))
+	else if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(uParam0->f_781.f_7))
 	{
 		iVar0 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(uParam0->f_781.f_7);
 		if (uParam0->f_781 != iVar0)
@@ -24854,12 +24854,12 @@ void func_684(var uParam0)
 	{
 		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(uParam0->f_701))
 		{
-			GRAPHICS::_0xC6372ECD45D73BCD(1);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(1);
 			HUD::SET_TEXT_RENDER_ID(uParam0->f_704);
 			GRAPHICS::_0xE6A9F00D4240B519(uParam0->f_701, 1);
 			GRAPHICS::DRAW_SCALEFORM_MOVIE(uParam0->f_701, 0.501f, 0.5f, 1f, 1f, 255, 255, 255, 255, 0);
 			HUD::SET_TEXT_RENDER_ID(HUD::GET_DEFAULT_SCRIPT_RENDERTARGET_RENDER_ID());
-			GRAPHICS::_0xC6372ECD45D73BCD(0);
+			GRAPHICS::SET_SCRIPT_GFX_DRAW_BEHIND_PAUSEMENU(0);
 			if (!uParam0->f_952)
 			{
 				uParam0->f_952.f_1 = AUDIO::GET_SOUND_ID();
@@ -25216,7 +25216,7 @@ void func_691(var uParam0)
 			uParam0->f_781.f_5 = 1;
 		}
 	}
-	else if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(uParam0->f_781.f_7))
+	else if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(uParam0->f_781.f_7))
 	{
 		iVar0 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(uParam0->f_781.f_7);
 		if (uParam0->f_781 != iVar0)

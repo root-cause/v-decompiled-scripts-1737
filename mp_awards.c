@@ -265,7 +265,7 @@ void __EntryFunction__()
 		HUD::PAUSE_MENU_DEACTIVATE_CONTEXT(1655527845);
 		HUD::PAUSE_MENU_DEACTIVATE_CONTEXT(-2086579765);
 		HUD::PAUSE_MENU_DEACTIVATE_CONTEXT(-1770673475);
-		HUD::_0xC78E239AC5B2DDB9(0, -1, 0);
+		HUD::_0xC78E239AC5B2DDB9(false, -1, 0);
 		Global_1312434 = 0;
 		SCRIPT::TERMINATE_THIS_THREAD();
 	}
@@ -437,7 +437,7 @@ void __EntryFunction__()
 	GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&uVar4);
 	HUD::_0x14621BB1DF14E2B2();
 	Global_1312434 = 0;
-	HUD::_0xC78E239AC5B2DDB9(0, -1, 0);
+	HUD::_0xC78E239AC5B2DDB9(false, -1, 0);
 	while (true)
 	{
 		SYSTEM::WAIT(0);
@@ -739,9 +739,9 @@ void func_2(var uParam0, var uParam1, var uParam2)
 	}
 }
 
-void func_3(int iParam0)
+void func_3(bool bParam0)
 {
-	HUD::_0xC78E239AC5B2DDB9(iParam0, 6, 0);
+	HUD::_0xC78E239AC5B2DDB9(bParam0, 6, 0);
 }
 
 int func_4(var uParam0, int iParam1, bool bParam2)
@@ -5278,7 +5278,7 @@ int func_56(int iParam0, int iParam1)
 	iVar1 = 0;
 	while (iVar1 < iVar2)
 	{
-		if (FILES::_0xFF56381874F82086(iParam1, iVar1, &Var3))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iParam1, iVar1, &Var3))
 		{
 			if (iParam0 == Var3.f_3)
 			{
@@ -17470,12 +17470,12 @@ int func_92(int iParam0)
 int func_93(int iParam0)
 {
 	var uVar0;
-	var uVar1;
+	int iVar1;
 	var uVar2;
 	
 	uVar0 = Global_1382550[iParam0];
-	uVar1 = uVar0;
-	if (STATS::STAT_GET_BOOL(uVar1, &uVar2, -1))
+	iVar1 = uVar0;
+	if (STATS::STAT_GET_BOOL(iVar1, &uVar2, -1))
 	{
 		return uVar2;
 	}
@@ -18486,11 +18486,11 @@ int func_110(int iParam0)
 
 int func_111(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2573223[iParam0 /*3*/][func_45(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2573223[iParam0 /*3*/][func_45(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}

@@ -3208,9 +3208,9 @@ void func_89()
 				}
 				break;
 		}
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("PS_UPDATE");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("PS_UPDATE");
 		HUD::ADD_TEXT_COMPONENT_INTEGER(iLocal_65);
-		HUD::_SET_NOTIFICATION_MESSAGE(func_91(iLocal_63), func_90(iLocal_63), iLocal_64, (iLocal_65 - iLocal_64), 0, sVar0, sVar0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_STATS(func_91(iLocal_63), func_90(iLocal_63), iLocal_64, (iLocal_65 - iLocal_64), 0, sVar0, sVar0);
 		iLocal_82 = 1;
 		iLocal_83 = MISC::GET_GAME_TIMER() + 5000;
 		if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
@@ -3409,7 +3409,7 @@ void func_96(int iParam0)
 		if (Global_1383710[iParam0 /*5*/].f_2 != 0)
 		{
 			StringCopy(&cVar1, PED::GET_PEDHEADSHOT_TXD_STRING(Global_1383710[iParam0 /*5*/].f_2), 64);
-			HUD::_0x317EBA71D7543F52(&cVar1, &cVar1, &cVar0, &cVar0);
+			HUD::_THEFEED_ADD_TXD_REF(&cVar1, &cVar1, &cVar0, &cVar0);
 		}
 		PED::UNREGISTER_PEDHEADSHOT(Global_1383710[iParam0 /*5*/].f_2);
 	}

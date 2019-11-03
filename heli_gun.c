@@ -616,9 +616,9 @@ void func_1()
 					HUD::SET_BLIP_SHOW_CONE(iLocal_126, true);
 					HUD::SET_BLIP_SCALE(iLocal_126, 0.44f);
 					HUD::SET_BLIP_PRIORITY(iLocal_126, 13 + 1);
-					HUD::_0x54318C915D27E4CE(iLocal_126, 1);
+					HUD::SET_BLIP_HIDDEN_ON_LEGEND(iLocal_126, 1);
 					HUD::SET_BLIP_ROTATION(iLocal_126, SYSTEM::ROUND(MISC::GET_HEADING_FROM_VECTOR_2D(vVar2.x, vVar2.y)));
-					HUD::_0x54318C915D27E4CE(iLocal_127, 1);
+					HUD::SET_BLIP_HIDDEN_ON_LEGEND(iLocal_127, 1);
 					HUD::SET_BLIP_ROTATION(iLocal_127, SYSTEM::ROUND(MISC::GET_HEADING_FROM_VECTOR_2D(vVar2.x, vVar2.y)));
 				}
 				else
@@ -864,9 +864,9 @@ void func_1()
 					HUD::SET_BLIP_SHOW_CONE(iLocal_126, true);
 					HUD::SET_BLIP_SCALE(iLocal_126, 0.44f);
 					HUD::SET_BLIP_PRIORITY(iLocal_126, 13 + 1);
-					HUD::_0x54318C915D27E4CE(iLocal_126, 1);
+					HUD::SET_BLIP_HIDDEN_ON_LEGEND(iLocal_126, 1);
 					HUD::SET_BLIP_ROTATION(iLocal_126, SYSTEM::ROUND(MISC::GET_HEADING_FROM_VECTOR_2D(vVar7.x, vVar7.y)));
-					HUD::_0x54318C915D27E4CE(iLocal_127, 1);
+					HUD::SET_BLIP_HIDDEN_ON_LEGEND(iLocal_127, 1);
 					HUD::SET_BLIP_ROTATION(iLocal_127, SYSTEM::ROUND(MISC::GET_HEADING_FROM_VECTOR_2D(vVar7.x, vVar7.y)));
 				}
 				else
@@ -2697,11 +2697,11 @@ void func_57()
 												vVar6 = { (-SYSTEM::SIN(vVar5.z) * SYSTEM::COS(vVar5.x)), (SYSTEM::COS(vVar5.z) * SYSTEM::COS(vVar5.x)), SYSTEM::SIN(vVar5.x) };
 												vVar7 = { 10f, 10f, 10f };
 												vVar8 = { vVar4 + vVar6 * vVar7 };
-												MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(vVar4, vVar8, iVar1, 1, func_67(iLocal_120), PLAYER::PLAYER_PED_ID(), 1, 1, -1f, iVar3, 0, 0, 0, 1, 0, 1);
+												MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(vVar4, vVar8, iVar1, 1, func_67(iLocal_120), PLAYER::PLAYER_PED_ID(), 1, 1, -1f, iVar3, 0, 0, 0, 1, 0, true);
 											}
 											else
 											{
-												MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(vVar4, Local_71.f_45, iVar1, 1, func_67(iLocal_120), PLAYER::PLAYER_PED_ID(), 1, 1, -1f, iVar3, 0, 0, 0, 1, 0, 1);
+												MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(vVar4, Local_71.f_45, iVar1, 1, func_67(iLocal_120), PLAYER::PLAYER_PED_ID(), 1, 1, -1f, iVar3, 0, 0, 0, 1, 0, true);
 											}
 											func_142(&(Global_2437364.f_3985), 0, 0);
 											if (iLocal_115 != 0)
@@ -2766,7 +2766,7 @@ void func_57()
 												vVar13 = { CAM::GET_CAM_ROT(CAM::GET_RENDERING_CAM(), 2) };
 												vVar12 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vVar12, vVar13.z, -0.5f, 0f, 0f) };
 											}
-											MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(vVar12, Local_71.f_45, iVar9, 1, joaat("VEHICLE_WEAPON_PLAYER_BULLET"), PLAYER::PLAYER_PED_ID(), 1, 1, -1f, iVar11, 0, 0, 0, 1, 0, 1);
+											MISC::SHOOT_SINGLE_BULLET_BETWEEN_COORDS_IGNORE_ENTITY_NEW(vVar12, Local_71.f_45, iVar9, 1, joaat("VEHICLE_WEAPON_PLAYER_BULLET"), PLAYER::PLAYER_PED_ID(), 1, 1, -1f, iVar11, 0, 0, 0, 1, 0, true);
 											func_142(&Local_74, 0, 0);
 											if (iLocal_115 != 0)
 											{
@@ -3153,7 +3153,7 @@ bool func_62()
 							bVar1 = false;
 						}
 					}
-					if (bVar1 && VEHICLE::_0xE43701C36CAFF1A4(iLocal_120))
+					if (bVar1 && VEHICLE::_DOES_VEHICLE_HAVE_LANDING_GEAR(iLocal_120))
 					{
 						iVar2 = VEHICLE::GET_LANDING_GEAR_STATE(iLocal_120);
 						if ((iVar2 == 0 || iVar2 == 3) || iVar2 == 1)
@@ -6603,9 +6603,9 @@ int func_133(var uParam0, int iParam1, int iParam2, int iParam3, int iParam4)
 				if (ENTITY::IS_ENTITY_A_VEHICLE(iParam1))
 				{
 					uParam0->f_8 = ENTITY::GET_VEHICLE_INDEX_FROM_ENTITY_INDEX(iParam1);
-					VEHICLE::_0xBC3CCA5844452B06(300f);
+					VEHICLE::SET_LIGHTS_CUTOFF_DISTANCE_TWEAK(300f);
 				}
-				VEHICLE::_0xBC3CCA5844452B06(300f);
+				VEHICLE::SET_LIGHTS_CUTOFF_DISTANCE_TWEAK(300f);
 				uParam0->f_6 = 1;
 				uParam0->f_33 = 1;
 				uParam0->f_50 = 1;
@@ -6701,7 +6701,7 @@ int func_133(var uParam0, int iParam1, int iParam2, int iParam3, int iParam4)
 			{
 				if (ENTITY::IS_ENTITY_ATTACHED_TO_ANY_OBJECT(uParam0->f_8))
 				{
-					ENTITY::DETACH_ENTITY(uParam0->f_8, 1, 1);
+					ENTITY::DETACH_ENTITY(uParam0->f_8, 1, true);
 				}
 				if (!uParam0->f_4)
 				{

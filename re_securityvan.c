@@ -1926,7 +1926,7 @@ int func_30()
 	{
 		if (!iLocal_272)
 		{
-			if (MISC::_0x34318593248C8FB2(ENTITY::GET_ENTITY_COORDS(iLocal_53, true), joaat("WEAPON_STICKYBOMB"), 0.25f, 0) || OBJECT::DOES_OBJECT_OF_TYPE_EXIST_AT_COORDS(ENTITY::GET_ENTITY_COORDS(iLocal_53, true), 0.3f, WEAPON::GET_WEAPONTYPE_MODEL(joaat("WEAPON_STICKYBOMB")), 0))
+			if (MISC::_IS_PROJECTILE_TYPE_IN_RADIUS(ENTITY::GET_ENTITY_COORDS(iLocal_53, true), joaat("WEAPON_STICKYBOMB"), 0.25f, 0) || OBJECT::DOES_OBJECT_OF_TYPE_EXIST_AT_COORDS(ENTITY::GET_ENTITY_COORDS(iLocal_53, true), 0.3f, WEAPON::GET_WEAPONTYPE_MODEL(joaat("WEAPON_STICKYBOMB")), 0))
 			{
 				iLocal_272 = 1;
 			}
@@ -3880,7 +3880,7 @@ void func_71(int iParam0, bool bParam1)
 						}
 						else
 						{
-							TASK::TASK_GO_TO_COORD_WHILE_AIMING_AT_COORD(0, vVar3[iVar4 /*3*/], vLocal_293, 2f, false, 0.5f, 4f, 1, 0, 0, -957453492);
+							TASK::TASK_GO_TO_COORD_WHILE_AIMING_AT_COORD(0, vVar3[iVar4 /*3*/], vLocal_293, 2f, false, 0.5f, 4f, true, 0, 0, -957453492);
 							TASK::TASK_AIM_GUN_AT_COORD(0, vLocal_293, -1, 1, 0);
 						}
 						TASK::CLOSE_SEQUENCE_TASK(iVar6);

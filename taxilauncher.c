@@ -2643,7 +2643,7 @@ int func_67(vector3 vParam0, vector3 vParam1, var uParam2, var uParam3, var uPar
 	if (PATHFIND::IS_VEHICLE_NODE_ID_VALID(iVar3))
 	{
 		PATHFIND::GET_VEHICLE_NODE_POSITION(iVar3, &vVar0);
-		if (PATHFIND::_0x16F46FB18C8009E4(vVar0, 0, &vVar1) && PATHFIND::_0x16F46FB18C8009E4(vVar0, 1, &vVar2))
+		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, 0, &vVar1) && PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, 1, &vVar2))
 		{
 			vVar5 = { vVar1 - vVar0 };
 			vVar6 = { -vVar5.y, vVar5.x, 0f };
@@ -2670,7 +2670,7 @@ int func_67(vector3 vParam0, vector3 vParam1, var uParam2, var uParam3, var uPar
 			}
 			return 1;
 		}
-		else if (PATHFIND::_0x16F46FB18C8009E4(vVar0, -1, &vVar1))
+		else if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, -1, &vVar1))
 		{
 			*uParam3 = { vVar1 };
 			*uParam4 = uParam2;

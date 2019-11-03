@@ -2180,11 +2180,11 @@ bool func_73()
 
 int func_74(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_26(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_26(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -6427,7 +6427,7 @@ int func_198(char* sParam0, int iParam1, int iParam2, int iParam3, bool bParam4,
 		if (MISC::IS_STRING_NULL_OR_EMPTY(&Var1))
 		{
 		}
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY(sParam0);
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(sParam0);
 		HUD::SET_COLOUR_OF_NEXT_TEXT_COMPONENT(func_207(iParam1, -2, 1, 0, 0));
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(func_205(&Var1));
 		if (!iParam3 == 0)
@@ -6435,7 +6435,7 @@ int func_198(char* sParam0, int iParam1, int iParam2, int iParam3, bool bParam4,
 			HUD::SET_COLOUR_OF_NEXT_TEXT_COMPONENT(iParam3);
 		}
 		HUD::ADD_TEXT_COMPONENT_INTEGER(iParam2);
-		iVar0 = HUD::_DRAW_NOTIFICATION(0, 1);
+		iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 		func_199(27, sParam0, 1, &Var1, iParam2, 0, 0, 0, 1, 0, 0, 0);
 	}
 	return iVar0;
@@ -7662,9 +7662,9 @@ int func_253(char* sParam0, int iParam1, int iParam2)
 	int iVar0;
 	
 	iVar0 = -1;
-	HUD::_SET_NOTIFICATION_TEXT_ENTRY(sParam0);
+	HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(sParam0);
 	HUD::ADD_TEXT_COMPONENT_INTEGER(iParam1);
-	iVar0 = HUD::_DRAW_NOTIFICATION(0, 1);
+	iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 	func_199(3, sParam0, 1, "", iParam1, 0, 0, 0, 1, 0, 0, 0);
 	return iVar0;
 }
@@ -8719,7 +8719,7 @@ int func_272(char* sParam0, char* sParam1, int iParam2, int iParam3, bool bParam
 	int iVar2;
 	
 	iVar0 = -1;
-	HUD::_SET_NOTIFICATION_TEXT_ENTRY(sParam0);
+	HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(sParam0);
 	if (!iParam2 == 0)
 	{
 		HUD::SET_COLOUR_OF_NEXT_TEXT_COMPONENT(iParam2);
@@ -8731,7 +8731,7 @@ int func_272(char* sParam0, char* sParam1, int iParam2, int iParam3, bool bParam
 	HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam1);
 	if (!bParam4)
 	{
-		iVar0 = HUD::_DRAW_NOTIFICATION(0, 1);
+		iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 	}
 	else
 	{
@@ -8751,11 +8751,11 @@ int func_272(char* sParam0, char* sParam1, int iParam2, int iParam3, bool bParam
 			{
 				iVar2 = 1;
 			}
-			iVar0 = HUD::_DRAW_NOTIFICATION_CLAN_INVITE(iVar2, NETWORK::NETWORK_CLAN_IS_ROCKSTAR_CLAN(&Global_2505610, 35), &(Global_2505610.f_17), Global_2505610.f_30, iVar1, 0, Global_2505610, PLAYER::GET_PLAYER_NAME(PLAYER::PLAYER_ID()), Global_1314024, Global_1314025, Global_1314026);
+			iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_CREWTAG_WITH_GAME_NAME(iVar2, NETWORK::NETWORK_CLAN_IS_ROCKSTAR_CLAN(&Global_2505610, 35), &(Global_2505610.f_17), Global_2505610.f_30, iVar1, 0, Global_2505610, PLAYER::GET_PLAYER_NAME(PLAYER::PLAYER_ID()), Global_1314024, Global_1314025, Global_1314026);
 		}
 		else
 		{
-			iVar0 = HUD::_DRAW_NOTIFICATION(0, 1);
+			iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 		}
 	}
 	func_199(8, sParam0, 1, sParam1, 0, 0, 0, 0, 1, 0, 0, 0);
@@ -9360,7 +9360,7 @@ int func_273(int iParam0)
 	return 0;
 }
 
-void func_274(int iParam0, int iParam1, int iParam2, int iParam3)
+void func_274(int iParam0, bool bParam1, int iParam2, int iParam3)
 {
 	int iVar0;
 	
@@ -9369,7 +9369,7 @@ void func_274(int iParam0, int iParam1, int iParam2, int iParam3)
 		iVar0 = Global_2571340[iParam0 /*3*/][func_26(iParam2)];
 		if (iVar0 != 0)
 		{
-			STATS::STAT_SET_BOOL(iVar0, iParam1, iParam3);
+			STATS::STAT_SET_BOOL(iVar0, bParam1, iParam3);
 		}
 	}
 }
@@ -17083,7 +17083,7 @@ void func_483(int iParam0)
 		if (Global_1383710[iParam0 /*5*/].f_2 != 0)
 		{
 			StringCopy(&cVar1, PED::GET_PEDHEADSHOT_TXD_STRING(Global_1383710[iParam0 /*5*/].f_2), 64);
-			HUD::_0x317EBA71D7543F52(&cVar1, &cVar1, &cVar0, &cVar0);
+			HUD::_THEFEED_ADD_TXD_REF(&cVar1, &cVar1, &cVar0, &cVar0);
 		}
 		PED::UNREGISTER_PEDHEADSHOT(Global_1383710[iParam0 /*5*/].f_2);
 	}
@@ -17143,7 +17143,7 @@ struct<4> func_485(int iParam0)
 
 void func_486(var uParam0, char* sParam1)
 {
-	NETWORK::_0xF45352426FF3A4F0(uParam0, 35, sParam1);
+	NETWORK::NETWORK_CLAN_GET_UI_FORMATTED_TAG(uParam0, 35, sParam1);
 }
 
 struct<35> func_487(int iParam0)
@@ -17571,7 +17571,7 @@ int func_511(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 		{
 			if (func_555() > 0 && Global_1574177)
 			{
-				HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+				HUD::THEFEED_HIDE_THIS_FRAME();
 				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
 				HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				if (HUD::IS_HELP_MESSAGE_BEING_DISPLAYED())
@@ -17624,7 +17624,7 @@ int func_511(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 				func_535();
 				if (iParam1 == 26 || iParam1 == 27)
 				{
-					HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+					HUD::THEFEED_HIDE_THIS_FRAME();
 				}
 				HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 			}
@@ -17635,7 +17635,7 @@ int func_511(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 					func_535();
 					if (iParam1 == 26 || iParam1 == 27)
 					{
-						HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+						HUD::THEFEED_HIDE_THIS_FRAME();
 					}
 					HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				}
@@ -29524,7 +29524,7 @@ void func_726()
 						iLocal_122 = HUD::ADD_BLIP_FOR_COORD(Local_139.f_7);
 						HUD::SHOW_HEIGHT_ON_BLIP(iLocal_122, true);
 						HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_122, "GB_HTB_BLIP1");
-						HUD::SET_BLIP_FLASHES(iLocal_122, 1);
+						HUD::SET_BLIP_FLASHES(iLocal_122, true);
 						HUD::SET_BLIP_FLASH_TIMER(iLocal_122, 7000);
 						HUD::SET_BLIP_SPRITE(iLocal_122, 458);
 						HUD::SET_BLIP_PRIORITY(iLocal_122, 12);
@@ -29536,7 +29536,7 @@ void func_726()
 						iLocal_121 = HUD::ADD_BLIP_FOR_RADIUS(Local_139.f_7, SYSTEM::TO_FLOAT((Global_262145.f_12385 - 1)));
 						func_743(&iLocal_121, iLocal_113);
 						HUD::SHOW_HEIGHT_ON_BLIP(iLocal_121, true);
-						HUD::_0xC4278F70131BAA6D(iLocal_121, 1);
+						HUD::_SET_BLIP_DISPLAY_ON_EDGE(iLocal_121, 1);
 						HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_121, "GB_HTB_BLIP0");
 					}
 					if (func_742(Local_139.f_5) != iLocal_125)
@@ -29616,7 +29616,7 @@ void func_726()
 					iLocal_122 = HUD::ADD_BLIP_FOR_COORD(Local_139.f_7);
 					HUD::SHOW_HEIGHT_ON_BLIP(iLocal_122, true);
 					HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_122, "GB_HTB_BLIP1");
-					HUD::SET_BLIP_FLASHES(iLocal_122, 1);
+					HUD::SET_BLIP_FLASHES(iLocal_122, true);
 					HUD::SET_BLIP_FLASH_TIMER(iLocal_122, 7000);
 					HUD::SET_BLIP_SPRITE(iLocal_122, 458);
 					HUD::SET_BLIP_PRIORITY(iLocal_122, 12);
@@ -29628,7 +29628,7 @@ void func_726()
 					iLocal_121 = HUD::ADD_BLIP_FOR_RADIUS(Local_139.f_7, SYSTEM::TO_FLOAT((Global_262145.f_12385 - 1)));
 					func_743(&iLocal_121, iLocal_113);
 					HUD::SHOW_HEIGHT_ON_BLIP(iLocal_121, true);
-					HUD::_0xC4278F70131BAA6D(iLocal_121, 1);
+					HUD::_SET_BLIP_DISPLAY_ON_EDGE(iLocal_121, 1);
 					HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_121, "GB_HTB_BLIP0");
 					HUD::SET_BLIP_ALPHA(iLocal_121, Global_262145.f_12130);
 				}
@@ -33004,7 +33004,7 @@ void func_856(char* sParam0)
 						Global_106565.f_14135[iVar0 /*104*/].f_28 = 0;
 						Global_106565.f_14135[iVar0 /*104*/].f_29 = 0;
 					}
-					HUD::_REMOVE_NOTIFICATION(Global_106565.f_14135[iVar0 /*104*/].f_16);
+					HUD::THEFEED_REMOVE_ITEM(Global_106565.f_14135[iVar0 /*104*/].f_16);
 				}
 			}
 		}

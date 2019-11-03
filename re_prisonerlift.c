@@ -3413,7 +3413,7 @@ int func_64()
 			{
 				return 1;
 			}
-			if (GRAPHICS::_0x2F09F7976C512404(ENTITY::GET_ENTITY_COORDS(iLocal_64, true), 3f))
+			if (GRAPHICS::GET_IS_PETROL_DECAL_IN_RANGE(ENTITY::GET_ENTITY_COORDS(iLocal_64, true), 3f))
 			{
 				return 1;
 			}

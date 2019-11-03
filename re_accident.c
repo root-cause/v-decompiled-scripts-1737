@@ -483,8 +483,8 @@ void func_2(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4, 
 		PLAYER::SET_ALL_RANDOM_PEDS_FLEE(PLAYER::PLAYER_ID(), 1);
 		PLAYER::SET_POLICE_IGNORE_PLAYER(PLAYER::PLAYER_ID(), 1);
 		func_11(1);
-		HUD::_0xA8FDB297A8D25FBA();
-		HUD::_0xFDB423997FA30340();
+		HUD::THEFEED_FLUSH_QUEUE();
+		HUD::THEFEED_PAUSE();
 		if (Global_14553.f_1 > 3)
 		{
 			if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
@@ -505,7 +505,7 @@ void func_2(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4, 
 	else
 	{
 		func_11(0);
-		HUD::_0xE1CD1E48E025E661();
+		HUD::THEFEED_RESUME();
 		Global_56500 = 0;
 		if (bParam1)
 		{
@@ -1979,15 +1979,15 @@ void func_43()
 		case 0:
 			GRAPHICS::ADD_PETROL_DECAL(vLocal_274 + Vector(0f, 1f, 0f), 1f, 1f, 1f);
 			SYSTEM::WAIT(0);
-			GRAPHICS::_0x99AC7F0D8B9C893D(1f);
-			GRAPHICS::_0x967278682CB6967A(vLocal_273, 1f);
+			GRAPHICS::START_PETROL_TRAIL_DECALS(1f);
+			GRAPHICS::ADD_PETROL_TRAIL_DECAL_INFO(vLocal_273, 1f);
 			SYSTEM::WAIT(0);
-			GRAPHICS::_0x967278682CB6967A(vLocal_273 - Vector(0f, 4f, 0f), 1f);
+			GRAPHICS::ADD_PETROL_TRAIL_DECAL_INFO(vLocal_273 - Vector(0f, 4f, 0f), 1f);
 			SYSTEM::WAIT(0);
-			GRAPHICS::_0x967278682CB6967A(vLocal_273 - Vector(0f, 8f, 0f), 1f);
+			GRAPHICS::ADD_PETROL_TRAIL_DECAL_INFO(vLocal_273 - Vector(0f, 8f, 0f), 1f);
 			SYSTEM::WAIT(0);
-			GRAPHICS::_0x967278682CB6967A(vLocal_274, 1f);
-			GRAPHICS::_0x0A123435A26C36CD();
+			GRAPHICS::ADD_PETROL_TRAIL_DECAL_INFO(vLocal_274, 1f);
+			GRAPHICS::END_PETROL_TRAIL_DECALS();
 			iLocal_105 = MISC::GET_GAME_TIMER();
 			iLocal_99 = 2;
 			break;
@@ -7713,7 +7713,7 @@ void func_188(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}

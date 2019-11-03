@@ -313,8 +313,8 @@ void func_1()
 					func_158();
 					vLocal_219 = { 0f, 0f, 0f };
 					func_157();
-					HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_WIPE");
-					HUD::_DRAW_NOTIFICATION(0, 1);
+					HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_WIPE");
+					HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 				}
 				else
 				{
@@ -430,8 +430,8 @@ void func_1()
 							{
 								if (iLocal_220 == 0)
 								{
-									HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_IN");
-									HUD::_DRAW_NOTIFICATION(0, 1);
+									HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_IN");
+									HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 									iLocal_220 = 1;
 								}
 								func_132();
@@ -473,9 +473,9 @@ void func_1()
 												return;
 											}
 										}
-										HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_01");
+										HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_01");
 										HUD::ADD_TEXT_COMPONENT_FLOAT(fLocal_218, 1);
-										HUD::_DRAW_NOTIFICATION(0, 1);
+										HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 										iLocal_221 = 1;
 										func_129();
 										if (func_131())
@@ -505,8 +505,8 @@ void func_1()
 							}
 							else if (iLocal_220 == 1)
 							{
-								HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_OUT");
-								HUD::_DRAW_NOTIFICATION(0, 1);
+								HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_OUT");
+								HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 								vLocal_219 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 								iLocal_220 = 0;
 							}
@@ -514,8 +514,8 @@ void func_1()
 					}
 					else if (iLocal_220 == 1 && !func_159())
 					{
-						HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_OUT");
-						HUD::_DRAW_NOTIFICATION(0, 1);
+						HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_OUT");
+						HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 						vLocal_219 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 						iLocal_220 = 0;
 					}
@@ -526,23 +526,23 @@ void func_1()
 					{
 						if (iLocal_220 == 1 && !func_159())
 						{
-							HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_OUT");
-							HUD::_DRAW_NOTIFICATION(0, 1);
+							HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_OUT");
+							HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 							vLocal_219 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 							iLocal_220 = 0;
 						}
 					}
 					else if (iLocal_220 == 0 && !func_159())
 					{
-						HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_IN");
-						HUD::_DRAW_NOTIFICATION(0, 1);
+						HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_IN");
+						HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 						iLocal_220 = 1;
 					}
 				}
 				else if (iLocal_220 == 1 && !func_159())
 				{
-					HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_OUT");
-					HUD::_DRAW_NOTIFICATION(0, 1);
+					HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_OUT");
+					HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 					vLocal_219 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 					iLocal_220 = 0;
 				}
@@ -586,8 +586,8 @@ void func_1()
 	}
 	else
 	{
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("EPSDES_02");
-		HUD::_DRAW_NOTIFICATION(1, 1);
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("EPSDES_02");
+		HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(1, 1);
 		func_2(1);
 		while (!func_125(-885867010, 6, 1, 51, 6, 10000, 30000, -1, -1, 0, -1, 0))
 		{
@@ -29294,7 +29294,7 @@ void func_140(int iParam0, bool bParam1, int iParam2, int iParam3)
 	{
 		if (!PED::IS_PED_INJURED(*iParam0))
 		{
-			ENTITY::SET_ENTITY_LOAD_COLLISION_FLAG(*iParam0, 0, 1);
+			ENTITY::SET_ENTITY_LOAD_COLLISION_FLAG(*iParam0, false, 1);
 			if (iParam3 == 0)
 			{
 				TASK::CLEAR_PED_SECONDARY_TASK(*iParam0);
@@ -29302,7 +29302,7 @@ void func_140(int iParam0, bool bParam1, int iParam2, int iParam3)
 			PED::SET_PED_KEEP_TASK(*iParam0, bParam1);
 			if (iParam2 == 1)
 			{
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(*iParam0, 0);
+				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(*iParam0, false);
 			}
 		}
 		ENTITY::SET_PED_AS_NO_LONGER_NEEDED(iParam0);
@@ -29878,7 +29878,7 @@ int func_162()
 				PED::SET_PED_CAN_BE_TARGETTED(iLocal_40, false);
 				PED::SET_PED_NAME_DEBUG(iLocal_40, "POSTTOM");
 				PED::SET_PED_RELATIONSHIP_GROUP_HASH(iLocal_40, 1862763509);
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_40, 0);
+				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_40, false);
 				func_163(&uLocal_41, 5, iLocal_40, "TOM", 1, 1);
 				return 1;
 			}
@@ -29951,7 +29951,7 @@ int func_164()
 				PED::SET_PED_CAN_BE_TARGETTED(iLocal_39, false);
 				PED::SET_PED_NAME_DEBUG(iLocal_39, "POSTJIMMY");
 				PED::SET_PED_RELATIONSHIP_GROUP_HASH(iLocal_39, 1862763509);
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_39, 0);
+				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_39, false);
 				func_163(&uLocal_41, 3, iLocal_39, "JIMMYBOSTON", 1, 1);
 				return 1;
 			}
@@ -29999,7 +29999,7 @@ int func_166()
 				PED::SET_PED_CAN_BE_TARGETTED(iLocal_38, false);
 				PED::SET_PED_NAME_DEBUG(iLocal_38, "POSTMARNIE");
 				PED::SET_PED_RELATIONSHIP_GROUP_HASH(iLocal_38, 1862763509);
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_38, 0);
+				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_38, false);
 				func_163(&uLocal_41, 4, iLocal_38, "MARNIE", 1, 1);
 				return 1;
 			}

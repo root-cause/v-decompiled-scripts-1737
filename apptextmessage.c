@@ -194,7 +194,7 @@ void func_2()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Back", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Back", &Global_14542, true);
 	}
 }
 
@@ -265,7 +265,7 @@ void func_6()
 					Global_106565.f_14135[iLocal_23 /*104*/].f_24 = 0;
 					Global_106565.f_14135[iLocal_23 /*104*/].f_28 = 0;
 				}
-				HUD::_REMOVE_NOTIFICATION(Global_106565.f_14135[iLocal_23 /*104*/].f_16);
+				HUD::THEFEED_REMOVE_ITEM(Global_106565.f_14135[iLocal_23 /*104*/].f_16);
 				func_40(Global_14534, "SET_DATA_SLOT_EMPTY", 6f, -1082130432, -1082130432, -1082130432, -1082130432);
 				func_38();
 				if (iLocal_21 > 0)
@@ -1244,7 +1244,7 @@ void func_18()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, true);
 		func_19();
 	}
 }
@@ -1448,7 +1448,7 @@ void func_28()
 					iLocal_27 = 0;
 					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_14534, "GET_CURRENT_SELECTION");
 					iLocal_32 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
-					while (!GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_32) && iLocal_27 == 0)
+					while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_32) && iLocal_27 == 0)
 					{
 						SYSTEM::WAIT(0);
 						if (SYSTEM::TIMERB() > 2000)
@@ -1649,7 +1649,7 @@ void func_28()
 				Global_16932 = 1;
 				func_40(Global_14534, "DISPLAY_VIEW", 7f, -1082130432, -1082130432, -1082130432, -1082130432);
 				func_29(Global_14534, "SET_HEADER", "CELL_1", 0, 0, 0, 0);
-				HUD::_REMOVE_NOTIFICATION(Global_106565.f_14135[iLocal_23 /*104*/].f_16);
+				HUD::THEFEED_REMOVE_ITEM(Global_106565.f_14135[iLocal_23 /*104*/].f_16);
 				if (Global_106565.f_14135[iLocal_23 /*104*/].f_29 > 0)
 				{
 					if (Global_14541)
@@ -1907,7 +1907,7 @@ void func_31()
 					MemCopy(&uLocal_33, {Local_50[iVar0 /*6*/]}, 16);
 				}
 				iLocal_52 = 1;
-				GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT(&uLocal_33, 0);
+				GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT(&uLocal_33, false);
 				while (!GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED(&uLocal_33))
 				{
 					SYSTEM::WAIT(100);
@@ -1956,7 +1956,7 @@ void func_32()
 void func_33()
 {
 	func_40(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(3), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_34();
 }
 
@@ -1978,7 +1978,7 @@ void func_34()
 void func_35()
 {
 	func_40(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(1), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_36();
 }
 

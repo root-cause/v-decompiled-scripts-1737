@@ -28519,20 +28519,20 @@ void func_90()
 				{
 					if (iLocal_232 == 0)
 					{
-						HUD::_SET_NOTIFICATION_TEXT_ENTRY(&cLocal_227);
-						HUD::_SET_NOTIFICATION_MESSAGE_2("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, "CONTENT_TICK", 0);
+						HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(&cLocal_227);
+						HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, "CONTENT_TICK", 0);
 					}
 					else
 					{
-						HUD::_SET_NOTIFICATION_TEXT_ENTRY(&cLocal_227);
+						HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(&cLocal_227);
 						HUD::ADD_TEXT_COMPONENT_INTEGER(iLocal_232);
-						HUD::_SET_NOTIFICATION_MESSAGE_2("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, "CONTENT_TICK", 0);
+						HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT("CHAR_SOCIAL_CLUB", "CHAR_SOCIAL_CLUB", 0, 0, "CONTENT_TICK", 0);
 					}
 				}
 				else
 				{
-					HUD::_SET_NOTIFICATION_TEXT_ENTRY(&cLocal_227);
-					HUD::_DRAW_NOTIFICATION(0, 1);
+					HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(&cLocal_227);
+					HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 				}
 				iLocal_225 = 0;
 			}
@@ -29757,7 +29757,7 @@ void func_97(char* sParam0, int iParam1, int iParam2, int iParam3)
 	iVar1 = FILES::_GET_NUM_DECORATIONS(iParam1);
 	if (iVar1 > 0 && iVar0 < iVar1)
 	{
-		if (FILES::_0xFF56381874F82086(iParam1, iVar0, &Var2))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iParam1, iVar0, &Var2))
 		{
 			if (!FILES::IS_CONTENT_ITEM_LOCKED(Var2))
 			{
@@ -32253,7 +32253,7 @@ void func_111(int iParam0, var uParam1, bool bParam2)
 									func_118(iParam0, iVar3, iVar4);
 									if (func_117(iVar4))
 									{
-										WEAPON::_0x9FE5633880ECD8ED(iParam0, iVar3, iVar4, (uParam1[iVar5 /*5*/])->f_4);
+										WEAPON::_SET_PED_WEAPON_LIVERY_COLOR(iParam0, iVar3, iVar4, (uParam1[iVar5 /*5*/])->f_4);
 										func_116(iParam0, iVar3, iVar4, (uParam1[iVar5 /*5*/])->f_4);
 									}
 								}
@@ -32345,7 +32345,7 @@ void func_111(int iParam0, var uParam1, bool bParam2)
 											func_118(iParam0, iVar3, Var10.f_3);
 											if (func_117(Var10.f_3))
 											{
-												WEAPON::_0x9FE5633880ECD8ED(iParam0, iVar3, Var10.f_3, uParam1->f_221[iVar11 /*5*/].f_4);
+												WEAPON::_SET_PED_WEAPON_LIVERY_COLOR(iParam0, iVar3, Var10.f_3, uParam1->f_221[iVar11 /*5*/].f_4);
 												func_116(iParam0, iVar3, Var10.f_3, uParam1->f_221[iVar11 /*5*/].f_4);
 											}
 										}
@@ -32576,7 +32576,7 @@ void func_116(int iParam0, int iParam1, int iParam2, int iParam3)
 	iVar0 = func_115(iParam2);
 	if (iVar0 != 0)
 	{
-		WEAPON::_0x9FE5633880ECD8ED(iParam0, iParam1, iVar0, iParam3);
+		WEAPON::_SET_PED_WEAPON_LIVERY_COLOR(iParam0, iParam1, iVar0, iParam3);
 	}
 }
 
@@ -35628,7 +35628,7 @@ bool func_185(int iParam0, int iParam1)
 
 void func_186()
 {
-	RECORDING::_0xEB2D525B57F42B40();
+	RECORDING::_STOP_RECORDING_THIS_FRAME();
 	func_187();
 }
 
@@ -39877,7 +39877,7 @@ void func_278(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}
@@ -45807,9 +45807,9 @@ void func_340(int iParam0)
 	if (bVar0)
 	{
 		StringCopy(&cVar1, "CHAR_LIFEINVADER", 64);
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("COUP_RED");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("COUP_RED");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(func_341(iParam0));
-		HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar1, &cVar1, 1, 0, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar1, &cVar1, 1, 0, "", 0);
 	}
 }
 
@@ -46987,7 +46987,7 @@ int func_374(int iParam0, int iParam1, struct<98> Param2, bool bParam3)
 		}
 		iVar6 = VEHICLE::CREATE_VEHICLE(Param2, vVar1, fVar2, true, true, false);
 		VEHICLE::_0xAB04325045427AAE(iVar6, 0);
-		VEHICLE::_0x428BACCDF5E26EAD(iVar6, 0);
+		VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(iVar6, false);
 		VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(iVar6, true);
 		func_582(&iVar6, Param2);
 		ENTITY::_SET_ENTITY_SOMETHING(iVar6, true);
@@ -47671,11 +47671,11 @@ void func_387(int iParam0, var uParam1, int iParam2, int iParam3)
 
 int func_388(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_12(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_12(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -52930,11 +52930,11 @@ void func_423(int iParam0, var uParam1, var uParam2)
 
 int func_424(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2539502[iParam0 /*3*/][func_12(iParam1)];
-	if (HUD::_0xEF4CED81CEBEDC6D(uVar0, &uVar1))
+	iVar0 = Global_2539502[iParam0 /*3*/][func_12(iParam1)];
+	if (HUD::_0xEF4CED81CEBEDC6D(iVar0, &uVar1))
 	{
 		return uVar1;
 	}
@@ -55147,7 +55147,7 @@ void func_441(int iParam0, bool bParam1, bool bParam2)
 		iVar7 = 0;
 		while (iVar7 < iVar8)
 		{
-			if (FILES::_0xFF56381874F82086(iVar2, iVar7, &Var9))
+			if (FILES::_GET_TATTOO_COLLECTION_DATA(iVar2, iVar7, &Var9))
 			{
 				if (!FILES::IS_CONTENT_ITEM_LOCKED(Var9))
 				{
@@ -60211,7 +60211,7 @@ int func_452(int iParam0, int iParam1)
 	iVar1 = 0;
 	while (iVar1 < iVar2)
 	{
-		if (FILES::_0xFF56381874F82086(iParam1, iVar1, &Var3))
+		if (FILES::_GET_TATTOO_COLLECTION_DATA(iParam1, iVar1, &Var3))
 		{
 			if (iParam0 == Var3.f_3)
 			{
@@ -73750,7 +73750,7 @@ void func_474(int iParam0, int iParam1)
 						iVar2 = 0;
 						while (iVar2 < iVar3)
 						{
-							if (FILES::_0xFF56381874F82086(3, iVar2, &Var4))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(3, iVar2, &Var4))
 							{
 								if (Var4.f_6 == 277073536)
 								{
@@ -73783,7 +73783,7 @@ void func_474(int iParam0, int iParam1)
 						iVar5 = 0;
 						while (iVar5 < iVar6)
 						{
-							if (FILES::_0xFF56381874F82086(4, iVar5, &Var7))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(4, iVar5, &Var7))
 							{
 								if (Var7.f_6 == 277073536)
 								{
@@ -73828,7 +73828,7 @@ void func_474(int iParam0, int iParam1)
 						iVar8 = 0;
 						while (iVar8 < iVar9)
 						{
-							if (FILES::_0xFF56381874F82086(3, iVar8, &Var10))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(3, iVar8, &Var10))
 							{
 								if (Var10.f_6 == 2140335355)
 								{
@@ -73875,7 +73875,7 @@ void func_474(int iParam0, int iParam1)
 						iVar11 = 0;
 						while (iVar11 < iVar12)
 						{
-							if (FILES::_0xFF56381874F82086(4, iVar11, &Var13))
+							if (FILES::_GET_TATTOO_COLLECTION_DATA(4, iVar11, &Var13))
 							{
 								if (Var13.f_6 == 2140335355)
 								{
@@ -80346,7 +80346,7 @@ int func_493(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -80376,7 +80376,7 @@ int func_493(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -80406,7 +80406,7 @@ int func_493(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -81013,7 +81013,7 @@ int func_493(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -81043,7 +81043,7 @@ int func_493(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -81073,7 +81073,7 @@ int func_493(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, in
 						iVar9 = 0;
 						while (iVar9 < iVar8)
 						{
-							FILES::_0xE1CA84EBF72E691D(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
+							FILES::GET_FORCED_PROP(iVar14, iVar9, &iVar5, &iVar10, &iVar11);
 							if (iVar11 == iParam5)
 							{
 								if (iVar5 != 0 && iVar5 != joaat("0"))
@@ -112536,7 +112536,7 @@ void func_638()
 							{
 								func_582(&iVar7, Var11);
 								VEHICLE::_0xAB04325045427AAE(iVar7, 0);
-								VEHICLE::_0x428BACCDF5E26EAD(iVar7, 0);
+								VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(iVar7, false);
 								VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(iVar7, true);
 								if (iVar1 == 2)
 								{
@@ -112551,7 +112551,7 @@ void func_638()
 						else
 						{
 							VEHICLE::_0xAB04325045427AAE(iVar7, 0);
-							VEHICLE::_0x428BACCDF5E26EAD(iVar7, 0);
+							VEHICLE::SET_VEHICLE_CAN_SAVE_IN_GARAGE(iVar7, false);
 							VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(iVar7, true);
 							VEHICLE::SET_VEHICLE_COLOURS(iVar7, Global_106565.f_2357.f_539.f_2407[iVar13 /*295*/][iVar1 /*98*/].f_5, Global_106565.f_2357.f_539.f_2407[iVar13 /*295*/][iVar1 /*98*/].f_6);
 							VEHICLE::SET_VEHICLE_EXTRA_COLOURS(iVar7, Global_106565.f_2357.f_539.f_2407[iVar13 /*295*/][iVar1 /*98*/].f_7, Global_106565.f_2357.f_539.f_2407[iVar13 /*295*/][iVar1 /*98*/].f_8);

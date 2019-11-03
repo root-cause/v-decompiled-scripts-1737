@@ -2698,7 +2698,7 @@ int func_110(char* sParam0, int iParam1, int iParam2, int iParam3, bool bParam4,
 		if (MISC::IS_STRING_NULL_OR_EMPTY(&Var1))
 		{
 		}
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY(sParam0);
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(sParam0);
 		HUD::SET_COLOUR_OF_NEXT_TEXT_COMPONENT(func_39(iParam1, -2, 1, 0, 0));
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(func_115(&Var1));
 		if (!iParam3 == 0)
@@ -2706,7 +2706,7 @@ int func_110(char* sParam0, int iParam1, int iParam2, int iParam3, bool bParam4,
 			HUD::SET_COLOUR_OF_NEXT_TEXT_COMPONENT(iParam3);
 		}
 		HUD::ADD_TEXT_COMPONENT_INTEGER(iParam2);
-		iVar0 = HUD::_DRAW_NOTIFICATION(0, 1);
+		iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 		func_111(27, sParam0, 1, &Var1, iParam2, 0, 0, 0, 1, 0, 0, 0);
 	}
 	return iVar0;
@@ -2904,7 +2904,7 @@ void func_127()
 	switch (Local_105[NETWORK::PARTICIPANT_ID_TO_INT() /*4*/].f_3)
 	{
 		case 0:
-			if (ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Local_103.f_2, Local_103.f_5, Local_103.f_5, 1000f, 0, 1, 0))
+			if (ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Local_103.f_2, Local_103.f_5, Local_103.f_5, 1000f, false, true, 0))
 			{
 				func_215();
 				MISC::SET_BIT(&(Local_105[NETWORK::PARTICIPANT_ID_TO_INT() /*4*/].f_1), 0);
@@ -3154,7 +3154,7 @@ Vector3 func_142(int iParam0, bool bParam1)
 	}
 	else
 	{
-		vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, 0) };
+		vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, false) };
 	}
 	fVar2 = 0f;
 	if (!ENTITY::IS_ENTITY_DEAD(iParam0, 0))
@@ -3244,7 +3244,7 @@ float func_147(vector3 vParam0, var uParam1, var uParam2)
 	float fVar2;
 	float fVar3;
 	
-	fVar0 = MISC::GET_DISTANCE_BETWEEN_COORDS(CAM::GET_GAMEPLAY_CAM_COORD(), vParam0, 1);
+	fVar0 = MISC::GET_DISTANCE_BETWEEN_COORDS(CAM::GET_GAMEPLAY_CAM_COORD(), vParam0, true);
 	if (fVar0 < 5f)
 	{
 		*uParam1 = 0.402f;
@@ -4419,7 +4419,7 @@ float func_174(int iParam0, int iParam1)
 
 Vector3 func_175(int iParam0)
 {
-	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), 0);
+	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), false);
 }
 
 int func_176(int iParam0)
@@ -4717,12 +4717,12 @@ void func_192()
 
 void func_193()
 {
-	if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Local_103.f_2, Local_103.f_5, Local_103.f_5, 1000f, 0, 1, 0))
+	if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Local_103.f_2, Local_103.f_5, Local_103.f_5, 1000f, false, true, 0))
 	{
 		func_196();
 		Local_105[NETWORK::PARTICIPANT_ID_TO_INT() /*4*/].f_3 = 0;
 	}
-	else if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Local_103.f_2, Local_103.f_6, Local_103.f_6, 950f, 0, 1, 0))
+	else if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), Local_103.f_2, Local_103.f_6, Local_103.f_6, 950f, false, true, 0))
 	{
 		if (!MISC::IS_BIT_SET(iLocal_106, 0) && MISC::IS_BIT_SET(iLocal_106, 3))
 		{
@@ -4752,7 +4752,7 @@ void func_193()
 void func_194(char* sParam0, int iParam1)
 {
 	HUD::BEGIN_TEXT_COMMAND_DISPLAY_HELP(sParam0);
-	HUD::END_TEXT_COMMAND_DISPLAY_HELP(0, 0, 1, iParam1);
+	HUD::END_TEXT_COMMAND_DISPLAY_HELP(0, 0, true, iParam1);
 }
 
 bool func_195()
@@ -5417,7 +5417,7 @@ void func_242()
 		iLocal_107 = HUD::ADD_BLIP_FOR_RADIUS(Local_103.f_2, Local_103.f_5);
 		HUD::SET_BLIP_COLOUR(iLocal_107, 50);
 		HUD::SET_BLIP_ALPHA(iLocal_107, 220);
-		HUD::SHOW_HEIGHT_ON_BLIP(iLocal_107, 0);
+		HUD::SHOW_HEIGHT_ON_BLIP(iLocal_107, false);
 		HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_107, "DCP_BLIPN");
 		if (func_238())
 		{
@@ -5819,7 +5819,7 @@ int func_259(int iParam0, var uParam1)
 			{
 				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(ENTITY::GET_ENTITY_MODEL(iParam0)))
 				{
-					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, 0, 1);
+					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, false, 1);
 					*uParam1 = 1;
 				}
 			}

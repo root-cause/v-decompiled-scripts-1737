@@ -94,7 +94,7 @@
 	var uLocal_92 = 0;
 	int iLocal_93 = 0;
 	int iLocal_94 = 0;
-	var uLocal_95 = 0;
+	int iLocal_95 = 0;
 	var uLocal_96 = 15;
 	var uLocal_97 = 0;
 	var uLocal_98 = 0;
@@ -717,14 +717,14 @@ void func_2()
 					{
 						if ((STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@amb@world_dog_barking@enter") && STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@amb@world_dog_barking@idle_a")) && STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@amb@world_dog_barking@exit"))
 						{
-							TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+							TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 							TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
 							TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@amb@world_dog_barking@enter", "enter", 8f, -8f, -1, 0, 0, 0, 0, 0);
 							TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@amb@world_dog_barking@idle_a", "idle_a", 8f, -8f, -1, 0, 0, 0, 0, 0);
 							TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@amb@world_dog_barking@exit", "exit", 8f, -8f, -1, 0, 0, 0, 0, 0);
-							TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-							TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-							TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+							TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+							TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+							TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 							iLocal_52++;
 						}
 					}
@@ -823,7 +823,7 @@ void func_2()
 			{
 				if (TASK::GET_SCRIPT_TASK_STATUS(iLocal_69, 713668775) == 7)
 				{
-					if (ENTITY::IS_ENTITY_AT_COORD(iLocal_69, vLocal_329, 2.5f, 2.5f, 4f, 0, true, 0))
+					if (ENTITY::IS_ENTITY_AT_COORD(iLocal_69, vLocal_329, 2.5f, 2.5f, 4f, false, true, 0))
 					{
 						func_121(1, 1);
 					}
@@ -869,11 +869,11 @@ void func_2()
 			}
 			else if (iLocal_52 == 1)
 			{
-				if (((!func_24() || (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), 0) && !func_22())) || (iLocal_67 > -1 && (MISC::GET_GAME_TIMER() - iLocal_67) > 30000)) || ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), vLocal_322, 1f, 1f, 1f, 0, true, 0))
+				if (((!func_24() || (PED::IS_PED_IN_ANY_VEHICLE(PLAYER::PLAYER_PED_ID(), 0) && !func_22())) || (iLocal_67 > -1 && (MISC::GET_GAME_TIMER() - iLocal_67) > 30000)) || ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), vLocal_322, 1f, 1f, 1f, false, true, 0))
 				{
 					iLocal_52++;
 				}
-				else if (ENTITY::IS_ENTITY_AT_COORD(iLocal_69, vLocal_323, 3f, 3f, 4f, 0, true, 0))
+				else if (ENTITY::IS_ENTITY_AT_COORD(iLocal_69, vLocal_323, 3f, 3f, 4f, false, true, 0))
 				{
 					func_20();
 					if (iLocal_67 == -1)
@@ -925,7 +925,7 @@ void func_2()
 				{
 					PED::REMOVE_PED_FROM_GROUP(iLocal_69);
 				}
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, 0);
+				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, false);
 				iLocal_52++;
 			}
 			else if (iLocal_52 == 1)
@@ -949,7 +949,7 @@ void func_2()
 				if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@tricks@"))
 				{
 					TASK::CLEAR_PED_TASKS(iLocal_69);
-					TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+					TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 					if (!PED::IS_PED_FACING_PED(iLocal_69, PLAYER::PLAYER_PED_ID(), 10f))
 					{
 						TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
@@ -958,9 +958,9 @@ void func_2()
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "beg_loop", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "beg_loop", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "beg_exit", 8f, -8f, -1, 4096, 0, 0, 0, 0);
-					TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-					TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+					TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+					TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 					func_122("PLAYFUL");
 					iLocal_52++;
 				}
@@ -983,7 +983,7 @@ void func_2()
 				if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@tricks@"))
 				{
 					TASK::CLEAR_PED_TASKS(iLocal_69);
-					TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+					TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 					if (!PED::IS_PED_FACING_PED(iLocal_69, PLAYER::PLAYER_PED_ID(), 10f))
 					{
 						TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
@@ -992,9 +992,9 @@ void func_2()
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "sit_loop", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "sit_loop", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "sit_exit", 8f, -8f, -1, 4096, 0, 0, 0, 0);
-					TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-					TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+					TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+					TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 					func_122("PLAYFUL");
 					iLocal_52++;
 				}
@@ -1017,7 +1017,7 @@ void func_2()
 				if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@tricks@"))
 				{
 					TASK::CLEAR_PED_TASKS(iLocal_69);
-					TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+					TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 					if (!PED::IS_PED_FACING_PED(iLocal_69, PLAYER::PLAYER_PED_ID(), 10f))
 					{
 						TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
@@ -1028,9 +1028,9 @@ void func_2()
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "paw_right_loop", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "paw_right_exit", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "sit_exit", 8f, -8f, -1, 4096, 0, 0, 0, 0);
-					TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-					TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+					TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+					TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 					func_122("PLAYFUL");
 					iLocal_52++;
 				}
@@ -1146,13 +1146,13 @@ void func_2()
 				if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@tricks@"))
 				{
 					TASK::CLEAR_PED_TASKS(iLocal_69);
-					TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+					TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 					TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "sit_enter", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@tricks@", "sit_loop", 8f, -8f, -1, 4097, 0, 0, 0, 0);
-					TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-					TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+					TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+					TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 					iLocal_52++;
 				}
 			}
@@ -1193,13 +1193,13 @@ void func_2()
 				if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@move") && STREAMING::HAS_PTFX_ASSET_LOADED())
 				{
 					TASK::CLEAR_PED_TASKS(iLocal_69);
-					TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+					TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "dump_enter", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "dump_loop", 8f, -8f, -1, 4096, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "dump_exit", 8f, -8f, -1, 4096, 0, 0, 0, 0);
-					TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-					TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+					TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+					TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 					func_122("AGITATED");
 					iLocal_64 = MISC::GET_GAME_TIMER();
 					iLocal_52++;
@@ -1286,7 +1286,7 @@ void func_2()
 						{
 							vLocal_352 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vLocal_351, fLocal_353, 0.5f, 1f, 0f) };
 						}
-						TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+						TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 						TASK::TASK_TURN_PED_TO_FACE_COORD(0, vLocal_352, 0);
 						if (iLocal_350 == 0)
 						{
@@ -1300,9 +1300,9 @@ void func_2()
 							TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "pee_left_idle", 8f, -8f, -1, 0, 0, 0, 0, 0);
 							TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "pee_left_exit", 8f, -8f, -1, 0, 0, 0, 0, 0);
 						}
-						TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-						TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-						TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+						TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+						TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+						TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 						iLocal_64 = MISC::GET_GAME_TIMER();
 						iLocal_52++;
 					}
@@ -1353,7 +1353,7 @@ void func_2()
 				if (iLocal_52 == 0)
 				{
 					func_40(1);
-					if (MISC::_0x82FDE6A57EE4EE44(PLAYER::PLAYER_PED_ID(), iLocal_367, 50f, &uLocal_362, &iLocal_361, 0))
+					if (MISC::_GET_PROJECTILE_NEAR_PED(PLAYER::PLAYER_PED_ID(), iLocal_367, 50f, &uLocal_362, &iLocal_361, 0))
 					{
 						func_6(294, 0, 0);
 						WEAPON::SET_CURRENT_PED_WEAPON(PLAYER::PLAYER_PED_ID(), joaat("WEAPON_UNARMED"), true);
@@ -1381,15 +1381,15 @@ void func_2()
 									STREAMING::REQUEST_ANIM_DICT("creatures@rottweiler@move");
 									if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@move"))
 									{
-										TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+										TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 										if (iLocal_367 == joaat("WEAPON_BALL"))
 										{
 											TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "fetch_pickup", 8f, -8f, -1, 49152, 0, 0, 0, 0);
 										}
 										TASK::TASK_GO_TO_ENTITY(0, PLAYER::PLAYER_PED_ID(), 20000, 4f, 3f, 1073741824, 0);
-										TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-										TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-										TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+										TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+										TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+										TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 										if (iLocal_367 == joaat("WEAPON_BALL"))
 										{
 											iLocal_365 = 1;
@@ -1480,12 +1480,12 @@ void func_2()
 								STREAMING::REQUEST_ANIM_DICT("creatures@rottweiler@move");
 								if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@move"))
 								{
-									TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+									TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 									TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
 									TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@move", "fetch_drop", 8f, -8f, -1, 16384, 0, 0, 0, 0);
-									TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-									TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-									TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+									TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+									TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+									TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 									func_108("CHOP_RETURN1", 0);
 									AUDIO::SET_AUDIO_FLAG("DisableBarks", 0);
 									iLocal_52++;
@@ -1531,7 +1531,7 @@ void func_2()
 						{
 							if (ENTITY::IS_ENTITY_PLAYING_ANIM(iLocal_69, "creatures@rottweiler@move", "fetch_drop", 3) && ENTITY::GET_ENTITY_ANIM_CURRENT_TIME(iLocal_69, "creatures@rottweiler@move", "fetch_drop") > 0.4f)
 							{
-								ENTITY::DETACH_ENTITY(iLocal_361, 1, 1);
+								ENTITY::DETACH_ENTITY(iLocal_361, 1, true);
 							}
 						}
 						else
@@ -1584,7 +1584,7 @@ void func_2()
 					}
 					if (ENTITY::IS_ENTITY_ATTACHED(iLocal_69))
 					{
-						ENTITY::DETACH_ENTITY(iLocal_69, 1, 1);
+						ENTITY::DETACH_ENTITY(iLocal_69, 1, true);
 					}
 					func_124(iLocal_69, vLocal_84[iVar7 /*3*/], fLocal_85[iVar7], 0, 1);
 					PED::_0x2208438012482A1A(iLocal_69, 0, 0);
@@ -2200,12 +2200,12 @@ void func_20()
 		if (STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@indication@"))
 		{
 			TASK::CLEAR_PED_TASKS(iLocal_69);
-			TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+			TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 			TASK::TASK_TURN_PED_TO_FACE_COORD(0, vLocal_322, 0);
 			TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@indication@", func_21(), 8f, -4f, -1, 1, 0, 0, 0, 0);
-			TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-			TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-			TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+			TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+			TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+			TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 		}
 	}
 }
@@ -2587,7 +2587,7 @@ void func_40(int iParam0)
 		vVar0 = { ENTITY::GET_ENTITY_COORDS(iLocal_361, true) };
 		if (ENTITY::IS_ENTITY_ATTACHED_TO_ANY_PED(iLocal_361))
 		{
-			ENTITY::DETACH_ENTITY(iLocal_361, 1, 1);
+			ENTITY::DETACH_ENTITY(iLocal_361, 1, true);
 		}
 		ENTITY::SET_ENTITY_AS_NO_LONGER_NEEDED(&iLocal_361);
 		if (iParam0 == 1 && iLocal_367 == joaat("WEAPON_BALL"))
@@ -2637,7 +2637,7 @@ void func_42(int iParam0, bool bParam1)
 	{
 		if (ENTITY::IS_ENTITY_ATTACHED_TO_ANY_PED(*iParam0))
 		{
-			ENTITY::DETACH_ENTITY(*iParam0, 1, 1);
+			ENTITY::DETACH_ENTITY(*iParam0, 1, true);
 		}
 		if (!bParam1)
 		{
@@ -2694,14 +2694,14 @@ void func_44()
 				if ((STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@amb@world_dog_barking@enter") && STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@amb@world_dog_barking@idle_a")) && STREAMING::HAS_ANIM_DICT_LOADED("creatures@rottweiler@amb@world_dog_barking@exit"))
 				{
 					TASK::CLEAR_PED_TASKS(iLocal_69);
-					TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+					TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 					TASK::TASK_TURN_PED_TO_FACE_ENTITY(0, PLAYER::PLAYER_PED_ID(), 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@amb@world_dog_barking@enter", "enter", 8f, -8f, -1, 0, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@amb@world_dog_barking@idle_a", "idle_a", 8f, -8f, -1, 0, 0, 0, 0, 0);
 					TASK::TASK_PLAY_ANIM(0, "creatures@rottweiler@amb@world_dog_barking@exit", "exit", 8f, -8f, -1, 0, 0, 0, 0, 0);
-					TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-					TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+					TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+					TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+					TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 					iLocal_63 = MISC::GET_GAME_TIMER();
 				}
 			}
@@ -3271,11 +3271,11 @@ void func_54()
 	{
 		if (iLocal_86 > 1 && iLocal_86 < 8)
 		{
-			PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 309, 1);
+			PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 309, true);
 		}
 		if (iLocal_93 == 1 && iLocal_86 == 1)
 		{
-			PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 313, 1);
+			PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 313, true);
 		}
 	}
 	switch (iLocal_86)
@@ -3351,7 +3351,7 @@ void func_54()
 									func_74();
 								}
 							}
-							else if (VEHICLE::_0x639431E895B9AA57(PLAYER::PLAYER_PED_ID(), iLocal_78, 0, 0, 0))
+							else if (VEHICLE::_0x639431E895B9AA57(PLAYER::PLAYER_PED_ID(), iLocal_78, 0, 0, false))
 							{
 								if (VEHICLE::IS_VEHICLE_DOOR_DAMAGED(iLocal_78, iLocal_94) || VEHICLE::GET_VEHICLE_DOOR_ANGLE_RATIO(iLocal_78, 1) > 0.9f)
 								{
@@ -3586,7 +3586,7 @@ void func_54()
 					{
 						iLocal_86 = 9;
 					}
-					else if (VEHICLE::_0x639431E895B9AA57(PLAYER::PLAYER_PED_ID(), iLocal_78, 0, 0, 0))
+					else if (VEHICLE::_0x639431E895B9AA57(PLAYER::PLAYER_PED_ID(), iLocal_78, 0, 0, false))
 					{
 						VEHICLE::BRING_VEHICLE_TO_HALT(iLocal_78, 10f, 1, 0);
 						if (VEHICLE::IS_VEHICLE_DOOR_DAMAGED(iLocal_78, iLocal_94))
@@ -3598,7 +3598,7 @@ void func_54()
 							iLocal_86 = 10;
 						}
 					}
-					else if (VEHICLE::_0x639431E895B9AA57(PLAYER::PLAYER_PED_ID(), iLocal_78, -1, 0, 0))
+					else if (VEHICLE::_0x639431E895B9AA57(PLAYER::PLAYER_PED_ID(), iLocal_78, -1, 0, false))
 					{
 						VEHICLE::BRING_VEHICLE_TO_HALT(iLocal_78, 10f, 1, 0);
 						func_68(-2f, 0f, 0f, 0);
@@ -3927,12 +3927,12 @@ void func_64()
 		iLocal_57 = MISC::GET_GAME_TIMER();
 		if (func_125(iLocal_69) && PED::IS_PED_IN_ANY_VEHICLE(iLocal_69, 0))
 		{
-			TASK::OPEN_SEQUENCE_TASK(&uLocal_95);
+			TASK::OPEN_SEQUENCE_TASK(&iLocal_95);
 			TASK::TASK_PLAY_ANIM(0, sLocal_371, "bark", 4f, -4f, -1, 0, 0, 0, 0, 0);
 			TASK::TASK_PLAY_ANIM(0, sLocal_371, "sit", 8f, -8f, -1, 1, 0, 0, 0, 0);
-			TASK::CLOSE_SEQUENCE_TASK(uLocal_95);
-			TASK::TASK_PERFORM_SEQUENCE(iLocal_69, uLocal_95);
-			TASK::CLEAR_SEQUENCE_TASK(&uLocal_95);
+			TASK::CLOSE_SEQUENCE_TASK(iLocal_95);
+			TASK::TASK_PERFORM_SEQUENCE(iLocal_69, iLocal_95);
+			TASK::CLEAR_SEQUENCE_TASK(&iLocal_95);
 			PED::_0x2208438012482A1A(iLocal_69, 0, 0);
 		}
 	}
@@ -4080,7 +4080,7 @@ void func_69(int iParam0, int iParam1)
 				vVar0 = { 1.38134f, -0.1248f, 0.580783f };
 				vVar1 = { 0f, 0f, 0.3f };
 			}
-			iLocal_380 = CAM::CREATE_CAM("DEFAULT_SCRIPTED_CAMERA", 1);
+			iLocal_380 = CAM::CREATE_CAM("DEFAULT_SCRIPTED_CAMERA", true);
 			vVar3 = { ENTITY::GET_WORLD_POSITION_OF_ENTITY_BONE(iLocal_78, ENTITY::GET_ENTITY_BONE_INDEX_BY_NAME(iLocal_78, "seat_pside_f")) };
 			vVar4 = { ENTITY::GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS(iLocal_78, vVar3) };
 			vVar5 = { vVar0 + vVar4 };
@@ -4089,7 +4089,7 @@ void func_69(int iParam0, int iParam1)
 			CAM::SET_CAM_FOV(iLocal_380, 50f);
 			CAM::SHAKE_CAM(iLocal_380, "HAND_SHAKE", 0.3f);
 			CAM::SET_CAM_DOF_PLANES(iLocal_380, 0f, 0f, 100000f, 100000f);
-			CAM::RENDER_SCRIPT_CAMS(true, 0, 3000, 1, 0, 0);
+			CAM::RENDER_SCRIPT_CAMS(true, false, 3000, 1, 0, 0);
 		}
 	}
 	else if (CAM::DOES_CAM_EXIST(iLocal_380))
@@ -4099,7 +4099,7 @@ void func_69(int iParam0, int iParam1)
 			CAM::SET_GAMEPLAY_CAM_RELATIVE_PITCH(0f, 1065353216);
 			CAM::SET_GAMEPLAY_CAM_RELATIVE_HEADING(0f);
 		}
-		CAM::RENDER_SCRIPT_CAMS(false, 0, 3000, 1, 0, 0);
+		CAM::RENDER_SCRIPT_CAMS(false, false, 3000, 1, 0, 0);
 		CAM::DESTROY_ALL_CAMS(0);
 	}
 }
@@ -7132,15 +7132,15 @@ void func_97()
 	}
 }
 
-void func_98(int iParam0)
+void func_98(bool bParam0)
 {
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_retriever"), iParam0);
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_rottweiler"), iParam0);
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_boar"), iParam0);
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_coyote"), iParam0);
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_deer"), iParam0);
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_mtlion"), iParam0);
-	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_pig"), iParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_retriever"), bParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_rottweiler"), bParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_boar"), bParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_coyote"), bParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_deer"), bParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_mtlion"), bParam0);
+	PED::SET_PED_MODEL_IS_SUPPRESSED(joaat("a_c_pig"), bParam0);
 }
 
 void func_99(bool bParam0, int iParam1, bool bParam2)
@@ -7151,7 +7151,7 @@ void func_99(bool bParam0, int iParam1, bool bParam2)
 		HUD::_0x72C1056D678BB7D8(joaat("WEAPON_BALL"));
 		if (iParam1 == 1)
 		{
-			AUDIO::PLAY_SOUND_FRONTEND(iLocal_384, "PICKUP_WEAPON_BALL", "HUD_FRONTEND_WEAPONS_PICKUPS_SOUNDSET", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(iLocal_384, "PICKUP_WEAPON_BALL", "HUD_FRONTEND_WEAPONS_PICKUPS_SOUNDSET", true);
 		}
 	}
 }
@@ -7170,7 +7170,7 @@ void func_100()
 	}
 }
 
-var func_101()
+int func_101()
 {
 	return PLAYER::GET_PLAYER_GROUP(PLAYER::GET_PLAYER_INDEX());
 }
@@ -7504,7 +7504,7 @@ void func_115()
 	if (iLocal_359 == 0)
 	{
 		iVar0 = MISC::GET_RANDOM_INT_IN_RANGE(0, 8);
-		if (!ENTITY::IS_ENTITY_AT_COORD(iLocal_69, vLocal_358[iVar0 /*3*/], 2f, 2f, 4f, 0, true, 0) && !ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), vLocal_358[iVar0 /*3*/], 2f, 2f, 4f, 0, true, 0))
+		if (!ENTITY::IS_ENTITY_AT_COORD(iLocal_69, vLocal_358[iVar0 /*3*/], 2f, 2f, 4f, false, true, 0) && !ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), vLocal_358[iVar0 /*3*/], 2f, 2f, 4f, false, true, 0))
 		{
 			TASK::TASK_FOLLOW_NAV_MESH_TO_COORD(iLocal_69, vLocal_358[iVar0 /*3*/], 1f, 20000, 0.25f, 8192, 1193033728);
 			iLocal_359 = 1;
@@ -7637,7 +7637,7 @@ void func_121(int iParam0, int iParam1)
 	iLocal_86 = 0;
 	if (func_125(iLocal_69))
 	{
-		PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, 1);
+		PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, true);
 		WEAPON::CLEAR_PED_LAST_WEAPON_DAMAGE(iLocal_69);
 		if (!PED::IS_PED_IN_ANY_VEHICLE(iLocal_69, 0))
 		{
@@ -7664,7 +7664,7 @@ void func_121(int iParam0, int iParam1)
 
 void func_122(char* sParam0)
 {
-	AUDIO::_0xEE066C7006C49C0A(iLocal_69, 3, sParam0);
+	AUDIO::PLAY_ANIMAL_VOCALIZATION(iLocal_69, 3, sParam0);
 }
 
 int func_123()
@@ -7701,7 +7701,7 @@ int func_124(int iParam0, vector3 vParam1, float fParam2, bool bParam3, int iPar
 				vParam1.z = fVar1;
 			}
 		}
-		ENTITY::SET_ENTITY_COORDS(iParam0, vParam1, 1, 0, 0, iParam4);
+		ENTITY::SET_ENTITY_COORDS(iParam0, vParam1, 1, false, 0, iParam4);
 		ENTITY::SET_ENTITY_HEADING(iParam0, fParam2);
 		if (bParam3)
 		{
@@ -7772,7 +7772,7 @@ void func_128()
 	if ((MISC::GET_GAME_TIMER() - iLocal_379) > 500)
 	{
 		iLocal_379 = MISC::GET_GAME_TIMER();
-		if (iLocal_51 != 15 && MISC::_0x82FDE6A57EE4EE44(PLAYER::PLAYER_PED_ID(), joaat("WEAPON_BALL"), 1.5f, &uLocal_362, &iLocal_361, 0))
+		if (iLocal_51 != 15 && MISC::_GET_PROJECTILE_NEAR_PED(PLAYER::PLAYER_PED_ID(), joaat("WEAPON_BALL"), 1.5f, &uLocal_362, &iLocal_361, 0))
 		{
 			func_40(1);
 		}
@@ -8576,7 +8576,7 @@ void func_154()
 		{
 			SYSTEM::WAIT(0);
 		}
-		iLocal_346 = OBJECT::CREATE_OBJECT(joaat("prop_big_shit_02"), vLocal_347, 1, true, 0);
+		iLocal_346 = OBJECT::CREATE_OBJECT(joaat("prop_big_shit_02"), vLocal_347, true, true, false);
 		STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(joaat("prop_big_shit_02"));
 		iLocal_356 = 0;
 	}
@@ -8673,7 +8673,7 @@ void func_156()
 				func_157(&iLocal_69, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 0, 1);
 				if (func_125(iLocal_69))
 				{
-					PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, 1);
+					PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, true);
 					PED::SET_PED_ALLOW_VEHICLES_OVERRIDE(iLocal_69, 1);
 					PED::SET_PED_CAN_PLAY_AMBIENT_ANIMS(iLocal_69, 0);
 					PED::SET_PED_CAN_PLAY_AMBIENT_BASE_ANIMS(iLocal_69, 0);
@@ -8712,7 +8712,7 @@ void func_156()
 		PED::SET_RELATIONSHIP_BETWEEN_GROUPS(3, 1157867945, iLocal_71);
 		PED::SET_RELATIONSHIP_BETWEEN_GROUPS(3, iLocal_71, 1157867945);
 		PED::SET_PED_RELATIONSHIP_GROUP_HASH(iLocal_69, iLocal_71);
-		PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, 1);
+		PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_69, true);
 		PED::SET_PED_ALLOW_VEHICLES_OVERRIDE(iLocal_69, 1);
 		PED::SET_PED_CONFIG_FLAG(iLocal_69, 185, true);
 		PED::SET_PED_CONFIG_FLAG(iLocal_69, 26, true);
@@ -9505,7 +9505,7 @@ void func_181(int iParam0, bool bParam1, int iParam2, int iParam3)
 	{
 		if (!PED::IS_PED_INJURED(*iParam0))
 		{
-			ENTITY::SET_ENTITY_LOAD_COLLISION_FLAG(*iParam0, 0, 1);
+			ENTITY::SET_ENTITY_LOAD_COLLISION_FLAG(*iParam0, false, 1);
 			if (iParam3 == 0)
 			{
 				TASK::CLEAR_PED_SECONDARY_TASK(*iParam0);
@@ -9513,7 +9513,7 @@ void func_181(int iParam0, bool bParam1, int iParam2, int iParam3)
 			PED::SET_PED_KEEP_TASK(*iParam0, bParam1);
 			if (iParam2 == 1)
 			{
-				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(*iParam0, 0);
+				PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(*iParam0, false);
 			}
 		}
 		ENTITY::SET_PED_AS_NO_LONGER_NEEDED(iParam0);
@@ -9618,7 +9618,7 @@ void func_186(int iParam0)
 	{
 		if (!ENTITY::IS_ENTITY_DEAD(*iParam0, 0))
 		{
-			ENTITY::SET_ENTITY_LOAD_COLLISION_FLAG(*iParam0, 0, 1);
+			ENTITY::SET_ENTITY_LOAD_COLLISION_FLAG(*iParam0, false, 1);
 		}
 		if (!ENTITY::IS_ENTITY_A_MISSION_ENTITY(*iParam0))
 		{
@@ -9672,7 +9672,7 @@ int func_188(vector3 vParam0, float fParam1, float fParam2)
 {
 	if (CAM::IS_SPHERE_VISIBLE(vParam0, fParam1))
 	{
-		if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), vParam0, fParam2, fParam2, fParam2, 0, false, 0))
+		if (!ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), vParam0, fParam2, fParam2, fParam2, false, false, 0))
 		{
 			return 0;
 		}

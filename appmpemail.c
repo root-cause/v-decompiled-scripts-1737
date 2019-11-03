@@ -201,7 +201,7 @@ void func_2()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Back", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Back", &Global_14542, true);
 	}
 }
 
@@ -278,7 +278,7 @@ void func_5()
 void func_6()
 {
 	func_53(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(3), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_7();
 }
 
@@ -324,7 +324,7 @@ int func_8()
 void func_9()
 {
 	func_53(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(1), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_10();
 }
 
@@ -377,7 +377,7 @@ void func_12()
 					Global_4268043[iLocal_24 /*104*/].f_24 = 0;
 					Global_4268043[iLocal_24 /*104*/].f_28 = 0;
 				}
-				HUD::_REMOVE_NOTIFICATION(Global_4268043[iLocal_24 /*104*/].f_16);
+				HUD::THEFEED_REMOVE_ITEM(Global_4268043[iLocal_24 /*104*/].f_16);
 				func_53(Global_14534, "SET_DATA_SLOT_EMPTY", 8f, -1082130432, -1082130432, -1082130432, -1082130432);
 				func_48();
 				if (iLocal_22 > 0)
@@ -1267,7 +1267,7 @@ void func_23()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, true);
 		func_24();
 	}
 }
@@ -1437,7 +1437,7 @@ void func_32()
 				iLocal_28 = 0;
 				GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_14534, "GET_CURRENT_SELECTION");
 				iLocal_33 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
-				while (!GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_33) && iLocal_28 == 0)
+				while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_33) && iLocal_28 == 0)
 				{
 					SYSTEM::WAIT(0);
 					if (SYSTEM::TIMERB() > 2000)
@@ -1585,7 +1585,7 @@ void func_32()
 					iLocal_28 = 0;
 					GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_14534, "GET_CURRENT_SELECTION");
 					iLocal_33 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
-					while (!GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_33) && iLocal_28 == 0)
+					while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_33) && iLocal_28 == 0)
 					{
 						SYSTEM::WAIT(0);
 						if (SYSTEM::TIMERB() > 2000)
@@ -1789,7 +1789,7 @@ void func_32()
 				GRAPHICS::END_SCALEFORM_MOVIE_METHOD();
 				Global_16932 = 1;
 				func_53(Global_14534, "DISPLAY_VIEW", 9f, -1082130432, -1082130432, -1082130432, -1082130432);
-				HUD::_REMOVE_NOTIFICATION(Global_4268043[iLocal_24 /*104*/].f_16);
+				HUD::THEFEED_REMOVE_ITEM(Global_4268043[iLocal_24 /*104*/].f_16);
 				if (Global_4268043[iLocal_24 /*104*/].f_29 > 0)
 				{
 					if (Global_14541)
@@ -2048,7 +2048,7 @@ void func_37()
 					Local_34 = { Local_36[iVar0 /*16*/] };
 				}
 				iLocal_37 = 1;
-				GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT(&Local_34, 0);
+				GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT(&Local_34, false);
 				while (!GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED(&Local_34))
 				{
 					SYSTEM::WAIT(100);

@@ -510,7 +510,7 @@ void func_11(var uParam0)
 			}
 			if (iVar6 != 1 && iVar6 != 0)
 			{
-				uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, 1, 0, 1065353216, 0, 1065353216);
+				uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, true, false, 1065353216, 0, 1065353216);
 				NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(PLAYER::PLAYER_PED_ID(), uParam0->f_85.f_1, &sVar0, &sVar1, 2f, -1000f, 13, 16, 1.5f, 0);
 				NETWORK::NETWORK_START_SYNCHRONISED_SCENE(uParam0->f_85.f_1);
 				uParam0->f_85.f_8.f_4 = MISC::GET_GAME_TIMER();
@@ -535,7 +535,7 @@ void func_11(var uParam0)
 					func_12(uParam0, 0);
 					func_40(uParam0, &sVar0);
 					func_39(uParam0, &sVar1);
-					uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, 1, 0, 1065353216, 0, 1065353216);
+					uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, true, false, 1065353216, 0, 1065353216);
 					NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(PLAYER::PLAYER_PED_ID(), uParam0->f_85.f_1, &sVar0, &sVar1, 4f, -1.5f, 13, 16, 1000f, 0);
 					NETWORK::NETWORK_START_SYNCHRONISED_SCENE(uParam0->f_85.f_1);
 					func_25(&(uParam0->f_85), 8);
@@ -837,7 +837,7 @@ void func_23(var uParam0)
 		func_12(uParam0, 1);
 		func_40(uParam0, &sVar0);
 		func_39(uParam0, &sVar1);
-		uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, 1, 0, 1065353216, 0, 1065353216);
+		uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, true, false, 1065353216, 0, 1065353216);
 		NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(PLAYER::PLAYER_PED_ID(), uParam0->f_85.f_1, &sVar0, &sVar1, 4f, -1.5f, 13, 16, 1000f, 0);
 		NETWORK::NETWORK_START_SYNCHRONISED_SCENE(uParam0->f_85.f_1);
 		func_25(&(uParam0->f_85), 8);
@@ -849,7 +849,7 @@ void func_24(var uParam0)
 {
 	char* sVar0;
 	
-	uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, 1, 0, 1065353216, 0, 1065353216);
+	uParam0->f_85.f_1 = NETWORK::NETWORK_CREATE_SYNCHRONISED_SCENE(func_38(uParam0), func_37(uParam0), 2, true, false, 1065353216, 0, 1065353216);
 	func_40(uParam0, &sVar0);
 	NETWORK::NETWORK_ADD_PED_TO_SYNCHRONISED_SCENE(PLAYER::PLAYER_PED_ID(), uParam0->f_85.f_1, &sVar0, "exit", 4f, -4f, 13, 16, 1000f, 0);
 	NETWORK::NETWORK_START_SYNCHRONISED_SCENE(uParam0->f_85.f_1);
@@ -1380,7 +1380,7 @@ bool func_48(var uParam0)
 
 bool func_49(int iParam0, var uParam1)
 {
-	return ENTITY::IS_ENTITY_IN_ANGLED_AREA(iParam0, uParam1->f_1, uParam1->f_1.f_3, uParam1->f_1.f_6, 0, 1, 0);
+	return ENTITY::IS_ENTITY_IN_ANGLED_AREA(iParam0, uParam1->f_1, uParam1->f_1.f_3, uParam1->f_1.f_6, 0, true, 0);
 }
 
 int func_50(var uParam0)
@@ -1706,7 +1706,7 @@ int func_70(int iParam0, var uParam1)
 
 bool func_71(int iParam0)
 {
-	return ENTITY::IS_ENTITY_IN_ANGLED_AREA(iParam0, 416.2457f, 4826.312f, -59.9997f, 376.9388f, 4827.659f, -56.95424f, 15f, 0, 1, 0);
+	return ENTITY::IS_ENTITY_IN_ANGLED_AREA(iParam0, 416.2457f, 4826.312f, -59.9997f, 376.9388f, 4827.659f, -56.95424f, 15f, 0, true, 0);
 }
 
 int func_72()

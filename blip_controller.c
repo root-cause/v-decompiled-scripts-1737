@@ -311,7 +311,7 @@ void __EntryFunction__()
 										{
 											Global_26140[iVar2 /*23*/].f_19 = HUD::ADD_BLIP_FOR_RADIUS(Global_26140[iVar2 /*23*/][0 /*3*/], Global_26140[iVar2 /*23*/].f_10);
 											HUD::SET_BLIP_ALPHA(Global_26140[iVar2 /*23*/].f_19, 128);
-											HUD::SHOW_HEIGHT_ON_BLIP(Global_26140[iVar2 /*23*/].f_19, 0);
+											HUD::SHOW_HEIGHT_ON_BLIP(Global_26140[iVar2 /*23*/].f_19, false);
 										}
 										else
 										{
@@ -329,7 +329,7 @@ void __EntryFunction__()
 							{
 								Global_26140[iVar2 /*23*/].f_19 = HUD::ADD_BLIP_FOR_RADIUS(Global_26140[iVar2 /*23*/][0 /*3*/], Global_26140[iVar2 /*23*/].f_10);
 								HUD::SET_BLIP_ALPHA(Global_26140[iVar2 /*23*/].f_19, 128);
-								HUD::SHOW_HEIGHT_ON_BLIP(Global_26140[iVar2 /*23*/].f_19, 0);
+								HUD::SHOW_HEIGHT_ON_BLIP(Global_26140[iVar2 /*23*/].f_19, false);
 							}
 							else
 							{
@@ -365,7 +365,7 @@ void __EntryFunction__()
 							{
 								if (iLocal_43)
 								{
-									HUD::SET_BLIP_FLASHES(Global_26140[iVar2 /*23*/].f_19, 1);
+									HUD::SET_BLIP_FLASHES(Global_26140[iVar2 /*23*/].f_19, true);
 									iLocal_43 = 0;
 								}
 								else
@@ -378,7 +378,7 @@ void __EntryFunction__()
 							}
 							else
 							{
-								HUD::SET_BLIP_FLASHES(Global_26140[iVar2 /*23*/].f_19, 0);
+								HUD::SET_BLIP_FLASHES(Global_26140[iVar2 /*23*/].f_19, false);
 							}
 						}
 						func_19(Global_26140[iVar2 /*23*/].f_19, iVar2);
@@ -527,7 +527,7 @@ void func_6()
 					{
 						if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("chop")) == 0)
 						{
-							if (MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1), 19.3f, 528.24f, 169.63f, true) > 50f)
+							if (MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), 19.3f, 528.24f, 169.63f, true) > 50f)
 							{
 								func_7(139, 1, 0);
 							}
@@ -544,7 +544,7 @@ void func_6()
 					{
 						if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("chop")) == 0)
 						{
-							if (MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1), -11.15f, -1425.56f, 29.67f, true) > 50f)
+							if (MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true), -11.15f, -1425.56f, 29.67f, true) > 50f)
 							{
 								func_7(138, 1, 0);
 							}
@@ -800,7 +800,7 @@ void func_15(int iParam0)
 
 Vector3 func_16(int iParam0)
 {
-	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), 0);
+	return ENTITY::GET_ENTITY_COORDS(PLAYER::GET_PLAYER_PED(iParam0), false);
 }
 
 void func_17(int iParam0)
@@ -872,7 +872,7 @@ void func_19(int iParam0, int iParam1)
 	bool bVar4;
 	
 	iVar0 = func_1();
-	HUD::_0xC4278F70131BAA6D(iParam0, 1);
+	HUD::_SET_BLIP_DISPLAY_ON_EDGE(iParam0, 1);
 	HUD::SET_BLIP_PRIORITY(iParam0, 2);
 	HUD::SET_BLIP_COLOUR(iParam0, func_21(iParam1));
 	if (Global_26140[iParam1 /*23*/].f_16 == 4 || Global_26140[iParam1 /*23*/].f_16 == 8)
@@ -996,7 +996,7 @@ void func_19(int iParam0, int iParam1)
 							HUD::SET_BLIP_AS_SHORT_RANGE(iParam0, MISC::IS_BIT_SET(Global_26140[iParam1 /*23*/].f_11, 5));
 							HUD::SET_BLIP_PRIORITY(iParam0, 3);
 							HUD::SET_BLIP_AS_SHORT_RANGE(iParam0, true);
-							HUD::_0x54318C915D27E4CE(iParam0, 1);
+							HUD::SET_BLIP_HIDDEN_ON_LEGEND(iParam0, 1);
 							HUD::SET_BLIP_SCALE(iParam0, 0.77f);
 						}
 						else
@@ -1013,7 +1013,7 @@ void func_19(int iParam0, int iParam1)
 					}
 					if (Global_26140[iParam1 /*23*/].f_16 == 8)
 					{
-						HUD::_0x54318C915D27E4CE(iParam0, 0);
+						HUD::SET_BLIP_HIDDEN_ON_LEGEND(iParam0, 0);
 					}
 				}
 			}
@@ -1088,15 +1088,15 @@ int func_20(int iParam0)
 int func_21(int iParam0)
 {
 	int iVar0;
-	var uVar1;
+	int iVar1;
 	
 	iVar0 = iParam0;
 	if ((iVar0 < 0 || iVar0 >= 263) || iParam0 == 263)
 	{
 		return 0;
 	}
-	uVar1 = MISC::GET_BITS_IN_RANGE(Global_26140[iVar0 /*23*/].f_11, 21, 26);
-	return uVar1;
+	iVar1 = MISC::GET_BITS_IN_RANGE(Global_26140[iVar0 /*23*/].f_11, 21, 26);
+	return iVar1;
 }
 
 void func_22()

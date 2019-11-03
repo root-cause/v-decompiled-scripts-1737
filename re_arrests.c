@@ -681,7 +681,7 @@ void func_1()
 														TASK::TASK_PERFORM_SEQUENCE(iLocal_52, iLocal_67);
 														TASK::CLEAR_SEQUENCE_TASK(&iLocal_67);
 														PED::SET_PED_KEEP_TASK(iLocal_52, true);
-														VEHICLE::SET_VEHICLE_SIREN(iLocal_55, 0);
+														VEHICLE::SET_VEHICLE_SIREN(iLocal_55, false);
 														iLocal_238 = 8000;
 														SYSTEM::SETTIMERB(0);
 														iLocal_269 = MISC::GET_GAME_TIMER();
@@ -997,8 +997,8 @@ void func_3(bool bParam0)
 					{
 						if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_55, 0))
 						{
-							VEHICLE::_SET_DISABLE_VEHICLE_SIREN_SOUND(iLocal_55, 0);
-							VEHICLE::SET_VEHICLE_SIREN(iLocal_55, 1);
+							VEHICLE::SET_VEHICLE_HAS_MUTED_SIRENS(iLocal_55, 0);
+							VEHICLE::SET_VEHICLE_SIREN(iLocal_55, true);
 						}
 						TASK::CLEAR_PED_TASKS(iLocal_52);
 						TASK::OPEN_SEQUENCE_TASK(&iLocal_67);
@@ -1334,7 +1334,7 @@ int func_10()
 				}
 				TASK::TASK_VEHICLE_MISSION_COORS_TARGET(iLocal_54, iLocal_55, vVar0, 4, 7f, 786471, 5f, -1f, 1);
 				VEHICLE::SET_VEHICLE_FORWARD_SPEED(iLocal_55, 4f);
-				VEHICLE::SET_VEHICLE_SIREN(iLocal_55, 1);
+				VEHICLE::SET_VEHICLE_SIREN(iLocal_55, true);
 				iLocal_71 = 1;
 				VEHICLE::SET_RANDOM_TRAINS(0);
 				return 1;
@@ -2186,9 +2186,9 @@ void func_19(int iParam0)
 	if (bVar0)
 	{
 		StringCopy(&cVar1, "CHAR_LIFEINVADER", 64);
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("COUP_RED");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("COUP_RED");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(func_20(iParam0));
-		HUD::_SET_NOTIFICATION_MESSAGE_2(&cVar1, &cVar1, 1, 0, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT(&cVar1, &cVar1, 1, 0, "", 0);
 	}
 }
 
@@ -3494,7 +3494,7 @@ int func_61()
 			return 1;
 		}
 	}
-	if (GRAPHICS::_0x2F09F7976C512404(PED::GET_PED_BONE_COORDS(iLocal_52, 31086, 0f, 0f, 0f), 3f))
+	if (GRAPHICS::GET_IS_PETROL_DECAL_IN_RANGE(PED::GET_PED_BONE_COORDS(iLocal_52, 31086, 0f, 0f, 0f), 3f))
 	{
 		return 1;
 	}
@@ -4340,7 +4340,7 @@ int func_86(float fParam0)
 	var uVar0;
 	vector3 vVar1;
 	
-	if (MISC::_GET_GROUND_Z_COORD_WITH_OFFSETS(ENTITY::GET_ENTITY_COORDS(iLocal_53, true), &uVar0, &vVar1))
+	if (MISC::GET_GROUND_Z_AND_NORMAL_FOR_3D_COORD(ENTITY::GET_ENTITY_COORDS(iLocal_53, true), &uVar0, &vVar1))
 	{
 		if (func_87(vVar1, 0f, 0f, 1f) < fParam0)
 		{

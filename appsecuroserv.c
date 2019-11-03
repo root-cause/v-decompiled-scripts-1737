@@ -983,7 +983,7 @@ void __EntryFunction__()
 	func_626(1);
 	if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()) && !ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		vLocal_878 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1) };
+		vLocal_878 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 	}
 	func_625();
 	if (!MISC::IS_BIT_SET(iLocal_686, 13))
@@ -1004,7 +1004,7 @@ void __EntryFunction__()
 	}
 	func_609();
 	func_608(0);
-	HUD::_0xFDB423997FA30340();
+	HUD::THEFEED_PAUSE();
 	if (MISC::IS_PC_VERSION())
 	{
 		func_607(1, 1, 1, 1);
@@ -1347,7 +1347,7 @@ void func_10()
 	func_528();
 	if (iLocal_685 == 0)
 	{
-		if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_681) && GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_682))
+		if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_681) && GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_682))
 		{
 			iVar0 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(iLocal_681);
 			MISC::CLEAR_BIT(&iLocal_686, 20);
@@ -1435,7 +1435,7 @@ void func_10()
 					MISC::CLEAR_BIT(&iLocal_686, 19);
 					if (!MISC::IS_BIT_SET(iLocal_686, 8))
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					}
 					break;
 				
@@ -1446,12 +1446,12 @@ void func_10()
 					MISC::CLEAR_BIT(&iLocal_686, 11);
 					MISC::CLEAR_BIT(&iLocal_686, 10);
 					func_525(0, 0);
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					break;
 				
 				case 4001:
 					iLocal_685 = 4001;
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Sell", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Sell", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					break;
 				
 				case 4002:
@@ -1462,7 +1462,7 @@ void func_10()
 					iLocal_685 = 4003;
 					if (!MISC::IS_BIT_SET(iLocal_686, 4))
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					}
 					MISC::CLEAR_BIT(&iLocal_686, 4);
 					func_525(0, 0);
@@ -1470,7 +1470,7 @@ void func_10()
 				
 				case 4004:
 					iLocal_685 = 4004;
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_525(0, 0);
 					break;
 				
@@ -1495,7 +1495,7 @@ void func_10()
 					iLocal_685 = 5007;
 					if (!MISC::IS_BIT_SET(iLocal_686, 4))
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					}
 					MISC::CLEAR_BIT(&iLocal_686, 4);
 					func_525(0, 0);
@@ -1503,7 +1503,7 @@ void func_10()
 				
 				case 5008:
 					iLocal_685 = 5008;
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_525(0, 0);
 					break;
 				
@@ -1554,7 +1554,7 @@ void func_10()
 				
 				case 6003:
 					iLocal_685 = 6003;
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_525(0, 0);
 					break;
 				
@@ -1726,7 +1726,7 @@ void func_11(int iParam0)
 				}
 				else
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_523("SEC_VEH_STEAL", func_12(iVar6), "WHOUSE_CONF", "", 0, 0, -1);
 				}
 				MISC::CLEAR_BIT(&iLocal_686, 3);
@@ -11008,7 +11008,7 @@ int func_201(int iParam0)
 	}
 	if (func_229(PLAYER::PLAYER_ID(), iParam0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	StringCopy(&cVar5, func_228(iParam0), 16);
@@ -11024,7 +11024,7 @@ int func_201(int iParam0)
 			{
 				func_226(MISC::GET_HASH_KEY(&cVar5), iVar8, 0);
 				MISC::SET_BIT(&iLocal_686, 18);
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 			}
 		}
@@ -11040,7 +11040,7 @@ int func_201(int iParam0)
 			{
 				func_226(MISC::GET_HASH_KEY(&cVar5), iVar8, 0);
 				MISC::SET_BIT(&iLocal_686, 18);
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 			}
 		}
@@ -11066,7 +11066,7 @@ int func_201(int iParam0)
 		switch (iVar13)
 		{
 			case 0:
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 				break;
 			
@@ -19515,14 +19515,14 @@ int func_262(int iParam0, int iParam1)
 	iVar3 = func_230(iParam1, 1);
 	if (iParam0 != iVar0)
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	if (iVar1 > 0 && !MONEY::NETWORK_CAN_SPEND_MONEY(iVar1, false, true, 0, -1, 0))
 	{
 		func_226(iVar3, iVar1, 0);
 		MISC::SET_BIT(&iLocal_686, 18);
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	if (func_225())
@@ -19539,7 +19539,7 @@ int func_262(int iParam0, int iParam1)
 		switch (iVar4)
 		{
 			case 0:
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 				break;
 			
@@ -19670,7 +19670,7 @@ int func_264(int iParam0, int iParam1, bool bParam2)
 	{
 		iVar1 = MISC::GET_HASH_KEY(func_228(iParam0));
 		func_226(iVar1, iVar0, 0);
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	return 1;
@@ -19855,7 +19855,7 @@ void func_272(int iParam0)
 			}
 			else
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				iLocal_861 = func_60(PLAYER::PLAYER_ID(), 168, 0);
 				sVar5 = func_303(0, iLocal_688);
 				func_523("MP_WH_SELL", sVar5, "WHOUSE_CONF", "", 0, 0, -1);
@@ -20313,7 +20313,7 @@ int func_286(int iParam0, int iParam1)
 		if (!MONEY::NETWORK_CAN_SPEND_MONEY(iVar5, false, true, 0, -1, 0))
 		{
 			func_226(MISC::GET_HASH_KEY(&cVar1), iVar5, 0);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 			MISC::SET_BIT(&iLocal_686, 18);
 			return 0;
 		}
@@ -20324,20 +20324,20 @@ int func_286(int iParam0, int iParam1)
 		if (!MONEY::NETWORK_CAN_SPEND_MONEY(iVar6, false, true, 0, -1, 0))
 		{
 			func_226(MISC::GET_HASH_KEY(&cVar1), iVar6, 0);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 			MISC::SET_BIT(&iLocal_686, 18);
 			return 0;
 		}
 	}
 	if (!func_52(PLAYER::PLAYER_ID(), 167, 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		iLocal_861 = func_60(PLAYER::PLAYER_ID(), 167, 0);
 		return 0;
 	}
 	if (func_50(PLAYER::PLAYER_ID()))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		iLocal_861 = func_60(PLAYER::PLAYER_ID(), 167, 0);
 		return 0;
 	}
@@ -20375,7 +20375,7 @@ int func_286(int iParam0, int iParam1)
 		switch (iVar9)
 		{
 			case 0:
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 				break;
 			
@@ -20417,7 +20417,7 @@ int func_286(int iParam0, int iParam1)
 	}
 	else
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	return 1;
@@ -21061,7 +21061,7 @@ int func_307(int iParam0)
 		switch (iVar4)
 		{
 			case 0:
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 				break;
 			
@@ -21126,8 +21126,8 @@ int func_309(char* sParam0, int iParam1)
 	int iVar0;
 	
 	iVar0 = -1;
-	HUD::_SET_NOTIFICATION_TEXT_ENTRY(sParam0);
-	iVar0 = HUD::_DRAW_NOTIFICATION(0, 1);
+	HUD::BEGIN_TEXT_COMMAND_THEFEED_POST(sParam0);
+	iVar0 = HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(0, 1);
 	func_310(0, sParam0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0);
 	return iVar0;
 }
@@ -22495,12 +22495,12 @@ int func_349(int iParam0, int iParam1)
 	*iParam1 = -1;
 	if (Global_262145.f_15234)
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	if (func_280(iParam0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	StringCopy(&cVar1, func_302(iParam0), 16);
@@ -22513,7 +22513,7 @@ int func_349(int iParam0, int iParam1)
 		if (!MONEY::NETWORK_CAN_SPEND_MONEY(iVar4, false, true, 0, -1, 0))
 		{
 			func_226(MISC::GET_HASH_KEY(&cVar1), iVar4, 0);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 			MISC::SET_BIT(&iLocal_686, 18);
 			return 0;
 		}
@@ -22539,7 +22539,7 @@ int func_349(int iParam0, int iParam1)
 	iVar7 = 0;
 	if (*iParam1 == -1)
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 		return 0;
 	}
 	else
@@ -22560,7 +22560,7 @@ int func_349(int iParam0, int iParam1)
 		if (!MONEY::NETWORK_CAN_SPEND_MONEY(iVar5, false, true, 0, -1, 0))
 		{
 			func_226(MISC::GET_HASH_KEY(&cVar1), iVar5, 0);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 			MISC::SET_BIT(&iLocal_686, 18);
 			return 0;
 		}
@@ -22586,7 +22586,7 @@ int func_349(int iParam0, int iParam1)
 		switch (iVar11)
 		{
 			case 0:
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				return 0;
 				break;
 			
@@ -22940,7 +22940,7 @@ int func_364(var uParam0, var uParam1, int iParam2)
 					{
 						if ((func_375() || (func_374() && Global_4268040 == uParam0->f_275)) || (HUD::IS_WARNING_MESSAGE_ACTIVE() && PAD::IS_CONTROL_JUST_PRESSED(2, 201)))
 						{
-							AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+							AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Success", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 							iVar5 = (iVar1 - iVar4);
 							if (iVar5 <= 0 || MONEY::NETWORK_CAN_SPEND_MONEY(iVar5, false, true, 0, -1, 0))
 							{
@@ -22975,7 +22975,7 @@ int func_364(var uParam0, var uParam1, int iParam2)
 				{
 					if ((func_370() || (func_369() && Global_4268040 > -1)) || (HUD::IS_WARNING_MESSAGE_ACTIVE() && PAD::IS_CONTROL_JUST_PRESSED(2, 202)))
 					{
-						AUDIO::PLAY_SOUND_FRONTEND(-1, "CANCEL", "HUD_FREEMODE_SOUNDSET", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(-1, "CANCEL", "HUD_FREEMODE_SOUNDSET", true);
 						if (!MISC::IS_BIT_SET(uParam0->f_281, 2))
 						{
 							func_432(uParam0, -1, 0);
@@ -23000,7 +23000,7 @@ int func_364(var uParam0, var uParam1, int iParam2)
 					{
 						if ((PAD::IS_CONTROL_PRESSED(2, 172) || PAD::IS_DISABLED_CONTROL_JUST_PRESSED(2, 172)) || func_368(0, 0, 0))
 						{
-							AUDIO::PLAY_SOUND_FRONTEND(-1, "NAV_UP_DOWN", "HUD_FREEMODE_SOUNDSET", 1);
+							AUDIO::PLAY_SOUND_FRONTEND(-1, "NAV_UP_DOWN", "HUD_FREEMODE_SOUNDSET", true);
 							uParam0->f_275 = (uParam0->f_275 - 1);
 							MISC::SET_BIT(&(uParam0->f_281), 4);
 							MISC::CLEAR_BIT(&(uParam0->f_278), 0);
@@ -23015,7 +23015,7 @@ int func_364(var uParam0, var uParam1, int iParam2)
 					{
 						if ((PAD::IS_CONTROL_PRESSED(2, 173) || PAD::IS_DISABLED_CONTROL_JUST_PRESSED(2, 173)) || func_366(0, 0, 0))
 						{
-							AUDIO::PLAY_SOUND_FRONTEND(-1, "NAV_UP_DOWN", "HUD_FREEMODE_SOUNDSET", 1);
+							AUDIO::PLAY_SOUND_FRONTEND(-1, "NAV_UP_DOWN", "HUD_FREEMODE_SOUNDSET", true);
 							uParam0->f_275++;
 							MISC::SET_BIT(&(uParam0->f_281), 5);
 							MISC::CLEAR_BIT(&(uParam0->f_278), 0);
@@ -23033,7 +23033,7 @@ int func_364(var uParam0, var uParam1, int iParam2)
 					{
 						uParam0->f_275 = Global_4268040;
 						func_365(uParam0->f_275, 1, 1);
-						AUDIO::PLAY_SOUND_FRONTEND(-1, "SELECT", "HUD_FREEMODE_SOUNDSET", 1);
+						AUDIO::PLAY_SOUND_FRONTEND(-1, "SELECT", "HUD_FREEMODE_SOUNDSET", true);
 					}
 				}
 				if (uParam0->f_275 >= uParam0->f_277)
@@ -23204,7 +23204,7 @@ void func_371(bool bParam0, int iParam1)
 	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
-		HUD::CLEAR_ADDITIONAL_TEXT(9, 0);
+		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
 		Global_17411.f_5628[iVar0] = 0;
 	}
 	if (Global_17411.f_5614[iVar0])
@@ -23228,16 +23228,16 @@ void func_371(bool bParam0, int iParam1)
 	}
 }
 
-void func_372(var uParam0)
+void func_372(int iParam0)
 {
-	if (uParam0->f_9 != 0)
+	if (iParam0->f_9 != 0)
 	{
-		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(*uParam0))
+		if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(*iParam0))
 		{
-			GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(uParam0);
+			GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(iParam0);
 		}
-		*uParam0 = 0;
-		uParam0->f_9 = 0;
+		*iParam0 = 0;
+		iParam0->f_9 = 0;
 	}
 }
 
@@ -25222,7 +25222,7 @@ void func_385(int iParam0, int iParam1, int iParam2, int iParam3, bool bParam4, 
 				}
 				else if (Global_17411.f_5039[iVar1] != 32)
 				{
-					StringCopy(&(Global_17411.f_4771[iVar1 /*16*/]), PAD::_0x80C2FD58D720C801(2, Global_17411.f_5039[iVar1], true), 64);
+					StringCopy(&(Global_17411.f_4771[iVar1 /*16*/]), PAD::GET_CONTROL_GROUP_INSTRUCTIONAL_BUTTON(2, Global_17411.f_5039[iVar1], true), 64);
 				}
 				iVar1++;
 			}
@@ -25604,7 +25604,7 @@ var func_395(int iParam0, bool bParam1)
 		if (MISC::GET_HASH_KEY(&(Global_17411.f_6997[iParam0 /*16*/])) == joaat("CREW_LOGO"))
 		{
 			Var2 = { func_397(PLAYER::PLAYER_ID()) };
-			if (NETWORK::_0x5835D9CD92E83184(&Var2, &uVar1))
+			if (NETWORK::NETWORK_CLAN_GET_EMBLEM_TXD_NAME(&Var2, &uVar1))
 			{
 				return func_396(&uVar1);
 			}
@@ -25861,7 +25861,7 @@ char* func_398(int iParam0)
 		if (MISC::GET_HASH_KEY(&(Global_17411.f_6020[iParam0 /*16*/])) == joaat("CREW_LOGO"))
 		{
 			Var1 = { func_397(PLAYER::PLAYER_ID()) };
-			NETWORK::_0x5835D9CD92E83184(&Var1, &uVar0);
+			NETWORK::NETWORK_CLAN_GET_EMBLEM_TXD_NAME(&Var1, &uVar0);
 			return func_396(&uVar0);
 		}
 		else
@@ -27066,7 +27066,7 @@ bool func_426(char* sParam0, int iParam1, bool bParam2)
 			bVar1 = false;
 		}
 	}
-	GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("CommonMenu", 0);
+	GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("CommonMenu", false);
 	Global_17411.f_5614[iVar0] = 1;
 	if (!GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED("CommonMenu"))
 	{
@@ -27074,7 +27074,7 @@ bool func_426(char* sParam0, int iParam1, bool bParam2)
 	}
 	if (bParam2)
 	{
-		GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("MPShopSale", 0);
+		GRAPHICS::REQUEST_STREAMED_TEXTURE_DICT("MPShopSale", false);
 		Global_17411.f_5621[iVar0] = 1;
 		if (!GRAPHICS::HAS_STREAMED_TEXTURE_DICT_LOADED("MPShopSale"))
 		{
@@ -27175,8 +27175,8 @@ void func_428(bool bParam0, bool bParam1, bool bParam2, bool bParam3)
 	GRAPHICS::SET_SCRIPT_GFX_ALIGN_PARAMS(-0.05f, -0.05f, 0f, 0f);
 	fVar4 = fVar0;
 	fVar5 = fVar1;
-	GRAPHICS::_0x6DD8F5AA635EB4B2(fVar0, fVar1, &fVar0, &fVar1);
-	GRAPHICS::_0x6DD8F5AA635EB4B2(fVar2, fVar3, &fVar2, &fVar3);
+	GRAPHICS::_GET_SCRIPT_GFX_POSITION(fVar0, fVar1, &fVar0, &fVar1);
+	GRAPHICS::_GET_SCRIPT_GFX_POSITION(fVar2, fVar3, &fVar2, &fVar3);
 	GRAPHICS::RESET_SCRIPT_GFX_ALIGN();
 	func_430();
 	if (Global_4268040 == -6)
@@ -27389,7 +27389,7 @@ void func_438(int iParam0)
 			{
 				if (!MISC::IS_BIT_SET(iLocal_686, 0))
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_523("SVM_MIS_TI", "SVM_MIS_FL", "WHOUSE_CONF", "", 0, 0, -1);
 					MISC::SET_BIT(&iLocal_686, 0);
 				}
@@ -27409,7 +27409,7 @@ void func_438(int iParam0)
 		case 6999:
 			if (iLocal_863 != 6)
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 				*iParam0 = 1;
 				return;
 			}
@@ -27418,7 +27418,7 @@ void func_438(int iParam0)
 			{
 				if (!MISC::IS_BIT_SET(iLocal_686, 0))
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_523("SVM_MIS_TI", "SVM_MIS_FL", "", "WHOUSE_CONF", 0, 0, -1);
 					MISC::SET_BIT(&iLocal_686, 0);
 				}
@@ -27428,7 +27428,7 @@ void func_438(int iParam0)
 			{
 				if (!MISC::IS_BIT_SET(iLocal_686, 0))
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_523("SVM_MIS_TI", "SVM_MIS_FNA", "", "WHOUSE_CONF", 0, 0, -1);
 					MISC::SET_BIT(&iLocal_686, 0);
 				}
@@ -27438,7 +27438,7 @@ void func_438(int iParam0)
 			{
 				if (!MISC::IS_BIT_SET(iLocal_686, 0))
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 					func_523("SVM_MIS_TI", "SVM_MIS_FL", "", "WHOUSE_CONF", 0, 0, -1);
 					MISC::SET_BIT(&iLocal_686, 0);
 				}
@@ -27447,7 +27447,7 @@ void func_438(int iParam0)
 			else
 			{
 				func_523("SVM_MIS_TI", "SVM_MIS_L", "WHOUSE_CONF", "WHOUSE_CANC", 1, 0, -1);
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Navigate", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Navigate", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 			}
 			iLocal_685 = 1;
 			break;
@@ -27588,7 +27588,7 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 	}
 	if (!CAM::DOES_CAM_EXIST(*uParam0))
 	{
-		*uParam0 = CAM::CREATE_CAM("DEFAULT_SCRIPTED_CAMERA", 0);
+		*uParam0 = CAM::CREATE_CAM("DEFAULT_SCRIPTED_CAMERA", false);
 	}
 	vVar1 = { vParam5 };
 	fVar2 = -1f;
@@ -27624,7 +27624,7 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 			{
 				if (ENTITY::DOES_ENTITY_EXIST(func_476()) && !ENTITY::IS_ENTITY_DEAD(func_476(), 0))
 				{
-					vVar0 = { ENTITY::GET_ENTITY_COORDS(func_476(), 1) };
+					vVar0 = { ENTITY::GET_ENTITY_COORDS(func_476(), true) };
 					vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(func_476()) };
 					if (func_475(Global_1589819[PLAYER::PLAYER_ID() /*818*/].f_682, 1, 0))
 					{
@@ -27634,13 +27634,13 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 				}
 				else
 				{
-					vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1) };
+					vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 					vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID()) };
 				}
 			}
 			else
 			{
-				vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1) };
+				vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 				vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID()) };
 			}
 			if ((func_474(PLAYER::PLAYER_ID()) || func_473(PLAYER::PLAYER_ID())) && func_472())
@@ -27674,7 +27674,7 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 	{
 		if (func_470(PLAYER::PLAYER_ID()))
 		{
-			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1) };
+			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 			vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID()) };
 			vVar0.z = (vVar0.z + 0.4f);
 			fVar2 = CAM::_0x80EC114669DAEFF4();
@@ -27728,10 +27728,10 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 			{
 				func_687(PLAYER::PLAYER_ID(), 0, 4, 0);
 				WEAPON::SET_CURRENT_PED_WEAPON(PLAYER::PLAYER_PED_ID(), joaat("WEAPON_UNARMED"), true);
-				ENTITY::SET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), -209.434f, 305.016f, 95.9464f, 1, 0, 0, 1);
+				ENTITY::SET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), -209.434f, 305.016f, 95.9464f, 1, false, 0, 1);
 				ENTITY::SET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID(), 12.5f);
 				TASK::TASK_GO_STRAIGHT_TO_COORD(PLAYER::PLAYER_PED_ID(), -209.867f, 306.969f, 95.9464f, 1f, 20000, 1193033728, 0.1f);
-				PED::FORCE_PED_MOTION_STATE(PLAYER::PLAYER_PED_ID(), -668482597, 0, 0, 0);
+				PED::FORCE_PED_MOTION_STATE(PLAYER::PLAYER_PED_ID(), -668482597, false, 0, 0);
 				PED::_0x2208438012482A1A(PLAYER::PLAYER_PED_ID(), 0, 0);
 			}
 		}
@@ -27745,7 +27745,7 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 			func_484(0);
 		}
 	}
-	CAM::RENDER_SCRIPT_CAMS(true, 0, 3000, 1, 0, 0);
+	CAM::RENDER_SCRIPT_CAMS(true, false, 3000, 1, 0, 0);
 	if (!func_455())
 	{
 		func_452(0);
@@ -27779,7 +27779,7 @@ void func_445(bool bParam0, bool bParam1)
 		{
 			if (ENTITY::IS_ENTITY_ATTACHED(PLAYER::PLAYER_PED_ID()))
 			{
-				ENTITY::DETACH_ENTITY(PLAYER::PLAYER_PED_ID(), 1, 1);
+				ENTITY::DETACH_ENTITY(PLAYER::PLAYER_PED_ID(), 1, true);
 			}
 		}
 	}
@@ -30017,7 +30017,7 @@ void func_495(var uParam0, int iParam1, int iParam2, int iParam3, bool bParam4)
 			CAM::SET_CAM_ACTIVE(*uParam0, false);
 			if (bParam4)
 			{
-				CAM::RENDER_SCRIPT_CAMS(false, 0, 3000, 1, 1, 0);
+				CAM::RENDER_SCRIPT_CAMS(false, false, 3000, 1, 1, 0);
 			}
 			CAM::DESTROY_CAM(*uParam0, 0);
 			*uParam0 = 0;
@@ -30369,7 +30369,7 @@ void func_525(bool bParam0, bool bParam1)
 	func_526();
 	if (bParam0)
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Cancel", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 	}
 	if (bParam1)
 	{
@@ -30413,7 +30413,7 @@ void func_528()
 			iLocal_684 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
 			MISC::CLEAR_BIT(&iLocal_686, 17);
 		}
-		else if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_684))
+		else if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_684))
 		{
 			if (GRAPHICS::_GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_BOOL(iLocal_684))
 			{
@@ -30468,7 +30468,7 @@ void func_531()
 			MISC::SET_BIT(&iLocal_686, 12);
 		}
 	}
-	else if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_683))
+	else if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_683))
 	{
 		iLocal_863 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(iLocal_683);
 		MISC::CLEAR_BIT(&iLocal_686, 12);
@@ -30505,7 +30505,7 @@ void func_533()
 			}
 			else if (PAD::IS_CONTROL_JUST_PRESSED(2, 202) || (PAD::IS_CONTROL_JUST_PRESSED(2, 238) && !HUD::IS_WARNING_MESSAGE_ACTIVE()))
 			{
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "BACK", "HUD_FRONTEND_DEFAULT_SOUNDSET", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "BACK", "HUD_FRONTEND_DEFAULT_SOUNDSET", true);
 				Global_68972 = 0;
 				Global_68974 = 0;
 				MISC::CLEAR_BIT(&iLocal_686, 18);
@@ -30810,9 +30810,9 @@ void func_538()
 	}
 	if (PAD::IS_CONTROL_JUST_PRESSED(2, 201) || PAD::IS_CONTROL_JUST_PRESSED(2, 237))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Mouse_Click", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Mouse_Click", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", true);
 	}
-	if (iLocal_685 == 0 && GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_681))
+	if (iLocal_685 == 0 && GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_681))
 	{
 		iVar0 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(iLocal_681);
 		if (iVar0 > 0 && iVar0 < 5)
@@ -30820,7 +30820,7 @@ void func_538()
 			iLocal_867 = iVar0;
 			iLocal_866 = func_539(iVar0);
 			iLocal_685 = 3011;
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Sell", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Sell", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", true);
 		}
 		else if (iVar0 == 5)
 		{
@@ -30829,18 +30829,18 @@ void func_538()
 				iLocal_685 = 1;
 				MISC::CLEAR_BIT(&iLocal_686, 8);
 				func_525(0, 0);
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Error", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Error", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", true);
 			}
 			else
 			{
 				iLocal_685 = 3012;
-				AUDIO::PLAY_SOUND_FRONTEND(-1, "Confirm", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", 1);
+				AUDIO::PLAY_SOUND_FRONTEND(-1, "Confirm", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", true);
 			}
 		}
 		else if (iVar0 == 6)
 		{
 			func_525(0, 0);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Cancel", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Cancel", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", true);
 			iLocal_866 = 0;
 			iLocal_867 = 0;
 		}
@@ -30853,13 +30853,13 @@ void func_538()
 	{
 		if (!func_307(iLocal_862))
 		{
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Popup_Confirm_Fail", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 			iLocal_866 = 0;
 			iLocal_867 = 0;
 			iLocal_861 = func_60(PLAYER::PLAYER_ID(), 168, 0);
 			sVar1 = func_303(0, iLocal_862);
 			func_523("MP_WH_SELL", sVar1, "WHOUSE_CONF", "", 0, 0, -1);
-			AUDIO::PLAY_SOUND_FRONTEND(-1, "Error", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", 1);
+			AUDIO::PLAY_SOUND_FRONTEND(-1, "Error", "GTAO_Exec_SecuroServ_Warehouse_PC_Sounds", true);
 			MISC::SET_BIT(&iLocal_686, 8);
 		}
 		else
@@ -32578,7 +32578,7 @@ void func_582()
 		HUD::SHOW_HUD_COMPONENT_THIS_FRAME(13);
 		HUD::SHOW_HUD_COMPONENT_THIS_FRAME(3);
 	}
-	HUD::_HIDE_HUD_NOTIFICATIONS_THIS_FRAME();
+	HUD::THEFEED_HIDE_THIS_FRAME();
 	PAD::ENABLE_CONTROL_ACTION(2, 199, 1);
 	GRAPHICS::SET_SCRIPT_GFX_DRAW_ORDER(1);
 	func_394(0f, 0f, 1f, 1f, 0, 0, 0, 255);
@@ -32609,7 +32609,7 @@ void func_583(bool bParam0)
 
 void func_584()
 {
-	RECORDING::_0xEB2D525B57F42B40();
+	RECORDING::_STOP_RECORDING_THIS_FRAME();
 	func_585();
 }
 
@@ -32762,7 +32762,7 @@ void func_595()
 	{
 		Global_68811 = 1;
 		AUDIO::_0xA5F377B175A699C5(1000);
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Logout", "GTAO_Exec_SecuroServ_Computer_Sounds", 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Logout", "GTAO_Exec_SecuroServ_Computer_Sounds", true);
 	}
 	else
 	{
@@ -32770,7 +32770,7 @@ void func_595()
 	}
 	AUDIO::STOP_AUDIO_SCENE("GTAO_Computer_Screen_Active_Scene");
 	func_597();
-	HUD::_0xE1CD1E48E025E661();
+	HUD::THEFEED_RESUME();
 	func_596(0);
 	if (MISC::IS_PC_VERSION())
 	{
@@ -32819,11 +32819,11 @@ float func_599(int iParam0, vector3 vParam1, bool bParam2)
 	
 	if (!ENTITY::IS_ENTITY_DEAD(iParam0, 0))
 	{
-		vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, 1) };
+		vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, true) };
 	}
 	else
 	{
-		vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, 0) };
+		vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, false) };
 	}
 	return MISC::GET_DISTANCE_BETWEEN_COORDS(vVar0, vParam1, bParam2);
 }
@@ -33757,12 +33757,12 @@ void func_631(int iParam0, int iParam1, int iParam2, var uParam3, bool bParam4)
 
 void func_632(int iParam0, var uParam1, var uParam2, bool bParam3)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = func_633(iParam0);
+	iVar0 = func_633(iParam0);
 	uVar1 = *uParam2;
-	if (!NETWORK::NETWORK_ACCESS_TUNABLE_FLOAT_HASH(uVar0, uParam1, uParam2))
+	if (!NETWORK::NETWORK_ACCESS_TUNABLE_FLOAT_HASH(iVar0, uParam1, uParam2))
 	{
 		if (bParam3)
 		{
@@ -33772,7 +33772,7 @@ void func_632(int iParam0, var uParam1, var uParam2, bool bParam3)
 	}
 	else
 	{
-		NETWORK::_NETWORK_REGISTER_TUNABLE_FLOAT_HASH(uVar0, uParam1, uParam2);
+		NETWORK::_NETWORK_REGISTER_TUNABLE_FLOAT_HASH(iVar0, uParam1, uParam2);
 	}
 	if (bParam3)
 	{
@@ -33909,11 +33909,11 @@ int func_633(int iParam0)
 	return 0;
 }
 
-int func_634(var uParam0)
+int func_634(int iParam0)
 {
 	int iVar0;
 	
-	iVar0 = NETWORK::NETWORK_GET_CONTENT_MODIFIER_LIST_ID(uParam0);
+	iVar0 = NETWORK::NETWORK_GET_CONTENT_MODIFIER_LIST_ID(iParam0);
 	if (iVar0 >= 0)
 	{
 		return iVar0 + 28;
@@ -34503,7 +34503,7 @@ int func_660(int iParam0, var uParam1)
 		}
 		if ((!NETWORK::_0x2D5DC831176D0114(iParam0) && uParam1->f_1 == 0) || uParam1->f_1 == -1)
 		{
-			uParam1->f_1 = NETWORK::_0x5E0165278F6339EE(iParam0);
+			uParam1->f_1 = NETWORK::UGC_REQUEST_CACHED_DESCRIPTION(iParam0);
 		}
 		else if (NETWORK::_0xEBFA8D50ADDC54C4(iParam0))
 		{
@@ -35069,7 +35069,7 @@ void func_687(int iParam0, bool bParam1, int iParam2, int iParam3)
 					{
 						ENTITY::FREEZE_ENTITY_POSITION(iVar25, false);
 					}
-					ENTITY::_SET_ENTITY_SOMETHING(iVar25, 1);
+					ENTITY::_SET_ENTITY_SOMETHING(iVar25, true);
 				}
 				else if (!bVar20)
 				{
@@ -35123,7 +35123,7 @@ void func_687(int iParam0, bool bParam1, int iParam2, int iParam3)
 						}
 						if (!bVar15)
 						{
-							ENTITY::_SET_ENTITY_SOMETHING(iVar25, 1);
+							ENTITY::_SET_ENTITY_SOMETHING(iVar25, true);
 						}
 					}
 					if (func_688(Global_4456448.f_161209))

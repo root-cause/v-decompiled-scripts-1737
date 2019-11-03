@@ -591,7 +591,7 @@ void func_16()
 					iLocal_32 = func_29();
 					Global_25997 = iLocal_32;
 					SYSTEM::SETTIMERB(0);
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "UNDER_THE_BRIDGE", "HUD_AWARDS", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "UNDER_THE_BRIDGE", "HUD_AWARDS", true);
 				}
 				iLocal_28 = 1;
 			}

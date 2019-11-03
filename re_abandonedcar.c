@@ -585,7 +585,7 @@ void func_4()
 	}
 	else
 	{
-		VEHICLE::_UNK_SET_DISABLE_RANDOM_TRAINS(true);
+		VEHICLE::SET_DISABLE_RANDOM_TRAINS_THIS_FRAME(true);
 		switch (iLocal_260)
 		{
 			case 0:
@@ -31879,7 +31879,7 @@ void func_211()
 
 void func_212()
 {
-	RECORDING::_0xEB2D525B57F42B40();
+	RECORDING::_STOP_RECORDING_THIS_FRAME();
 	func_213();
 }
 
@@ -33929,7 +33929,7 @@ void func_260(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}

@@ -139,7 +139,7 @@ void func_1()
 				{
 					if (vLocal_58[iVar0 /*3*/].f_2)
 					{
-						if (SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 0), ENTITY::GET_ENTITY_COORDS(iVar2, 1)) <= 22500f)
+						if (SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), ENTITY::GET_ENTITY_COORDS(iVar2, true)) <= 22500f)
 						{
 							if (!iLocal_56)
 							{
@@ -499,9 +499,9 @@ int func_13()
 					{
 						return func_12(iVar1);
 					}
-					vVar4 = { ENTITY::GET_ENTITY_COORDS(func_12(iVar1), 0) };
-					vVar5 = { ENTITY::GET_ENTITY_COORDS(iVar0, 0) };
-					vVar6 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 0) };
+					vVar4 = { ENTITY::GET_ENTITY_COORDS(func_12(iVar1), false) };
+					vVar5 = { ENTITY::GET_ENTITY_COORDS(iVar0, false) };
+					vVar6 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
 					fVar7 = SYSTEM::VDIST(vVar4, vVar6);
 					fVar8 = SYSTEM::VDIST(vVar6, vVar5);
 					if (fVar7 > fVar8)

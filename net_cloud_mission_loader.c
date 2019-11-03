@@ -3869,7 +3869,7 @@ int func_134(var uParam0, char* sParam1, int iParam2, bool bParam3, bool bParam4
 			}
 			else if ((uParam0->f_21 != -1 && uParam0->f_22 != -1) && iParam2 == 0)
 			{
-				uParam0->f_5 = NETWORK::_UGC_REQUEST_CLOUD_FILE_BY_CONTENT_ID(func_98(iParam2), sParam1, 0, uParam0->f_21, uParam0->f_22);
+				uParam0->f_5 = NETWORK::UGC_REQUEST_CONTENT_DATA_FROM_PARAMS(func_98(iParam2), sParam1, 0, uParam0->f_21, uParam0->f_22);
 				DATAFILE::DATAFILE_WATCH_REQUEST_ID(uParam0->f_5);
 				func_101(uParam0, 4);
 			}
@@ -3913,7 +3913,7 @@ int func_134(var uParam0, char* sParam1, int iParam2, bool bParam3, bool bParam4
 					}
 					if (iParam2 == 0)
 					{
-						uParam0->f_5 = NETWORK::_UGC_REQUEST_CLOUD_FILE(0, 0);
+						uParam0->f_5 = NETWORK::UGC_REQUEST_CONTENT_DATA_FROM_INDEX(0, 0);
 						DATAFILE::DATAFILE_WATCH_REQUEST_ID(uParam0->f_5);
 						func_101(uParam0, 4);
 					}
@@ -4310,7 +4310,7 @@ int func_134(var uParam0, char* sParam1, int iParam2, bool bParam3, bool bParam4
 				}
 				if (NETWORK::_0xE0A6138401BCB837() > 0)
 				{
-					uParam0->f_5 = NETWORK::_UGC_REQUEST_CLOUD_FILE(0, 0);
+					uParam0->f_5 = NETWORK::UGC_REQUEST_CONTENT_DATA_FROM_INDEX(0, 0);
 					DATAFILE::DATAFILE_WATCH_REQUEST_ID(uParam0->f_5);
 					func_101(uParam0, 22);
 				}
@@ -31714,7 +31714,7 @@ void func_280(int iParam0)
 	iVar0 = 0;
 	while (iVar0 <= 9)
 	{
-		Global_4456448.f_162445.f_1722[iParam0 /*11*/][iVar0] = OBJECT::_GET_WEAPON_HASH_FROM_PICKUP(func_281(iParam0, iVar0));
+		Global_4456448.f_162445.f_1722[iParam0 /*11*/][iVar0] = OBJECT::GET_WEAPON_TYPE_FROM_PICKUP_TYPE(func_281(iParam0, iVar0));
 		Global_4456448.f_162445.f_1954[iParam0 /*11*/][iVar0] = 0;
 		Global_4456448.f_162445.f_2186[iParam0 /*11*/][iVar0] = 0;
 		iVar0++;

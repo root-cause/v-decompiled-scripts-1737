@@ -771,7 +771,7 @@ void func_13(var uParam0, int iParam1, bool bParam2, float fParam3)
 				func_14(uParam0->f_3);
 			}
 			MISC::CLEAR_AREA(uParam0->f_3, 2.5f, 0, 0, 0, false);
-			*uParam0 = OBJECT::CREATE_OBJECT(iParam1, uParam0->f_3, 1, true, false);
+			*uParam0 = OBJECT::CREATE_OBJECT(iParam1, uParam0->f_3, true, true, false);
 			uParam0->f_10 = 1;
 			STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(iParam1);
 		}
@@ -818,7 +818,7 @@ void func_17(int iParam0)
 	{
 		if (ENTITY::IS_ENTITY_ATTACHED_TO_ANY_PED(*iParam0))
 		{
-			ENTITY::DETACH_ENTITY(*iParam0, 1, 1);
+			ENTITY::DETACH_ENTITY(*iParam0, 1, true);
 		}
 		OBJECT::DELETE_OBJECT(iParam0);
 	}
@@ -1961,7 +1961,7 @@ void func_57(char* sParam0)
 						Global_106565.f_14135[iVar0 /*104*/].f_28 = 0;
 						Global_106565.f_14135[iVar0 /*104*/].f_29 = 0;
 					}
-					HUD::_REMOVE_NOTIFICATION(Global_106565.f_14135[iVar0 /*104*/].f_16);
+					HUD::THEFEED_REMOVE_ITEM(Global_106565.f_14135[iVar0 /*104*/].f_16);
 				}
 			}
 		}
@@ -2313,7 +2313,7 @@ void func_65(int iParam0, bool bParam1)
 	{
 		if (ENTITY::IS_ENTITY_ATTACHED_TO_ANY_PED(*iParam0))
 		{
-			ENTITY::DETACH_ENTITY(*iParam0, 1, 1);
+			ENTITY::DETACH_ENTITY(*iParam0, 1, true);
 		}
 		if (!bParam1)
 		{

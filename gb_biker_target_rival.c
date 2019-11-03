@@ -298,7 +298,7 @@ void func_13(int iParam0, bool bParam1, int iParam2)
 		{
 			MISC::SET_BIT(&(Global_2416063.f_367), iVar0);
 			MISC::CLEAR_BIT(&(Global_2416063.f_372), iVar0);
-			HUD::SET_BLIP_FLASHES(Global_2416063[iVar0], 1);
+			HUD::SET_BLIP_FLASHES(Global_2416063[iVar0], true);
 			HUD::SET_BLIP_FLASH_INTERVAL(Global_2416063[iVar0], 250);
 			func_14(iParam0);
 			if (iParam2 < 0)
@@ -331,7 +331,7 @@ void func_13(int iParam0, bool bParam1, int iParam2)
 		if (HUD::DOES_BLIP_EXIST(Global_2416063[iVar0]))
 		{
 			func_14(iParam0);
-			HUD::SET_BLIP_FLASHES(Global_2416063[iVar0], 0);
+			HUD::SET_BLIP_FLASHES(Global_2416063[iVar0], false);
 		}
 	}
 }

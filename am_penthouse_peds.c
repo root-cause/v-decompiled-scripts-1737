@@ -171,7 +171,7 @@ void func_5(var uParam0)
 	char* sVar1;
 	float fVar2;
 	int iVar3;
-	var uVar4;
+	int iVar4;
 	int iVar5[4];
 	int iVar6;
 	int iVar7;
@@ -186,7 +186,7 @@ void func_5(var uParam0)
 	{
 		if (STREAMING::HAS_ANIM_DICT_LOADED(sVar0))
 		{
-			TASK::OPEN_SEQUENCE_TASK(&uVar4);
+			TASK::OPEN_SEQUENCE_TASK(&iVar4);
 			if (!func_7(uParam0))
 			{
 				if (func_6(uParam0))
@@ -238,10 +238,10 @@ void func_5(var uParam0)
 					iVar8++;
 				}
 			}
-			TASK::SET_SEQUENCE_TO_REPEAT(uVar4, 1);
-			TASK::CLOSE_SEQUENCE_TASK(uVar4);
-			TASK::TASK_PERFORM_SEQUENCE(*uParam0, uVar4);
-			TASK::CLEAR_SEQUENCE_TASK(&uVar4);
+			TASK::SET_SEQUENCE_TO_REPEAT(iVar4, 1);
+			TASK::CLOSE_SEQUENCE_TASK(iVar4);
+			TASK::TASK_PERFORM_SEQUENCE(*uParam0, iVar4);
+			TASK::CLEAR_SEQUENCE_TASK(&iVar4);
 		}
 	}
 }
@@ -458,7 +458,7 @@ void func_11(var uParam0)
 				{
 					if (!ENTITY::DOES_ENTITY_EXIST(uParam0->f_1))
 					{
-						uParam0->f_1 = OBJECT::CREATE_OBJECT(func_15(uParam0), PED::GET_PED_BONE_COORDS(*uParam0, func_14(uParam0), 0f, 0f, 0f), 0, false, 0);
+						uParam0->f_1 = OBJECT::CREATE_OBJECT(func_15(uParam0), PED::GET_PED_BONE_COORDS(*uParam0, func_14(uParam0), 0f, 0f, 0f), false, false, false);
 						ENTITY::ATTACH_ENTITY_TO_ENTITY(uParam0->f_1, *uParam0, PED::GET_PED_BONE_INDEX(*uParam0, func_14(uParam0)), func_13(uParam0), 0f, 0f, 0f, 1, 1, 0, 0, 2, 1);
 					}
 				}
@@ -660,11 +660,11 @@ int func_16(var uParam0)
 
 void func_17(var uParam0)
 {
-	ENTITY::SET_ENTITY_CAN_BE_DAMAGED(*uParam0, 0);
+	ENTITY::SET_ENTITY_CAN_BE_DAMAGED(*uParam0, false);
 	PED::SET_PED_AS_ENEMY(*uParam0, 0);
 	WEAPON::SET_CURRENT_PED_WEAPON(*uParam0, joaat("WEAPON_UNARMED"), true);
-	PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(*uParam0, 1);
-	PED::SET_PED_RESET_FLAG(*uParam0, 249, 1);
+	PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(*uParam0, true);
+	PED::SET_PED_RESET_FLAG(*uParam0, 249, true);
 	PED::SET_PED_CONFIG_FLAG(*uParam0, 185, true);
 	PED::SET_PED_CONFIG_FLAG(*uParam0, 108, true);
 	PED::SET_PED_CONFIG_FLAG(*uParam0, 106, true);

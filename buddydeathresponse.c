@@ -46,7 +46,7 @@ void __EntryFunction__()
 void func_1()
 {
 	vector3 vVar0;
-	var uVar1;
+	int iVar1;
 	
 	while (!func_8(&iLocal_20))
 	{
@@ -61,9 +61,9 @@ void func_1()
 			{
 				TASK::CLEAR_PED_TASKS(iLocal_20);
 			}
-			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 0) };
-			PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_20, 1);
-			TASK::OPEN_SEQUENCE_TASK(&uVar1);
+			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false) };
+			PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iLocal_20, true);
+			TASK::OPEN_SEQUENCE_TASK(&iVar1);
 			if (!PED::IS_PED_IN_ANY_VEHICLE(iLocal_20, 0))
 			{
 				if (!PED::IS_PED_IN_COMBAT(iLocal_20, 0) && !PED::IS_PED_IN_ANY_VEHICLE(iLocal_20, 0))
@@ -72,8 +72,8 @@ void func_1()
 				}
 			}
 			TASK::TASK_LOOK_AT_COORD(0, vVar0, 6000, 0, 2);
-			TASK::CLOSE_SEQUENCE_TASK(uVar1);
-			TASK::TASK_PERFORM_SEQUENCE(iLocal_20, uVar1);
+			TASK::CLOSE_SEQUENCE_TASK(iVar1);
+			TASK::TASK_PERFORM_SEQUENCE(iLocal_20, iVar1);
 		}
 		func_2(iLocal_20);
 	}
@@ -85,7 +85,7 @@ void func_1()
 	{
 		if (!PED::IS_PED_INJURED(iLocal_20))
 		{
-			PED::SET_PED_KEEP_TASK(iLocal_20, 1);
+			PED::SET_PED_KEEP_TASK(iLocal_20, true);
 		}
 		ENTITY::SET_PED_AS_NO_LONGER_NEEDED(&iLocal_20);
 	}
@@ -327,7 +327,7 @@ int func_8(var uParam0)
 				{
 					if (PED::IS_PED_IN_ANY_VEHICLE(Global_91081[iLocal_18], 0) || !ENTITY::IS_ENTITY_ATTACHED(Global_91081[iLocal_18]))
 					{
-						if (MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(Global_91081[iLocal_18], 1), ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 0), true) < 10f)
+						if (MISC::GET_DISTANCE_BETWEEN_COORDS(ENTITY::GET_ENTITY_COORDS(Global_91081[iLocal_18], true), ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), true) < 10f)
 						{
 							iLocal_19 = func_5(Global_91081[iLocal_18]);
 							if ((iLocal_19 == 0 || iLocal_19 == 2) || iLocal_19 == 1)

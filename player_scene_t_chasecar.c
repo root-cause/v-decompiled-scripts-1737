@@ -3087,7 +3087,7 @@ int func_75()
 						TASK::TASK_VEHICLE_MISSION(iLocal_447[iVar1], iLocal_450[iVar1], 0, 15, 20f, iLocal_266, 0.5f, 2f, 1);
 						if (PED::GET_PED_TYPE(iLocal_447[iVar1]) == 6)
 						{
-							VEHICLE::SET_VEHICLE_SIREN(iLocal_450[iVar1], 1);
+							VEHICLE::SET_VEHICLE_SIREN(iLocal_450[iVar1], true);
 						}
 					}
 				}
@@ -7734,7 +7734,7 @@ void func_94()
 		iVar0++;
 	}
 	func_63(&uLocal_434, 0, 0);
-	MISC::SET_GAME_PAUSED(0);
+	MISC::SET_GAME_PAUSED(false);
 	SCRIPT::TERMINATE_THIS_THREAD();
 }
 

@@ -1873,7 +1873,7 @@ void func_37(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}
@@ -2397,11 +2397,11 @@ int func_50()
 
 int func_51(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_49(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_49(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -6108,7 +6108,7 @@ void func_105(int iParam0)
 		StringCopy(&cVar1, "SPRC_", 24);
 		StringIntConCat(&cVar1, iParam0, 24);
 		StringConCat(&cVar1, "_STR", 24);
-		NETWORK::_0x3E200C2BCF4164EB(9, &cVar1);
+		NETWORK::NETWORK_SET_RICH_PRESENCE_STRING(9, &cVar1);
 	}
 }
 
@@ -7390,8 +7390,8 @@ void func_132(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4
 		PLAYER::SET_ALL_RANDOM_PEDS_FLEE(PLAYER::PLAYER_ID(), 1);
 		PLAYER::SET_POLICE_IGNORE_PLAYER(PLAYER::PLAYER_ID(), 1);
 		func_140(1);
-		HUD::_0xA8FDB297A8D25FBA();
-		HUD::_0xFDB423997FA30340();
+		HUD::THEFEED_FLUSH_QUEUE();
+		HUD::THEFEED_PAUSE();
 		if (Global_14553.f_1 > 3)
 		{
 			if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
@@ -7412,7 +7412,7 @@ void func_132(bool bParam0, bool bParam1, int iParam2, int iParam3, bool bParam4
 	else
 	{
 		func_140(0);
-		HUD::_0xE1CD1E48E025E661();
+		HUD::THEFEED_RESUME();
 		Global_56500 = 0;
 		if (bParam1)
 		{
@@ -10830,7 +10830,7 @@ int func_236(int iParam0, float fParam1, bool bParam2, bool bParam3)
 	vVar1.z = (vVar1.z + fParam1);
 	if (bParam2)
 	{
-		if (((MISC::_0x34318593248C8FB2(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_GRENADE"), fParam1, 1) || MISC::_0x34318593248C8FB2(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_MOLOTOV"), fParam1, 1)) || MISC::_0x34318593248C8FB2(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_SMOKEGRENADE"), fParam1, 1)) || MISC::_0x34318593248C8FB2(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_STICKYBOMB"), 5f, 1))
+		if (((MISC::_IS_PROJECTILE_TYPE_IN_RADIUS(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_GRENADE"), fParam1, 1) || MISC::_IS_PROJECTILE_TYPE_IN_RADIUS(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_MOLOTOV"), fParam1, 1)) || MISC::_IS_PROJECTILE_TYPE_IN_RADIUS(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_SMOKEGRENADE"), fParam1, 1)) || MISC::_IS_PROJECTILE_TYPE_IN_RADIUS(ENTITY::GET_ENTITY_COORDS(iParam0, true), joaat("WEAPON_STICKYBOMB"), 5f, 1))
 		{
 			if (bParam3)
 			{
@@ -10872,7 +10872,7 @@ int func_237(int iParam0, float fParam1)
 	var uVar0;
 	vector3 vVar1;
 	
-	if ((((MISC::_0x82FDE6A57EE4EE44(iParam0, joaat("WEAPON_GRENADE"), fParam1, &vVar1, &uVar0, 0) || MISC::_0x82FDE6A57EE4EE44(iParam0, joaat("WEAPON_SMOKEGRENADE"), fParam1, &vVar1, &uVar0, 0)) || MISC::_0x82FDE6A57EE4EE44(iParam0, joaat("WEAPON_BZGAS"), fParam1, &vVar1, &uVar0, 0)) || MISC::_0x82FDE6A57EE4EE44(iParam0, joaat("WEAPON_STICKYBOMB"), fParam1, &vVar1, &uVar0, 0)) || MISC::_0x82FDE6A57EE4EE44(iParam0, joaat("WEAPON_MOLOTOV"), fParam1, &vVar1, &uVar0, 0))
+	if ((((MISC::_GET_PROJECTILE_NEAR_PED(iParam0, joaat("WEAPON_GRENADE"), fParam1, &vVar1, &uVar0, 0) || MISC::_GET_PROJECTILE_NEAR_PED(iParam0, joaat("WEAPON_SMOKEGRENADE"), fParam1, &vVar1, &uVar0, 0)) || MISC::_GET_PROJECTILE_NEAR_PED(iParam0, joaat("WEAPON_BZGAS"), fParam1, &vVar1, &uVar0, 0)) || MISC::_GET_PROJECTILE_NEAR_PED(iParam0, joaat("WEAPON_STICKYBOMB"), fParam1, &vVar1, &uVar0, 0)) || MISC::_GET_PROJECTILE_NEAR_PED(iParam0, joaat("WEAPON_MOLOTOV"), fParam1, &vVar1, &uVar0, 0))
 	{
 		if (func_238(iParam0, vVar1, 90f, 0))
 		{
@@ -11266,11 +11266,11 @@ int func_251(var uParam0)
 		case 3:
 			if (OBJECT::DOES_OBJECT_OF_TYPE_EXIST_AT_COORDS(-1138.32f, 299.69f, 65.94f, 5f, joaat("prop_lrggate_01c_l"), 0))
 			{
-				OBJECT::SET_STATE_OF_CLOSEST_DOOR_OF_TYPE(joaat("prop_lrggate_01c_l"), -1138.32f, 299.69f, 65.94f, 1, 0f, 0);
+				OBJECT::SET_STATE_OF_CLOSEST_DOOR_OF_TYPE(joaat("prop_lrggate_01c_l"), -1138.32f, 299.69f, 65.94f, true, 0f, 0);
 			}
 			if (OBJECT::DOES_OBJECT_OF_TYPE_EXIST_AT_COORDS(-1137.52f, 297.02f, 65.81f, 5f, joaat("prop_lrggate_01c_r"), 0))
 			{
-				OBJECT::SET_STATE_OF_CLOSEST_DOOR_OF_TYPE(joaat("prop_lrggate_01c_r"), -1137.054f, 295.5856f, 67.18046f, 1, 0f, 0);
+				OBJECT::SET_STATE_OF_CLOSEST_DOOR_OF_TYPE(joaat("prop_lrggate_01c_r"), -1137.054f, 295.5856f, 67.18046f, true, 0f, 0);
 			}
 			iVar1 = 0;
 			while (iVar1 <= (iVar0 - 1))
@@ -11466,8 +11466,8 @@ int func_260(bool bParam0, bool bParam1)
 	iVar0 = 0;
 	if (bParam0)
 	{
-		OBJECT::_SET_DOOR_AJAR_ANGLE(-1502457334, 0f, 0, 0);
-		OBJECT::_SET_DOOR_ACCELERATION_LIMIT(-1502457334, 3, 0, 1);
+		OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(-1502457334, 0f, 0, 0);
+		OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(-1502457334, 3, 0, 1);
 		iVar0++;
 	}
 	else
@@ -11476,8 +11476,8 @@ int func_260(bool bParam0, bool bParam1)
 	}
 	if (bParam1)
 	{
-		OBJECT::_SET_DOOR_AJAR_ANGLE(-1994188940, 0f, 0, 0);
-		OBJECT::_SET_DOOR_ACCELERATION_LIMIT(-1994188940, 3, 0, 1);
+		OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(-1994188940, 0f, 0, 0);
+		OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(-1994188940, 3, 0, 1);
 		iVar0++;
 	}
 	else
@@ -11499,8 +11499,8 @@ int func_261(bool bParam0, bool bParam1)
 	if (bParam0)
 	{
 		ENTITY::CREATE_FORCED_OBJECT(-1107.01f, 289.38f, 64.76f, 5f, joaat("prop_lrggate_01c_l"), 0);
-		OBJECT::_SET_DOOR_AJAR_ANGLE(904342475, 1f, 0, 0);
-		OBJECT::_SET_DOOR_ACCELERATION_LIMIT(904342475, 4, 0, 1);
+		OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(904342475, 1f, 0, 0);
+		OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(904342475, 4, 0, 1);
 		iVar0++;
 	}
 	else
@@ -11510,8 +11510,8 @@ int func_261(bool bParam0, bool bParam1)
 	if (bParam1)
 	{
 		ENTITY::CREATE_FORCED_OBJECT(-1101.62f, 290.36f, 64.76f, 5f, joaat("prop_lrggate_01c_r"), 0);
-		OBJECT::_SET_DOOR_AJAR_ANGLE(-795418380, -0.9f, 0, 0);
-		OBJECT::_SET_DOOR_ACCELERATION_LIMIT(-795418380, 4, 0, 1);
+		OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(-795418380, -0.9f, 0, 0);
+		OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(-795418380, 4, 0, 1);
 		iVar0++;
 	}
 	else
@@ -11813,8 +11813,8 @@ int func_269(bool bParam0, bool bParam1)
 	iVar0 = 0;
 	if (bParam0)
 	{
-		OBJECT::_SET_DOOR_AJAR_ANGLE(904342475, 0f, 0, 0);
-		OBJECT::_SET_DOOR_ACCELERATION_LIMIT(904342475, 4, 0, 1);
+		OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(904342475, 0f, 0, 0);
+		OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(904342475, 4, 0, 1);
 		iVar0++;
 	}
 	else
@@ -11823,8 +11823,8 @@ int func_269(bool bParam0, bool bParam1)
 	}
 	if (bParam1)
 	{
-		OBJECT::_SET_DOOR_AJAR_ANGLE(-795418380, 0f, 0, 0);
-		OBJECT::_SET_DOOR_ACCELERATION_LIMIT(904342475, 4, 0, 1);
+		OBJECT::DOOR_SYSTEM_SET_OPEN_RATIO(-795418380, 0f, 0, 0);
+		OBJECT::DOOR_SYSTEM_SET_DOOR_STATE(904342475, 4, 0, 1);
 		iVar0++;
 	}
 	else

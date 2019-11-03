@@ -139,7 +139,7 @@ void __EntryFunction__()
 				{
 					if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 					{
-						vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1) };
+						vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 						vVar1 = { 1749.71f, 3267.83f, 40.24f };
 						if (func_17(vVar0, vVar1, 75f))
 						{

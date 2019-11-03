@@ -2037,7 +2037,7 @@ void func_41()
 			ENTITY::SET_ENTITY_ROTATION(iLocal_239[iVar0], Vector((fLocal_244 + fLocal_247[iVar0]), 0f, 0f) + vLocal_242[iVar0 /*3*/], 2, 1);
 			if (!MISC::IS_STRING_NULL_OR_EMPTY(&(Local_311[iVar0 /*16*/])))
 			{
-				ENTITY::PLAY_ENTITY_ANIM(iLocal_239[iVar0], &(Local_311[iVar0 /*16*/]), &Local_297, 8f, 1, 0, 0, 0f, 0);
+				ENTITY::PLAY_ENTITY_ANIM(iLocal_239[iVar0], &(Local_311[iVar0 /*16*/]), &Local_297, 8f, true, 0, 0, 0f, 0);
 			}
 		}
 		iVar0++;
@@ -7412,7 +7412,7 @@ void func_52()
 	{
 		PED::REMOVE_GROUP(iLocal_238);
 	}
-	MISC::SET_GAME_PAUSED(0);
+	MISC::SET_GAME_PAUSED(false);
 	SCRIPT::TERMINATE_THIS_THREAD();
 }
 

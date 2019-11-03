@@ -351,7 +351,7 @@ void func_10(int iParam0, var uParam1, var uParam2)
 				{
 					fVar11 = 0f;
 				}
-				else if (PATHFIND::_GET_IS_SLOW_ROAD_FLAG(PATHFIND::GET_NTH_CLOSEST_VEHICLE_NODE_ID(*uParam1, 1, 1, 1077936128, 0)))
+				else if (PATHFIND::GET_VEHICLE_NODE_IS_SWITCHED_OFF(PATHFIND::GET_NTH_CLOSEST_VEHICLE_NODE_ID(*uParam1, 1, 1, 1077936128, 0)))
 				{
 					fVar11 = 0f;
 				}

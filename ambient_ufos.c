@@ -297,7 +297,7 @@ void func_1()
 			iVar0 = PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), 0);
 			if (func_2(iVar0))
 			{
-				VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, 1, 0, 0);
+				VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, true, false, 0);
 			}
 		}
 	}
@@ -349,7 +349,7 @@ void func_5()
 		iVar0 = PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), 0);
 		if (func_2(iVar0))
 		{
-			VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, 0, 0, 0);
+			VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, false, false, 0);
 			ENTITY::APPLY_FORCE_TO_ENTITY(iVar0, 2, 0f, 0f, -fLocal_74, 0f, 1f, 0f, 0, 0, 1, 1, 0, 1);
 		}
 	}
@@ -413,7 +413,7 @@ void func_8()
 	{
 		return;
 	}
-	vVar0 = { func_9(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), 1) - vLocal_72[iLocal_70 /*3*/]) * Vector(fLocal_77, fLocal_77, fLocal_77) };
+	vVar0 = { func_9(ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) - vLocal_72[iLocal_70 /*3*/]) * Vector(fLocal_77, fLocal_77, fLocal_77) };
 	ENTITY::APPLY_FORCE_TO_ENTITY(PLAYER::PLAYER_PED_ID(), 2, vVar0, 0f, 0f, 0f, 0, 0, 1, 1, 0, 1);
 }
 
@@ -439,7 +439,7 @@ Vector3 func_9(vector3 vParam0)
 
 bool func_10(int iParam0, vector3 vParam1, float fParam2)
 {
-	return SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(iParam0, 1), vParam1) <= (fParam2 * fParam2);
+	return SYSTEM::VDIST2(ENTITY::GET_ENTITY_COORDS(iParam0, true), vParam1) <= (fParam2 * fParam2);
 }
 
 bool func_11(int iParam0)

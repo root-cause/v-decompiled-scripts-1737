@@ -2533,7 +2533,7 @@ void func_70()
 				case 0:
 					if (!iLocal_56[iLocal_71])
 					{
-						if ((ENTITY::IS_ENTITY_AT_ENTITY(iLocal_63[iLocal_71], PLAYER::PLAYER_PED_ID(), 15f, 15f, 40f, 0, 1, 0) && PLAYER::CAN_PED_HEAR_PLAYER(PLAYER::PLAYER_ID(), iLocal_63[iLocal_71])) || PED::_CAN_PED_SEE_PED(iLocal_63[iLocal_71], PLAYER::PLAYER_PED_ID()))
+						if ((ENTITY::IS_ENTITY_AT_ENTITY(iLocal_63[iLocal_71], PLAYER::PLAYER_PED_ID(), 15f, 15f, 40f, 0, 1, 0) && PLAYER::CAN_PED_HEAR_PLAYER(PLAYER::PLAYER_ID(), iLocal_63[iLocal_71])) || PED::CAN_PED_SEE_HATED_PED(iLocal_63[iLocal_71], PLAYER::PLAYER_PED_ID()))
 						{
 							if (ENTITY::IS_ENTITY_IN_ANGLED_AREA(PLAYER::PLAYER_PED_ID(), vLocal_49, vLocal_50, fLocal_51, 0, true, 0) || ENTITY::IS_ENTITY_AT_COORD(PLAYER::PLAYER_PED_ID(), 2205.918f, 5633.455f, 55.7472f, 15f, 15f, 40f, false, true, 0))
 							{
@@ -3316,7 +3316,7 @@ int func_89()
 	{
 		if (!PED::IS_PED_INJURED(iLocal_63[iVar0]))
 		{
-			if (PED::_CAN_PED_SEE_PED(iLocal_63[iVar0], PLAYER::PLAYER_PED_ID()))
+			if (PED::CAN_PED_SEE_HATED_PED(iLocal_63[iVar0], PLAYER::PLAYER_PED_ID()))
 			{
 				if (PLAYER::IS_PLAYER_FREE_AIMING_AT_ENTITY(PLAYER::PLAYER_ID(), iLocal_63[iVar0]) || PLAYER::IS_PLAYER_TARGETTING_ENTITY(PLAYER::PLAYER_ID(), iLocal_63[iVar0]))
 				{

@@ -767,7 +767,7 @@ void func_7()
 						func_41();
 						GRAPHICS::BEGIN_SCALEFORM_MOVIE_METHOD(Global_14534, "GET_CURRENT_SELECTION");
 						iLocal_99 = GRAPHICS::END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE();
-						while (!GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_99))
+						while (!GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_99))
 						{
 							SYSTEM::WAIT(0);
 						}
@@ -814,7 +814,7 @@ void func_7()
 			}
 			Global_15866 = 6;
 		}
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", &Global_14542, true);
 		func_13();
 		Global_14553.f_1 = Global_14555;
 		func_8();
@@ -1513,7 +1513,7 @@ void func_14()
 void func_15()
 {
 	func_46(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(3), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_16();
 }
 
@@ -1559,7 +1559,7 @@ int func_17()
 void func_18()
 {
 	func_46(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(1), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_19();
 }
 
@@ -2202,7 +2202,7 @@ void func_41()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, true);
 		func_42();
 	}
 }
@@ -2699,7 +2699,7 @@ void func_57()
 		iLocal_32 = 0;
 		AUDIO::STOP_SCRIPTED_CONVERSATION(false);
 		Global_15866 = 6;
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", &Global_14542, true);
 		func_13();
 		Global_14553.f_1 = Global_14555;
 		func_8();
@@ -2712,7 +2712,7 @@ void func_58()
 	{
 		if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
 		{
-			if (AUDIO::_0xE73364DB90778FFA())
+			if (AUDIO::GET_IS_PRELOADED_CONVERSATION_READY())
 			{
 				Global_14733 = 0;
 			}
@@ -4096,7 +4096,7 @@ void func_97()
 			}
 			if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
 			{
-				if (AUDIO::_0xE73364DB90778FFA())
+				if (AUDIO::GET_IS_PRELOADED_CONVERSATION_READY())
 				{
 					Global_14733 = 0;
 				}
@@ -4183,7 +4183,7 @@ void func_97()
 					{
 						if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
 						{
-							if (AUDIO::_0xE73364DB90778FFA())
+							if (AUDIO::GET_IS_PRELOADED_CONVERSATION_READY())
 							{
 								Global_14733 = 0;
 							}
@@ -4221,7 +4221,7 @@ void func_97()
 				{
 					if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING())
 					{
-						if (AUDIO::_0xE73364DB90778FFA())
+						if (AUDIO::GET_IS_PRELOADED_CONVERSATION_READY())
 						{
 							Global_14733 = 0;
 						}

@@ -76,7 +76,7 @@
 	var uLocal_74 = 0;
 	var uLocal_75 = 0;
 	var uLocal_76 = 0;
-	var uLocal_77 = 0;
+	int iLocal_77 = 0;
 	int iLocal_78 = 0;
 	var uLocal_79 = 0;
 	var uLocal_80 = 0;
@@ -321,7 +321,7 @@ void __EntryFunction__()
 	iLocal_52 = 65;
 	iLocal_53 = 49;
 	iLocal_54 = 64;
-	uLocal_77 = HUD::_0x4A9923385BDB9DAD();
+	iLocal_77 = HUD::_0x4A9923385BDB9DAD();
 	iLocal_78 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
 	vLocal_83 = { 500f, 500f, 500f };
 	iLocal_104 = -1;
@@ -735,7 +735,7 @@ void __EntryFunction__()
 						if (!func_76(Global_106565.f_19091, 4))
 						{
 							func_74(&(Global_106565.f_19091), 4);
-							VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(func_20(), 1);
+							VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(func_20(), true);
 						}
 						func_74(&(Global_106565.f_19091), 256);
 						StringCopy(&vLocal_97, "", 24);
@@ -767,7 +767,7 @@ void __EntryFunction__()
 					if (func_76(Global_106565.f_19091, 4))
 					{
 						func_84(&(Global_106565.f_19091), 4);
-						VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(func_20(), 0);
+						VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(func_20(), false);
 					}
 					Global_105620 = 0;
 					iLocal_103 = -1;
@@ -842,7 +842,7 @@ void func_2()
 	else if (MISC::IS_PS3_VERSION() || MISC::IS_ORBIS_VERSION())
 	{
 		StringCopy(&cVar0, "PRESENCE_0_STR", 24);
-		NETWORK::_0x3E200C2BCF4164EB(0, &cVar0);
+		NETWORK::NETWORK_SET_RICH_PRESENCE_STRING(0, &cVar0);
 	}
 }
 
@@ -2776,7 +2776,7 @@ void func_66()
 	iVar0 = PLAYER::GET_PLAYERS_LAST_VEHICLE();
 	if (VEHICLE::IS_VEHICLE_DRIVEABLE(iVar0, 0))
 	{
-		AUDIO::PLAY_SOUND_FROM_ENTITY(-1, "Radio_Off", iVar0, "TAXI_SOUNDS", 0, 0);
+		AUDIO::PLAY_SOUND_FROM_ENTITY(-1, "Radio_Off", iVar0, "TAXI_SOUNDS", false, 0);
 	}
 }
 
@@ -2787,7 +2787,7 @@ void func_67()
 	iVar0 = PLAYER::GET_PLAYERS_LAST_VEHICLE();
 	if (VEHICLE::IS_VEHICLE_DRIVEABLE(iVar0, 0))
 	{
-		AUDIO::PLAY_SOUND_FROM_ENTITY(-1, "Radio_On", iVar0, "TAXI_SOUNDS", 0, 0);
+		AUDIO::PLAY_SOUND_FROM_ENTITY(-1, "Radio_On", iVar0, "TAXI_SOUNDS", false, 0);
 	}
 }
 
@@ -3036,7 +3036,7 @@ void func_83()
 	if (func_76(Global_106565.f_19091, 4))
 	{
 		func_84(&(Global_106565.f_19091), 4);
-		VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(func_20(), 0);
+		VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(func_20(), false);
 	}
 	if (func_76(Global_106565.f_19091, 256))
 	{

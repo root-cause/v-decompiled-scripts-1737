@@ -149,11 +149,11 @@ void __EntryFunction__()
 									DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_28[iLocal_34], "cmp", Global_106565.f_10188[iLocal_58 /*12*/].f_5);
 									if (Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 1)
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_28[iLocal_34], "100", 1);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_28[iLocal_34], "100", true);
 									}
 									else
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_28[iLocal_34], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_28[iLocal_34], "100", false);
 									}
 									vLocal_40 = { func_124(iLocal_58) };
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_28[iLocal_34], "x", SYSTEM::ROUND(vLocal_40.x));
@@ -170,11 +170,11 @@ void __EntryFunction__()
 									DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_29[iLocal_35], "cmp", Global_106565.f_10188[iLocal_58 /*12*/].f_5);
 									if (Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 3)
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_29[iLocal_35], "100", 1);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_29[iLocal_35], "100", true);
 									}
 									else
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_29[iLocal_35], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_29[iLocal_35], "100", false);
 									}
 									vLocal_40 = { func_124(iLocal_58) };
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_29[iLocal_35], "x", SYSTEM::ROUND(vLocal_40.x));
@@ -191,11 +191,11 @@ void __EntryFunction__()
 									DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_30[iLocal_36], "cmp", Global_106565.f_10188[iLocal_58 /*12*/].f_5);
 									if (Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 5)
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_30[iLocal_36], "100", 1);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_30[iLocal_36], "100", true);
 									}
 									else
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_30[iLocal_36], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_30[iLocal_36], "100", false);
 									}
 									vLocal_40 = { func_124(iLocal_58) };
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_30[iLocal_36], "x", SYSTEM::ROUND(vLocal_40.x));
@@ -212,11 +212,11 @@ void __EntryFunction__()
 									DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_32[iLocal_37], "cmp", Global_106565.f_10188[iLocal_58 /*12*/].f_5);
 									if (Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 7)
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_32[iLocal_37], "100", 1);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_32[iLocal_37], "100", true);
 									}
 									else
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_32[iLocal_37], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_32[iLocal_37], "100", false);
 									}
 									vLocal_40 = { func_124(iLocal_58) };
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_32[iLocal_37], "x", SYSTEM::ROUND(vLocal_40.x));
@@ -233,11 +233,11 @@ void __EntryFunction__()
 									DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_31[iLocal_38], "cmp", Global_106565.f_10188[iLocal_58 /*12*/].f_5);
 									if (Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 9)
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_31[iLocal_38], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_31[iLocal_38], "100", false);
 									}
 									else
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_31[iLocal_38], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_31[iLocal_38], "100", false);
 									}
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_31[iLocal_38], "x", SYSTEM::ROUND(Global_106565.f_10188[iLocal_58 /*12*/].f_10));
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_31[iLocal_38], "y", SYSTEM::ROUND(Global_106565.f_10188[iLocal_58 /*12*/].f_11));
@@ -253,11 +253,11 @@ void __EntryFunction__()
 									DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_33[iLocal_39], "cmp", Global_106565.f_10188[iLocal_58 /*12*/].f_5);
 									if (Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 11 || Global_106565.f_10188[iLocal_58 /*12*/].f_6 == 13)
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_33[iLocal_39], "100", 1);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_33[iLocal_39], "100", true);
 									}
 									else
 									{
-										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_33[iLocal_39], "100", 0);
+										DATAFILE::_OBJECT_VALUE_ADD_BOOLEAN(uLocal_33[iLocal_39], "100", false);
 									}
 									vLocal_40 = { func_124(iLocal_58) };
 									DATAFILE::_OBJECT_VALUE_ADD_INTEGER(uLocal_33[iLocal_39], "x", SYSTEM::ROUND(vLocal_40.x));
@@ -26187,10 +26187,10 @@ void func_112(int iParam0, int iParam1)
 		case 37:
 			if (iParam1 == 1)
 			{
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_STAGE_RADIO", 0);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_01", 0);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_02", 0);
-				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_03", 0);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_STAGE_RADIO", false);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_01", false);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_02", false);
+				AUDIO::SET_STATIC_EMITTER_ENABLED("TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_03", false);
 			}
 			break;
 	}
@@ -26279,7 +26279,7 @@ bool func_114(int iParam0, bool bParam1, int iParam2, bool bParam3)
 					{
 						if (Var3.f_4[iVar1] != 0)
 						{
-							ENTITY::REMOVE_MODEL_HIDE(Var3, 10f, Var3.f_4[iVar1], 0);
+							ENTITY::REMOVE_MODEL_HIDE(Var3, 10f, Var3.f_4[iVar1], false);
 						}
 						if (Var3.f_4[iVar2] != 0)
 						{
@@ -28247,9 +28247,9 @@ void func_121(char* sParam0)
 {
 	if (!MISC::IS_STRING_NULL_OR_EMPTY(sParam0))
 	{
-		HUD::_SET_NOTIFICATION_TEXT_ENTRY("FB_TITLE");
+		HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("FB_TITLE");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_TEXT_LABEL(sParam0);
-		HUD::_SET_NOTIFICATION_MESSAGE_2("CHAR_FACEBOOK", "CHAR_FACEBOOK", 1, 0, "", 0);
+		HUD::END_TEXT_COMMAND_THEFEED_POST_MESSAGETEXT("CHAR_FACEBOOK", "CHAR_FACEBOOK", 1, 0, "", 0);
 	}
 }
 

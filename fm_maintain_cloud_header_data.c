@@ -483,11 +483,11 @@ int func_12()
 
 int func_13(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_14(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_14(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -36315,19 +36315,19 @@ char* func_246()
 	return HUD::_GET_LABEL_TEXT("CREATOR_RSC");
 }
 
-void func_247(int iParam0)
+void func_247(bool bParam0)
 {
-	func_248(joaat("MPPLY_BIG_FEED_INIT"), iParam0);
+	func_248(joaat("MPPLY_BIG_FEED_INIT"), bParam0);
 }
 
-void func_248(int iParam0, int iParam1)
+void func_248(int iParam0, bool bParam1)
 {
 	int iVar0;
 	
 	iVar0 = iParam0;
 	if (iVar0 != 0)
 	{
-		STATS::STAT_SET_BOOL(iVar0, iParam1, 1);
+		STATS::STAT_SET_BOOL(iVar0, bParam1, 1);
 	}
 }
 
@@ -36449,7 +36449,7 @@ int func_253(int iParam0, var uParam1, int iParam2, int iParam3, int iParam4, va
 		case 0:
 			if (iParam3 == 4 || iParam8 != -1)
 			{
-				if (NETWORK::_0x9BF438815F5D96EA(uParam1, uParam6, func_255(iParam3), 0, iParam8, uParam7))
+				if (NETWORK::UGC_QUERY_MY_CONTENT(uParam1, uParam6, func_255(iParam3), 0, iParam8, uParam7))
 				{
 					return 1;
 				}
@@ -36461,14 +36461,14 @@ int func_253(int iParam0, var uParam1, int iParam2, int iParam3, int iParam4, va
 			break;
 		
 		case 1:
-			if (NETWORK::_0x9BF438815F5D96EA(uParam1, uParam6, func_255(iParam3), 1, iParam8, uParam7))
+			if (NETWORK::UGC_QUERY_MY_CONTENT(uParam1, uParam6, func_255(iParam3), 1, iParam8, uParam7))
 			{
 				return 1;
 			}
 			break;
 		
 		case 2:
-			if (NETWORK::_0x9BF438815F5D96EA(uParam1, uParam6, func_255(iParam3), 2, iParam8, uParam7))
+			if (NETWORK::UGC_QUERY_MY_CONTENT(uParam1, uParam6, func_255(iParam3), 2, iParam8, uParam7))
 			{
 				return 1;
 			}
@@ -37373,7 +37373,7 @@ int func_289(int iParam0, var uParam1)
 		}
 		if ((!NETWORK::_0x2D5DC831176D0114(iParam0) && uParam1->f_1 == 0) || uParam1->f_1 == -1)
 		{
-			uParam1->f_1 = NETWORK::_0x5E0165278F6339EE(iParam0);
+			uParam1->f_1 = NETWORK::UGC_REQUEST_CACHED_DESCRIPTION(iParam0);
 		}
 		else if (NETWORK::_0xEBFA8D50ADDC54C4(iParam0))
 		{

@@ -568,7 +568,7 @@ void func_2(int iParam0, int iParam1, var uParam2, int iParam3, bool bParam4)
 									else if (iLocal_265 == joaat("towtruck2"))
 									{
 									}
-									iLocal_269 = VEHICLE::CREATE_VEHICLE(iLocal_265, 408.8376f, -1638.952f, 28.2928f, 230.2387f, 1, 1, 0);
+									iLocal_269 = VEHICLE::CREATE_VEHICLE(iLocal_265, 408.8376f, -1638.952f, 28.2928f, 230.2387f, true, true, false);
 									STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(iLocal_265);
 								}
 								if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0) && !ENTITY::IS_ENTITY_DEAD(iLocal_269, 0))
@@ -1843,7 +1843,7 @@ void func_39(int iParam0, var uParam1)
 			}
 			iVar0++;
 		}
-		if (GRAPHICS::_DOES_VEHICLE_HAVE_DECAL(iParam0, 0))
+		if (GRAPHICS::DOES_VEHICLE_HAVE_CREW_EMBLEM(iParam0, 0))
 		{
 			MISC::SET_BIT(&(uParam1->f_77), 11);
 		}
@@ -2327,11 +2327,11 @@ var func_51()
 
 int func_52(int iParam0, int iParam1)
 {
-	var uVar0;
+	int iVar0;
 	var uVar1;
 	
-	uVar0 = Global_2571340[iParam0 /*3*/][func_50(iParam1)];
-	if (STATS::STAT_GET_BOOL(uVar0, &uVar1, -1))
+	iVar0 = Global_2571340[iParam0 /*3*/][func_50(iParam1)];
+	if (STATS::STAT_GET_BOOL(iVar0, &uVar1, -1))
 	{
 		return uVar1;
 	}
@@ -5630,7 +5630,7 @@ int func_89()
 	return func_90(PLAYER::PLAYER_ID());
 }
 
-var func_90(int iParam0)
+int func_90(int iParam0)
 {
 	return MISC::GET_BITS_IN_RANGE(Global_2424047[iParam0 /*416*/].f_309.f_3, 28, 31);
 }
@@ -7104,7 +7104,7 @@ void func_143(int iParam0, vector3 vParam1, float fParam2, var uParam3)
 				{
 					if (!ENTITY::DOES_ENTITY_EXIST(iLocal_269))
 					{
-						iLocal_269 = VEHICLE::CREATE_VEHICLE(joaat("TOWTRUCK"), vParam1, fParam2, 1, 1, 0);
+						iLocal_269 = VEHICLE::CREATE_VEHICLE(joaat("TOWTRUCK"), vParam1, fParam2, true, true, false);
 						STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(joaat("TOWTRUCK"));
 						iLocal_71 = 3;
 					}

@@ -141,7 +141,7 @@ void func_7()
 
 void func_8()
 {
-	RECORDING::_0xEB2D525B57F42B40();
+	RECORDING::_STOP_RECORDING_THIS_FRAME();
 	func_9();
 }
 

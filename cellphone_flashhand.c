@@ -295,7 +295,7 @@ void __EntryFunction__()
 			}
 			if ((NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Var1) && NETWORK::_0x72D918C99BCACC54(0)) && Global_4269588 == 0)
 			{
-				if (NETWORK::_0x5835D9CD92E83184(&Var1, &uVar0))
+				if (NETWORK::NETWORK_CLAN_GET_EMBLEM_TXD_NAME(&Var1, &uVar0))
 				{
 				}
 				else
@@ -367,7 +367,7 @@ void __EntryFunction__()
 	func_77();
 	func_75();
 	func_74(1);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Pull_Out", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Pull_Out", &Global_14542, true);
 	SYSTEM::SETTIMERB(0);
 	while (Global_14553.f_1 < 6 && Global_14536 == 0)
 	{
@@ -1714,11 +1714,11 @@ void func_7()
 			{
 				if (Global_71590)
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", "Phone_SoundSet_Michael", 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", "Phone_SoundSet_Michael", true);
 				}
 				else
 				{
-					AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", &Global_14542, 1);
+					AUDIO::PLAY_SOUND_FRONTEND(-1, "Hang_Up", &Global_14542, true);
 				}
 			}
 		}
@@ -2787,7 +2787,7 @@ void func_24(int iParam0)
 void func_25()
 {
 	func_99(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(1), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_26();
 }
 
@@ -2833,7 +2833,7 @@ int func_27()
 void func_28()
 {
 	func_99(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(4), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_29();
 }
 
@@ -2855,7 +2855,7 @@ void func_29()
 void func_30()
 {
 	func_99(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(3), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_31();
 }
 
@@ -2877,7 +2877,7 @@ void func_31()
 void func_32()
 {
 	func_99(Global_14534, "SET_INPUT_EVENT", SYSTEM::TO_FLOAT(2), -1082130432, -1082130432, -1082130432, -1082130432);
-	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, 1);
+	AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Navigate", &Global_14542, true);
 	func_33();
 }
 
@@ -3498,7 +3498,7 @@ void func_36()
 	int iVar0;
 	int iVar1;
 	
-	if (GRAPHICS::IS_SCALEFORM_MOVIE_RETURN_VALUE_READY(iLocal_29))
+	if (GRAPHICS::IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY(iLocal_29))
 	{
 		iLocal_30 = 0;
 		iLocal_28 = GRAPHICS::GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT(iLocal_29);
@@ -3747,7 +3747,7 @@ void func_37()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Back", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Back", &Global_14542, true);
 	}
 }
 
@@ -3755,7 +3755,7 @@ void func_38()
 {
 	if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, 1);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, "Menu_Accept", &Global_14542, true);
 		func_39();
 	}
 }
@@ -4015,7 +4015,7 @@ void func_45()
 											{
 												if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 												{
-													AUDIO::PLAY_SOUND_FRONTEND(-1, "Put_Away", &Global_14542, 1);
+													AUDIO::PLAY_SOUND_FRONTEND(-1, "Put_Away", &Global_14542, true);
 												}
 												iLocal_18 = 0;
 												Global_14553.f_1 = 3;

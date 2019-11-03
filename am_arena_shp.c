@@ -1110,7 +1110,7 @@ int func_31(int iParam0)
 
 void func_32(int iParam0, bool bParam1)
 {
-	int iVar0;
+	bool bVar0;
 	bool bVar1;
 	var uVar2;
 	var uVar3;
@@ -1125,7 +1125,7 @@ void func_32(int iParam0, bool bParam1)
 	}
 	else if (Global_4263509[iParam0 /*84*/].f_65.f_10 == 4)
 	{
-		iVar0 = 1;
+		bVar0 = true;
 	}
 	else if (Global_4263509[iParam0 /*84*/].f_65.f_10 == 2)
 	{
@@ -1134,23 +1134,23 @@ void func_32(int iParam0, bool bParam1)
 	switch (Global_4263509[iParam0 /*84*/].f_65.f_4)
 	{
 		case 631654431:
-			MONEY::_NETWORK_SPENT_MOVE_YACHT(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::_NETWORK_SPENT_MOVE_YACHT(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -180141073:
-			MONEY::NETWORK_SPENT_BUY_WANTEDLEVEL(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13), bVar1, iVar0);
+			MONEY::NETWORK_SPENT_BUY_WANTEDLEVEL(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13), bVar1, bVar0);
 			break;
 		
 		case 68030260:
-			MONEY::NETWORK_SPENT_PAY_VEHICLE_INSURANCE_PREMIUM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], &(Global_4263509[iParam0 /*84*/].f_13), bVar1, iVar0);
+			MONEY::NETWORK_SPENT_PAY_VEHICLE_INSURANCE_PREMIUM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], &(Global_4263509[iParam0 /*84*/].f_13), bVar1, bVar0);
 			break;
 		
 		case -982394051:
-			MONEY::NETWORK_SPENT_CINEMA(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_CINEMA(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case 454359403:
-			MONEY::NETWORK_SPENT_IN_STRIPCLUB(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, Global_4263509[iParam0 /*84*/].f_2, iVar0);
+			MONEY::NETWORK_SPENT_IN_STRIPCLUB(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, Global_4263509[iParam0 /*84*/].f_2, bVar0);
 			break;
 		
 		case -1586170317:
@@ -1158,15 +1158,15 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 650665123:
-			MONEY::NETWORK_SPENT_TELESCOPE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_TELESCOPE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case 1654961868:
-			MONEY::NETWORK_SPENT_CALL_PLAYER(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13), bVar1, iVar0);
+			MONEY::NETWORK_SPENT_CALL_PLAYER(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13), bVar1, bVar0);
 			break;
 		
 		case 1182673174:
-			MONEY::NETWORK_SPENT_CARWASH(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_CARWASH(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case 563463121:
@@ -1174,15 +1174,15 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 1940862352:
-			MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13.f_26), bVar1, iVar0);
+			MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13.f_26), bVar1, bVar0);
 			break;
 		
 		case -1389227906:
-			MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13.f_26), bVar1, iVar0);
+			MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Global_4263509[iParam0 /*84*/].f_65.f_1, &(Global_4263509[iParam0 /*84*/].f_13.f_26), bVar1, bVar0);
 			break;
 		
 		case -516219046:
-			MONEY::NETWORK_BUY_HEALTHCARE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_BUY_HEALTHCARE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -1398318418:
@@ -1190,11 +1190,11 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 2043854386:
-			MONEY::NETWORK_SPENT_CASH_DROP(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_CASH_DROP(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case 277665518:
-			MONEY::NETWORK_SPENT_ARREST_BAIL(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_ARREST_BAIL(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -1077156170:
@@ -1202,7 +1202,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case -96593501:
-			MONEY::NETWORK_SPENT_BOUNTY(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_BOUNTY(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case 742499889:
@@ -1218,7 +1218,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 634375935:
-			MONEY::_0xFC4EE00A7B3BFB76(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::_0xFC4EE00A7B3BFB76(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -1027218631:
@@ -1230,11 +1230,11 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 291576838:
-			MONEY::NETWORK_BUY_ITEM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], 14, 1, bVar1, &(Global_4263509[iParam0 /*84*/].f_13.f_26), 0, 0, 0, iVar0);
+			MONEY::NETWORK_BUY_ITEM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], 14, 1, bVar1, &(Global_4263509[iParam0 /*84*/].f_13.f_26), 0, 0, 0, bVar0);
 			break;
 		
 		case 1612072658:
-			MONEY::NETWORK_SPENT_BUY_PASSIVE_MODE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_BUY_PASSIVE_MODE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -990286235:
@@ -1261,47 +1261,47 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case -1645229221:
-			MONEY::NETWORK_PAY_EMPLOYEE_WAGE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_PAY_EMPLOYEE_WAGE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -585718395:
-			MONEY::NETWORK_PAY_UTILITY_BILL(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_PAY_UTILITY_BILL(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case 763367758:
-			MONEY::_0x5182A339A3474510(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::_NETWORK_SPENT_VIP_UTILITY_CHARGES(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case 1850983186:
-			MONEY::NETWORK_PAY_EMPLOYEE_WAGE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_PAY_EMPLOYEE_WAGE(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -2129781826:
-			MONEY::_0xB49ECA122467D05F(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], bVar1, iVar0);
+			MONEY::_0xB49ECA122467D05F(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], bVar1, bVar0);
 			break;
 		
 		case 1941570214:
-			MONEY::_0x0FE8E1FCD2B86B33(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], bVar1, iVar0);
+			MONEY::_0x0FE8E1FCD2B86B33(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], bVar1, bVar0);
 			break;
 		
 		case 1869490922:
-			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case -336803850:
-			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case -1412692765:
-			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case 618167454:
-			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case 980623936:
-			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::_0xD7CCCBA28C4ECAF0(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case 1287308202:
@@ -1340,7 +1340,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 1643659499:
-			MONEY::NETWORK_BUY_FAIRGROUND_RIDE(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/].f_1, bVar1, iVar0);
+			MONEY::NETWORK_BUY_FAIRGROUND_RIDE(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/].f_1, bVar1, bVar0);
 			break;
 		
 		case 1839532116:
@@ -1356,11 +1356,11 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 1948102096:
-			MONEY::NETWORK_SPENT_REQUEST_JOB(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_REQUEST_JOB(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case -1834046564:
-			MONEY::NETWORK_SPENT_TAXI(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, iVar0);
+			MONEY::NETWORK_SPENT_TAXI(Global_4263509[iParam0 /*84*/].f_65.f_1, bVar1, bVar0);
 			break;
 		
 		case 393059668:
@@ -1376,7 +1376,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 1564537328:
-			MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Global_4263509[iParam0 /*84*/].f_65.f_1, "RaceToPoint", false, 0);
+			MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Global_4263509[iParam0 /*84*/].f_65.f_1, "RaceToPoint", false, false);
 			break;
 		
 		case -1359375127:
@@ -1384,14 +1384,14 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case 283351220:
-			MONEY::NETWORK_BUY_ITEM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_5, 1, bVar1, &(Global_4263509[iParam0 /*84*/].f_13.f_40), 0, 0, 0, iVar0);
+			MONEY::NETWORK_BUY_ITEM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_5, 1, bVar1, &(Global_4263509[iParam0 /*84*/].f_13.f_40), 0, 0, 0, bVar0);
 			break;
 		
 		case -2085313189:
 			switch (Global_4263509[iParam0 /*84*/].f_65.f_6)
 			{
 				case 1067618600:
-					MONEY::NETWORK_BUY_ITEM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_5, 1, bVar1, &(Global_4263509[iParam0 /*84*/].f_13.f_40), 0, 0, 0, iVar0);
+					MONEY::NETWORK_BUY_ITEM(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/], Global_4263509[iParam0 /*84*/].f_5, 1, bVar1, &(Global_4263509[iParam0 /*84*/].f_13.f_40), 0, 0, 0, bVar0);
 					break;
 			}
 			break;
@@ -1501,7 +1501,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case -135813048:
-			MONEY::_0xC1952F3773BA18FE(Global_4263509[iParam0 /*84*/].f_65.f_1, 0, 1);
+			MONEY::_NETWORK_SPENT_IMPORT_EXPORT_REPAIR(Global_4263509[iParam0 /*84*/].f_65.f_1, 0, 1);
 			break;
 		
 		case 463142405:
@@ -1537,23 +1537,23 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case -930104477:
-			MONEY::_0x5BBBD92186E1F1C5(Global_4263509[iParam0 /*84*/].f_65.f_1, 0, 1, Global_4263509[iParam0 /*84*/]);
+			MONEY::_NETWORK_SPENT_EMPLOY_ASSASSINS(Global_4263509[iParam0 /*84*/].f_65.f_1, 0, 1, Global_4263509[iParam0 /*84*/]);
 			break;
 		
 		case 1864522104:
-			MONEY::_0x5B669CF2299A271F(Global_4263509[iParam0 /*84*/].f_65.f_1, 0);
+			MONEY::_NETWORK_EARN_FROM_TARGET_REFUND(Global_4263509[iParam0 /*84*/].f_65.f_1, 0);
 			break;
 		
 		case 215608230:
-			MONEY::_0x5B669CF2299A271F(Global_4263509[iParam0 /*84*/].f_65.f_1, 1);
+			MONEY::_NETWORK_EARN_FROM_TARGET_REFUND(Global_4263509[iParam0 /*84*/].f_65.f_1, 1);
 			break;
 		
 		case -876012764:
-			MONEY::_0x2DCB19ABAB0380A8(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/]);
+			MONEY::_NETWORK_EARN_FROM_GANGOPS_WAGES(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/]);
 			break;
 		
 		case -722894325:
-			MONEY::_0x15BB2A5C757EB91F(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/]);
+			MONEY::_NETWORK_EARN_FROM_GANGOPS_WAGES_BONUS(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/]);
 			break;
 		
 		case 1407278493:
@@ -1636,7 +1636,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case -1733398043:
-			MONEY::_0xDA947AE8880D5C18(Global_4263509[iParam0 /*84*/].f_9, Global_4263509[iParam0 /*84*/].f_65.f_1, 0, 1);
+			MONEY::_NETWORK_SPENT_GANGOPS_START_MISSION(Global_4263509[iParam0 /*84*/].f_9, Global_4263509[iParam0 /*84*/].f_65.f_1, 0, 1);
 			break;
 		
 		case -1892760262:
@@ -1730,7 +1730,7 @@ void func_32(int iParam0, bool bParam1)
 			break;
 		
 		case -494565059:
-			MONEY::_NETWORK_EARN_FROM_LUCKY_WHEEL(Global_4263509[iParam0 /*84*/].f_65.f_1);
+			MONEY::_NETWORK_EARN_FROM_RC_TIME_TRIAL(Global_4263509[iParam0 /*84*/].f_65.f_1);
 			break;
 		
 		case 827308208:
@@ -1763,7 +1763,7 @@ void func_32(int iParam0, bool bParam1)
 		case 1414674366:
 		case 261460130:
 		case -2027658376:
-			MONEY::_NETWORK_EARN_FROM_CASINO_REWARD(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/]);
+			MONEY::_NETWORK_EARN_FROM_CASINO_AWARD(Global_4263509[iParam0 /*84*/].f_65.f_1, Global_4263509[iParam0 /*84*/]);
 			break;
 		
 		case -1693570755:
@@ -1879,7 +1879,7 @@ int func_36(var uParam0)
 	return 5410420;
 }
 
-var func_37()
+int func_37()
 {
 	return SYSTEM::SHIFT_LEFT(1, 25);
 }
@@ -2066,7 +2066,7 @@ int func_48(int iParam0, var uParam1)
 			{
 				if (!VEHICLE::IS_THIS_MODEL_A_TRAIN(ENTITY::GET_ENTITY_MODEL(iParam0)))
 				{
-					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, 0, 1);
+					ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iParam0, false, 1);
 					*uParam1 = 1;
 				}
 			}

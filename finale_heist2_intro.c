@@ -39,7 +39,7 @@
 
 void __EntryFunction__()
 {
-	var uVar0;
+	int iVar0;
 	bool bVar1;
 	
 	iLocal_2 = 1;
@@ -71,13 +71,13 @@ void __EntryFunction__()
 	SCRIPT::SCRIPT_THREAD_ITERATOR_RESET();
 	while (!bVar1)
 	{
-		uVar0 = SCRIPT::SCRIPT_THREAD_ITERATOR_GET_NEXT_THREAD_ID();
-		if (MISC::ARE_STRINGS_EQUAL(SCRIPT::_GET_NAME_OF_THREAD(uVar0), "heist_ctrl_finale"))
+		iVar0 = SCRIPT::SCRIPT_THREAD_ITERATOR_GET_NEXT_THREAD_ID();
+		if (MISC::ARE_STRINGS_EQUAL(SCRIPT::_GET_NAME_OF_THREAD(iVar0), "heist_ctrl_finale"))
 		{
 			bVar1 = true;
 		}
 	}
-	CUTSCENE::_0x8D9DF6ECA8768583(uVar0);
+	CUTSCENE::_0x8D9DF6ECA8768583(iVar0);
 	func_16();
 	func_1(96.7f, -1288.1f, 28.1f, 104.5f, -1301f, 30f, 2f, 118.3f, -1309.7f, 29f, 120f, 1, 1, 1, 0, 0);
 	func_19();
@@ -164,7 +164,7 @@ void func_2(vector3 vParam0, vector3 vParam1, float fParam2, vector3 vParam3, fl
 					if (VEHICLE::IS_VEHICLE_DRIVEABLE(iVar0, 0))
 					{
 						iVar7 = ENTITY::GET_ENTITY_MODEL(iVar0);
-						VEHICLE::_0xDF7E3EEB29642C38(iVar0, &vVar4, &vVar5);
+						VEHICLE::_GET_VEHICLE_SUSPENSION_BOUNDS(iVar0, &vVar4, &vVar5);
 						if (VEHICLE::IS_THIS_MODEL_A_HELI(iVar7))
 						{
 							vParam5.x = (vParam5.x + 3f);
@@ -202,7 +202,7 @@ void func_2(vector3 vParam0, vector3 vParam1, float fParam2, vector3 vParam3, fl
 						VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(iVar0, 1084227584);
 						if (bParam9)
 						{
-							VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, false, 1, 0);
+							VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, false, true, 0);
 							VEHICLE::SET_VEHICLE_DOORS_SHUT(iVar0, 1);
 						}
 					}

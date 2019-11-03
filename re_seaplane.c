@@ -3050,7 +3050,7 @@ int func_63(int iParam0, vector3 vParam1, float fParam2, bool bParam3)
 		}
 		if (fVar22 >= 0f)
 		{
-			VEHICLE::_0xAD2D28A1AFDFF131(Local_48[iParam0 /*4*/], fVar22);
+			VEHICLE::SET_PLANE_TURBULENCE_MULTIPLIER(Local_48[iParam0 /*4*/], fVar22);
 		}
 		if (fVar23 >= 0f)
 		{
@@ -3700,13 +3700,13 @@ void func_84()
 						if (HUD::GET_BLIP_ALPHA(Local_47[iVar0 /*6*/].f_1) > 0)
 						{
 							HUD::SET_BLIP_ALPHA(Local_47[iVar0 /*6*/].f_1, 0);
-							HUD::_0x54318C915D27E4CE(Local_47[iVar0 /*6*/].f_1, 1);
+							HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar0 /*6*/].f_1, 1);
 						}
 					}
 					else if (HUD::GET_BLIP_ALPHA(Local_47[iVar0 /*6*/].f_1) == 0)
 					{
 						HUD::SET_BLIP_ALPHA(Local_47[iVar0 /*6*/].f_1, 255);
-						HUD::_0x54318C915D27E4CE(Local_47[iVar0 /*6*/].f_1, 0);
+						HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar0 /*6*/].f_1, 0);
 					}
 				}
 			}
@@ -3717,7 +3717,7 @@ void func_84()
 				if (HUD::GET_BLIP_ALPHA(Local_47[iVar0 /*6*/].f_1) == 0)
 				{
 					HUD::SET_BLIP_ALPHA(Local_47[iVar0 /*6*/].f_1, 255);
-					HUD::_0x54318C915D27E4CE(Local_47[iVar0 /*6*/].f_1, 0);
+					HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iVar0 /*6*/].f_1, 0);
 				}
 			}
 			if (PED::IS_PED_INJURED(Local_47[iVar0 /*6*/]))
@@ -4050,7 +4050,7 @@ void func_94(int iParam0)
 						if ((!func_97(Local_47[iParam0 /*6*/], -235832601, 1) && TASK::GET_SCRIPT_TASK_STATUS(Local_47[iParam0 /*6*/], -235832601) == 7) && !func_97(Local_47[iParam0 /*6*/], 538064912, 1))
 						{
 							TASK::TASK_VEHICLE_SHOOT_AT_PED(Local_47[iParam0 /*6*/], PLAYER::PLAYER_PED_ID(), 1101004800);
-							if (func_198(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])) && VEHICLE::_GET_BOAT_ANCHOR(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
+							if (func_198(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])) && VEHICLE::_CAN_BOAT_BE_ANCHORED(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
 							{
 								VEHICLE::SET_BOAT_ANCHOR(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/]), true);
 								func_57(iParam0, 5);
@@ -4062,7 +4062,7 @@ void func_94(int iParam0)
 							{
 								func_57(iParam0, 4);
 								TASK::CLEAR_PED_TASKS(Local_47[iParam0 /*6*/]);
-								if (!func_88(iParam0, 5) && VEHICLE::_GET_BOAT_ANCHOR(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
+								if (!func_88(iParam0, 5) && VEHICLE::_CAN_BOAT_BE_ANCHORED(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
 								{
 									VEHICLE::SET_BOAT_ANCHOR(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/]), true);
 								}
@@ -4422,7 +4422,7 @@ void func_94(int iParam0)
 						{
 							Local_47[iParam0 /*6*/].f_1 = func_59(Local_47[iParam0 /*6*/], 1, 145);
 							HUD::SET_BLIP_ALPHA(Local_47[iParam0 /*6*/].f_1, 0);
-							HUD::_0x54318C915D27E4CE(Local_47[iParam0 /*6*/].f_1, 1);
+							HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iParam0 /*6*/].f_1, 1);
 							Local_47[iParam0 /*6*/].f_3++;
 						}
 						break;
@@ -4602,7 +4602,7 @@ void func_99(int iParam0)
 		if (func_87(Local_47[iParam0 /*6*/], 0) != -1)
 		{
 			HUD::SET_BLIP_ALPHA(Local_47[iParam0 /*6*/].f_1, 0);
-			HUD::_0x54318C915D27E4CE(Local_47[iParam0 /*6*/].f_1, 1);
+			HUD::SET_BLIP_HIDDEN_ON_LEGEND(Local_47[iParam0 /*6*/].f_1, 1);
 		}
 		else
 		{
@@ -7431,7 +7431,7 @@ void func_192(bool bParam0)
 		PLAYER::SET_PLAYER_WANTED_LEVEL_NOW(PLAYER::PLAYER_ID(), 0);
 		PLAYER::SET_WANTED_LEVEL_MULTIPLIER(0f);
 		PLAYER::SET_DISPATCH_COPS_FOR_PLAYER(PLAYER::PLAYER_ID(), 0);
-		PED::SET_CREATE_RANDOM_COPS(0);
+		PED::SET_CREATE_RANDOM_COPS(false);
 		MISC::ENABLE_DISPATCH_SERVICE(3, false);
 		MISC::ENABLE_DISPATCH_SERVICE(1, false);
 		MISC::ENABLE_DISPATCH_SERVICE(8, false);
@@ -7448,7 +7448,7 @@ void func_192(bool bParam0)
 		PLAYER::SET_MAX_WANTED_LEVEL(5);
 		PLAYER::SET_WANTED_LEVEL_MULTIPLIER(1f);
 		PLAYER::SET_DISPATCH_COPS_FOR_PLAYER(PLAYER::PLAYER_ID(), 1);
-		PED::SET_CREATE_RANDOM_COPS(1);
+		PED::SET_CREATE_RANDOM_COPS(true);
 		MISC::ENABLE_DISPATCH_SERVICE(3, true);
 		MISC::ENABLE_DISPATCH_SERVICE(1, true);
 		MISC::ENABLE_DISPATCH_SERVICE(8, true);

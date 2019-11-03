@@ -30,7 +30,7 @@ void __EntryFunction__()
 							STREAMING::REQUEST_ANIM_DICT("map_objects");
 							if (STREAMING::HAS_ANIM_DICT_LOADED("map_objects"))
 							{
-								ENTITY::PLAY_ENTITY_ANIM(iScriptParam_3, "airdancer_test", "map_objects", 1f, 1, 0, 0, 0f, 0);
+								ENTITY::PLAY_ENTITY_ANIM(iScriptParam_3, "airdancer_test", "map_objects", 1f, true, 0, 0, 0f, 0);
 								iLocal_2 = 1;
 							}
 						}
