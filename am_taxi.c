@@ -1043,8 +1043,8 @@ void __EntryFunction__()
 	iLocal_42 = 49;
 	iLocal_43 = 64;
 	fLocal_94 = ((0.05f + 0.275f) - 0.01f);
-	iLocal_98 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_99 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_98 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_99 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_119 = joaat("prop_taxi_meter_2");
 	fLocal_121 = 1f;
 	fLocal_122 = (0.4f * fLocal_121);
@@ -1084,7 +1084,7 @@ void __EntryFunction__()
 		{
 			if (func_345())
 			{
-				if (NETWORK::_0x638A3A81733086DB() != NETWORK::_0x3B39236746714134(PLAYER::PLAYER_ID()))
+				if (NETWORK::_0x638A3A81733086DB() != NETWORK::NETWORK_GET_PLAYER_TUTORIAL_SESSION_INSTANCE(PLAYER::PLAYER_ID()))
 				{
 					func_358();
 				}
@@ -1193,7 +1193,7 @@ void func_3()
 
 void func_4()
 {
-	if (iLocal_1012 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	if (iLocal_1012 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		func_27();
 		iLocal_1012++;
@@ -1695,7 +1695,7 @@ int func_19(int iParam0, vector3 vParam1, float fParam2, bool bParam3)
 				VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(NETWORK::NET_TO_VEH(Local_100.f_2[iParam0 /*23*/]), 1084227584);
 				VEHICLE::SET_VEHICLE_HAS_BEEN_OWNED_BY_PLAYER(NETWORK::NET_TO_VEH(Local_100.f_2[iParam0 /*23*/]), 1);
 				VEHICLE::SET_VEHICLE_AUTOMATICALLY_ATTACHES(NETWORK::NET_TO_VEH(Local_100.f_2[iParam0 /*23*/]), false, 0);
-				VEHICLE::_0x25367DE49D64CF16(NETWORK::NET_TO_VEH(Local_100.f_2[iParam0 /*23*/]), 1);
+				VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(NETWORK::NET_TO_VEH(Local_100.f_2[iParam0 /*23*/]), 1);
 				NETWORK::SET_NETWORK_ID_CAN_MIGRATE(Local_100.f_2[iParam0 /*23*/], true);
 			}
 		}
@@ -2509,7 +2509,7 @@ void func_42(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -4891,7 +4891,7 @@ void func_100(vector3 vParam0, int iParam1, int iParam2)
 	func_85("INSERT_NEW_DESTINATION_TO_LIST - start \n");
 	func_101(iParam1);
 	vLocal_128[iParam1 /*3*/] = { vParam0 };
-	if (func_96(vLocal_128[iParam1 /*3*/]) == HUD::_GET_BLIP_INFO_ID_ITERATOR())
+	if (func_96(vLocal_128[iParam1 /*3*/]) == HUD::_GET_WAYPOINT_BLIP_SPRITE())
 	{
 		if (Local_100.f_2[iParam2 /*23*/].f_3 != -1)
 		{
@@ -4922,7 +4922,7 @@ void func_102(vector3 vParam0, int iParam1, int iParam2)
 {
 	func_85("REPLACE_LIST_DESTINATION_WITH_NEW_DESTINATION - start \n");
 	vLocal_128[iParam1 /*3*/] = { vParam0 };
-	if (func_96(vLocal_128[iParam1 /*3*/]) == HUD::_GET_BLIP_INFO_ID_ITERATOR())
+	if (func_96(vLocal_128[iParam1 /*3*/]) == HUD::_GET_WAYPOINT_BLIP_SPRITE())
 	{
 		if (Local_100.f_2[iParam2 /*23*/].f_3 != -1)
 		{
@@ -5146,7 +5146,7 @@ int func_112(int iParam0)
 			{
 				if (Local_102[Local_100.f_2[iParam0 /*23*/].f_3 /*44*/].f_4.f_35 == -1)
 				{
-					iVar1 = HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_BLIP_INFO_ID_ITERATOR());
+					iVar1 = HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_WAYPOINT_BLIP_SPRITE());
 					if (HUD::DOES_BLIP_EXIST(iVar1))
 					{
 						vVar0 = { HUD::GET_BLIP_COORDS(iVar1) };
@@ -5162,7 +5162,7 @@ int func_112(int iParam0)
 				}
 				else if (HUD::DOES_BLIP_EXIST(vLocal_128[Local_102[Local_100.f_2[iParam0 /*23*/].f_3 /*44*/].f_4.f_35 /*3*/]))
 				{
-					if (func_96(vLocal_128[Local_102[Local_100.f_2[iParam0 /*23*/].f_3 /*44*/].f_4.f_35 /*3*/]) == HUD::_GET_BLIP_INFO_ID_ITERATOR())
+					if (func_96(vLocal_128[Local_102[Local_100.f_2[iParam0 /*23*/].f_3 /*44*/].f_4.f_35 /*3*/]) == HUD::_GET_WAYPOINT_BLIP_SPRITE())
 					{
 						vVar0 = { HUD::GET_BLIP_COORDS(vLocal_128[Local_102[Local_100.f_2[iParam0 /*23*/].f_3 /*44*/].f_4.f_35 /*3*/]) };
 						if (!func_11(vVar0, Local_102[Local_100.f_2[iParam0 /*23*/].f_3 /*44*/].f_4.f_36, 0))
@@ -6309,7 +6309,7 @@ void func_143(int iParam0)
 		func_142();
 		MISC::CLEAR_BIT(&(Local_102[NETWORK::PARTICIPANT_ID_TO_INT() /*44*/].f_4.f_2), 13);
 	}
-	HUD::_CENTER_PLAYER_ON_RADAR_THIS_FRAME();
+	HUD::DONT_TILT_MINIMAP_THIS_FRAME();
 	CAM::_0x62ECFCFDEE7885D6();
 }
 
@@ -9844,7 +9844,7 @@ int func_204(vector3 vParam0, vector3 vParam1, var uParam2, var uParam3, var uPa
 	if (PATHFIND::IS_VEHICLE_NODE_ID_VALID(iVar3))
 	{
 		PATHFIND::GET_VEHICLE_NODE_POSITION(iVar3, &vVar0);
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, 0, &vVar1) && PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, 1, &vVar2))
+		if (PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, 0, &vVar1) && PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, 1, &vVar2))
 		{
 			vVar5 = { vVar1 - vVar0 };
 			vVar6 = { -vVar5.y, vVar5.x, 0f };
@@ -9864,7 +9864,7 @@ int func_204(vector3 vParam0, vector3 vParam1, var uParam2, var uParam3, var uPa
 				return 1;
 			}
 		}
-		else if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, -1, &vVar1))
+		else if (PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, -1, &vVar1))
 		{
 			*uParam3 = { vVar1 };
 			*uParam4 = uParam2;

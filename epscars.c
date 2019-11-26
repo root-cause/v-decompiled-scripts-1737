@@ -1929,7 +1929,7 @@ bool func_42(int iParam0)
 	{
 		return 1;
 	}
-	return VEHICLE::_0x42A4BEB35D372407(iParam0) > 0;
+	return VEHICLE::_GET_VEHICLE_NUMBER_OF_BROKEN_OFF_BONES(iParam0) > 0;
 }
 
 bool func_43(var uParam0)

@@ -1230,7 +1230,7 @@ void func_28()
 
 int func_29(int iParam0)
 {
-	if (NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(iParam0))
+	if (NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(iParam0))
 	{
 		return 1;
 	}
@@ -2385,7 +2385,7 @@ void func_74(var uParam0, var uParam1)
 	float fVar0;
 	
 	*uParam0 = { func_76(vLocal_60 + Vector(200f, 0f, 0f), 600f, 600f, (200f / 2f)) };
-	fVar0 = PATHFIND::_0x8ABE8608576D9CE3((*uParam0 - 600f), (uParam0->f_1 - 600f), (*uParam0 + 600f), (uParam0->f_1 + 600f));
+	fVar0 = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA((*uParam0 - 600f), (uParam0->f_1 - 600f), (*uParam0 + 600f), (uParam0->f_1 + 600f));
 	if (uParam0->f_2 < fVar0)
 	{
 		uParam0->f_2 = fVar0;

@@ -747,7 +747,7 @@ void func_9(int iParam0, int iParam1, int iParam2, bool bParam3)
 				Global_106565.f_20112[iParam0 /*43*/].f_33[4] = VEHICLE::GET_VEHICLE_MOD_MODIFIER_VALUE(*iParam1, 14, 3);
 				Global_106565.f_20112[iParam0 /*43*/].f_39 = VEHICLE::GET_VEHICLE_MOD_KIT_TYPE(*iParam1);
 				Global_106565.f_20112[iParam0 /*43*/].f_31 = func_12(*iParam1);
-				Global_106565.f_20112[iParam0 /*43*/].f_33[0] = AUDIO::_GET_VEHICLE_HORN_HASH(*iParam1);
+				Global_106565.f_20112[iParam0 /*43*/].f_33[0] = AUDIO::GET_VEHICLE_DEFAULT_HORN_IGNORE_MODS(*iParam1);
 				VEHICLE::GET_VEHICLE_MOD_COLOR_1(*iParam1, &iVar4, &uVar5, &uVar6);
 				if (iVar4 == 0)
 				{
@@ -5393,7 +5393,7 @@ int func_59()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -9766,7 +9766,7 @@ void func_121(var uParam0, int iParam1, int iParam2, char* sParam3, int iParam4,
 		}
 		if (iParam1 == 1)
 		{
-			if (FILES::_0x341DE7ED1D2A1BFD(Global_2621444, joaat("REBREATHER"), 0))
+			if (FILES::DOES_SHOP_PED_APPAREL_HAVE_RESTRICTION_TAG(Global_2621444, joaat("REBREATHER"), 0))
 			{
 				MISC::SET_BIT(&(uParam0->f_6), 7);
 			}
@@ -13463,7 +13463,7 @@ void func_132(int iParam0, int iParam1, int iParam2, int iParam3)
 					}
 					Global_2621444 = Var6.f_1;
 					Global_2621445 = Var6;
-					func_121(&(Global_71402[0 /*14*/]), iParam0, iParam1, &(Var6.f_9), Var6.f_3, Var6.f_4, Var6.f_5, FILES::_0x341DE7ED1D2A1BFD(Var6.f_1, joaat("OUTFIT_ONLY"), 0), iVar7, 2, Var6.f_1 != 0);
+					func_121(&(Global_71402[0 /*14*/]), iParam0, iParam1, &(Var6.f_9), Var6.f_3, Var6.f_4, Var6.f_5, FILES::DOES_SHOP_PED_APPAREL_HAVE_RESTRICTION_TAG(Var6.f_1, joaat("OUTFIT_ONLY"), 0), iVar7, 2, Var6.f_1 != 0);
 					return;
 				}
 				iVar9++;
@@ -13479,7 +13479,7 @@ void func_132(int iParam0, int iParam1, int iParam2, int iParam3)
 			FILES::GET_SHOP_PED_COMPONENT(iParam3, &Var11);
 			Global_2621444 = Var11.f_1;
 			Global_2621445 = Var11;
-			func_121(&(Global_71402[0 /*14*/]), iParam0, iParam1, &(Var11.f_9), Var11.f_3, Var11.f_4, Var11.f_5, FILES::_0x341DE7ED1D2A1BFD(Var11.f_1, joaat("OUTFIT_ONLY"), 0), -1, 2, Var11.f_1 != 0);
+			func_121(&(Global_71402[0 /*14*/]), iParam0, iParam1, &(Var11.f_9), Var11.f_3, Var11.f_4, Var11.f_5, FILES::DOES_SHOP_PED_APPAREL_HAVE_RESTRICTION_TAG(Var11.f_1, joaat("OUTFIT_ONLY"), 0), -1, 2, Var11.f_1 != 0);
 			return;
 		}
 		iVar13 = 0;
@@ -13494,7 +13494,7 @@ void func_132(int iParam0, int iParam1, int iParam2, int iParam3)
 				{
 					Global_2621444 = Var11.f_1;
 					Global_2621445 = Var11;
-					func_121(&(Global_71402[0 /*14*/]), iParam0, iParam1, &(Var11.f_9), Var11.f_3, Var11.f_4, Var11.f_5, FILES::_0x341DE7ED1D2A1BFD(Var11.f_1, joaat("OUTFIT_ONLY"), 0), -1, 2, Var11.f_1 != 0);
+					func_121(&(Global_71402[0 /*14*/]), iParam0, iParam1, &(Var11.f_9), Var11.f_3, Var11.f_4, Var11.f_5, FILES::DOES_SHOP_PED_APPAREL_HAVE_RESTRICTION_TAG(Var11.f_1, joaat("OUTFIT_ONLY"), 0), -1, 2, Var11.f_1 != 0);
 					return;
 				}
 				iVar13++;

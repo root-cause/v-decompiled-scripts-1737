@@ -1460,8 +1460,8 @@ void __EntryFunction__()
 	vLocal_119 = { 500f, 500f, 500f };
 	iLocal_140 = 100;
 	iLocal_141 = 3;
-	iLocal_740 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_741 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_740 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_741 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_916 = -1;
 	fLocal_918 = 1f;
 	iLocal_934 = 1;
@@ -12186,10 +12186,10 @@ void func_261(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -19561,7 +19561,7 @@ void func_402()
 				if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_1219, 0))
 				{
 					ENTITY::SET_ENTITY_PROOFS(iLocal_1219, false, false, false, false, false, false, 0, false);
-					VEHICLE::_0x192547247864DFDD(iLocal_1219, true);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(iLocal_1219, true);
 					VEHICLE::SET_DISABLE_VEHICLE_PETROL_TANK_FIRES(iLocal_1219, 0);
 				}
 				GRAPHICS::ADD_PETROL_DECAL(vLocal_1425, 1.5f, 2f, 1f);
@@ -21620,7 +21620,7 @@ int func_420()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -22918,10 +22918,10 @@ void func_439(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))

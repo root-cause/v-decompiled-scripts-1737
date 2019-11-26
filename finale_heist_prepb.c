@@ -4236,7 +4236,7 @@ int func_55()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -5782,10 +5782,10 @@ void func_79(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))

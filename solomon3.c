@@ -701,8 +701,8 @@ void __EntryFunction__()
 	iLocal_67 = 65;
 	iLocal_68 = 49;
 	iLocal_69 = 64;
-	iLocal_73 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_74 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_73 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_74 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	bLocal_78 = true;
 	bLocal_85 = true;
 	bLocal_107 = true;
@@ -1207,14 +1207,14 @@ void func_5()
 		{
 			if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_284, 0))
 			{
-				VEHICLE::_0x21115BCD6E44656A(iLocal_284, 0);
+				VEHICLE::_SET_VEHICLE_CLOSE_DOOR_DEFERED_ACTION(iLocal_284, 0);
 			}
 		}
 		if (ENTITY::DOES_ENTITY_EXIST(iLocal_285))
 		{
 			if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_285, 0))
 			{
-				VEHICLE::_0x21115BCD6E44656A(iLocal_285, 0);
+				VEHICLE::_SET_VEHICLE_CLOSE_DOOR_DEFERED_ACTION(iLocal_285, 0);
 			}
 		}
 		PLAYER::SET_MAX_WANTED_LEVEL(5);
@@ -3789,10 +3789,10 @@ void func_59(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -10272,7 +10272,7 @@ int func_139()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -11845,10 +11845,10 @@ void func_164(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))
@@ -12731,7 +12731,7 @@ void func_187()
 	func_213();
 	func_211();
 	HUD::CLEAR_PRINTS();
-	MISC::_SET_UNK_MAP_FLAG(0);
+	MISC::SET_INSTANCE_PRIORITY_HINT(0);
 	PATHFIND::SET_IGNORE_NO_GPS_FLAG(0);
 	CAM::SET_CINEMATIC_BUTTON_ACTIVE(true);
 	if (OBJECT::IS_DOOR_REGISTERED_WITH_SYSTEM(iLocal_262))
@@ -16861,7 +16861,7 @@ void func_246()
 									}
 									iLocal_236 = MISC::GET_GAME_TIMER();
 									CAM::SET_CINEMATIC_BUTTON_ACTIVE(true);
-									MISC::_SET_UNK_MAP_FLAG(0);
+									MISC::SET_INSTANCE_PRIORITY_HINT(0);
 									iLocal_224 = 2;
 								}
 							}
@@ -20602,7 +20602,7 @@ int func_317(var uParam0, int iParam1, bool bParam2)
 				PED::SET_PED_FLEE_ATTRIBUTES(iVar0, 8192, true);
 				PED::SET_PED_FLEE_ATTRIBUTES(iVar0, 65536, true);
 				PED::SET_PED_FLEE_ATTRIBUTES(iVar0, 2, false);
-				VEHICLE::_0x25367DE49D64CF16(*uParam0, 1);
+				VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(*uParam0, 1);
 			}
 			PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(iVar0, true);
 			func_318(iVar0);
@@ -22471,7 +22471,7 @@ void func_342()
 				VEHICLE::START_PLAYBACK_RECORDED_VEHICLE(iLocal_278, 45, "BB_Chase", 1);
 				SYSTEM::SETTIMERB(0);
 				func_263();
-				MISC::_SET_UNK_MAP_FLAG(2);
+				MISC::SET_INSTANCE_PRIORITY_HINT(2);
 				if (ENTITY::DOES_ENTITY_EXIST(iLocal_279))
 				{
 					if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_279, 0))
@@ -26878,7 +26878,7 @@ void func_413()
 	VEHICLE::SET_ALL_VEHICLE_GENERATORS_ACTIVE_IN_AREA(-1042.5f, -500f, 41f, -1019.5f, -475f, 34f, true, 1);
 	func_414();
 	func_209(&uLocal_28, 0, 0);
-	MISC::_SET_UNK_MAP_FLAG(0);
+	MISC::SET_INSTANCE_PRIORITY_HINT(0);
 	PATHFIND::SET_IGNORE_NO_GPS_FLAG(0);
 	AUDIO::RELEASE_SCRIPT_AUDIO_BANK();
 	if (ENTITY::DOES_ENTITY_EXIST(iLocal_287))

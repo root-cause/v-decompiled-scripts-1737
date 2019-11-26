@@ -127,8 +127,8 @@ void __EntryFunction__()
 	iLocal_41 = 65;
 	iLocal_42 = 49;
 	iLocal_43 = 64;
-	iLocal_47 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_48 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_47 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_48 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	uLocal_52 = func_317(64);
 	uLocal_53 = func_317(63);
 	iLocal_54 = joaat("u_m_m_aldinapoli");
@@ -2670,10 +2670,10 @@ void func_57(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -10926,8 +10926,8 @@ int func_249(var uParam0)
 					VEHICLE::SET_VEHICLE_NUMBER_PLATE_TEXT_INDEX(uParam0->f_35[0], 0);
 					VEHICLE::SET_VEHICLE_DOORS_LOCKED(uParam0->f_35[0], 10);
 					VEHICLE::SET_VEHICLE_CAN_DEFORM_WHEELS(uParam0->f_35[0], 0);
-					VEHICLE::_0x51BB2D88D31A914B(uParam0->f_35[0], false);
-					VEHICLE::_0x192547247864DFDD(uParam0->f_35[0], false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_OIL(uParam0->f_35[0], false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(uParam0->f_35[0], false);
 				}
 			}
 			if (!func_250(&(uParam0->f_28[1]), &(uParam0->f_35[0])))
@@ -11756,8 +11756,8 @@ int func_269(var uParam0)
 				ENTITY::SET_ENTITY_ROTATION(uParam0->f_41[0], 0f, 0f, -11.27f, 2, 1);
 				ENTITY::SET_ENTITY_CAN_BE_DAMAGED(uParam0->f_41[0], false);
 				ENTITY::SET_ENTITY_INVINCIBLE(uParam0->f_41[0], true);
-				ENTITY::_0xE12ABE5E3A389A6C(uParam0->f_41[0], 0);
-				ENTITY::_0xA80AE305E0A3044F(uParam0->f_41[0], 0);
+				ENTITY::SET_CAN_AUTO_VAULT_ON_ENTITY(uParam0->f_41[0], 0);
+				ENTITY::SET_CAN_CLIMB_ON_ENTITY(uParam0->f_41[0], 0);
 			}
 			iVar1 = 0;
 			while (iVar1 <= (iVar0 - 1))
@@ -11918,7 +11918,7 @@ int func_273(var uParam0)
 			{
 				VEHICLE::SET_VEHICLE_COLOUR_COMBINATION(uParam0->f_35[0], 1);
 				VEHICLE::SET_VEHICLE_DOORS_LOCKED(uParam0->f_35[0], 1);
-				ENTITY::_0xE12ABE5E3A389A6C(uParam0->f_35[0], 0);
+				ENTITY::SET_CAN_AUTO_VAULT_ON_ENTITY(uParam0->f_35[0], 0);
 			}
 			iVar1 = 0;
 			while (iVar1 <= (iVar0 - 1))
@@ -13829,8 +13829,8 @@ int func_281(var uParam0)
 					VEHICLE::SET_VEHICLE_NUMBER_PLATE_TEXT_INDEX(uParam0->f_35[0], 0);
 					VEHICLE::SET_VEHICLE_DOORS_LOCKED(uParam0->f_35[0], 10);
 					VEHICLE::SET_VEHICLE_CAN_DEFORM_WHEELS(uParam0->f_35[0], 0);
-					VEHICLE::_0x51BB2D88D31A914B(uParam0->f_35[0], false);
-					VEHICLE::_0x192547247864DFDD(uParam0->f_35[0], false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_OIL(uParam0->f_35[0], false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(uParam0->f_35[0], false);
 				}
 			}
 			if (bVar3)

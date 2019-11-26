@@ -1398,7 +1398,7 @@ void func_9(var uParam0, bool bParam1, int iParam2)
 			uParam0->f_5.f_7 = 1;
 			*uParam0 = PED::CREATE_PED_INSIDE_VEHICLE(uParam0->f_5, 26, uParam0->f_3, -1, 1, true);
 			func_11(uParam0);
-			VEHICLE::_0x1AA8A837D2169D94(uParam0->f_5, 1);
+			VEHICLE::_SET_VEHICLE_LIGHTS_CAN_BE_VISIBLY_DAMAGED(uParam0->f_5, 1);
 			if (ENTITY::DOES_ENTITY_EXIST(*uParam0))
 			{
 				PED::SET_PED_ACCURACY(*uParam0, 20);
@@ -5578,7 +5578,7 @@ void func_58()
 				{
 					if (func_8(iLocal_365))
 					{
-						CAM::_0x11FA5D3479C7DD47(ENTITY::GET_ENTITY_MODEL(iLocal_365));
+						CAM::_SET_GAMEPLAY_CAM_VEHICLE_CAMERA_NAME(ENTITY::GET_ENTITY_MODEL(iLocal_365));
 					}
 					GRAPHICS::ANIMPOSTFX_PLAY("CamPushInNeutral", 0, 0);
 					AUDIO::PLAY_SOUND_FRONTEND(-1, "1st_Person_Transition", "PLAYER_SWITCH_CUSTOM_SOUNDSET", true);
@@ -5594,7 +5594,7 @@ void func_58()
 				CAM::SET_GAMEPLAY_CAM_RELATIVE_PITCH(0f, 1065353216);
 				if (func_8(iLocal_365))
 				{
-					CAM::_0x11FA5D3479C7DD47(ENTITY::GET_ENTITY_MODEL(iLocal_365));
+					CAM::_SET_GAMEPLAY_CAM_VEHICLE_CAMERA_NAME(ENTITY::GET_ENTITY_MODEL(iLocal_365));
 				}
 				func_135(0, 0, 1, 2000, 1, 0);
 				SYSTEM::SETTIMERA(0);
@@ -7724,7 +7724,7 @@ int func_77()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -11431,10 +11431,10 @@ void func_167(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -15743,7 +15743,7 @@ void func_225()
 					Local_46.f_5 = 1;
 					if (func_8(iLocal_365))
 					{
-						CAM::_0x11FA5D3479C7DD47(ENTITY::GET_ENTITY_MODEL(iLocal_365));
+						CAM::_SET_GAMEPLAY_CAM_VEHICLE_CAMERA_NAME(ENTITY::GET_ENTITY_MODEL(iLocal_365));
 					}
 					func_244(&Local_210, 0, 1, 2000, 1, 0, 0, 1);
 					CAM::DESTROY_ALL_CAMS(0);
@@ -15774,7 +15774,7 @@ void func_225()
 						{
 							if (func_8(iLocal_365))
 							{
-								CAM::_0x11FA5D3479C7DD47(ENTITY::GET_ENTITY_MODEL(iLocal_365));
+								CAM::_SET_GAMEPLAY_CAM_VEHICLE_CAMERA_NAME(ENTITY::GET_ENTITY_MODEL(iLocal_365));
 							}
 							GRAPHICS::ANIMPOSTFX_PLAY("CamPushInNeutral", 0, 0);
 							AUDIO::PLAY_SOUND_FRONTEND(-1, "1st_Person_Transition", "PLAYER_SWITCH_CUSTOM_SOUNDSET", true);

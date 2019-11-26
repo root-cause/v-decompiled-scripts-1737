@@ -201,8 +201,8 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iLocal_46 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_47 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_46 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_47 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_65 = 3;
 	bLocal_80 = true;
 	cLocal_92 = "RANDOM@ATMROBBERYGEN";
@@ -8196,7 +8196,7 @@ int func_190()
 			iLocal_73 = VEHICLE::CREATE_VEHICLE(iLocal_106, vLocal_74, fLocal_76, true, true, false);
 			VEHICLE::SET_VEHICLE_ENGINE_ON(iLocal_73, true, true, 0);
 			VEHICLE::ADD_VEHICLE_UPSIDEDOWN_CHECK(iLocal_73);
-			VEHICLE::_0x25367DE49D64CF16(iLocal_73, 1);
+			VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_73, 1);
 			if (iLocal_65 == 2)
 			{
 				VEHICLE::SET_VEHICLE_DOOR_OPEN(iLocal_73, 0, 0, 0);
@@ -11173,7 +11173,7 @@ int func_270()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

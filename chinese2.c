@@ -605,8 +605,8 @@ void __EntryFunction__()
 	iLocal_43 = 65;
 	iLocal_44 = 49;
 	iLocal_45 = 64;
-	iLocal_49 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_50 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_49 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_50 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_61 = -1;
 	iLocal_62 = -1;
 	bLocal_75 = true;
@@ -13239,7 +13239,7 @@ void func_160(int iParam0, int iParam1, int iParam2, int iParam3, int iParam4, i
 					{
 						func_166(1);
 						AUDIO::START_AUDIO_SCENE("CHI_2_SHOOTOUT_STEALTH");
-						MISC::_SET_UNK_MAP_FLAG(1);
+						MISC::SET_INSTANCE_PRIORITY_HINT(1);
 						Local_385[iParam0 /*10*/].f_3 = 1;
 					}
 					break;
@@ -14635,7 +14635,7 @@ void func_175()
 		CAM::SET_GAMEPLAY_CAM_RELATIVE_HEADING(0f);
 		CAM::SET_GAMEPLAY_CAM_RELATIVE_PITCH(0f, 1065353216);
 		HUD::CLEAR_PRINTS();
-		AUDIO::_0xDDC635D5B3262C56("SLOW_MO_METH_HOUSE_RAYFIRE");
+		AUDIO::DEACTIVATE_AUDIO_SLOWMO_MODE("SLOW_MO_METH_HOUSE_RAYFIRE");
 		uLocal_173 = OBJECT::GET_RAYFIRE_MAP_OBJECT(2457.15f, 4968.79f, 48.677f, 45f, "DES_FarmHs");
 		func_31(12, 1);
 		iLocal_158 = 0;
@@ -15043,7 +15043,7 @@ void func_175()
 									fLocal_175 = 1f;
 									Local_136[iVar3 /*6*/].f_4++;
 									Local_136[iVar3 /*6*/].f_5 = MISC::GET_GAME_TIMER() + 1300;
-									AUDIO::_0xD01005D2BA2EB778("SLOW_MO_METH_HOUSE_RAYFIRE");
+									AUDIO::ACTIVATE_AUDIO_SLOWMO_MODE("SLOW_MO_METH_HOUSE_RAYFIRE");
 									break;
 								
 								case 1:
@@ -15067,7 +15067,7 @@ void func_175()
 										Local_136[iVar3 /*6*/].f_4++;
 										Local_136[iVar3 /*6*/] = 1;
 									}
-									AUDIO::_0xDDC635D5B3262C56("SLOW_MO_METH_HOUSE_RAYFIRE");
+									AUDIO::DEACTIVATE_AUDIO_SLOWMO_MODE("SLOW_MO_METH_HOUSE_RAYFIRE");
 									MISC::SET_TIME_SCALE(fLocal_175);
 									break;
 							}
@@ -15962,7 +15962,7 @@ void func_201()
 				{
 					HUD::CLEAR_PRINTS();
 					HUD::CLEAR_HELP(1);
-					CAM::_0x70894BD0915C5BCA(6.818f);
+					CAM::SET_FIRST_PERSON_AIM_CAM_ZOOM_FACTOR(6.818f);
 					if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_147, 0))
 					{
 						CUTSCENE::REGISTER_ENTITY_FOR_CUTSCENE(iLocal_147, "EXL_2_abandoned_car", 1, joaat("DUBSTA"), 0);
@@ -16015,7 +16015,7 @@ void func_201()
 				}
 				CAM::SET_GAMEPLAY_CAM_RELATIVE_HEADING(0f);
 				CAM::SET_GAMEPLAY_CAM_RELATIVE_PITCH(-6.3f, 1065353216);
-				CAM::_0x70894BD0915C5BCA(6.818f);
+				CAM::SET_FIRST_PERSON_AIM_CAM_ZOOM_FACTOR(6.818f);
 				PED::_0x2208438012482A1A(PLAYER::PLAYER_PED_ID(), 0, 0);
 				AUDIO::STOP_STREAM();
 				AUDIO::STOP_AUDIO_SCENE("CHI_2_FARMHOUSE_OVERVIEW");
@@ -22172,7 +22172,7 @@ int func_297()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -23605,10 +23605,10 @@ void func_318(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))
@@ -24712,7 +24712,7 @@ void func_353(int iParam0)
 	func_66();
 	func_64();
 	PED::REMOVE_SCENARIO_BLOCKING_AREAS();
-	MISC::_SET_UNK_MAP_FLAG(0);
+	MISC::SET_INSTANCE_PRIORITY_HINT(0);
 	PATHFIND::SET_ROADS_BACK_TO_ORIGINAL(Vector(44.8113f, 4961.045f, 2469.985f) - Vector(100f, 100f, 100f), Vector(44.8113f, 4961.045f, 2469.985f) + Vector(100f, 100f, 100f), true);
 	if (iParam0 == 0)
 	{
@@ -26227,10 +26227,10 @@ void func_381(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;

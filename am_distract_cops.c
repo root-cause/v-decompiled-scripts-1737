@@ -340,7 +340,7 @@ int func_8(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -425,7 +425,7 @@ void func_11()
 		}
 	}
 	iLocal_112++;
-	if (iLocal_112 == NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	if (iLocal_112 == NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (iLocal_113 == 0)
 		{
@@ -4265,7 +4265,7 @@ void func_170(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -4351,7 +4351,7 @@ void func_173(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))

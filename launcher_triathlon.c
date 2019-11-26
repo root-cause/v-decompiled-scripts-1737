@@ -5485,7 +5485,7 @@ void func_126(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);

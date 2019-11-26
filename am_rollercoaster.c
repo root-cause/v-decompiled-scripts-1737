@@ -2068,7 +2068,7 @@ void func_13()
 					iVar1 = 0;
 					while (iVar1 < iLocal_719)
 					{
-						ENTITY::PLAY_ENTITY_ANIM(iLocal_719[iVar1], &cLocal_1424, sLocal_1418, 8f, 0, 1, 0, 0f, 0);
+						ENTITY::PLAY_ENTITY_ANIM(iLocal_719[iVar1], &cLocal_1424, sLocal_1418, 8f, false, 1, 0, 0f, 0);
 						iVar1++;
 					}
 					func_9(&uLocal_1444);
@@ -2336,7 +2336,7 @@ void func_25(bool bParam0)
 				PED::SET_PED_CONFIG_FLAG(PLAYER::PLAYER_PED_ID(), 122, false);
 			}
 			PLAYER::SET_PLAYER_VEHICLE_DEFENSE_MODIFIER(PLAYER::PLAYER_ID(), 1f);
-			NETWORK::_0x1B857666604B1A74(0);
+			NETWORK::NETWORK_SET_PLAYER_IS_PASSIVE(0);
 			NETWORK::NETWORK_SET_FRIENDLY_FIRE_OPTION(true);
 			if (Global_1312417.f_1 == 0 || Global_1312417.f_2 == 1)
 			{
@@ -2361,7 +2361,7 @@ void func_25(bool bParam0)
 					NETWORK::USE_PLAYER_COLOUR_INSTEAD_OF_TEAM_COLOUR(1, 0);
 				}
 			}
-			NETWORK::_0x1B857666604B1A74(1);
+			NETWORK::NETWORK_SET_PLAYER_IS_PASSIVE(1);
 			NETWORK::NETWORK_SET_FRIENDLY_FIRE_OPTION(false);
 		}
 	}
@@ -2575,7 +2575,7 @@ void func_30(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -2864,7 +2864,7 @@ int func_44(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -4559,7 +4559,7 @@ void func_93(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -4740,7 +4740,7 @@ void func_97(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -5520,7 +5520,7 @@ void func_139()
 			iVar0 = 0;
 			while (iVar0 < iLocal_719)
 			{
-				ENTITY::PLAY_ENTITY_ANIM(iLocal_719[iVar0], &cLocal_1424, sLocal_1418, 8f, 0, 1, 0, 0f, 0);
+				ENTITY::PLAY_ENTITY_ANIM(iLocal_719[iVar0], &cLocal_1424, sLocal_1418, 8f, false, 1, 0, 0f, 0);
 				iVar0++;
 			}
 			AUDIO::PLAY_SOUND_FROM_ENTITY(-1, "Bar_Lower_And_Lock", iLocal_719[1], "DLC_IND_ROLLERCOASTER_SOUNDS", false, 0);
@@ -6390,7 +6390,7 @@ int func_171(int iParam0)
 	{
 		return 0;
 	}
-	if (FILES::_0x341DE7ED1D2A1BFD(FILES::GET_HASH_NAME_FOR_COMPONENT(iParam0, 11, PED::GET_PED_DRAWABLE_VARIATION(iParam0, 11), PED::GET_PED_TEXTURE_VARIATION(iParam0, 11)), joaat("JUGG_SUIT"), 0))
+	if (FILES::DOES_SHOP_PED_APPAREL_HAVE_RESTRICTION_TAG(FILES::GET_HASH_NAME_FOR_COMPONENT(iParam0, 11, PED::GET_PED_DRAWABLE_VARIATION(iParam0, 11), PED::GET_PED_TEXTURE_VARIATION(iParam0, 11)), joaat("JUGG_SUIT"), 0))
 	{
 		return 1;
 	}
@@ -6760,7 +6760,7 @@ int func_191()
 			StringCopy(&cLocal_1424, "idle_a_roller_car", 32);
 			if (func_45(iLocal_719[iVar0]))
 			{
-				ENTITY::PLAY_ENTITY_ANIM(iLocal_719[iVar0], &cLocal_1424, sLocal_1418, 8f, 1, 0, 0, 0f, 0);
+				ENTITY::PLAY_ENTITY_ANIM(iLocal_719[iVar0], &cLocal_1424, sLocal_1418, 8f, true, 0, 0, 0f, 0);
 			}
 			iVar0++;
 		}

@@ -738,7 +738,7 @@ void __EntryFunction__()
 			{
 				if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 				{
-					if (PED::HAS_PED_HEAD_BLEND_FINISHED(PLAYER::PLAYER_PED_ID()) && PED::_0x7350823473013C02(PLAYER::PLAYER_PED_ID()))
+					if (PED::HAS_PED_HEAD_BLEND_FINISHED(PLAYER::PLAYER_PED_ID()) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(PLAYER::PLAYER_PED_ID()))
 					{
 						func_516(1024);
 						PED::_0x4668D80430D6C299(PLAYER::PLAYER_PED_ID());
@@ -4188,7 +4188,7 @@ void func_100(int iParam0, bool bParam1)
 		{
 			if (NETWORK::_0xB07D3185E11657A5(iLocal_90))
 			{
-				if (NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(NETWORK::NETWORK_GET_NETWORK_ID_FROM_ENTITY(iLocal_90)))
+				if (NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(NETWORK::NETWORK_GET_NETWORK_ID_FROM_ENTITY(iLocal_90)))
 				{
 					PED::SET_PED_KEEP_TASK(iParam0, true);
 				}
@@ -11869,7 +11869,7 @@ void func_288(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_206(0);
@@ -14581,7 +14581,7 @@ void func_367(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -17032,7 +17032,7 @@ bool func_452(int iParam0)
 
 void func_453(int iParam0)
 {
-	HUD::_0xB9C362BABECDDC7A(3, 21, 200, 0, 0);
+	HUD::_SET_HELP_MESSAGE_TEXT_STYLE(3, 21, 200, 0, 0);
 	if (iParam0 && !func_454())
 	{
 		AUDIO::PLAY_SOUND_FRONTEND(-1, "Event_Message_Purple", "GTAO_FM_Events_Soundset", false);
@@ -18150,7 +18150,7 @@ void func_505()
 	{
 		if (func_506(1, 0, 1))
 		{
-			if (NETWORK::_0xCB215C4B56A7FAE7(0) <= 1)
+			if (NETWORK::GET_NUM_CREATED_MISSION_PEDS(0) <= 1)
 			{
 				NETWORK::RESERVE_NETWORK_MISSION_PEDS(1);
 			}
@@ -18706,7 +18706,7 @@ void func_529(bool bParam0)
 				{
 					if (NETWORK::_0xB07D3185E11657A5(iLocal_90))
 					{
-						if (NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(NETWORK::NETWORK_GET_NETWORK_ID_FROM_ENTITY(iLocal_90)))
+						if (NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(NETWORK::NETWORK_GET_NETWORK_ID_FROM_ENTITY(iLocal_90)))
 						{
 							PED::SET_PED_KEEP_TASK(iLocal_90, true);
 						}

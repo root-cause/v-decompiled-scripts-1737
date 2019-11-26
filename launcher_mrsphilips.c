@@ -107,8 +107,8 @@ void __EntryFunction__()
 	iLocal_43 = 65;
 	iLocal_44 = 49;
 	iLocal_45 = 64;
-	iLocal_49 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_50 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_49 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_50 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_51 = -1;
 	MISC::_0x6F2135B6129620C1(1);
 	func_260();
@@ -2598,10 +2598,10 @@ void func_57(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;

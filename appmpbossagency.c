@@ -1651,7 +1651,7 @@ int func_62(int iParam0)
 	Var0 = { func_63(iParam0) };
 	if (MISC::IS_DURANGO_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 			{
@@ -1679,14 +1679,14 @@ int func_64(int iParam0)
 		Var0 = { func_63(iParam0) };
 		if (MISC::IS_ORBIS_VERSION() || MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				return 0;
 			}
 		}
 		else if (MISC::IS_DURANGO_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 				{

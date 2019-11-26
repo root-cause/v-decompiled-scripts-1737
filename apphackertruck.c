@@ -10343,7 +10343,7 @@ int func_232(int iParam0, int iParam1)
 						if (HUD::DOES_BLIP_EXIST(Global_2416063[iVar6]))
 						{
 							vVar8 = { HUD::GET_BLIP_COORDS(Global_2416063[iVar6]) };
-							vVar8.z = PATHFIND::_0x336511A34F2E5185(vVar8.x, vVar8.y);
+							vVar8.z = PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_POSITION(vVar8.x, vVar8.y);
 						}
 						else
 						{
@@ -10413,7 +10413,7 @@ int func_233(int iParam0, int iParam1)
 			if (HUD::DOES_BLIP_EXIST(Global_2416063[PLAYER::PLAYER_ID()]))
 			{
 				vVar0 = { HUD::GET_BLIP_COORDS(Global_2416063[PLAYER::PLAYER_ID()]) };
-				vVar0.z = PATHFIND::_0x336511A34F2E5185(vVar0.x, vVar0.y);
+				vVar0.z = PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_POSITION(vVar0.x, vVar0.y);
 			}
 			else
 			{

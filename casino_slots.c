@@ -1009,7 +1009,7 @@ void func_17(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -3490,7 +3490,7 @@ void func_89(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -3671,7 +3671,7 @@ void func_93(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -6239,7 +6239,7 @@ void func_160(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -10176,7 +10176,7 @@ void func_232(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_282(0);

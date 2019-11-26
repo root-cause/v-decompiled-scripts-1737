@@ -457,8 +457,8 @@ void __EntryFunction__()
 				SYSTEM::WAIT(0);
 				if (HUD::IS_FRONTEND_READY_FOR_CONTROL())
 				{
-					iLocal_330 = HUD::_0x5C90988E7C8E1AF4();
-					if (HUD::_0x4167EFE0527D706E())
+					iLocal_330 = HUD::GET_NEW_SELECTED_MISSION_CREATOR_BLIP();
+					if (HUD::IS_HOVERING_OVER_MISSION_CREATOR_BLIP())
 					{
 						if (HUD::DOES_BLIP_EXIST(iLocal_330))
 						{
@@ -529,13 +529,13 @@ void __EntryFunction__()
 					}
 					if (Global_70409.f_577)
 					{
-						if (HUD::_0x9049FE339D5F6F6F())
+						if (HUD::_IS_MINIMAP_IN_INTERIOR())
 						{
-							HUD::_DISABLE_RADAR_THIS_FRAME();
+							HUD::HIDE_MINIMAP_EXTERIOR_MAP_THIS_FRAME();
 						}
 						else
 						{
-							HUD::_0x20FE7FDFEEAD38C0();
+							HUD::HIDE_MINIMAP_INTERIOR_MAP_THIS_FRAME();
 							HUD::_SET_PLAYER_BLIP_POSITION_THIS_FRAME(Global_70409.f_578, Global_70409.f_578.f_1);
 						}
 					}
@@ -2465,7 +2465,7 @@ void func_51(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -5642,7 +5642,7 @@ int func_154(var uParam0, int iParam1)
 		{
 			return 11;
 		}
-		if ((Global_1574623 && HUD::_0x4167EFE0527D706E()) && HUD::IS_PAUSE_MENU_ACTIVE())
+		if ((Global_1574623 && HUD::IS_HOVERING_OVER_MISSION_CREATOR_BLIP()) && HUD::IS_PAUSE_MENU_ACTIVE())
 		{
 			if ((Global_1574567.f_23 == -2 || Global_1574567.f_23 == -3) || Global_1574567.f_23 == 0)
 			{
@@ -8713,7 +8713,7 @@ var func_236(int iParam0, int iParam1)
 	{
 		return func_237();
 	}
-	return NETWORK::_0x40F7E66472DF3E5C(iParam0, iParam1);
+	return NETWORK::UGC_GET_CACHED_DESCRIPTION(iParam0, iParam1);
 }
 
 char* func_237()
@@ -9295,7 +9295,7 @@ void func_249()
 {
 	if (HUD::IS_PAUSE_MENU_ACTIVE())
 	{
-		HUD::_DISABLE_RADAR_THIS_FRAME();
+		HUD::HIDE_MINIMAP_EXTERIOR_MAP_THIS_FRAME();
 	}
 }
 
@@ -9310,7 +9310,7 @@ int func_250()
 
 void func_251(int iParam0)
 {
-	if (HUD::_0x4167EFE0527D706E())
+	if (HUD::IS_HOVERING_OVER_MISSION_CREATOR_BLIP())
 	{
 		if (HUD::DOES_BLIP_EXIST(iParam0))
 		{

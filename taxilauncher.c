@@ -274,8 +274,8 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iLocal_46 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_47 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_46 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_47 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_60 = 1;
 	iLocal_65 = -1;
 	iLocal_69 = func_144();
@@ -2643,7 +2643,7 @@ int func_67(vector3 vParam0, vector3 vParam1, var uParam2, var uParam3, var uPar
 	if (PATHFIND::IS_VEHICLE_NODE_ID_VALID(iVar3))
 	{
 		PATHFIND::GET_VEHICLE_NODE_POSITION(iVar3, &vVar0);
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, 0, &vVar1) && PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, 1, &vVar2))
+		if (PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, 0, &vVar1) && PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, 1, &vVar2))
 		{
 			vVar5 = { vVar1 - vVar0 };
 			vVar6 = { -vVar5.y, vVar5.x, 0f };
@@ -2670,7 +2670,7 @@ int func_67(vector3 vParam0, vector3 vParam1, var uParam2, var uParam3, var uPar
 			}
 			return 1;
 		}
-		else if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, -1, &vVar1))
+		else if (PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, -1, &vVar1))
 		{
 			*uParam3 = { vVar1 };
 			*uParam4 = uParam2;

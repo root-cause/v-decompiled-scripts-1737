@@ -108,7 +108,7 @@ void __EntryFunction__()
 			func_2();
 			func_1();
 			iLocal_54++;
-			if (iLocal_54 >= NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+			if (iLocal_54 >= NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 			{
 				iLocal_54 = 0;
 			}
@@ -128,7 +128,7 @@ void func_1()
 	
 	iVar1 = PLAYER::NETWORK_PLAYER_ID_TO_INT();
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if ((iLocal_54 % iVar0) == 0)
 		{

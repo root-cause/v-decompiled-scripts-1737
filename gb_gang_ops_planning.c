@@ -518,7 +518,7 @@ void func_8(int iParam0)
 		func_5(0);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
-		GRAPHICS::_0xE1C8709406F2C41C();
+		GRAPHICS::RESET_PAUSED_RENDERPHASES();
 	}
 }
 
@@ -674,8 +674,8 @@ void func_13(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam4
 					vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(func_55()) };
 					if (func_54(Global_1589819[PLAYER::PLAYER_ID() /*818*/].f_682, 1, 0))
 					{
-						vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-						vVar1 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+						vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+						vVar1 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 					}
 				}
 				else
@@ -723,7 +723,7 @@ void func_13(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam4
 			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 			vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID()) };
 			vVar0.z = (vVar0.z + 0.4f);
-			fVar2 = CAM::_0x80EC114669DAEFF4();
+			fVar2 = CAM::GET_FINAL_RENDERED_CAM_FOV();
 		}
 		else
 		{
@@ -912,7 +912,7 @@ void func_19(vector3 vParam0)
 	{
 		return;
 	}
-	STREAMING::_SET_FOCUS_AREA(vParam0, 0f, 0f, 0f);
+	STREAMING::SET_FOCUS_POS_AND_VEL(vParam0, 0f, 0f, 0f);
 	NETWORK::NETWORK_SET_IN_FREE_CAM_MODE(1);
 }
 
@@ -1152,7 +1152,7 @@ void func_26(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -11755,7 +11755,7 @@ int func_328(int iParam0)
 	Var0 = { func_93(iParam0) };
 	if (MISC::IS_DURANGO_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 			{
@@ -11775,14 +11775,14 @@ int func_329(int iParam0)
 		Var0 = { func_93(iParam0) };
 		if (MISC::IS_ORBIS_VERSION() || MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				return 0;
 			}
 		}
 		else if (MISC::IS_DURANGO_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 				{

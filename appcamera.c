@@ -1823,7 +1823,7 @@ void func_10()
 		{
 			if (PAD::IS_CONTROL_JUST_PRESSED(0, 40) || PAD::IS_CONTROL_JUST_PRESSED(0, 41))
 			{
-				fLocal_65 = CAM::_GET_GAMEPLAY_CAM_ZOOM();
+				fLocal_65 = CAM::GET_FIRST_PERSON_AIM_CAM_ZOOM_FACTOR();
 				if (fLocal_65 > 1f && fLocal_65 < 4.5f)
 				{
 					if (AUDIO::HAS_SOUND_FINISHED(iLocal_63))
@@ -1840,7 +1840,7 @@ void func_10()
 		}
 		else if (PAD::IS_CONTROL_PRESSED(0, 40) || PAD::IS_CONTROL_PRESSED(0, 41))
 		{
-			fLocal_65 = CAM::_GET_GAMEPLAY_CAM_ZOOM();
+			fLocal_65 = CAM::GET_FIRST_PERSON_AIM_CAM_ZOOM_FACTOR();
 			if (fLocal_65 > 1f && fLocal_65 < 4.5f)
 			{
 				if (AUDIO::HAS_SOUND_FINISHED(iLocal_63))

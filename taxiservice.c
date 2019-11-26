@@ -854,8 +854,8 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iLocal_44 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_45 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_44 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_45 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_69 = 1076369579;
 	iLocal_70 = 1076631591;
 	fLocal_73 = 0.22f;
@@ -6257,7 +6257,7 @@ int func_125(var uParam0, vector3 vParam1, vector3 vParam2, var uParam3, float f
 				if (uParam3->f_2 == 1f)
 				{
 					fVar11 = 1f;
-					fVar11 = PATHFIND::_0x3599D741C9AC6310((*uParam3 - 2f), (uParam3->f_1 - 2f), (*uParam3 + 2f), (uParam3->f_1 + 2f));
+					fVar11 = PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_AREA((*uParam3 - 2f), (uParam3->f_1 - 2f), (*uParam3 + 2f), (uParam3->f_1 + 2f));
 					if (fVar11 > 1f)
 					{
 						iLocal_67 = 1;
@@ -11472,7 +11472,7 @@ void func_196(vector3 vParam0, int iParam1)
 {
 	func_197(iParam1);
 	vLocal_806[iParam1 /*3*/] = { vParam0 };
-	if (func_189(vLocal_806[iParam1 /*3*/]) == HUD::_GET_BLIP_INFO_ID_ITERATOR())
+	if (func_189(vLocal_806[iParam1 /*3*/]) == HUD::_GET_WAYPOINT_BLIP_SPRITE())
 	{
 		iLocal_97 = iParam1;
 		vLocal_821 = { HUD::GET_BLIP_COORDS(vLocal_806[iParam1 /*3*/]) };
@@ -11500,7 +11500,7 @@ void func_197(int iParam0)
 void func_198(vector3 vParam0, int iParam1)
 {
 	vLocal_806[iParam1 /*3*/] = { vParam0 };
-	if (func_189(vLocal_806[iParam1 /*3*/]) == HUD::_GET_BLIP_INFO_ID_ITERATOR())
+	if (func_189(vLocal_806[iParam1 /*3*/]) == HUD::_GET_WAYPOINT_BLIP_SPRITE())
 	{
 		iLocal_97 = iParam1;
 		vLocal_821 = { HUD::GET_BLIP_COORDS(vLocal_806[iParam1 /*3*/]) };
@@ -11695,7 +11695,7 @@ bool func_208()
 			{
 				if (HUD::DOES_BLIP_EXIST(vLocal_806[iLocal_97 /*3*/]))
 				{
-					if (func_189(vLocal_806[iLocal_97 /*3*/]) == HUD::_GET_BLIP_INFO_ID_ITERATOR())
+					if (func_189(vLocal_806[iLocal_97 /*3*/]) == HUD::_GET_WAYPOINT_BLIP_SPRITE())
 					{
 						vVar1 = { HUD::GET_BLIP_COORDS(vLocal_806[iLocal_97 /*3*/]) };
 						if (!func_129(vVar1, vLocal_821, 1056964608, 0))
@@ -11706,7 +11706,7 @@ bool func_208()
 				}
 				else
 				{
-					iVar2 = HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_BLIP_INFO_ID_ITERATOR());
+					iVar2 = HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_WAYPOINT_BLIP_SPRITE());
 					if (HUD::DOES_BLIP_EXIST(iVar2))
 					{
 						vVar1 = { HUD::GET_BLIP_COORDS(iVar2) };

@@ -1145,7 +1145,7 @@ int func_38()
 			if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 			{
 				vVar0 = { func_55(func_56(PLAYER::PLAYER_ID()), 0f, (-200f * SYSTEM::SIN((SYSTEM::TO_FLOAT(Local_227.f_1.f_15) * 30f))), (200f * SYSTEM::COS((SYSTEM::TO_FLOAT(Local_227.f_1.f_15) * 30f))), 0f) };
-				vVar0.z = PATHFIND::_0x29C24BFBED8AB8FB(vVar0.x, vVar0.y);
+				vVar0.z = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_POSITION(vVar0.x, vVar0.y);
 				vVar0.z = (vVar0.z + 30f);
 				if (func_39(vVar0, 20f, 1f, 1f, 15f, 1, 1, 1, 180f, 0, -1, 1, 0, 0, 0, 0, 0))
 				{
@@ -2338,7 +2338,7 @@ int func_79()
 
 int func_80(int iParam0)
 {
-	if (NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(iParam0))
+	if (NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(iParam0))
 	{
 		return 1;
 	}
@@ -2616,7 +2616,7 @@ void func_88()
 	if (bVar0)
 	{
 		vVar1 = { func_56(PLAYER::PLAYER_ID()) };
-		fLocal_58 = PATHFIND::_0x29C24BFBED8AB8FB(vVar1.x, vVar1.y);
+		fLocal_58 = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_POSITION(vVar1.x, vVar1.y);
 		if (fLocal_58 < 85f)
 		{
 			fLocal_58 = 85f;

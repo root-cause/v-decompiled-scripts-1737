@@ -520,7 +520,7 @@ void func_3()
 		bVar6 = false;
 		bVar7 = false;
 		iVar3 = 0;
-		while (iVar3 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar3 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar5 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar3);
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar5))
@@ -558,7 +558,7 @@ void func_3()
 				iVar8 = -1;
 				bVar9 = false;
 				iVar3 = 0;
-				while (iVar3 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar3 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar3)))
 					{
@@ -610,7 +610,7 @@ void func_3()
 				iVar12 = Local_237[iVar4 /*21*/].f_11;
 				iVar13 = MISC::GET_RANDOM_INT_IN_RANGE(0, 65535);
 				iVar3 = 0;
-				while (iVar3 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar3 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar3)))
 					{
@@ -700,7 +700,7 @@ int func_7(var uParam0, struct<13>[] Param1, var uParam2, var uParam3, var uPara
 	iVar0 = -1;
 	fVar1 = 0f;
 	iVar4 = 0;
-	while (iVar4 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar4 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar5 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar4);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar5))
@@ -973,7 +973,7 @@ int func_20(var uParam0, int iParam1)
 	iVar0 = 0;
 	iVar1 = 0;
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar2 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar1);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar2))
@@ -1861,7 +1861,7 @@ void func_46(struct<21> Param0, bool bParam1)
 							iVar0++;
 						}
 						iVar1 = 0;
-						while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar2 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar1);
 							if (iVar1 != NETWORK::PARTICIPANT_ID_TO_INT())
@@ -3775,7 +3775,7 @@ void func_50(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam4
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_27(0);
@@ -7265,7 +7265,7 @@ void func_156(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);

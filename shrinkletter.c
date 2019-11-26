@@ -734,7 +734,7 @@ int func_13(var uParam0, var uParam1, var uParam2)
 
 int func_14(var uParam0, int iParam1)
 {
-	if (!DATAFILE::_0x4DFDD9EB705F8140(uParam0))
+	if (!DATAFILE::DATAFILE_UPDATE_SAVE_TO_CLOUD(uParam0))
 	{
 		if (*uParam0)
 		{
@@ -770,7 +770,7 @@ int func_16()
 	{
 		return 1;
 	}
-	else if (NETWORK::_0xD53ACDBEF24A46E8())
+	else if (NETWORK::UGC_IS_GETTING())
 	{
 		return 1;
 	}

@@ -5340,7 +5340,7 @@ void func_169(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -5521,7 +5521,7 @@ void func_173(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -7472,7 +7472,7 @@ void func_239(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar18)
 					{
 						iVar21 = 0;
-						while (iVar21 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar21 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar22 = iVar21;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar22))
@@ -7809,7 +7809,7 @@ void func_256(int iParam0, var uParam1, int iParam2, var uParam3, var uParam4)
 					if (!bVar16)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -8512,7 +8512,7 @@ void func_270(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar17)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -10351,7 +10351,7 @@ void func_294(int iParam0, bool bParam1, var uParam2, int iParam3, var uParam4)
 				func_296();
 				Global_2528542.f_4889.f_377 = *iParam3;
 				iVar7 = 0;
-				while (iVar7 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar7 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					iVar8 = iVar7;
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar8))
@@ -14413,7 +14413,7 @@ int func_383()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -17128,7 +17128,7 @@ struct<4> func_485(int iParam0)
 				}
 			}
 		}
-		else if (!NETWORK::_0x72D918C99BCACC54(0))
+		else if (!NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			return cVar0;
 		}
@@ -17572,7 +17572,7 @@ int func_511(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 			if (func_555() > 0 && Global_1574177)
 			{
 				HUD::THEFEED_HIDE_THIS_FRAME();
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				if (HUD::IS_HELP_MESSAGE_BEING_DISPLAYED())
 				{
@@ -17639,7 +17639,7 @@ int func_511(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 					}
 					HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				}
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				if (func_536(bVar3, iParam0, 0))
 				{
 					func_499(iParam0, 0, 0);
@@ -17685,7 +17685,7 @@ int func_511(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 			{
 				Global_1574175 = uParam3;
 				Global_1574174 = 1;
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				if (bVar2)
 				{
 					if (uParam2->f_34 != Global_1574176)
@@ -18694,7 +18694,7 @@ void func_537(int iParam0, var uParam1, bool bParam2)
 	{
 		MISC::CLEAR_BIT(&(uParam1->f_33), 0);
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 }
 
 int func_538()
@@ -27201,7 +27201,7 @@ int func_650(int iParam0)
 	Var0 = { func_159(iParam0) };
 	if (MISC::IS_DURANGO_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 			{
@@ -27221,14 +27221,14 @@ int func_651(int iParam0)
 		Var0 = { func_159(iParam0) };
 		if (MISC::IS_ORBIS_VERSION() || MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				return 0;
 			}
 		}
 		else if (MISC::IS_DURANGO_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 				{
@@ -29536,7 +29536,7 @@ void func_726()
 						iLocal_121 = HUD::ADD_BLIP_FOR_RADIUS(Local_139.f_7, SYSTEM::TO_FLOAT((Global_262145.f_12385 - 1)));
 						func_743(&iLocal_121, iLocal_113);
 						HUD::SHOW_HEIGHT_ON_BLIP(iLocal_121, true);
-						HUD::_SET_BLIP_DISPLAY_ON_EDGE(iLocal_121, 1);
+						HUD::_SET_BLIP_DISPLAY_INDICATOR_ON_BLIP(iLocal_121, 1);
 						HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_121, "GB_HTB_BLIP0");
 					}
 					if (func_742(Local_139.f_5) != iLocal_125)
@@ -29628,7 +29628,7 @@ void func_726()
 					iLocal_121 = HUD::ADD_BLIP_FOR_RADIUS(Local_139.f_7, SYSTEM::TO_FLOAT((Global_262145.f_12385 - 1)));
 					func_743(&iLocal_121, iLocal_113);
 					HUD::SHOW_HEIGHT_ON_BLIP(iLocal_121, true);
-					HUD::_SET_BLIP_DISPLAY_ON_EDGE(iLocal_121, 1);
+					HUD::_SET_BLIP_DISPLAY_INDICATOR_ON_BLIP(iLocal_121, 1);
 					HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_121, "GB_HTB_BLIP0");
 					HUD::SET_BLIP_ALPHA(iLocal_121, Global_262145.f_12130);
 				}

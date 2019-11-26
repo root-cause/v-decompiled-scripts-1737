@@ -361,7 +361,7 @@ void __EntryFunction__()
 		}
 		if (MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0xC0D2AF00BCC234CA())
+			if (NETWORK::NETWORK_IS_LOCAL_TALKING())
 			{
 				if (!MISC::IS_BIT_SET(Global_4269308, 19))
 				{
@@ -848,7 +848,7 @@ int func_15()
 		}
 		Global_16925 = 0;
 		Global_16926 = 0;
-		if (HUD::_THEFEED_GET_CURRENT_NOTIFICATION() == Global_16923 && HUD::_THEFEED_GET_CURRENT_NOTIFICATION() != -1)
+		if (HUD::THEFEED_GET_FIRST_VISIBLE_DELETE_REMAINING() == Global_16923 && HUD::THEFEED_GET_FIRST_VISIBLE_DELETE_REMAINING() != -1)
 		{
 			Global_16925 = Global_16924;
 			iLocal_58 = MISC::GET_GAME_TIMER();

@@ -1007,7 +1007,7 @@ void __EntryFunction__()
 				if (iVar13 == 0)
 				{
 					PATHFIND::SET_ROADS_IN_ANGLED_AREA(-832.271f, -1525.112f, -100f, -1187.833f, -1876.646f, 100f, 50f, 1, false, 1);
-					uVar41 = VEHICLE::_ADD_VEHICLE_COMBAT_AVOIDANCE_AREA(-832.271f, -1525.112f, -100f, -1187.833f, -1876.646f, 100f, 50f);
+					uVar41 = VEHICLE::ADD_VEHICLE_COMBAT_ANGLED_AVOIDANCE_AREA(-832.271f, -1525.112f, -100f, -1187.833f, -1876.646f, 100f, 50f);
 				}
 				else if (iVar13 == 5)
 				{
@@ -5648,7 +5648,7 @@ void func_94(var uParam0, var uParam1)
 	Var10 = { func_56(PLAYER::PLAYER_ID()) };
 	if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(*uParam0))
 	{
-		if (((!NETWORK::_NETWORK_ARE_ROS_AVAILABLE() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
+		if (((!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
 		{
 			if (!PLAYER::IS_PLAYER_ONLINE())
 			{
@@ -5666,7 +5666,7 @@ void func_94(var uParam0, var uParam1)
 					Global_1835392.f_2829 = 3;
 				}
 			}
-			else if (!NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+			else if (!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 			{
 				if (Global_1835392.f_2829 != 4)
 				{
@@ -5984,7 +5984,7 @@ void func_94(var uParam0, var uParam1)
 								{
 									iVar9 = 0;
 									MISC::SET_BIT(&iVar9, 6);
-									if (!NETWORK::_0x67A5589628E0CFF6())
+									if (!NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 									{
 										bVar14 = true;
 									}
@@ -8318,7 +8318,7 @@ int func_119(var uParam0)
 			return 0;
 		}
 	}
-	if (((!NETWORK::_NETWORK_ARE_ROS_AVAILABLE() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
+	if (((!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
 	{
 		MISC::CLEAR_BIT(&(uParam0->f_42), 4);
 		return 1;
@@ -8549,7 +8549,7 @@ int func_124(var uParam0)
 	{
 		case 0:
 			func_128(uParam0);
-			if (MISC::IS_ORBIS_VERSION() && !NETWORK::_0x72D918C99BCACC54(0))
+			if (MISC::IS_ORBIS_VERSION() && !NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				(uParam0[0 /*100*/])->f_76 = 3;
 				return 0;
@@ -10791,7 +10791,7 @@ void func_156(int iParam0, int iParam1, int iParam2, bool bParam3, bool bParam4)
 		*iParam1++;
 		if (NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_CLAN_SERVICE_IS_VALID())
 		{
-			if (MISC::IS_ORBIS_VERSION() && !NETWORK::_0x72D918C99BCACC54(0))
+			if (MISC::IS_ORBIS_VERSION() && !NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				sVar0 = "SCLB_CREW";
 			}
@@ -10850,7 +10850,7 @@ void func_156(int iParam0, int iParam1, int iParam2, bool bParam3, bool bParam4)
 		{
 			sVar0 = "SCLB_NOT_ONL";
 		}
-		else if (!NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		else if (!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			sVar0 = "SCLB_NO_ROS";
 		}
@@ -10886,13 +10886,13 @@ void func_156(int iParam0, int iParam1, int iParam2, bool bParam3, bool bParam4)
 		}
 		else if (MISC::IS_BIT_SET(iParam2, 6))
 		{
-			if (NETWORK::_0x67A5589628E0CFF6())
+			if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 			{
 				if (NETWORK::_0xBA9775570DB788CF())
 				{
 					if (NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_CLAN_SERVICE_IS_VALID())
 					{
-						if (MISC::IS_ORBIS_VERSION() && !NETWORK::_0x72D918C99BCACC54(0))
+						if (MISC::IS_ORBIS_VERSION() && !NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 						{
 							sVar0 = "SCLB_NO_CREWc";
 						}
@@ -11595,7 +11595,7 @@ int func_181(var uParam0)
 			break;
 		
 		case 2:
-			STATS::_0xC38DC1E90D22547C(&(Global_1835013.f_73), &(Global_1835013.f_142), &(Global_1835013.f_211));
+			STATS::LEADERBOARDS2_READ_RANK_PREDICTION(&(Global_1835013.f_73), &(Global_1835013.f_142), &(Global_1835013.f_211));
 			Global_1835013 = 4;
 			uParam0->f_4 = 0;
 			uParam0->f_5 = 0;
@@ -11638,7 +11638,7 @@ int func_181(var uParam0)
 				Var2 = Global_1835013.f_142;
 				Var2.f_1 = Global_1835013.f_142.f_1;
 				Var2.f_2 = Global_1835013.f_142.f_2;
-				STATS::_0xC38DC1E90D22547C(&Var2, &(Global_1835013.f_142), &(Global_1835013.f_280));
+				STATS::LEADERBOARDS2_READ_RANK_PREDICTION(&Var2, &(Global_1835013.f_142), &(Global_1835013.f_280));
 			}
 			Global_1835013 = 100;
 			uParam0->f_4 = 0;
@@ -18848,7 +18848,7 @@ int func_290()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

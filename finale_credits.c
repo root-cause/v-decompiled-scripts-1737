@@ -476,7 +476,7 @@ void __EntryFunction__()
 				func_2();
 				if (iLocal_29 > 0)
 				{
-					ENTITY::_SET_ENTITY_COORDS_2(PLAYER::PLAYER_PED_ID(), CAM::_GET_GAMEPLAY_CAM_COORDS() + Vector(3f, 0f, 0f), 1, 0, 0, 1);
+					ENTITY::_SET_ENTITY_COORDS_2(PLAYER::PLAYER_PED_ID(), CAM::GET_FINAL_RENDERED_CAM_COORD() + Vector(3f, 0f, 0f), 1, 0, 0, 1);
 					ENTITY::SET_ENTITY_VISIBLE(PLAYER::PLAYER_PED_ID(), false, 0);
 					ENTITY::SET_ENTITY_INVINCIBLE(PLAYER::PLAYER_PED_ID(), true);
 				}

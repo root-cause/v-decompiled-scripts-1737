@@ -96,7 +96,7 @@ void __EntryFunction__()
 								{
 									if (func_1(&iLocal_30, 1000))
 									{
-										if (VEHICLE::_0x89D630CF5EA96D23(iLocal_28, iLocal_29))
+										if (VEHICLE::_IS_HANDLER_FRAME_ABOVE_CONTAINER(iLocal_28, iLocal_29))
 										{
 											if (PAD::IS_CONTROL_JUST_PRESSED(0, 51))
 											{

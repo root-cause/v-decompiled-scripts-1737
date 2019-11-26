@@ -297,7 +297,7 @@ void func_6()
 	int iVar0;
 	
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 		{
@@ -2817,7 +2817,7 @@ int func_63(var uParam0, var uParam1, var uParam2, bool bParam3)
 	{
 		if (uParam1->f_5 && !bParam3)
 		{
-			switch (NETWORK::_0x3C891A251567DFCE(&(Global_2405071.f_2479.f_1)))
+			switch (NETWORK::NETWORK_QUERY_RESPAWN_RESULTS(&(Global_2405071.f_2479.f_1)))
 			{
 				case 0:
 					func_135(uParam1, uParam2);
@@ -2953,7 +2953,7 @@ int func_63(var uParam0, var uParam1, var uParam2, bool bParam3)
 					}
 					if (uParam1->f_5 && !bParam3)
 					{
-						iVar3 = NETWORK::_0x6C34F1208B8923FD(iVar2);
+						iVar3 = NETWORK::NETWORK_GET_RESPAWN_RESULT_FLAGS(iVar2);
 					}
 					else
 					{
@@ -4514,7 +4514,7 @@ int func_94(int iParam0)
 			return 1;
 			break;
 	}
-	if (PED::_0xCC6E3B6BB69501F1(Global_1574954[PLAYER::PLAYER_ID()]))
+	if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574954[PLAYER::PLAYER_ID()]))
 	{
 		switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574954[PLAYER::PLAYER_ID()]))
 		{
@@ -4529,7 +4529,7 @@ int func_94(int iParam0)
 		iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 		if (iVar1 > -1 && iVar1 < 4)
 		{
-			if (PED::_0xCC6E3B6BB69501F1(Global_1574664[iVar1]))
+			if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574664[iVar1]))
 			{
 				switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574664[iVar1]))
 				{
@@ -6905,7 +6905,7 @@ Vector3 func_160(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -8309,7 +8309,7 @@ int func_197(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{

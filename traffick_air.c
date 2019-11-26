@@ -13053,7 +13053,7 @@ void func_208(var uParam0, int iParam1, int iParam2, int iParam3, bool bParam4)
 			CAM::ATTACH_CAM_TO_ENTITY(uParam0->f_304, uParam0->f_25, 0f, -0.65f, -1.6f, 1);
 			CAM::SHAKE_CAM(uParam0->f_304, "HAND_SHAKE", 1.5f);
 			CAM::POINT_CAM_AT_ENTITY(uParam0->f_304, iParam1, 0f, 0f, 0f, 1);
-			STREAMING::_SET_FOCUS_AREA(ENTITY::GET_ENTITY_COORDS(iParam1, true), 0f, 0f, 0f);
+			STREAMING::SET_FOCUS_POS_AND_VEL(ENTITY::GET_ENTITY_COORDS(iParam1, true), 0f, 0f, 0f);
 			CAM::SET_CAM_ACTIVE(uParam0->f_304, true);
 			CAM::RENDER_SCRIPT_CAMS(true, false, 3000, 1, 0, 0);
 			uParam0->f_234 = 0;
@@ -15081,7 +15081,7 @@ int func_247(var uParam0, int iParam1, var uParam2, var uParam3, var uParam4, in
 								{
 									GRAPHICS::START_PARTICLE_FX_LOOPED_AT_COORD("scr_ojdg4_boat_wreck_fire", ENTITY::GET_ENTITY_COORDS(uParam3->f_322[iVar0], true), 0f, 0f, 0f, 3f, 0, 0, 0, 0);
 									VEHICLE::EXPLODE_VEHICLE(uParam3->f_322[iVar0], 1, 0);
-									VEHICLE::_SET_BOAT_EXPLODES_ON_WRECKED_ACTION(uParam3->f_322[iVar0], 1);
+									VEHICLE::SET_BOAT_SINKS_WHEN_WRECKED(uParam3->f_322[iVar0], 1);
 								}
 								iVar0++;
 							}
@@ -15991,7 +15991,7 @@ void func_264(int iParam0, var uParam1, var uParam2)
 		return;
 	}
 	*uParam1 = { ENTITY::GET_ENTITY_COORDS(iParam0, true) + Vector(0.5f, 0.5f, 0.5f) * vLocal_4186 };
-	STREAMING::_SET_FOCUS_AREA(*uParam1, vLocal_4186);
+	STREAMING::SET_FOCUS_POS_AND_VEL(*uParam1, vLocal_4186);
 	*uParam2 = { -80f, 0f, (ENTITY::GET_ENTITY_HEADING(iParam0) + 180f) };
 	*uParam2 = { (-SYSTEM::SIN(uParam2->f_2) * SYSTEM::COS(*uParam2)), (SYSTEM::COS(uParam2->f_2) * SYSTEM::COS(*uParam2)), SYSTEM::SIN(*uParam2) };
 }

@@ -86,8 +86,8 @@ void __EntryFunction__()
 	iLocal_41 = 65;
 	iLocal_42 = 49;
 	iLocal_43 = 64;
-	iLocal_47 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_48 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_47 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_48 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_56 = -15;
 	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(34))
 	{
@@ -2408,7 +2408,7 @@ int func_69()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

@@ -13586,7 +13586,7 @@ void func_255(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_256(0);
@@ -23451,7 +23451,7 @@ int func_513(int iParam0, int iParam1, int iParam2)
 	}
 	if (iParam0 == 95)
 	{
-		if (NETWORK::_0x67A5589628E0CFF6())
+		if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 		{
 			return 1;
 		}
@@ -26671,7 +26671,7 @@ int func_551()
 	}
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25())
 			{
@@ -26703,7 +26703,7 @@ int func_552()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -50292,7 +50292,7 @@ void func_763(int iParam0, char[4] cParam1)
 			}
 		}
 	}
-	else if (!NETWORK::_0x72D918C99BCACC54(0))
+	else if (!NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 	{
 		return;
 	}
@@ -54696,7 +54696,7 @@ void func_878()
 	func_820(60, -1, -1);
 	func_880(func_882(Local_179.f_181.f_69));
 	func_879(0, Local_179.f_181.f_69, "CM_VEH_REQUEST");
-	if (!NETWORK::_0x82377B65E943F72D(PLAYER::PLAYER_ID()))
+	if (!NETWORK::NETWORK_GET_PLAYER_OWNS_WAYPOINT(PLAYER::PLAYER_ID()))
 	{
 		func_879(0, 0, "CM_CONTACT_LIMO");
 	}
@@ -54846,7 +54846,7 @@ void func_886()
 			func_66(&(Global_2449538.f_4291.f_185[59 /*2*/]), 1, 0);
 			func_820(59, -1, -1);
 			func_887();
-			if (!NETWORK::_0x82377B65E943F72D(PLAYER::PLAYER_ID()))
+			if (!NETWORK::NETWORK_GET_PLAYER_OWNS_WAYPOINT(PLAYER::PLAYER_ID()))
 			{
 				func_879(0, 0, "CM_CONTACT_LIMO");
 			}
@@ -63833,7 +63833,7 @@ void func_1121(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);

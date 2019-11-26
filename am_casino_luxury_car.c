@@ -584,7 +584,7 @@ void func_24(int iParam0, var uParam1, bool bParam2, bool bParam3, bool bParam4)
 			}
 			if (!uParam1->f_79 == -1)
 			{
-				AUDIO::_0x0350E7E17BA767D0(iParam0, uParam1->f_79);
+				AUDIO::_SET_VEHICLE_HORN_VARIATION(iParam0, uParam1->f_79);
 			}
 			if (func_75(uParam1->f_66, &fVar0) && uParam1->f_80 != fVar0)
 			{
@@ -5055,7 +5055,7 @@ int func_72()
 	
 	if (PLAYER::IS_PLAYER_ONLINE())
 	{
-		if ((NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_IS_SIGNED_IN()) && NETWORK::_0x67A5589628E0CFF6())
+		if ((NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_IS_SIGNED_IN()) && NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 		{
 			Var0 = { func_73() };
 			if (NETWORK::NETWORK_CLAN_SERVICE_IS_VALID() && NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Var0))
@@ -5355,10 +5355,10 @@ void func_76(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))
@@ -6707,11 +6707,11 @@ int func_99(vector3 vParam0, vector3 vParam1, int iParam2, int iParam3, var uPar
 			{
 				if (NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME(), Global_2405071.f_690) < 10000)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_689))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_689))
 					{
 						if (NETWORK::_0x4DF7CFFF471A7FB1(Global_2405071.f_689))
 						{
-							if (!NETWORK::_0x4A2D4E8BF4265B0F(Global_2405071.f_689))
+							if (!NETWORK::NETWORK_ENTITY_AREA_IS_OCCUPIED(Global_2405071.f_689))
 							{
 								if (func_119(Global_2405071.f_674, Global_2405071.f_677, iParam2, PLAYER::PLAYER_ID(), 0) || func_101(Global_2405071.f_674, Global_2405071.f_677, iParam2, 1, 0, 0, 0, 1, 0))
 								{
@@ -8787,7 +8787,7 @@ Vector3 func_151(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -12839,7 +12839,7 @@ void func_229()
 			{
 				if (!Global_2405071.f_678[iVar0] == -1)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_678[iVar0]))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_678[iVar0]))
 					{
 						NETWORK::NETWORK_REMOVE_ENTITY_AREA(Global_2405071.f_678[iVar0]);
 						Global_2405071.f_678[iVar0] = -1;
@@ -13367,7 +13367,7 @@ int func_269(int iParam0)
 
 int func_270(int iParam0)
 {
-	if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(iParam0) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(iParam0) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+	if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(iParam0) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(iParam0) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 	{
 		if (func_271(iParam0))
 		{
@@ -13654,13 +13654,13 @@ void func_284()
 	bool bVar2;
 	
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iLocal_106[iVar0] = func_286();
 		iVar0++;
 	}
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar0))
 		{

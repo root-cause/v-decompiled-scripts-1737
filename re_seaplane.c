@@ -3054,7 +3054,7 @@ int func_63(int iParam0, vector3 vParam1, float fParam2, bool bParam3)
 		}
 		if (fVar23 >= 0f)
 		{
-			VEHICLE::_0xE6F13851780394DA(Local_48[iParam0 /*4*/], fVar23);
+			VEHICLE::SET_HELI_TURBULENCE_SCALAR(Local_48[iParam0 /*4*/], fVar23);
 		}
 		if (bVar19)
 		{
@@ -4050,7 +4050,7 @@ void func_94(int iParam0)
 						if ((!func_97(Local_47[iParam0 /*6*/], -235832601, 1) && TASK::GET_SCRIPT_TASK_STATUS(Local_47[iParam0 /*6*/], -235832601) == 7) && !func_97(Local_47[iParam0 /*6*/], 538064912, 1))
 						{
 							TASK::TASK_VEHICLE_SHOOT_AT_PED(Local_47[iParam0 /*6*/], PLAYER::PLAYER_PED_ID(), 1101004800);
-							if (func_198(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])) && VEHICLE::_CAN_BOAT_BE_ANCHORED(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
+							if (func_198(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])) && VEHICLE::CAN_ANCHOR_BOAT_HERE(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
 							{
 								VEHICLE::SET_BOAT_ANCHOR(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/]), true);
 								func_57(iParam0, 5);
@@ -4062,7 +4062,7 @@ void func_94(int iParam0)
 							{
 								func_57(iParam0, 4);
 								TASK::CLEAR_PED_TASKS(Local_47[iParam0 /*6*/]);
-								if (!func_88(iParam0, 5) && VEHICLE::_CAN_BOAT_BE_ANCHORED(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
+								if (!func_88(iParam0, 5) && VEHICLE::CAN_ANCHOR_BOAT_HERE(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/])))
 								{
 									VEHICLE::SET_BOAT_ANCHOR(PED::GET_VEHICLE_PED_IS_USING(Local_47[iParam0 /*6*/]), true);
 								}
@@ -6714,7 +6714,7 @@ int func_166()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

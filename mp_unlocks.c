@@ -1529,7 +1529,7 @@ int func_39(int iParam0)
 			break;
 		
 		case 6:
-			if ((NETWORK::_0x67A5589628E0CFF6() || func_41()) || func_40())
+			if ((NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT() || func_41()) || func_40())
 			{
 				iVar0 = 0;
 				iVar0 += 19;

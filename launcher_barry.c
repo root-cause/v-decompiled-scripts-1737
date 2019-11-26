@@ -278,8 +278,8 @@ void __EntryFunction__()
 	iLocal_43 = 65;
 	iLocal_44 = 49;
 	iLocal_45 = 64;
-	iLocal_49 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_50 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_49 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_50 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	uLocal_52 = func_308(49);
 	iLocal_53 = -1;
 	MISC::_0x6F2135B6129620C1(1);
@@ -2818,10 +2818,10 @@ void func_57(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -11245,8 +11245,8 @@ int func_256(var uParam0)
 					VEHICLE::SET_VEHICLE_ALARM(uParam0->f_35[0], 0);
 					VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(iVar0[0], true);
 					VEHICLE::SET_VEHICLE_NAME_DEBUG(uParam0->f_35[0], "WEED STASH VEHICLE");
-					VEHICLE::_0x51BB2D88D31A914B(uParam0->f_35[0], false);
-					VEHICLE::_0x192547247864DFDD(uParam0->f_35[0], false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_OIL(uParam0->f_35[0], false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(uParam0->f_35[0], false);
 					VEHICLE::SET_VEHICLE_COLOUR_COMBINATION(uParam0->f_35[0], 1);
 					VEHICLE::SET_VEHICLE_UNDRIVEABLE(uParam0->f_35[0], true);
 				}
@@ -11418,8 +11418,8 @@ int func_261(var uParam0)
 				VEHICLE::SET_VEHICLE_ALARM(uParam0->f_35[0], 0);
 				VEHICLE::SET_VEHICLE_MODEL_IS_SUPPRESSED(iVar0[0], true);
 				VEHICLE::SET_VEHICLE_NAME_DEBUG(uParam0->f_35[0], "WEED STASH VEHICLE");
-				VEHICLE::_0x51BB2D88D31A914B(uParam0->f_35[0], false);
-				VEHICLE::_0x192547247864DFDD(uParam0->f_35[0], false);
+				VEHICLE::SET_VEHICLE_CAN_LEAK_OIL(uParam0->f_35[0], false);
+				VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(uParam0->f_35[0], false);
 				VEHICLE::SET_VEHICLE_EXTRA(uParam0->f_35[0], 1, true);
 				VEHICLE::SET_VEHICLE_EXTRA(uParam0->f_35[0], 2, true);
 				VEHICLE::SET_VEHICLE_EXTRA(uParam0->f_35[0], 3, true);

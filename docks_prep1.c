@@ -1991,8 +1991,8 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iLocal_46 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_47 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_46 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_47 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	cLocal_49 = "REACTION@MALE_STAND@BIG_VARIATIONS@IDLE_B";
 	cLocal_50 = "cellphone@str";
 	cLocal_51 = "missheistdocksprep1ig_1";
@@ -2206,7 +2206,7 @@ void func_8()
 			VEHICLE::SET_VEHICLE_CAN_BE_VISIBLY_DAMAGED(Local_53[1 /*2*/], false);
 			PATHFIND::SET_IGNORE_NO_GPS_FLAG(1);
 			PATHFIND::SET_GPS_DISABLED_ZONE(288.0967f, -3133.249f, 0f, 301.0605f, -2969.622f, 11.47017f);
-			ENTITY::_0xA80AE305E0A3044F(Local_53[0 /*2*/], 0);
+			ENTITY::SET_CAN_CLIMB_ON_ENTITY(Local_53[0 /*2*/], 0);
 			VEHICLE::SET_VEHICLE_IS_CONSIDERED_BY_PLAYER(Local_53[0 /*2*/], 0);
 			RECORDING::_0x293220DA1B46CEBC(0f, 10f, 4);
 			iLocal_302 = 0;
@@ -2266,11 +2266,11 @@ void func_8()
 			{
 				if (func_101(Local_53[1 /*2*/]))
 				{
-					VEHICLE::_0x2A8F319B392E7B3F(Local_53[1 /*2*/], 0.5f);
+					VEHICLE::SET_TRAILER_INVERSE_MASS_SCALE(Local_53[1 /*2*/], 0.5f);
 				}
 				if (HUD::DOES_BLIP_EXIST(Local_58.f_5))
 				{
-					HUD::_SET_BLIP_DISPLAY_ON_EDGE(Local_58.f_5, 1);
+					HUD::_SET_BLIP_DISPLAY_INDICATOR_ON_BLIP(Local_58.f_5, 1);
 				}
 				if (HUD::DOES_BLIP_EXIST(iLocal_243))
 				{
@@ -7706,10 +7706,10 @@ void func_131(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -11999,7 +11999,7 @@ void func_189()
 				VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(Local_53[2 /*2*/], false);
 				Local_53[1 /*2*/] = VEHICLE::CREATE_VEHICLE(joaat("ARMYTRAILER"), 298.27f, -2951.27f, 7.86f, 0f, true, true, false);
 				VEHICLE::ATTACH_VEHICLE_TO_TRAILER(Local_53[2 /*2*/], Local_53[1 /*2*/], 0.5f);
-				VEHICLE::_0x95CF53B3D687F9FA(Local_53[1 /*2*/]);
+				VEHICLE::SET_TRAILER_LEGS_RAISED(Local_53[1 /*2*/]);
 				VEHICLE::SET_VEHICLE_TYRES_CAN_BURST(Local_53[1 /*2*/], false);
 				VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(Local_53[1 /*2*/], true);
 				iLocal_248 = 0;
@@ -12216,13 +12216,13 @@ void func_189()
 			}
 			if (CUTSCENE::CAN_SET_EXIT_STATE_FOR_REGISTERED_ENTITY("DockHeist_truck", 0))
 			{
-				VEHICLE::_0xE023E8AC4EF7C117(Local_53[2 /*2*/], 1, 0, 0);
+				VEHICLE::SET_VEHICLE_USE_CUTSCENE_WHEEL_COMPRESSION(Local_53[2 /*2*/], 1, 0, 0);
 				VEHICLE::SET_VEHICLE_DOORS_SHUT(Local_53[2 /*2*/], 1);
 				iLocal_297 = 1;
 			}
 			if (CUTSCENE::CAN_SET_EXIT_STATE_FOR_REGISTERED_ENTITY("DockHeist_trailer", 0))
 			{
-				VEHICLE::_0xE023E8AC4EF7C117(Local_53[1 /*2*/], 1, 0, 0);
+				VEHICLE::SET_VEHICLE_USE_CUTSCENE_WHEEL_COMPRESSION(Local_53[1 /*2*/], 1, 0, 0);
 				iLocal_300 = 1;
 			}
 			if (CUTSCENE::CAN_SET_EXIT_STATE_FOR_REGISTERED_ENTITY("submarine", 0))
@@ -12252,7 +12252,7 @@ void func_189()
 			}
 			if (((((iLocal_295 && iLocal_296) && iLocal_297) && iLocal_298) && iLocal_299) && iLocal_300)
 			{
-				if (CAM::IS_SCREEN_FADED_IN() || PED::_0x7350823473013C02(Local_54[3 /*10*/]))
+				if (CAM::IS_SCREEN_FADED_IN() || PED::_HAS_STREAMED_PED_ASSETS_LOADED(Local_54[3 /*10*/]))
 				{
 					PED::SET_PED_INTO_VEHICLE(Local_54[3 /*10*/], Local_53[2 /*2*/], 0);
 					PED::SET_PED_INTO_VEHICLE(PLAYER::PLAYER_PED_ID(), Local_53[2 /*2*/], -1);
@@ -12928,7 +12928,7 @@ int func_216()
 		{
 			iLocal_290 = PHYSICS::ADD_ROPE(ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(Local_57[7 /*2*/], vLocal_288), 0f, 0f, 0f, 70f, 0, -1f, 4f, 1.4f, 0, 0, 1, 1f, 0, 0);
 			PHYSICS::_0x36CCB9BE67B970FD(iLocal_290, 1);
-			PHYSICS::_0xDC57A637A20006ED(iLocal_290, 2);
+			PHYSICS::ROPE_SET_UPDATE_ORDER(iLocal_290, 2);
 			PHYSICS::ROPE_DRAW_SHADOW_ENABLED(&iLocal_290, 0);
 			PHYSICS::ATTACH_ENTITIES_TO_ROPE(iLocal_290, Local_57[7 /*2*/], Local_57[8 /*2*/], ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(Local_57[7 /*2*/], vLocal_288), ENTITY::GET_OFFSET_FROM_ENTITY_IN_WORLD_COORDS(Local_57[8 /*2*/], vLocal_289), 70f, 0, 0, 0, 0);
 			iLocal_249 = 1;
@@ -15365,7 +15365,7 @@ int func_238()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -18405,7 +18405,7 @@ void func_289()
 		VEHICLE::SET_VEHICLE_ENGINE_ON(Local_53[0 /*2*/], false, true, 0);
 		VEHICLE::SET_VEHICLE_LIGHTS(Local_53[0 /*2*/], 1);
 		AUDIO::SET_VEHICLE_RADIO_ENABLED(Local_53[0 /*2*/], true);
-		ENTITY::_0xA80AE305E0A3044F(Local_53[0 /*2*/], 0);
+		ENTITY::SET_CAN_CLIMB_ON_ENTITY(Local_53[0 /*2*/], 0);
 	}
 	if (!func_101(Local_53[2 /*2*/]))
 	{
@@ -18421,7 +18421,7 @@ void func_289()
 		VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(Local_53[1 /*2*/], true);
 	}
 	VEHICLE::ATTACH_VEHICLE_TO_TRAILER(Local_53[2 /*2*/], Local_53[1 /*2*/], 0.5f);
-	VEHICLE::_0x95CF53B3D687F9FA(Local_53[1 /*2*/]);
+	VEHICLE::SET_TRAILER_LEGS_RAISED(Local_53[1 /*2*/]);
 	VEHICLE::ATTACH_VEHICLE_ON_TO_TRAILER(Local_53[0 /*2*/], Local_53[1 /*2*/], 0f, -4f, -0.7f, 0f, 0f, 0f, 0f, 0f, 0f, -1f);
 	if (!ENTITY::DOES_ENTITY_EXIST(Local_57[4 /*2*/]))
 	{
@@ -18520,7 +18520,7 @@ void func_293()
 		VEHICLE::SET_VEHICLE_ENGINE_ON(Local_53[0 /*2*/], false, true, 0);
 		VEHICLE::SET_VEHICLE_LIGHTS(Local_53[0 /*2*/], 1);
 		AUDIO::SET_VEHICLE_RADIO_ENABLED(Local_53[0 /*2*/], true);
-		ENTITY::_0xA80AE305E0A3044F(Local_53[0 /*2*/], 0);
+		ENTITY::SET_CAN_CLIMB_ON_ENTITY(Local_53[0 /*2*/], 0);
 	}
 	if (!func_101(Local_53[2 /*2*/]))
 	{
@@ -18536,7 +18536,7 @@ void func_293()
 		VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(Local_53[1 /*2*/], true);
 	}
 	VEHICLE::ATTACH_VEHICLE_TO_TRAILER(Local_53[2 /*2*/], Local_53[1 /*2*/], 0.5f);
-	VEHICLE::_0x95CF53B3D687F9FA(Local_53[1 /*2*/]);
+	VEHICLE::SET_TRAILER_LEGS_RAISED(Local_53[1 /*2*/]);
 	VEHICLE::ATTACH_VEHICLE_ON_TO_TRAILER(Local_53[0 /*2*/], Local_53[1 /*2*/], 0f, -4f, -0.7f, 0f, 0f, 0f, 0f, 0f, 0f, -1f);
 	if (!ENTITY::DOES_ENTITY_EXIST(Local_57[4 /*2*/]))
 	{

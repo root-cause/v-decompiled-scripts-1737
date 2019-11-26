@@ -16429,7 +16429,7 @@ int func_260(var uParam0, var uParam1)
 				{
 					if (func_261(NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 0) + 1, 0, 1))
 					{
-						NETWORK::_0x2C8DF5D129595281(NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 1) + 1);
+						NETWORK::_RESERVE_NETWORK_LOCAL_PEDS(NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 1) + 1);
 						if (NETWORK::CAN_REGISTER_MISSION_PEDS(1))
 						{
 							iVar1 = PED::CREATE_PED(26, uParam0->f_2221[iVar0 /*66*/], uParam0->f_2221[iVar0 /*66*/].f_58, uParam0->f_2221[iVar0 /*66*/].f_61.f_2, 1, true);
@@ -16672,7 +16672,7 @@ int func_268(var uParam0, var uParam1)
 					{
 						if (func_269(NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(false, 1) + 1, 0, 1))
 						{
-							NETWORK::_0x797F9C5E661D920E(NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(false, 1) + 1);
+							NETWORK::_RESERVE_NETWORK_LOCAL_OBJECTS(NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(false, 1) + 1);
 							if (NETWORK::CAN_REGISTER_MISSION_OBJECTS(1))
 							{
 								if (NETWORK::NETWORK_IS_IN_MP_CUTSCENE())

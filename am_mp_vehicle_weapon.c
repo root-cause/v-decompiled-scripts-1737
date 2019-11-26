@@ -1694,7 +1694,7 @@ void func_48()
 						if (iVar3 != -1)
 						{
 							vVar4 = { ENTITY::GET_WORLD_POSITION_OF_ENTITY_BONE(func_30(), iVar3) + func_53(Local_149.f_31) };
-							vVar5 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+							vVar5 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 							vVar6 = { (-SYSTEM::SIN(vVar5.z) * SYSTEM::COS(vVar5.x)), (SYSTEM::COS(vVar5.z) * SYSTEM::COS(vVar5.x)), SYSTEM::SIN(vVar5.x) };
 							vVar7 = { 1f, 1f, 1f };
 							vVar8 = { vVar4 + vVar6 * vVar7 };
@@ -1728,8 +1728,8 @@ void func_48()
 			if (iVar9 != -1)
 			{
 				vVar10 = { ENTITY::GET_WORLD_POSITION_OF_ENTITY_BONE(func_30(), iVar9) + func_53(Local_149.f_31) };
-				vVar11 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-				vVar12 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+				vVar11 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+				vVar12 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 				vVar13 = { (-SYSTEM::SIN(vVar12.z) * SYSTEM::COS(vVar12.x)), (SYSTEM::COS(vVar12.z) * SYSTEM::COS(vVar12.x)), SYSTEM::SIN(vVar12.x) };
 				vVar14 = { 10f, 10f, 10f };
 				if (!func_49(Local_149.f_56))
@@ -1981,8 +1981,8 @@ void func_60()
 	
 	if ((CAM::DOES_CAM_EXIST(Local_149.f_61) && CAM::IS_CAM_RENDERING(Local_149.f_61)) && func_47(func_30()))
 	{
-		vVar4 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-		vVar5 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+		vVar4 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+		vVar5 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 		vVar6 = { (-SYSTEM::SIN(vVar5.z) * SYSTEM::COS(vVar5.x)), (SYSTEM::COS(vVar5.z) * SYSTEM::COS(vVar5.x)), SYSTEM::SIN(vVar5.x) };
 		vVar7 = { 300f, 300f, 300f };
 		vVar8 = { vVar4 + vVar6 * vVar7 };
@@ -3356,7 +3356,7 @@ void func_102()
 	{
 		NETWORK::SET_ENTITY_LOCALLY_INVISIBLE(Local_149.f_107);
 	}
-	vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+	vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 	if ((((HUD::IS_PAUSE_MENU_ACTIVE() || func_107()) || PAD::IS_CONTROL_JUST_PRESSED(2, 199)) || PAD::IS_CONTROL_PRESSED(2, 199)) || PAD::IS_CONTROL_JUST_RELEASED(2, 199))
 	{
 		HUD::_SET_PLAYER_BLIP_POSITION_THIS_FRAME(vVar0.x, vVar0.y);
@@ -3378,7 +3378,7 @@ void func_102()
 	}
 	HUD::LOCK_MINIMAP_POSITION(vVar0.x, vVar0.y);
 	HUD::SET_RADAR_AS_EXTERIOR_THIS_FRAME();
-	HUD::_0x20FE7FDFEEAD38C0();
+	HUD::HIDE_MINIMAP_INTERIOR_MAP_THIS_FRAME();
 	if (CAM::DOES_CAM_EXIST(Local_149.f_61))
 	{
 		CAM::_0x661B5C8654ADD825(Local_149.f_61, 1);
@@ -3386,7 +3386,7 @@ void func_102()
 	HUD::SET_RADAR_ZOOM(0);
 	if (func_160())
 	{
-		vVar1 = { CAM::_GET_GAMEPLAY_CAM_ROT(0) };
+		vVar1 = { CAM::GET_FINAL_RENDERED_CAM_ROT(0) };
 		vVar1 = { func_106(vVar1) };
 		if (!HUD::DOES_BLIP_EXIST(Local_149.f_109))
 		{
@@ -4336,7 +4336,7 @@ void func_138(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -5045,7 +5045,7 @@ void func_174()
 		if (func_47(func_30()))
 		{
 			vVar0 = { ENTITY::GET_ENTITY_COORDS(func_30(), true) };
-			PED::_0xD8C3BE3EE94CAF2D(vVar0, 100f, 200f);
+			PED::SET_POP_CONTROL_SPHERE_THIS_FRAME(vVar0, 100f, 200f);
 			INTERIOR::_0x483ACA1176CA93F1();
 			if ((MISC::GET_FRAME_COUNT() % 120) == 0)
 			{
@@ -5508,7 +5508,7 @@ void func_196(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);

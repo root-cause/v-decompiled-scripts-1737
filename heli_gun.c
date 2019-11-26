@@ -458,7 +458,7 @@ void func_1()
 			}
 			if ((MISC::GET_FRAME_COUNT() % 30) == 0)
 			{
-				Global_1589819[PLAYER::PLAYER_ID() /*818*/].f_790 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+				Global_1589819[PLAYER::PLAYER_ID() /*818*/].f_790 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 			}
 			iLocal_79 = joaat("w_lr_rpg_rocket");
 			if (iLocal_79 != 0)
@@ -576,7 +576,7 @@ void func_1()
 				{
 					func_82(&Local_71, 0, 1086324736, -1030356992, -1020002304, 1127481344, 1041865114);
 				}
-				vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+				vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 				if ((((HUD::IS_PAUSE_MENU_ACTIVE() || func_118()) || PAD::IS_CONTROL_JUST_PRESSED(2, 199)) || PAD::IS_CONTROL_PRESSED(2, 199)) || PAD::IS_CONTROL_JUST_RELEASED(2, 199))
 				{
 					HUD::_SET_PLAYER_BLIP_POSITION_THIS_FRAME(vVar0.x, vVar0.y);
@@ -594,9 +594,9 @@ void func_1()
 				}
 				HUD::LOCK_MINIMAP_POSITION(vVar0.x, vVar0.y);
 				HUD::SET_RADAR_AS_EXTERIOR_THIS_FRAME();
-				HUD::_0x20FE7FDFEEAD38C0();
+				HUD::HIDE_MINIMAP_INTERIOR_MAP_THIS_FRAME();
 				HUD::SET_RADAR_ZOOM(0);
-				vVar2 = { CAM::_GET_GAMEPLAY_CAM_ROT(0) };
+				vVar2 = { CAM::GET_FINAL_RENDERED_CAM_ROT(0) };
 				vVar2 = { func_81(vVar2) };
 				if (!HUD::DOES_BLIP_EXIST(iLocal_126))
 				{
@@ -824,7 +824,7 @@ void func_1()
 							break;
 						}
 				}
-				vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+				vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 				if ((((HUD::IS_PAUSE_MENU_ACTIVE() || func_118()) || PAD::IS_CONTROL_JUST_PRESSED(2, 199)) || PAD::IS_CONTROL_PRESSED(2, 199)) || PAD::IS_CONTROL_JUST_RELEASED(2, 199))
 				{
 					HUD::_SET_PLAYER_BLIP_POSITION_THIS_FRAME(vVar0.x, vVar0.y);
@@ -842,9 +842,9 @@ void func_1()
 				}
 				HUD::LOCK_MINIMAP_POSITION(vVar0.x, vVar0.y);
 				HUD::SET_RADAR_AS_EXTERIOR_THIS_FRAME();
-				HUD::_0x20FE7FDFEEAD38C0();
+				HUD::HIDE_MINIMAP_INTERIOR_MAP_THIS_FRAME();
 				HUD::SET_RADAR_ZOOM(0);
-				vVar7 = { CAM::_GET_GAMEPLAY_CAM_ROT(0) };
+				vVar7 = { CAM::GET_FINAL_RENDERED_CAM_ROT(0) };
 				vVar7 = { func_81(vVar7) };
 				if (!HUD::DOES_BLIP_EXIST(iLocal_126))
 				{
@@ -2692,8 +2692,8 @@ void func_57()
 											vVar4 = { func_59() };
 											if (func_139(PLAYER::PLAYER_ID()) || func_138(PLAYER::PLAYER_ID()))
 											{
-												vVar4 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-												vVar5 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+												vVar4 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+												vVar5 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 												vVar6 = { (-SYSTEM::SIN(vVar5.z) * SYSTEM::COS(vVar5.x)), (SYSTEM::COS(vVar5.z) * SYSTEM::COS(vVar5.x)), SYSTEM::SIN(vVar5.x) };
 												vVar7 = { 10f, 10f, 10f };
 												vVar8 = { vVar4 + vVar6 * vVar7 };
@@ -3142,7 +3142,7 @@ bool func_62()
 			switch (Global_1319095)
 			{
 				case 1:
-					if (VEHICLE::_GET_PLANE_HOVER_MODE_PERCENTAGE(iLocal_120) >= 0.4f)
+					if (VEHICLE::_GET_VEHICLE_FLIGHT_NOZZLE_POSITION(iLocal_120) >= 0.4f)
 					{
 						if ((fVar0 > 122.6f && fVar0 < 131.3f) && Local_71.f_186 > 7.87f)
 						{
@@ -3178,7 +3178,7 @@ bool func_62()
 					break;
 				
 				case 2:
-					if (VEHICLE::_GET_PLANE_HOVER_MODE_PERCENTAGE(iLocal_120) >= 0.4f)
+					if (VEHICLE::_GET_VEHICLE_FLIGHT_NOZZLE_POSITION(iLocal_120) >= 0.4f)
 					{
 						bVar1 = !((fVar0 > 111.2f && fVar0 < 125.8f) && Local_71.f_186 < 20f);
 					}
@@ -3208,7 +3208,7 @@ bool func_62()
 					break;
 				
 				case 3:
-					if (VEHICLE::_GET_PLANE_HOVER_MODE_PERCENTAGE(iLocal_120) >= 0.4f)
+					if (VEHICLE::_GET_VEHICLE_FLIGHT_NOZZLE_POSITION(iLocal_120) >= 0.4f)
 					{
 						bVar1 = !((fVar0 > 141.3f && fVar0 < 147.7f) && Local_71.f_186 > -3.7f);
 					}
@@ -3475,8 +3475,8 @@ void func_71()
 		}
 		else
 		{
-			vVar2 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-			vVar3 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+			vVar2 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+			vVar3 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 			vVar4 = { (-SYSTEM::SIN(vVar3.z) * SYSTEM::COS(vVar3.x)), (SYSTEM::COS(vVar3.z) * SYSTEM::COS(vVar3.x)), SYSTEM::SIN(vVar3.x) };
 			vVar5 = { 10f, 10f, 10f };
 			vVar6 = { vVar2 + vVar4 * vVar5 };
@@ -5899,7 +5899,7 @@ void func_104(var uParam0)
 				fVar5 = (fVar14 * IntToFloat(iVar6));
 				fVar3 = ((SYSTEM::SIN(vVar1.z) * fVar5) * -1f);
 				fVar4 = (SYSTEM::COS(vVar1.z) * fVar5);
-				fVar13 = PATHFIND::_0x8ABE8608576D9CE3(((vVar0.x + fVar3) - 3f), ((vVar0.y + fVar4) - 3f), ((vVar0.x + fVar3) + 3f), ((vVar0.y + fVar4) + 3f));
+				fVar13 = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA(((vVar0.x + fVar3) - 3f), ((vVar0.y + fVar4) - 3f), ((vVar0.x + fVar3) + 3f), ((vVar0.y + fVar4) + 3f));
 				fVar13 = (fVar13 - 20f);
 				fVar12 = (vVar0.z + (SYSTEM::SIN(vVar1.x) * (50f * IntToFloat(iVar6))));
 				if (fVar13 > fVar12)
@@ -6416,8 +6416,8 @@ void func_128()
 	{
 		if (!bLocal_92 && iLocal_125 != -1)
 		{
-			vVar0 = { CAM::_0x26903D9CD1175F2C(iLocal_125, 2) };
-			fVar1 = CAM::_0x5F35F6732C3FBBA0(iLocal_125);
+			vVar0 = { CAM::GET_FINAL_RENDERED_IN_WHEN_FRIENDLY_ROT(iLocal_125, 2) };
+			fVar1 = CAM::GET_FINAL_RENDERED_IN_WHEN_FRIENDLY_FOV(iLocal_125);
 			switch (iLocal_134)
 			{
 				case 0:
@@ -6594,7 +6594,7 @@ int func_133(var uParam0, int iParam1, int iParam2, int iParam3, int iParam4)
 			}
 			CAM::SET_CAM_NEAR_CLIP(uParam0->f_32, uParam0->f_12);
 		}
-		MISC::_SET_UNK_MAP_FLAG(4);
+		MISC::SET_INSTANCE_PRIORITY_HINT(4);
 		func_134(1, 1, 1, 0);
 		if (!ENTITY::IS_ENTITY_DEAD(iParam1, 0))
 		{
@@ -6711,7 +6711,7 @@ int func_133(var uParam0, int iParam1, int iParam2, int iParam3, int iParam4)
 					VEHICLE::SET_VEHICLE_GRAVITY(uParam0->f_8, 1);
 				}
 			}
-			MISC::_SET_UNK_MAP_FLAG(0);
+			MISC::SET_INSTANCE_PRIORITY_HINT(0);
 			if (CAM::DOES_CAM_EXIST(uParam0->f_32))
 			{
 				if (CAM::IS_CAM_ACTIVE(uParam0->f_32))
@@ -8204,7 +8204,7 @@ void func_185()
 		{
 			if (!STREAMING::IS_PLAYER_SWITCH_IN_PROGRESS())
 			{
-				STREAMING::_SET_FOCUS_AREA(CAM::GET_CAM_COORD(Local_71.f_32), CAM::GET_CAM_ROT(Local_71.f_32, 2));
+				STREAMING::SET_FOCUS_POS_AND_VEL(CAM::GET_CAM_COORD(Local_71.f_32), CAM::GET_CAM_ROT(Local_71.f_32, 2));
 			}
 		}
 	}
@@ -8499,7 +8499,7 @@ void func_201(int iParam0)
 		func_198(0);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
-		GRAPHICS::_0xE1C8709406F2C41C();
+		GRAPHICS::RESET_PAUSED_RENDERPHASES();
 	}
 }
 

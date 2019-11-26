@@ -7094,8 +7094,8 @@ int func_42()
 					{
 						iLocal_5437 = PED::GET_VEHICLE_PED_IS_IN(PLAYER::PLAYER_PED_ID(), 0);
 						ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iLocal_5437, true, 1);
-						VEHICLE::_0x51BB2D88D31A914B(iLocal_5437, false);
-						VEHICLE::_0x192547247864DFDD(iLocal_5437, false);
+						VEHICLE::SET_VEHICLE_CAN_LEAK_OIL(iLocal_5437, false);
+						VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(iLocal_5437, false);
 						AUDIO::SET_VEHICLE_RADIO_ENABLED(iLocal_5437, false);
 						VEHICLE::SET_DISABLE_VEHICLE_PETROL_TANK_FIRES(iLocal_5437, 1);
 						ENTITY::SET_ENTITY_HEALTH(iLocal_5437, 2000, 0);
@@ -17925,8 +17925,8 @@ void func_251(var uParam0, var uParam1, int iParam2)
 		VEHICLE::SET_VEHICLE_ENGINE_ON((*uParam1)[iParam2], true, true, 0);
 		ENTITY::SET_ENTITY_PROOFS((*uParam1)[iParam2], false, false, false, false, false, false, 0, false);
 		VEHICLE::SET_VEHICLE_CAN_BE_TARGETTED((*uParam1)[iParam2], 1);
-		VEHICLE::_0x51BB2D88D31A914B((*uParam1)[iParam2], false);
-		VEHICLE::_0x192547247864DFDD((*uParam1)[iParam2], false);
+		VEHICLE::SET_VEHICLE_CAN_LEAK_OIL((*uParam1)[iParam2], false);
+		VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL((*uParam1)[iParam2], false);
 		VEHICLE::SET_DISABLE_VEHICLE_PETROL_TANK_FIRES((*uParam1)[iParam2], 1);
 		iVar0 = 0;
 		while (iVar0 < uParam0->f_1137)

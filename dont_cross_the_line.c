@@ -784,7 +784,7 @@ void func_4(var uParam0)
 		bVar2 = false;
 		iVar3 = 0;
 		iVar4 = 0;
-		while (iVar4 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar4 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar4)) && Local_216[iVar4 /*2*/] > -1)
 			{
@@ -966,7 +966,7 @@ int func_11(var uParam0)
 	int iVar0;
 	
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 		{
@@ -1000,7 +1000,7 @@ void func_13(var uParam0)
 				Local_215.f_7[Local_215.f_1]++;
 			}
 			iVar0 = 0;
-			while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+			while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 			{
 				if (!NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 				{
@@ -1013,7 +1013,7 @@ void func_13(var uParam0)
 		{
 			bVar1 = true;
 			iVar0 = 0;
-			while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+			while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 			{
 				if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 				{
@@ -1062,7 +1062,7 @@ void func_14(var uParam0)
 	MISC::CLEAR_BIT(&(uParam0->f_2), 16);
 	MISC::CLEAR_BIT(&(uParam0->f_2), 18);
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (iVar0 < 4)
 		{
@@ -1111,7 +1111,7 @@ void func_17(var uParam0)
 		iVar1 = 4;
 		iVar2 = -1;
 		iVar0 = 0;
-		while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 			{
@@ -1193,7 +1193,7 @@ var func_20(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -1289,7 +1289,7 @@ void func_23(var uParam0)
 			{
 				case 0:
 					iVar1 = 0;
-					while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+					while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 					{
 						if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)) && Local_216[iVar1 /*2*/] > -1)
 						{
@@ -1306,7 +1306,7 @@ void func_23(var uParam0)
 				
 				case 1:
 					iVar1 = 0;
-					while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+					while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 					{
 						if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 						{
@@ -1322,12 +1322,12 @@ void func_23(var uParam0)
 				
 				case 2:
 					iVar1 = 0;
-					while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+					while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 					{
 						if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 						{
 							iVar2 = 0;
-							while (iVar2 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+							while (iVar2 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 							{
 								if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar2)))
 								{
@@ -1344,7 +1344,7 @@ void func_23(var uParam0)
 						iVar1++;
 					}
 					iVar1 = 0;
-					while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+					while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 					{
 						if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 						{
@@ -1365,7 +1365,7 @@ void func_23(var uParam0)
 				
 				case 3:
 					iVar1 = 0;
-					while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+					while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 					{
 						if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 						{
@@ -1395,11 +1395,11 @@ int func_24()
 	int iVar2;
 	
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		iVar2 = 0;
 		iVar1 = 0;
-		while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (Local_215.f_2[iVar1] == iVar0)
 			{
@@ -1432,7 +1432,7 @@ void func_25(var uParam0)
 		iVar0 = 1;
 		bVar1 = false;
 		iVar2 = 0;
-		while (iVar2 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar2 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar2)) && Local_216[iVar2 /*2*/] > -1)
 			{
@@ -1497,7 +1497,7 @@ void func_26(var uParam0)
 	{
 		bVar0 = true;
 		iVar1 = 0;
-		while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)) && Local_216[iVar1 /*2*/] > -1)
 			{
@@ -1524,7 +1524,7 @@ void func_27(var uParam0)
 	{
 		bVar0 = true;
 		iVar1 = 0;
-		while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)) && Local_216[iVar1 /*2*/] > -1)
 			{
@@ -1549,7 +1549,7 @@ void func_28(var uParam0)
 	if (NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT())
 	{
 		iVar0 = 0;
-		while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 			{
@@ -1780,7 +1780,7 @@ void func_32(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -2296,7 +2296,7 @@ void func_61(var uParam0, bool bParam1)
 	if (!MISC::IS_BIT_SET(iLocal_210, 2))
 	{
 		iVar0 = 0;
-		while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 			{
@@ -2317,7 +2317,7 @@ void func_61(var uParam0, bool bParam1)
 		func_67();
 		iVar1 = 1;
 		iVar0 = 0;
-		while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 			{
@@ -2426,7 +2426,7 @@ void func_67()
 	int iVar1;
 	
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (iVar0 < 4)
 		{
@@ -2602,7 +2602,7 @@ int func_75()
 	
 	iVar0 = 0;
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -14534,7 +14534,7 @@ void func_127(var uParam0)
 	int iVar1;
 	
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 		{
@@ -14551,7 +14551,7 @@ void func_127(var uParam0)
 	if (MISC::IS_BIT_SET(iLocal_210, 0))
 	{
 		iVar0 = 0;
-		while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 			{
@@ -15217,7 +15217,7 @@ int func_141(var uParam0)
 	iVar0 = 0;
 	iVar1 = 0;
 	iVar1 = 0;
-	while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)) && Local_216[iVar1 /*2*/] > -1)
 		{
@@ -15453,7 +15453,7 @@ void func_152(var uParam0)
 	
 	func_57(uParam0);
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 		{
@@ -16093,7 +16093,7 @@ void func_164(var uParam0)
 		func_10(&(uParam0->f_18), 0, 0);
 	}
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 		{
@@ -16199,7 +16199,7 @@ void func_168(var uParam0)
 		func_10(&(uParam0->f_16), 0, 0);
 	}
 	iVar0 = 0;
-	while (iVar0 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+	while (iVar0 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)) && Local_216[iVar0 /*2*/] > -1)
 		{
@@ -16257,7 +16257,7 @@ void func_170(var uParam0)
 	{
 		bVar0 = true;
 		iVar1 = 0;
-		while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+		while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 			{
@@ -16690,12 +16690,12 @@ void func_186(var uParam0)
 		if (bVar0)
 		{
 			iVar1 = 0;
-			while (iVar1 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+			while (iVar1 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 			{
 				if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 				{
 					iVar2 = 0;
-					while (iVar2 <= (NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST() - 1))
+					while (iVar2 <= (NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS() - 1))
 					{
 						if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar2)))
 						{

@@ -8817,7 +8817,7 @@ void func_85(int iParam0)
 		Global_26137 = 1;
 	}
 	Global_32191 = iParam0;
-	HUD::_SET_NORTH_YANKTON_MAP(iParam0);
+	HUD::SET_MINIMAP_IN_PROLOGUE(iParam0);
 	uVar1 = ZONE::GET_ZONE_FROM_NAME_ID("PrLog");
 	ZONE::SET_ZONE_ENABLED(uVar1, iParam0);
 }

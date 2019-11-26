@@ -1134,7 +1134,7 @@ void func_29()
 	if (Local_197 != 4)
 	{
 		iLocal_201 = 0;
-		while (iLocal_201 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iLocal_201 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iLocal_201)))
 			{
@@ -2246,7 +2246,7 @@ int func_66()
 						VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), true);
 						VEHICLE::SET_VEHICLE_EXPLODES_ON_HIGH_EXPLOSION_DAMAGE(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), 0);
 						VEHICLE::SET_VEHICLE_STRONG(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), true);
-						VEHICLE::_0x4E20D2A627011E8E(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), 0.08f);
+						VEHICLE::_SET_VEHICLE_DAMAGE_MODIFIER(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), 0.08f);
 						ENTITY::SET_ENTITY_HEALTH(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), Global_262145.f_14960, 0);
 						VEHICLE::SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), 1);
 						VEHICLE::_0xDBC631F109350B8C(NETWORK::NET_TO_VEH(Local_197.f_2[0 /*10*/].f_2), 1);
@@ -2606,11 +2606,11 @@ int func_68(vector3 vParam0, vector3 vParam1, int iParam2, int iParam3, var uPar
 			{
 				if (NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME(), Global_2405071.f_690) < 10000)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_689))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_689))
 					{
 						if (NETWORK::_0x4DF7CFFF471A7FB1(Global_2405071.f_689))
 						{
-							if (!NETWORK::_0x4A2D4E8BF4265B0F(Global_2405071.f_689))
+							if (!NETWORK::NETWORK_ENTITY_AREA_IS_OCCUPIED(Global_2405071.f_689))
 							{
 								if (func_81(Global_2405071.f_674, Global_2405071.f_677, iParam2, PLAYER::PLAYER_ID(), 0) || func_70(Global_2405071.f_674, Global_2405071.f_677, iParam2, 1, 0, 0, 0, 1, 0))
 								{
@@ -4629,7 +4629,7 @@ Vector3 func_114(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -8479,7 +8479,7 @@ void func_186()
 			{
 				if (!Global_2405071.f_678[iVar0] == -1)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_678[iVar0]))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_678[iVar0]))
 					{
 						NETWORK::NETWORK_REMOVE_ENTITY_AREA(Global_2405071.f_678[iVar0]);
 						Global_2405071.f_678[iVar0] = -1;
@@ -11093,7 +11093,7 @@ void func_270()
 
 int func_271(int iParam0)
 {
-	if (NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(iParam0))
+	if (NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(iParam0))
 	{
 		return 1;
 	}
@@ -12684,7 +12684,7 @@ struct<4> func_330(int iParam0)
 				}
 			}
 		}
-		else if (!NETWORK::_0x72D918C99BCACC54(0))
+		else if (!NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			return cVar0;
 		}
@@ -13225,7 +13225,7 @@ int func_362(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 			if (func_410() > 0 && Global_1574177)
 			{
 				HUD::THEFEED_HIDE_THIS_FRAME();
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				if (HUD::IS_HELP_MESSAGE_BEING_DISPLAYED())
 				{
@@ -13292,7 +13292,7 @@ int func_362(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 					}
 					HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				}
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				if (func_394(bVar3, iParam0, 0))
 				{
 					func_349(iParam0, 0, 0);
@@ -13338,7 +13338,7 @@ int func_362(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, b
 			{
 				Global_1574175 = uParam3;
 				Global_1574174 = 1;
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				if (bVar2)
 				{
 					if (uParam2->f_34 != Global_1574176)
@@ -14401,7 +14401,7 @@ void func_395(int iParam0, var uParam1, bool bParam2)
 	{
 		MISC::CLEAR_BIT(&(uParam1->f_33), 0);
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 }
 
 int func_396()
@@ -15498,7 +15498,7 @@ int func_445(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -23789,7 +23789,7 @@ void func_675(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -23853,7 +23853,7 @@ void func_677(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -24947,7 +24947,7 @@ void func_706(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar18)
 					{
 						iVar21 = 0;
-						while (iVar21 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar21 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar22 = iVar21;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar22))
@@ -25284,7 +25284,7 @@ void func_723(int iParam0, var uParam1, int iParam2, var uParam3, var uParam4)
 					if (!bVar16)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -25987,7 +25987,7 @@ void func_737(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar17)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -27701,7 +27701,7 @@ void func_760(int iParam0, bool bParam1, var uParam2, int iParam3, var uParam4)
 				func_762();
 				Global_2528542.f_4889.f_377 = *iParam3;
 				iVar7 = 0;
-				while (iVar7 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar7 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					iVar8 = iVar7;
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar8))
@@ -31637,7 +31637,7 @@ int func_844()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -32886,7 +32886,7 @@ int func_895(int iParam0)
 	Var0 = { func_59(iParam0) };
 	if (MISC::IS_DURANGO_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 			{
@@ -32906,14 +32906,14 @@ int func_896(int iParam0)
 		Var0 = { func_59(iParam0) };
 		if (MISC::IS_ORBIS_VERSION() || MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				return 0;
 			}
 		}
 		else if (MISC::IS_DURANGO_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 				{
@@ -43562,7 +43562,7 @@ void func_1051()
 			{
 				bVar4 = true;
 				iVar2 = 0;
-				while (iVar2 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar2 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar2)))
 					{
@@ -44738,7 +44738,7 @@ bool func_1098()
 
 int func_1099(int iParam0)
 {
-	if ((NETWORK::_0x1AD5B71586B94820(PLAYER::PLAYER_ID(), "AM_MP_SMPL_INTERIOR_EXT", iParam0) || NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_MP_SMPL_INTERIOR_EXT", iParam0, 1, 0)) || func_1056(12, iParam0))
+	if ((NETWORK::NETWORK_IS_PLAYER_A_PARTICIPANT_ON_SCRIPT(PLAYER::PLAYER_ID(), "AM_MP_SMPL_INTERIOR_EXT", iParam0) || NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_MP_SMPL_INTERIOR_EXT", iParam0, 1, 0)) || func_1056(12, iParam0))
 	{
 		return 1;
 	}

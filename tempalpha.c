@@ -121,7 +121,7 @@ void __EntryFunction__()
 	iLocal_86 = 65;
 	iLocal_87 = 49;
 	iLocal_88 = 64;
-	iLocal_92 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_93 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_92 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_93 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 }
 

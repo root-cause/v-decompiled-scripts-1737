@@ -114,7 +114,7 @@ void func_1()
 	}
 	PLAYER::SET_MAX_WANTED_LEVEL(5);
 	func_3();
-	PLAYER::_0xEE4EBDD2593BA844(PLAYER::PLAYER_ID(), 0);
+	PLAYER::_SET_PLAYER_HOMING_ROCKET_DISABLED(PLAYER::PLAYER_ID(), 0);
 	func_2();
 }
 
@@ -235,13 +235,13 @@ void func_14(int iParam0)
 	}
 	if (func_43(iParam0))
 	{
-		PLAYER::_0xEE4EBDD2593BA844(PLAYER::PLAYER_ID(), 1);
+		PLAYER::_SET_PLAYER_HOMING_ROCKET_DISABLED(PLAYER::PLAYER_ID(), 1);
 		func_42();
 		func_41(iParam0);
 	}
 	else if (func_40(iParam0))
 	{
-		PLAYER::_0xEE4EBDD2593BA844(PLAYER::PLAYER_ID(), 0);
+		PLAYER::_SET_PLAYER_HOMING_ROCKET_DISABLED(PLAYER::PLAYER_ID(), 0);
 		func_13();
 		func_41(iParam0);
 		func_39(iParam0, 5);

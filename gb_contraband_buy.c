@@ -4180,7 +4180,7 @@ void func_112(int iParam0)
 					}
 					else if (!func_6(func_117(iParam0)))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[iParam0]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_14[iParam0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[iParam0]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_14[iParam0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_14[iParam0]))
 							{
@@ -6317,14 +6317,14 @@ void func_162(int iParam0)
 	if (!func_156(iParam0, 28))
 	{
 		VEHICLE::SET_VEHICLE_ENGINE_ON(iVar0, true, true, 0);
-		if (VEHICLE::_CAN_BOAT_BE_ANCHORED(iVar0))
+		if (VEHICLE::CAN_ANCHOR_BOAT_HERE(iVar0))
 		{
 			VEHICLE::SET_BOAT_ANCHOR(iVar0, true);
 			VEHICLE::_0xB28B1FE5BFADD7F5(iVar0, 0);
 			VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(iVar0, 1084227584);
-			VEHICLE::_SET_BOAT_ANCHOR_BUOYANCY_COEFFICIENT(iVar0, 99999f);
+			VEHICLE::_SET_BOAT_MOVEMENT_RESISTANCE(iVar0, 99999f);
 		}
-		VEHICLE::_SET_BOAT_EXPLODES_ON_WRECKED_ACTION(iVar0, 1);
+		VEHICLE::SET_BOAT_SINKS_WHEN_WRECKED(iVar0, 1);
 	}
 	else
 	{
@@ -6593,7 +6593,7 @@ int func_167(bool bParam0, float fParam1)
 			if (!ENTITY::IS_ENTITY_DEAD(PLAYER::PLAYER_PED_ID(), 0))
 			{
 				vVar0 = { func_182(func_183(Local_292.f_1, func_88(), Local_292.f_6, bParam0, 0, 0), 0f, (-200f * SYSTEM::SIN((SYSTEM::TO_FLOAT(Local_292.f_210) * 30f))), (200f * SYSTEM::COS((SYSTEM::TO_FLOAT(Local_292.f_210) * 30f))), 0f) };
-				vVar0.z = PATHFIND::_0x29C24BFBED8AB8FB(vVar0.x, vVar0.y);
+				vVar0.z = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_POSITION(vVar0.x, vVar0.y);
 				vVar0.z = (vVar0.z + fParam1);
 				if (func_168(vVar0, 20f, 1f, 1f, 15f, 1, 1, 1, 180f, 0, -1, 1, 0, 0, 0, 0, 0))
 				{
@@ -7801,7 +7801,7 @@ void func_201(int iParam0, int iParam1)
 	VEHICLE::SET_VEHICLE_EXPLODES_ON_HIGH_EXPLOSION_DAMAGE(iVar1, 0);
 	VEHICLE::SET_VEHICLE_STRONG(iVar1, true);
 	VEHICLE::SET_VEHICLE_AUTOMATICALLY_ATTACHES(iVar1, false, 0);
-	VEHICLE::_0x4E20D2A627011E8E(iVar1, func_205(iParam1));
+	VEHICLE::_SET_VEHICLE_DAMAGE_MODIFIER(iVar1, func_205(iParam1));
 	VEHICLE::SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(iVar1, 1);
 	func_203(iVar1);
 	VEHICLE::_0x7D6F9A3EF26136A0(iVar1, bVar0, 0);
@@ -8095,11 +8095,11 @@ int func_206(vector3 vParam0, vector3 vParam1, int iParam2, int iParam3, var uPa
 			{
 				if (NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME(), Global_2405071.f_690) < 10000)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_689))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_689))
 					{
 						if (NETWORK::_0x4DF7CFFF471A7FB1(Global_2405071.f_689))
 						{
-							if (!NETWORK::_0x4A2D4E8BF4265B0F(Global_2405071.f_689))
+							if (!NETWORK::NETWORK_ENTITY_AREA_IS_OCCUPIED(Global_2405071.f_689))
 							{
 								if (func_219(Global_2405071.f_674, Global_2405071.f_677, iParam2, PLAYER::PLAYER_ID(), 0) || func_208(Global_2405071.f_674, Global_2405071.f_677, iParam2, 1, 0, 0, 0, 1, 0))
 								{
@@ -10118,7 +10118,7 @@ Vector3 func_252(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -13968,7 +13968,7 @@ void func_324()
 			{
 				if (!Global_2405071.f_678[iVar0] == -1)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_678[iVar0]))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_678[iVar0]))
 					{
 						NETWORK::NETWORK_REMOVE_ENTITY_AREA(Global_2405071.f_678[iVar0]);
 						Global_2405071.f_678[iVar0] = -1;
@@ -16074,7 +16074,7 @@ int func_363(var uParam0, var uParam1, var uParam2, bool bParam3)
 	{
 		if (uParam1->f_5 && !bParam3)
 		{
-			switch (NETWORK::_0x3C891A251567DFCE(&(Global_2405071.f_2479.f_1)))
+			switch (NETWORK::NETWORK_QUERY_RESPAWN_RESULTS(&(Global_2405071.f_2479.f_1)))
 			{
 				case 0:
 					func_416(uParam1, uParam2);
@@ -16210,7 +16210,7 @@ int func_363(var uParam0, var uParam1, var uParam2, bool bParam3)
 					}
 					if (uParam1->f_5 && !bParam3)
 					{
-						iVar3 = NETWORK::_0x6C34F1208B8923FD(iVar2);
+						iVar3 = NETWORK::NETWORK_GET_RESPAWN_RESULT_FLAGS(iVar2);
 					}
 					else
 					{
@@ -17523,7 +17523,7 @@ int func_383(int iParam0)
 			return 1;
 			break;
 	}
-	if (PED::_0xCC6E3B6BB69501F1(Global_1574954[PLAYER::PLAYER_ID()]))
+	if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574954[PLAYER::PLAYER_ID()]))
 	{
 		switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574954[PLAYER::PLAYER_ID()]))
 		{
@@ -17538,7 +17538,7 @@ int func_383(int iParam0)
 		iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 		if (iVar1 > -1 && iVar1 < 4)
 		{
-			if (PED::_0xCC6E3B6BB69501F1(Global_1574664[iVar1]))
+			if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574664[iVar1]))
 			{
 				switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574664[iVar1]))
 				{
@@ -19945,7 +19945,7 @@ void func_456()
 								}
 							}
 							vVar11 = { ENTITY::GET_ENTITY_COORDS(NETWORK::NET_TO_PED(Local_292.f_23[iVar1 /*9*/]), false) };
-							if (vVar11.z < (PATHFIND::_0x336511A34F2E5185(vVar11.x, vVar11.y) + 20f))
+							if (vVar11.z < (PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_POSITION(vVar11.x, vVar11.y) + 20f))
 							{
 								if ((PED::GET_PED_PARACHUTE_STATE(NETWORK::NET_TO_PED(Local_292.f_23[iVar1 /*9*/])) == -1 && !ENTITY::IS_ENTITY_IN_AIR(NETWORK::NET_TO_PED(Local_292.f_23[iVar1 /*9*/]))) && !PED::IS_PED_FALLING(NETWORK::NET_TO_PED(Local_292.f_23[iVar1 /*9*/])))
 								{
@@ -29598,7 +29598,7 @@ void func_595(int iParam0)
 	VEHICLE::SET_VEHICLE_EXPLODES_ON_HIGH_EXPLOSION_DAMAGE(iVar1, 0);
 	VEHICLE::SET_VEHICLE_STRONG(iVar1, true);
 	VEHICLE::SET_VEHICLE_AUTOMATICALLY_ATTACHES(iVar1, false, 0);
-	VEHICLE::_0x4E20D2A627011E8E(iVar1, func_205(iParam0));
+	VEHICLE::_SET_VEHICLE_DAMAGE_MODIFIER(iVar1, func_205(iParam0));
 	VEHICLE::_0xBB2333BB87DDD87F(iVar1, 0);
 	ENTITY::SET_ENTITY_HEALTH(iVar1, Global_262145.f_14960, 0);
 	func_600(iVar1);
@@ -31431,7 +31431,7 @@ int func_615()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -40296,7 +40296,7 @@ void func_786(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -40360,7 +40360,7 @@ void func_788(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -42189,7 +42189,7 @@ void func_846(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar18)
 					{
 						iVar21 = 0;
-						while (iVar21 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar21 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar22 = iVar21;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar22))
@@ -42526,7 +42526,7 @@ void func_863(int iParam0, var uParam1, int iParam2, var uParam3, var uParam4)
 					if (!bVar16)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -43229,7 +43229,7 @@ void func_877(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar17)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -44618,7 +44618,7 @@ void func_897(int iParam0, bool bParam1, var uParam2, int iParam3, var uParam4)
 				func_899();
 				Global_2528542.f_4889.f_377 = *iParam3;
 				iVar7 = 0;
-				while (iVar7 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar7 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					iVar8 = iVar7;
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar8))
@@ -50760,7 +50760,7 @@ struct<4> func_1138(int iParam0)
 				}
 			}
 		}
-		else if (!NETWORK::_0x72D918C99BCACC54(0))
+		else if (!NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			return cVar0;
 		}
@@ -51165,7 +51165,7 @@ int func_1163(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, 
 			if (func_1205() > 0 && Global_1574177)
 			{
 				HUD::THEFEED_HIDE_THIS_FRAME();
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				if (HUD::IS_HELP_MESSAGE_BEING_DISPLAYED())
 				{
@@ -51232,7 +51232,7 @@ int func_1163(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, 
 					}
 					HUD::HIDE_HUD_COMPONENT_THIS_FRAME(18);
 				}
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				if (func_1190(bVar3, iParam0, 0))
 				{
 					func_1154(iParam0, 0, 0);
@@ -51278,7 +51278,7 @@ int func_1163(int iParam0, int iParam1, var uParam2, var uParam3, bool bParam4, 
 			{
 				Global_1574175 = uParam3;
 				Global_1574174 = 1;
-				HUD::_CLEAR_NOTIFICATIONS_POS(fVar4);
+				HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(fVar4);
 				if (bVar2)
 				{
 					if (uParam2->f_34 != Global_1574176)
@@ -52297,7 +52297,7 @@ void func_1191(int iParam0, var uParam1, bool bParam2)
 	{
 		MISC::CLEAR_BIT(&(uParam1->f_33), 0);
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 }
 
 int func_1192()
@@ -53552,7 +53552,7 @@ void func_1262()
 			{
 				if (NETWORK::NETWORK_DOES_NETWORK_ID_EXIST(Local_292.f_280) && NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_280))
 				{
-					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_280) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_280) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_280) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_280) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 					{
 						if (func_115(Local_292.f_280))
 						{
@@ -53770,7 +53770,7 @@ void func_1270()
 				{
 					bVar1 = true;
 					iVar0 = 0;
-					while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+					while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 					{
 						if (MISC::IS_BIT_SET(iLocal_238, iVar0))
 						{
@@ -54897,7 +54897,7 @@ bool func_1318()
 
 int func_1319(int iParam0)
 {
-	if ((NETWORK::_0x1AD5B71586B94820(PLAYER::PLAYER_ID(), "AM_MP_SMPL_INTERIOR_EXT", iParam0) || NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_MP_SMPL_INTERIOR_EXT", iParam0, 1, 0)) || func_1275(12, iParam0))
+	if ((NETWORK::NETWORK_IS_PLAYER_A_PARTICIPANT_ON_SCRIPT(PLAYER::PLAYER_ID(), "AM_MP_SMPL_INTERIOR_EXT", iParam0) || NETWORK::NETWORK_IS_SCRIPT_ACTIVE("AM_MP_SMPL_INTERIOR_EXT", iParam0, 1, 0)) || func_1275(12, iParam0))
 	{
 		return 1;
 	}
@@ -56255,7 +56255,7 @@ void func_1364()
 			}
 			if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_14[0]))
 			{
-				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[0]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_14[0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[0]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_14[0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 				{
 					if (func_115(Local_292.f_14[0]))
 					{
@@ -59413,7 +59413,7 @@ void func_1444()
 				}
 				if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_14[0]))
 				{
-					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[0]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_14[0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[0]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_14[0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 					{
 						if (func_115(Local_292.f_14[0]))
 						{
@@ -59422,7 +59422,7 @@ void func_1444()
 					}
 					if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_280))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_280) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_280) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_280) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_280) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_280))
 							{
@@ -60230,7 +60230,7 @@ void func_1468()
 						if (SCRIPT::_GET_NUMBER_OF_REFERENCES_OF_SCRIPT_WITH_NAME_HASH(joaat("cellphone_flashhand")) <= 0)
 						{
 							WEAPON::GIVE_WEAPON_TO_PED(PLAYER::PLAYER_PED_ID(), joaat("WEAPON_FLARE"), 8, false, false);
-							HUD::_0x72C1056D678BB7D8(joaat("WEAPON_FLARE"));
+							HUD::_HUD_WEAPON_WHEEL_SET_SLOT_HASH(joaat("WEAPON_FLARE"));
 							func_931(23);
 						}
 					}
@@ -67573,7 +67573,7 @@ void func_1590()
 								}
 								if (iVar1 && NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]))
 								{
-									if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+									if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 									{
 										if (func_115(Local_292.f_159[iVar0 /*4*/]))
 										{
@@ -67597,7 +67597,7 @@ void func_1590()
 				{
 					if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_159[iVar0 /*4*/]))
 							{
@@ -67642,7 +67642,7 @@ void func_1590()
 			case 4:
 				if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]))
 				{
-					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 					{
 						if (func_115(Local_292.f_159[iVar0 /*4*/]))
 						{
@@ -67669,7 +67669,7 @@ void func_1591(int iParam0)
 			{
 				if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_159[iParam0 /*4*/]))
 				{
-					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iParam0 /*4*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_159[iParam0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iParam0 /*4*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_159[iParam0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 					{
 						if (func_115(Local_292.f_159[iParam0 /*4*/]))
 						{
@@ -67693,7 +67693,7 @@ int func_1592(int iParam0)
 	vector3 vVar0;
 	
 	vVar0 = { ENTITY::GET_ENTITY_COORDS(iParam0, false) };
-	if (vVar0.z < (PATHFIND::_0x336511A34F2E5185(vVar0.x, vVar0.y) + 40f))
+	if (vVar0.z < (PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_POSITION(vVar0.x, vVar0.y) + 40f))
 	{
 		return 1;
 	}
@@ -70053,7 +70053,7 @@ void func_1626()
 							{
 								if (TASK::GET_ACTIVE_VEHICLE_MISSION_TYPE(NETWORK::NET_TO_VEH(iVar3)) != 1)
 								{
-									if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+									if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 									{
 										if (func_115(Local_292.f_23[iVar0 /*9*/]))
 										{
@@ -70065,7 +70065,7 @@ void func_1626()
 							}
 							else if (TASK::GET_SCRIPT_TASK_STATUS(iVar4, -1794415470) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar4, -1794415470) != 0)
 							{
-								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 								{
 									if (func_115(Local_292.f_23[iVar0 /*9*/]))
 									{
@@ -70084,7 +70084,7 @@ void func_1626()
 					iVar5 = NETWORK::NET_TO_PED(Local_292.f_23[iVar0 /*9*/]);
 					if (!ENTITY::IS_ENTITY_DEAD(iVar5, 0))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_23[iVar0 /*9*/]))
 							{
@@ -70103,7 +70103,7 @@ void func_1626()
 									}
 									if (func_88() == 17)
 									{
-										PED::_0xAFF4710E2A0A6C12(iVar5);
+										PED::DROP_AMBIENT_PROP(iVar5);
 										TASK::CLEAR_PED_TASKS(iVar5);
 										TASK::TASK_SMART_FLEE_COORD(iVar5, ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), false), 10000f, 999999, 0, 0);
 									}
@@ -70124,7 +70124,7 @@ void func_1626()
 			case 15:
 				if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]))
 				{
-					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+					if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 					{
 						if (func_115(Local_292.f_23[iVar0 /*9*/]))
 						{
@@ -70187,7 +70187,7 @@ void func_1626()
 					{
 						if (TASK::GET_SCRIPT_TASK_STATUS(iVar10, -251125078) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar10, -251125078) != 0)
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_23[iVar0 /*9*/]))
 								{
@@ -70216,7 +70216,7 @@ void func_1626()
 							iVar13 = PED::GET_VEHICLE_PED_IS_IN(iVar12, 0);
 							if (TASK::GET_ACTIVE_VEHICLE_MISSION_TYPE(iVar13) != 4 || (func_2(iVar0, 13) && !func_1901(NETWORK::PARTICIPANT_ID(), 10)))
 							{
-								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 								{
 									if (func_115(Local_292.f_23[iVar0 /*9*/]))
 									{
@@ -70247,7 +70247,7 @@ void func_1626()
 							{
 								if (TASK::GET_ACTIVE_VEHICLE_MISSION_TYPE(NETWORK::NET_TO_VEH(iVar14)) != 8)
 								{
-									if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+									if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 									{
 										if (func_115(Local_292.f_23[iVar0 /*9*/]))
 										{
@@ -70270,7 +70270,7 @@ void func_1626()
 							}
 							else if (TASK::GET_SCRIPT_TASK_STATUS(iVar15, -1794415470) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar15, -1794415470) != 0)
 							{
-								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 								{
 									if (func_115(Local_292.f_23[iVar0 /*9*/]))
 									{
@@ -70291,7 +70291,7 @@ void func_1626()
 					{
 						if (TASK::GET_SCRIPT_TASK_STATUS(iVar17, -1273030092) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar17, -1273030092) != 0)
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_23[iVar0 /*9*/]))
 								{
@@ -70313,7 +70313,7 @@ void func_1626()
 					{
 						if (TASK::GET_SCRIPT_TASK_STATUS(iVar20, -1899872703) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar20, -1899872703) != 0)
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_23[iVar0 /*9*/]))
 								{
@@ -70353,7 +70353,7 @@ void func_1626()
 						{
 							if (TASK::GET_SCRIPT_TASK_STATUS(iVar21, 2106541073) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar21, 2106541073) != 0)
 							{
-								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 								{
 									if (func_115(Local_292.f_23[iVar0 /*9*/]))
 									{
@@ -70380,7 +70380,7 @@ void func_1626()
 						}
 						if (TASK::GET_SCRIPT_TASK_STATUS(iVar24, 993674639) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar24, 993674639) != 0)
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_23[iVar0 /*9*/]))
 								{
@@ -70412,7 +70412,7 @@ void func_1626()
 						{
 							if ((TASK::GET_SCRIPT_TASK_STATUS(iVar25, -828834893) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar25, -828834893) != 0) || func_106(iVar0, 13) != func_1632(iVar0, 13))
 							{
-								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+								if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 								{
 									if (func_115(Local_292.f_23[iVar0 /*9*/]))
 									{
@@ -70423,7 +70423,7 @@ void func_1626()
 						}
 						else if ((TASK::GET_SCRIPT_TASK_STATUS(iVar25, 1120685857) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar25, 1120685857) != 0) || func_106(iVar0, 13) != func_1632(iVar0, 13))
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_23[iVar0 /*9*/]))
 								{
@@ -70448,7 +70448,7 @@ void func_1626()
 					}
 					if (!ENTITY::IS_ENTITY_WAITING_FOR_WORLD_COLLISION(iVar25))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_23[iVar0 /*9*/]))
 							{
@@ -70465,7 +70465,7 @@ void func_1626()
 					iVar26 = NETWORK::NET_TO_PED(Local_292.f_23[iVar0 /*9*/]);
 					if (!ENTITY::IS_ENTITY_DEAD(iVar26, 0))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_23[iVar0 /*9*/]))
 							{
@@ -70488,7 +70488,7 @@ void func_1626()
 				{
 					if (!func_469(Local_292.f_23[iVar0 /*9*/]))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_23[iVar0 /*9*/]))
 							{
@@ -70511,7 +70511,7 @@ void func_1626()
 				{
 					if (!func_469(Local_292.f_23[iVar0 /*9*/]))
 					{
-						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+						if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 						{
 							if (func_115(Local_292.f_23[iVar0 /*9*/]))
 							{
@@ -70578,7 +70578,7 @@ void func_1626()
 					{
 						if (TASK::GET_SCRIPT_TASK_STATUS(iVar34, -1817882002) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iVar34, -1817882002) != 0)
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iVar0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iVar0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_23[iVar0 /*9*/]))
 								{
@@ -71529,7 +71529,7 @@ void func_1663(int iParam0, int iParam1)
 		{
 			if ((func_1050(NETWORK::PARTICIPANT_ID(), 17) && !func_1050(NETWORK::PARTICIPANT_ID(), 18)) && func_1664(PLAYER::PLAYER_PED_ID(), iParam1))
 			{
-				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iParam0 /*9*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_23[iParam0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_23[iParam0 /*9*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_23[iParam0 /*9*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 				{
 					if (func_115(Local_292.f_23[iParam0 /*9*/]))
 					{
@@ -73276,7 +73276,7 @@ void func_1687()
 		{
 			if (VEHICLE::GET_VEHICLE_DOORS_LOCKED_FOR_PLAYER(NETWORK::NET_TO_VEH(Local_292.f_14[0]), PLAYER::PLAYER_ID()))
 			{
-				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[0]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_14[0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[0]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_14[0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 				{
 					if (func_115(Local_292.f_14[0]))
 					{
@@ -73723,7 +73723,7 @@ int func_1703(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -74193,12 +74193,12 @@ void func_1714(int iParam0)
 	}
 	if (NETWORK::NETWORK_DOES_NETWORK_ID_EXIST(Local_292.f_14[iParam0]) && NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_14[iParam0]))
 	{
-		if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[iParam0]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_14[iParam0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+		if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_14[iParam0]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_14[iParam0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 		{
 			ENTITY::APPLY_FORCE_TO_ENTITY_CENTER_OF_MASS(NETWORK::NET_TO_ENT(Local_292.f_14[iParam0]), 0, 0f, 0f, 10f, 0, 0, 1, 0);
 			if (NETWORK::NETWORK_DOES_NETWORK_ID_EXIST(Local_292.f_213[iParam0]) && NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_213[iParam0]))
 			{
-				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_213[iParam0]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_213[iParam0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_213[iParam0]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_213[iParam0]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 				{
 					if (func_115(Local_292.f_14[iParam0]) && func_115(Local_292.f_213[iParam0]))
 					{
@@ -83416,7 +83416,7 @@ void func_1847()
 					{
 						if (NETWORK::NETWORK_DOES_ENTITY_EXIST_WITH_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]))
 						{
-							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+							if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_292.f_159[iVar0 /*4*/]) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_292.f_159[iVar0 /*4*/]) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 							{
 								if (func_115(Local_292.f_159[iVar0 /*4*/]))
 								{
@@ -84412,7 +84412,7 @@ void func_1876()
 		iVar1++;
 	}
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		Local_197[iVar0 /*20*/] = func_987();
 		Local_197[iVar0 /*20*/].f_1 = -1;
@@ -84457,7 +84457,7 @@ void func_1876()
 		}
 	}
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar0))
 		{

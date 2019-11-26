@@ -859,7 +859,7 @@ void func_35()
 				CAM::DO_SCREEN_FADE_IN(250);
 				iLocal_72 = MISC::GET_GAME_TIMER();
 				func_15("CHEAT_SKYFALL");
-				MISC::_SET_UNK_MAP_FLAG(2);
+				MISC::SET_INSTANCE_PRIORITY_HINT(2);
 				iLocal_64 = 5;
 			}
 			break;
@@ -909,7 +909,7 @@ void func_36()
 		PLAYER::SET_PLAYER_INVINCIBLE(PLAYER::PLAYER_ID(), 0);
 		ENTITY::SET_ENTITY_PROOFS(PLAYER::PLAYER_PED_ID(), false, false, false, false, false, false, 0, false);
 	}
-	MISC::_SET_UNK_MAP_FLAG(0);
+	MISC::SET_INSTANCE_PRIORITY_HINT(0);
 }
 
 int func_37(int iParam0, int iParam1)
@@ -3086,7 +3086,7 @@ int func_101()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

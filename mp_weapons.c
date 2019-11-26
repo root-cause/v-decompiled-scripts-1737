@@ -10987,7 +10987,7 @@ int func_104()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -11036,7 +11036,7 @@ int func_105(bool bParam0, bool bParam1)
 			return 1;
 		}
 	}
-	if (NETWORK::_0x67A5589628E0CFF6())
+	if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 	{
 		if (!bParam1 || NETWORK::NETWORK_IS_SIGNED_ONLINE())
 		{
@@ -11053,7 +11053,7 @@ int func_105(bool bParam0, bool bParam1)
 			return 0;
 		}
 	}
-	if (NETWORK::_0x67A5589628E0CFF6())
+	if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 	{
 		return 1;
 	}
@@ -13241,7 +13241,7 @@ char* func_136(int iParam0, bool bParam1)
 			{
 				return "WTD_REV_DA";
 			}
-			else if (NETWORK::_0x67A5589628E0CFF6())
+			else if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 			{
 				return "WTD_REV_DA_2";
 			}

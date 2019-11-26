@@ -148,14 +148,14 @@ void __EntryFunction__()
 		}
 		if (NETWORK::NETWORK_IS_IN_TUTORIAL_SESSION())
 		{
-			if (NETWORK::_0x3B39236746714134(PLAYER::PLAYER_ID()) == 32)
+			if (NETWORK::NETWORK_GET_PLAYER_TUTORIAL_SESSION_INSTANCE(PLAYER::PLAYER_ID()) == 32)
 			{
 				if (ScriptParam_98.f_16 != (50 + PLAYER::PLAYER_ID()))
 				{
 					func_35(2);
 				}
 			}
-			else if (ScriptParam_98.f_16 != NETWORK::_0x3B39236746714134(PLAYER::PLAYER_ID()))
+			else if (ScriptParam_98.f_16 != NETWORK::NETWORK_GET_PLAYER_TUTORIAL_SESSION_INSTANCE(PLAYER::PLAYER_ID()))
 			{
 				func_35(2);
 			}

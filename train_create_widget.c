@@ -54,7 +54,7 @@ void __EntryFunction__()
 			}
 			if (iLocal_7)
 			{
-				vLocal_1 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+				vLocal_1 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 				iLocal_7 = 0;
 			}
 			if (VEHICLE::IS_VEHICLE_DRIVEABLE(iLocal_0, 0) && !ENTITY::IS_ENTITY_DEAD(iLocal_0, 0))

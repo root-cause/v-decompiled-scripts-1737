@@ -1973,17 +1973,17 @@ int func_79()
 					VEHICLE::SET_VEHICLE_DOORS_LOCKED_FOR_NON_SCRIPT_PLAYERS(func_31(), 1);
 					VEHICLE::_0xDBC631F109350B8C(func_31(), 1);
 					VEHICLE::SET_VEHICLE_CAN_BE_USED_BY_FLEEING_PEDS(func_31(), 0);
-					VEHICLE::_0x192547247864DFDD(func_31(), false);
+					VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(func_31(), false);
 					VEHICLE::SET_DISABLE_VEHICLE_PETROL_TANK_FIRES(func_31(), 1);
 					VEHICLE::_0xD4196117AF7BB974(func_31(), 1);
-					VEHICLE::_0x4E20D2A627011E8E(func_31(), func_83());
+					VEHICLE::_SET_VEHICLE_DAMAGE_MODIFIER(func_31(), func_83());
 					ENTITY::SET_ENTITY_HEALTH(func_31(), func_82(), 0);
 					ENTITY::SET_ENTITY_MAX_HEALTH(func_31(), func_82());
 					VEHICLE::SET_VEHICLE_ENGINE_HEALTH(func_31(), SYSTEM::TO_FLOAT(func_82()));
 					VEHICLE::SET_VEHICLE_PETROL_TANK_HEALTH(func_31(), SYSTEM::TO_FLOAT(func_82()));
 					VEHICLE::SET_VEHICLE_BODY_HEALTH(func_31(), SYSTEM::TO_FLOAT(func_82()));
 					VEHICLE::_0x4056EA1105F5ABD7(func_31(), SYSTEM::TO_FLOAT(func_82()));
-					VEHICLE::_0xFE205F38AAA58E5B(func_31(), SYSTEM::TO_FLOAT(func_82()));
+					VEHICLE::_SET_HELI_TAIL_ROTOR_HEALTH(func_31(), SYSTEM::TO_FLOAT(func_82()));
 					VEHICLE::SET_VEHICLE_EXPLODES_ON_HIGH_EXPLOSION_DAMAGE(func_31(), 0);
 					if (func_81())
 					{
@@ -7181,7 +7181,7 @@ void func_223(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -7362,7 +7362,7 @@ void func_227(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -9310,7 +9310,7 @@ void func_293(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar18)
 					{
 						iVar21 = 0;
-						while (iVar21 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar21 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar22 = iVar21;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar22))
@@ -9647,7 +9647,7 @@ void func_310(int iParam0, var uParam1, int iParam2, var uParam3, var uParam4)
 					if (!bVar16)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -10350,7 +10350,7 @@ void func_324(int iParam0, var uParam1, int iParam2, var uParam3)
 					if (!bVar17)
 					{
 						iVar18 = 0;
-						while (iVar18 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+						while (iVar18 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 						{
 							iVar19 = iVar18;
 							if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar19))
@@ -12202,7 +12202,7 @@ void func_349(int iParam0, bool bParam1, var uParam2, int iParam3, var uParam4)
 				func_351();
 				Global_2528542.f_4889.f_377 = *iParam3;
 				iVar7 = 0;
-				while (iVar7 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+				while (iVar7 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 				{
 					iVar8 = iVar7;
 					if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar8))
@@ -14274,7 +14274,7 @@ int func_411(int iParam0)
 	Var0 = { func_213(iParam0) };
 	if (MISC::IS_DURANGO_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 			{
@@ -14294,14 +14294,14 @@ int func_412(int iParam0)
 		Var0 = { func_213(iParam0) };
 		if (MISC::IS_ORBIS_VERSION() || MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				return 0;
 			}
 		}
 		else if (MISC::IS_DURANGO_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 				{
@@ -28129,11 +28129,11 @@ int func_711(vector3 vParam0, vector3 vParam1, int iParam2, int iParam3, var uPa
 			{
 				if (NETWORK::GET_TIME_DIFFERENCE(NETWORK::GET_NETWORK_TIME(), Global_2405071.f_690) < 10000)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_689))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_689))
 					{
 						if (NETWORK::_0x4DF7CFFF471A7FB1(Global_2405071.f_689))
 						{
-							if (!NETWORK::_0x4A2D4E8BF4265B0F(Global_2405071.f_689))
+							if (!NETWORK::NETWORK_ENTITY_AREA_IS_OCCUPIED(Global_2405071.f_689))
 							{
 								if (func_727(Global_2405071.f_674, Global_2405071.f_677, iParam2, PLAYER::PLAYER_ID(), 0) || func_713(Global_2405071.f_674, Global_2405071.f_677, iParam2, 1, 0, 0, 0, 1, 0))
 								{
@@ -30048,7 +30048,7 @@ Vector3 func_754(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -33781,7 +33781,7 @@ void func_823()
 			{
 				if (!Global_2405071.f_678[iVar0] == -1)
 				{
-					if (NETWORK::_0xE64A3CA08DFA37A9(Global_2405071.f_678[iVar0]))
+					if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Global_2405071.f_678[iVar0]))
 					{
 						NETWORK::NETWORK_REMOVE_ENTITY_AREA(Global_2405071.f_678[iVar0]);
 						Global_2405071.f_678[iVar0] = -1;
@@ -39697,7 +39697,7 @@ int func_997()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

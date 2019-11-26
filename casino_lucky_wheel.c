@@ -1471,7 +1471,7 @@ void func_57(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -1878,7 +1878,7 @@ void func_71(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -2932,7 +2932,7 @@ void func_108()
 	
 	sVar0 = func_109(func_721(Local_97));
 	ENTITY::SET_ENTITY_ROTATION(Local_99.f_72, 0f, 0f, 0f, 2, 1);
-	ENTITY::PLAY_ENTITY_ANIM(Local_99.f_72, sVar0, Local_99.f_23, 1000f, 0, 1, 0, 0f, 2);
+	ENTITY::PLAY_ENTITY_ANIM(Local_99.f_72, sVar0, Local_99.f_23, 1000f, false, 1, 0, 0f, 2);
 	ENTITY::FORCE_ENTITY_AI_AND_ANIMATION_UPDATE(Local_99.f_72);
 }
 
@@ -7698,7 +7698,7 @@ void func_178(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -7879,7 +7879,7 @@ void func_182(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -17169,7 +17169,7 @@ void func_255(int iParam0, var uParam1)
 			uParam1->f_70 = 1;
 		}
 		uParam1->f_78 = AUDIO::GET_VEHICLE_DEFAULT_HORN(iParam0);
-		uParam1->f_79 = AUDIO::_0xD53F3A29BCE2580E(iParam0);
+		uParam1->f_79 = AUDIO::_GET_VEHICLE_DEFAULT_HORN_VARIATION(iParam0);
 		uParam1->f_80 = VEHICLE::GET_VEHICLE_ENVEFF_SCALE(iParam0);
 		VEHICLE::_GET_VEHICLE_INTERIOR_COLOR(iParam0, &(uParam1->f_97));
 		VEHICLE::_GET_VEHICLE_DASHBOARD_COLOR(iParam0, &(uParam1->f_99));
@@ -17539,7 +17539,7 @@ int func_260()
 	
 	if (PLAYER::IS_PLAYER_ONLINE())
 	{
-		if ((NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_IS_SIGNED_IN()) && NETWORK::_0x67A5589628E0CFF6())
+		if ((NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_IS_SIGNED_IN()) && NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 		{
 			Var0 = { func_261() };
 			if (NETWORK::NETWORK_CLAN_SERVICE_IS_VALID() && NETWORK::NETWORK_CLAN_PLAYER_IS_ACTIVE(&Var0))
@@ -27045,7 +27045,7 @@ void func_362(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_364(0);
@@ -38879,7 +38879,7 @@ int func_575()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -43060,7 +43060,7 @@ int func_591(int iParam0, int iParam1, int iParam2)
 	}
 	if (iParam0 == 95)
 	{
-		if (NETWORK::_0x67A5589628E0CFF6())
+		if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 		{
 			return 1;
 		}
@@ -43914,7 +43914,7 @@ int func_610()
 	}
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_25())
 			{
@@ -51622,7 +51622,7 @@ void func_710(int iParam0, bool bParam1, bool bParam2, bool bParam3, bool bParam
 	{
 		sVar6 = func_109(func_721(PLAYER::PLAYER_ID()));
 		ENTITY::SET_ENTITY_ROTATION(Local_99.f_72, 0f, 0f, 0f, 2, 1);
-		ENTITY::PLAY_ENTITY_ANIM(Local_99.f_72, sVar6, Local_99.f_23, 1000f, 0, 1, 0, 0f, 2);
+		ENTITY::PLAY_ENTITY_ANIM(Local_99.f_72, sVar6, Local_99.f_23, 1000f, false, 1, 0, 0f, 2);
 		ENTITY::FORCE_ENTITY_AI_AND_ANIMATION_UPDATE(Local_99.f_72);
 	}
 }

@@ -1896,8 +1896,8 @@ void func_58(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam4
 					vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(func_102()) };
 					if (func_101(Global_1589819[PLAYER::PLAYER_ID() /*818*/].f_682, 1, 0))
 					{
-						vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-						vVar1 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+						vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+						vVar1 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 					}
 				}
 				else
@@ -1945,7 +1945,7 @@ void func_58(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam4
 			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 			vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID()) };
 			vVar0.z = (vVar0.z + 0.4f);
-			fVar2 = CAM::_0x80EC114669DAEFF4();
+			fVar2 = CAM::GET_FINAL_RENDERED_CAM_FOV();
 		}
 		else
 		{
@@ -2134,7 +2134,7 @@ void func_64(vector3 vParam0)
 	{
 		return;
 	}
-	STREAMING::_SET_FOCUS_AREA(vParam0, 0f, 0f, 0f);
+	STREAMING::SET_FOCUS_POS_AND_VEL(vParam0, 0f, 0f, 0f);
 	NETWORK::NETWORK_SET_IN_FREE_CAM_MODE(1);
 }
 
@@ -2392,7 +2392,7 @@ void func_73(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -5004,7 +5004,7 @@ void func_130(int iParam0)
 		func_127(0);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
-		GRAPHICS::_0xE1C8709406F2C41C();
+		GRAPHICS::RESET_PAUSED_RENDERPHASES();
 	}
 }
 
@@ -6931,7 +6931,7 @@ var func_217(int iParam0, int iParam1)
 	{
 		return func_218();
 	}
-	return NETWORK::_0x40F7E66472DF3E5C(iParam0, iParam1);
+	return NETWORK::UGC_GET_CACHED_DESCRIPTION(iParam0, iParam1);
 }
 
 char* func_218()

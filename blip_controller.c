@@ -872,7 +872,7 @@ void func_19(int iParam0, int iParam1)
 	bool bVar4;
 	
 	iVar0 = func_1();
-	HUD::_SET_BLIP_DISPLAY_ON_EDGE(iParam0, 1);
+	HUD::_SET_BLIP_DISPLAY_INDICATOR_ON_BLIP(iParam0, 1);
 	HUD::SET_BLIP_PRIORITY(iParam0, 2);
 	HUD::SET_BLIP_COLOUR(iParam0, func_21(iParam1));
 	if (Global_26140[iParam1 /*23*/].f_16 == 4 || Global_26140[iParam1 /*23*/].f_16 == 8)

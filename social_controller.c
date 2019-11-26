@@ -3007,7 +3007,7 @@ int func_52()
 	}
 	if (MISC::IS_ORBIS_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(1))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(1))
 		{
 			if (NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES())
 			{
@@ -3916,22 +3916,22 @@ int func_81(var uParam0, char* sParam1, char* sParam2, int iParam3)
 			break;
 		
 		case 3:
-			if (NETWORK::_0x02ADA21EA2F6918F())
+			if (NETWORK::UGC_HAS_GET_FINISHED())
 			{
-				uParam0->f_41 = NETWORK::_0xEDF7F927136C224B();
+				uParam0->f_41 = NETWORK::UGC_GET_QUERY_RESULT();
 				if (NETWORK::_0x941E5306BCD7C2C7())
 				{
 				}
 				else
 				{
 					func_89(uParam0, 1, 1);
-					uParam0->f_41 = NETWORK::_0xEDF7F927136C224B();
+					uParam0->f_41 = NETWORK::UGC_GET_QUERY_RESULT();
 					*uParam0 = 0;
 					return 1;
 				}
-				if (NETWORK::_0xE0A6138401BCB837() > 0)
+				if (NETWORK::UGC_GET_CONTENT_NUM() > 0)
 				{
-					if (DATAFILE::_0xA69AC4ADE82B57A4(0))
+					if (DATAFILE::DATAFILE_SELECT_UGC_DATA(0))
 					{
 						func_82(sParam2, 0, iParam3);
 						func_89(uParam0, 1, 1);
@@ -3961,9 +3961,9 @@ void func_82(char* sParam0, int iParam1, var uParam2)
 	iVar0 = DATAFILE::DATAFILE_GET_FILE_DICT();
 	iVar1 = DATAFILE::_OBJECT_VALUE_GET_OBJECT(iVar0, "mission");
 	iVar2 = DATAFILE::_OBJECT_VALUE_GET_OBJECT(iVar1, "gen");
-	StringCopy(sParam0, NETWORK::_GET_CONTENT_ID(iParam1), 24);
-	StringCopy(&(sParam0->f_6), NETWORK::_GET_CONTENT_USER_ID(iParam1), 64);
-	StringCopy(&(sParam0->f_22), NETWORK::_0xBF09786A7FCAB582(iParam1), 64);
+	StringCopy(sParam0, NETWORK::UGC_GET_CONTENT_ID(iParam1), 24);
+	StringCopy(&(sParam0->f_6), NETWORK::UGC_GET_CONTENT_USER_ID(iParam1), 64);
+	StringCopy(&(sParam0->f_22), NETWORK::UGC_GET_CONTENT_NAME(iParam1), 64);
 	sParam0->f_56 = { func_88(iVar2) };
 	sParam0->f_59 = { func_87(iVar2, "cam") };
 	sParam0->f_62 = { func_86(iVar2) };
@@ -3974,10 +3974,10 @@ void func_82(char* sParam0, int iParam1, var uParam2)
 	sParam0->f_69 = DATAFILE::_OBJECT_VALUE_GET_INTEGER(iVar2, "min");
 	sParam0->f_70 = DATAFILE::_OBJECT_VALUE_GET_INTEGER(iVar2, "rank");
 	sParam0->f_71 = DATAFILE::_OBJECT_VALUE_GET_INTEGER(iVar2, "num");
-	sParam0->f_73 = func_85(NETWORK::_0x1ACCFBA3D8DAB2EE(iParam1, 0), NETWORK::_0x759299C5BB31D2A9(iParam1, 0));
+	sParam0->f_73 = func_85(NETWORK::UGC_GET_CONTENT_RATING(iParam1, 0), NETWORK::UGC_GET_CONTENT_RATING_COUNT(iParam1, 0));
 	sParam0->f_74 = 0;
 	sParam0->f_75 = DATAFILE::_OBJECT_VALUE_GET_INTEGER(iVar2, "charcon");
-	*uParam2 = MISC::GET_HASH_KEY(NETWORK::_GET_ROOT_CONTENT_ID(0));
+	*uParam2 = MISC::GET_HASH_KEY(NETWORK::UGC_GET_ROOT_CONTENT_ID(0));
 	if (func_84(*uParam2))
 	{
 		sParam0->f_68 = 8;
@@ -3995,10 +3995,10 @@ void func_82(char* sParam0, int iParam1, var uParam2)
 	}
 	if (!func_92())
 	{
-		iVar3 = NETWORK::_0x32DD916F3F7C9672(iParam1);
-		if (NETWORK::_0xF53E48461B71EECB(iVar3))
+		iVar3 = NETWORK::UGC_GET_CONTENT_LANGUAGE(iParam1);
+		if (NETWORK::UGC_IS_LANGUAGE_SUPPORTED(iVar3))
 		{
-			sParam0->f_54 = NETWORK::_GET_CONTENT_DESCRIPTION_HASH(iParam1);
+			sParam0->f_54 = NETWORK::UGC_GET_CONTENT_DESCRIPTION_HASH(iParam1);
 		}
 		else
 		{
@@ -4267,7 +4267,7 @@ int func_98()
 	{
 		return 1;
 	}
-	else if (NETWORK::_0xD53ACDBEF24A46E8())
+	else if (NETWORK::UGC_IS_GETTING())
 	{
 		return 1;
 	}
@@ -5511,7 +5511,7 @@ void func_139(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -5692,7 +5692,7 @@ void func_143(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -6783,7 +6783,7 @@ void func_179(int iParam0, var uParam1, bool bParam2)
 		}
 		if (MISC::GET_PROFILE_SETTING(803) == 1 && uParam1->f_166 == 0)
 		{
-			iVar2 = NETWORK::_NETWORK_CLAN_GET_NUM_MEMBERSHIP_DESC();
+			iVar2 = NETWORK::NETWORK_CLAN_GET_LOCAL_MEMBERSHIPS_COUNT();
 			iVar3 = 0;
 			while (iVar3 < iVar2)
 			{
@@ -11465,7 +11465,7 @@ int func_241(var uParam0)
 		VEHICLE::SET_VEHICLE_MOD_KIT(iVar0, 0);
 	}
 	VEHICLE::SET_VEHICLE_WHEEL_TYPE(iVar0, Global_1323594[iLocal_108 /*141*/].f_69);
-	uParam0->f_33[0] = AUDIO::_GET_VEHICLE_HORN_HASH(iVar0);
+	uParam0->f_33[0] = AUDIO::GET_VEHICLE_DEFAULT_HORN_IGNORE_MODS(iVar0);
 	uParam0->f_33[1] = VEHICLE::GET_VEHICLE_MOD_MODIFIER_VALUE(iVar0, 14, 0);
 	uParam0->f_33[2] = VEHICLE::GET_VEHICLE_MOD_MODIFIER_VALUE(iVar0, 14, 1);
 	uParam0->f_33[3] = VEHICLE::GET_VEHICLE_MOD_MODIFIER_VALUE(iVar0, 14, 2);
@@ -27815,7 +27815,7 @@ int func_433()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

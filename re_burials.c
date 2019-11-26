@@ -807,7 +807,7 @@ void __EntryFunction__()
 													TASK::TASK_PERFORM_SEQUENCE(iLocal_52[0], iLocal_59);
 													TASK::CLEAR_SEQUENCE_TASK(&iLocal_59);
 													PED::SET_PED_KEEP_TASK(iLocal_52[0], true);
-													VEHICLE::_0x25367DE49D64CF16(iLocal_54, 1);
+													VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_54, 1);
 													iLocal_124 = 1;
 												}
 												else if (TASK::GET_SCRIPT_TASK_STATUS(iLocal_52[0], 242628503) == 1)
@@ -844,7 +844,7 @@ void __EntryFunction__()
 													TASK::TASK_PERFORM_SEQUENCE(iLocal_52[1], iLocal_59);
 													TASK::CLEAR_SEQUENCE_TASK(&iLocal_59);
 													PED::SET_PED_KEEP_TASK(iLocal_52[1], true);
-													VEHICLE::_0x25367DE49D64CF16(iLocal_54, 1);
+													VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_54, 1);
 													iLocal_124 = 1;
 												}
 												else if (TASK::GET_SCRIPT_TASK_STATUS(iLocal_52[1], 242628503) == 1)
@@ -2663,7 +2663,7 @@ void func_46()
 						TASK::TASK_VEHICLE_DRIVE_WANDER(iLocal_53, iLocal_54, 10f, 786599);
 						PED::SET_PED_KEEP_TASK(iLocal_53, true);
 					}
-					VEHICLE::_0x25367DE49D64CF16(iLocal_55, 1);
+					VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_55, 1);
 					iLocal_110++;
 				}
 			}
@@ -2764,7 +2764,7 @@ void func_47()
 						TASK::TASK_VEHICLE_DRIVE_WANDER(iLocal_53, iLocal_55, 10f, 786599);
 						PED::SET_PED_KEEP_TASK(iLocal_53, true);
 					}
-					VEHICLE::_0x25367DE49D64CF16(iLocal_55, 1);
+					VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_55, 1);
 					iLocal_110++;
 				}
 			}
@@ -8625,7 +8625,7 @@ int func_205()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

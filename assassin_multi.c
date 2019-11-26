@@ -2176,8 +2176,8 @@ void __EntryFunction__()
 	vLocal_45 = { 500f, 500f, 500f };
 	iLocal_134 = 100;
 	iLocal_135 = 3;
-	iLocal_725 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_726 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_725 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_726 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_968 = 1;
 	iLocal_1149 = -1;
 	fLocal_1151 = 1f;
@@ -10617,7 +10617,7 @@ void func_227(var uParam0, var uParam1)
 			func_223(uParam1);
 			if (!ENTITY::IS_ENTITY_DEAD(uParam1->f_1, 0))
 			{
-				VEHICLE::_SET_BOAT_EXPLODES_ON_WRECKED_ACTION(uParam1->f_1, 1);
+				VEHICLE::SET_BOAT_SINKS_WHEN_WRECKED(uParam1->f_1, 1);
 			}
 			if (!ENTITY::IS_ENTITY_DEAD(*uParam1, 0))
 			{
@@ -12350,7 +12350,7 @@ void func_276()
 			}
 			if (CAM::IS_FIRST_PERSON_AIM_CAM_ACTIVE())
 			{
-				CAM::_0x70894BD0915C5BCA(1f);
+				CAM::SET_FIRST_PERSON_AIM_CAM_ZOOM_FACTOR(1f);
 			}
 			iLocal_1206 = 1;
 		}
@@ -12370,7 +12370,7 @@ void func_276()
 			}
 			if (CAM::IS_FIRST_PERSON_AIM_CAM_ACTIVE())
 			{
-				CAM::_0x70894BD0915C5BCA(1f);
+				CAM::SET_FIRST_PERSON_AIM_CAM_ZOOM_FACTOR(1f);
 			}
 			iLocal_1206 = 1;
 		}
@@ -14194,10 +14194,10 @@ void func_310(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -21086,7 +21086,7 @@ int func_402()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -22743,10 +22743,10 @@ void func_430(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))

@@ -1108,7 +1108,7 @@ void __EntryFunction__()
 		{
 			ENTITY::SET_ENTITY_AS_MISSION_ENTITY(iLocal_900, true, 1);
 			VEHICLE::ADD_VEHICLE_UPSIDEDOWN_CHECK(iLocal_900);
-			VEHICLE::_0x192547247864DFDD(iLocal_900, false);
+			VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(iLocal_900, false);
 			VEHICLE::SET_VEHICLE_HAS_STRONG_AXLES(iLocal_900, true);
 		}
 	}
@@ -6494,13 +6494,13 @@ int func_128(vector3 vParam0, float fParam1, int iParam2, bool bParam3, var uPar
 		{
 			VEHICLE::SET_DISABLE_VEHICLE_PETROL_TANK_FIRES(Local_824[*iParam2 /*20*/].f_6, 1);
 			VEHICLE::SET_VEHICLE_ENGINE_HEALTH(Local_824[*iParam2 /*20*/].f_6, 1f);
-			VEHICLE::_0x91A0BD635321F145(Local_824[*iParam2 /*20*/].f_6, 1);
+			VEHICLE::SET_DISABLE_VEHICLE_ENGINE_FIRES(Local_824[*iParam2 /*20*/].f_6, 1);
 		}
 		else
 		{
 			VEHICLE::SET_DISABLE_VEHICLE_PETROL_TANK_FIRES(Local_824[*iParam2 /*20*/].f_6, 1);
 			VEHICLE::SET_VEHICLE_ENGINE_HEALTH(Local_824[*iParam2 /*20*/].f_6, 1f);
-			VEHICLE::_0x91A0BD635321F145(Local_824[*iParam2 /*20*/].f_6, 1);
+			VEHICLE::SET_DISABLE_VEHICLE_ENGINE_FIRES(Local_824[*iParam2 /*20*/].f_6, 1);
 		}
 	}
 	if (!bLocal_792 && uParam4)

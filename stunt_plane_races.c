@@ -2584,7 +2584,7 @@ int func_1()
 						SYSTEM::WAIT(0);
 					}
 					STREAMING::NEW_LOAD_SCENE_STOP();
-					STREAMING::_SET_FOCUS_AREA(vLocal_43, func_8(vLocal_44));
+					STREAMING::SET_FOCUS_POS_AND_VEL(vLocal_43, func_8(vLocal_44));
 					func_4(&(Local_2067.f_6));
 					Local_1982.f_6 = 15;
 				}
@@ -7073,10 +7073,10 @@ void func_111(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))
@@ -16082,7 +16082,7 @@ int func_432(var uParam0)
 			break;
 		
 		case 2:
-			STATS::_0xC38DC1E90D22547C(&(Global_1835013.f_73), &(Global_1835013.f_142), &(Global_1835013.f_211));
+			STATS::LEADERBOARDS2_READ_RANK_PREDICTION(&(Global_1835013.f_73), &(Global_1835013.f_142), &(Global_1835013.f_211));
 			Global_1835013 = 4;
 			uParam0->f_4 = 0;
 			uParam0->f_5 = 0;
@@ -16125,7 +16125,7 @@ int func_432(var uParam0)
 				Var2 = Global_1835013.f_142;
 				Var2.f_1 = Global_1835013.f_142.f_1;
 				Var2.f_2 = Global_1835013.f_142.f_2;
-				STATS::_0xC38DC1E90D22547C(&Var2, &(Global_1835013.f_142), &(Global_1835013.f_280));
+				STATS::LEADERBOARDS2_READ_RANK_PREDICTION(&Var2, &(Global_1835013.f_142), &(Global_1835013.f_280));
 			}
 			Global_1835013 = 100;
 			uParam0->f_4 = 0;
@@ -19386,7 +19386,7 @@ void func_480(var uParam0, var uParam1)
 	Var10 = { func_453(PLAYER::PLAYER_ID()) };
 	if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(*uParam0))
 	{
-		if (((!NETWORK::_NETWORK_ARE_ROS_AVAILABLE() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
+		if (((!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
 		{
 			if (!PLAYER::IS_PLAYER_ONLINE())
 			{
@@ -19404,7 +19404,7 @@ void func_480(var uParam0, var uParam1)
 					Global_1835392.f_2829 = 3;
 				}
 			}
-			else if (!NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+			else if (!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 			{
 				if (Global_1835392.f_2829 != 4)
 				{
@@ -19722,7 +19722,7 @@ void func_480(var uParam0, var uParam1)
 								{
 									iVar9 = 0;
 									MISC::SET_BIT(&iVar9, 6);
-									if (!NETWORK::_0x67A5589628E0CFF6())
+									if (!NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 									{
 										bVar14 = true;
 									}
@@ -22017,7 +22017,7 @@ int func_503(var uParam0)
 			return 0;
 		}
 	}
-	if (((!NETWORK::_NETWORK_ARE_ROS_AVAILABLE() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
+	if (((!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER() || !PLAYER::IS_PLAYER_ONLINE()) || (!NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES() && NETWORK::_NETWORK_HAS_AGE_RESTRICTED_PROFILE())) || Global_1835392.f_2832 != 0)
 	{
 		MISC::CLEAR_BIT(&(uParam0->f_42), 4);
 		return 1;
@@ -22243,7 +22243,7 @@ int func_507(var uParam0)
 	{
 		case 0:
 			func_511(uParam0);
-			if (MISC::IS_ORBIS_VERSION() && !NETWORK::_0x72D918C99BCACC54(0))
+			if (MISC::IS_ORBIS_VERSION() && !NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				(uParam0[0 /*100*/])->f_76 = 3;
 				return 0;
@@ -24351,7 +24351,7 @@ void func_532(int iParam0, int iParam1, int iParam2, bool bParam3, bool bParam4)
 		*iParam1++;
 		if (NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_CLAN_SERVICE_IS_VALID())
 		{
-			if (MISC::IS_ORBIS_VERSION() && !NETWORK::_0x72D918C99BCACC54(0))
+			if (MISC::IS_ORBIS_VERSION() && !NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				sVar0 = "SCLB_CREW";
 			}
@@ -24410,7 +24410,7 @@ void func_532(int iParam0, int iParam1, int iParam2, bool bParam3, bool bParam4)
 		{
 			sVar0 = "SCLB_NOT_ONL";
 		}
-		else if (!NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		else if (!NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			sVar0 = "SCLB_NO_ROS";
 		}
@@ -24446,13 +24446,13 @@ void func_532(int iParam0, int iParam1, int iParam2, bool bParam3, bool bParam4)
 		}
 		else if (MISC::IS_BIT_SET(iParam2, 6))
 		{
-			if (NETWORK::_0x67A5589628E0CFF6())
+			if (NETWORK::NETWORK_HAS_SOCIAL_CLUB_ACCOUNT())
 			{
 				if (NETWORK::_0xBA9775570DB788CF())
 				{
 					if (NETWORK::NETWORK_IS_SIGNED_ONLINE() && NETWORK::NETWORK_CLAN_SERVICE_IS_VALID())
 					{
-						if (MISC::IS_ORBIS_VERSION() && !NETWORK::_0x72D918C99BCACC54(0))
+						if (MISC::IS_ORBIS_VERSION() && !NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 						{
 							sVar0 = "SCLB_NO_CREWc";
 						}

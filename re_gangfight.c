@@ -788,7 +788,7 @@ void func_9()
 				TASK::TASK_PERFORM_SEQUENCE(iLocal_58, iLocal_62);
 				TASK::CLEAR_SEQUENCE_TASK(&iLocal_62);
 				PED::SET_PED_KEEP_TASK(iLocal_58, true);
-				VEHICLE::_0x25367DE49D64CF16(iLocal_60, 1);
+				VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_60, 1);
 				iLocal_46++;
 			}
 			break;
@@ -5881,7 +5881,7 @@ int func_139()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

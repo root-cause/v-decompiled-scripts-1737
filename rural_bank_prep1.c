@@ -1335,8 +1335,8 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iLocal_46 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_47 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_46 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_47 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	vLocal_49 = { 1358.197f, 3618.234f, 33.89066f };
 	vLocal_50 = { 0f, 5f, -0.5f };
 	vLocal_51 = { 4f, 3f, -0.5f };
@@ -6757,7 +6757,7 @@ int func_101()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -12227,8 +12227,8 @@ void func_204(vector3 vParam0, float fParam1)
 	VEHICLE::SET_VEHICLE_ENGINE_HEALTH(Local_65[0 /*2*/], (VEHICLE::GET_VEHICLE_ENGINE_HEALTH(Local_65[0 /*2*/]) * 2f));
 	VEHICLE::SET_VEHICLE_EXPLODES_ON_HIGH_EXPLOSION_DAMAGE(Local_65[0 /*2*/], 0);
 	VEHICLE::SET_VEHICLE_PETROL_TANK_HEALTH(Local_65[0 /*2*/], (VEHICLE::GET_VEHICLE_PETROL_TANK_HEALTH(Local_65[0 /*2*/]) * 2f));
-	VEHICLE::_0x192547247864DFDD(Local_65[0 /*2*/], false);
-	VEHICLE::_0x51BB2D88D31A914B(Local_65[0 /*2*/], false);
+	VEHICLE::SET_VEHICLE_CAN_LEAK_PETROL(Local_65[0 /*2*/], false);
+	VEHICLE::SET_VEHICLE_CAN_LEAK_OIL(Local_65[0 /*2*/], false);
 	VEHICLE::SET_VEHICLE_PROVIDES_COVER(Local_65[0 /*2*/], 1);
 	VEHICLE::SET_VEHICLE_AUTOMATICALLY_ATTACHES(Local_65[0 /*2*/], false, 0);
 	func_205(Local_65[0 /*2*/], 0);
@@ -15825,10 +15825,10 @@ void func_286(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;

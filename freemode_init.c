@@ -2142,7 +2142,7 @@ void func_59()
 	func_307();
 	if (((!func_306() && !func_305()) && !func_304()) && !func_303())
 	{
-		MISC::_USE_FREEMODE_MAP_BEHAVIOR(1);
+		MISC::SET_INSTANCE_PRIORITY_MODE(1);
 	}
 	HUD::TOGGLE_STEALTH_RADAR(1);
 	PLAYER::SET_PLAYER_NOISE_MULTIPLIER(PLAYER::PLAYER_ID(), 1f);
@@ -2600,7 +2600,7 @@ void func_76()
 	iVar10 = 0;
 	while (iVar8 < iVar0)
 	{
-		StringCopy(&Var1, NETWORK::_0x24409FC4C55CB22D(iVar8), 24);
+		StringCopy(&Var1, NETWORK::NETWORK_GET_PRESENCE_INVITE_CONTENT_ID(iVar8), 24);
 		StringCopy(&Var2, NETWORK::NETWORK_GET_PRESENCE_INVITE_INVITER(iVar8), 64);
 		iVar3 = NETWORK::NETWORK_GET_PRESENCE_INVITE_ID(iVar8);
 		bVar5 = NETWORK::NETWORK_GET_PRESENCE_INVITE_HANDLE(iVar8, &Var4);
@@ -2975,12 +2975,12 @@ int func_82(int iParam0)
 {
 	if (MISC::IS_PS3_VERSION() || (MISC::IS_ORBIS_VERSION() && iParam0 == 0))
 	{
-		if (NETWORK::_0x72D918C99BCACC54(1) == 0 || NETWORK::_0xAEEF48CDF5B6CE7C(1, -1) == 0)
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(1) == 0 || NETWORK::_0xAEEF48CDF5B6CE7C(1, -1) == 0)
 		{
 			return 0;
 		}
 	}
-	else if (NETWORK::_0x72D918C99BCACC54(1) == 0)
+	else if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(1) == 0)
 	{
 		return 0;
 	}
@@ -3020,12 +3020,12 @@ int func_84(int iParam0)
 {
 	if (MISC::IS_PS3_VERSION() || (MISC::IS_ORBIS_VERSION() && iParam0 == 0))
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0) == 0 || NETWORK::_0xAEEF48CDF5B6CE7C(0, -1) == 0)
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0) == 0 || NETWORK::_0xAEEF48CDF5B6CE7C(0, -1) == 0)
 		{
 			return 0;
 		}
 	}
-	else if (NETWORK::_0x72D918C99BCACC54(0) == 0)
+	else if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0) == 0)
 	{
 		return 0;
 	}
@@ -3056,9 +3056,9 @@ int func_86(int iParam0, var uParam1, var uParam2, var uParam3, var uParam4, var
 				return 0;
 			}
 		}
-		if (!NETWORK::_0x72D918C99BCACC54(0))
+		if (!NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
-			if (!NETWORK::_0x72D918C99BCACC54(1))
+			if (!NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(1))
 			{
 				return 1;
 			}
@@ -3160,7 +3160,7 @@ int func_91()
 	}
 	if (MISC::IS_ORBIS_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(1))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(1))
 		{
 			if (NETWORK::NETWORK_HAVE_ONLINE_PRIVILEGES())
 			{

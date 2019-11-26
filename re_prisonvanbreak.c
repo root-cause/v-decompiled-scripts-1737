@@ -6828,7 +6828,7 @@ int func_141()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -6903,7 +6903,7 @@ void func_142()
 				{
 					if (PED::IS_PED_IN_VEHICLE(iLocal_218, iLocal_226, 0))
 					{
-						VEHICLE::_0x25367DE49D64CF16(iLocal_226, 1);
+						VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_226, 1);
 					}
 				}
 			}
@@ -6915,7 +6915,7 @@ void func_142()
 				{
 					if (PED::IS_PED_IN_VEHICLE(iLocal_219, iLocal_226, 0))
 					{
-						VEHICLE::_0x25367DE49D64CF16(iLocal_226, 1);
+						VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_226, 1);
 					}
 				}
 			}

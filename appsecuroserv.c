@@ -23201,7 +23201,7 @@ void func_371(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -24826,7 +24826,7 @@ void func_377(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_360(0);
@@ -26276,7 +26276,7 @@ void func_410(int iParam0, bool bParam1)
 	{
 		iVar4 = "BRSHETPRSA";
 	}
-	HUD::_SET_WARNING_MESSAGE_3(sVar0, sVar1, 18, iVar2, 1, iVar3, 0, iVar4, 0, 1, 0);
+	HUD::SET_WARNING_MESSAGE_WITH_HEADER_AND_SUBSTRING_FLAGS(sVar0, sVar1, 18, iVar2, 1, iVar3, 0, iVar4, 0, 1, 0);
 }
 
 void func_411(var uParam0, int iParam1)
@@ -27628,8 +27628,8 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 					vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(func_476()) };
 					if (func_475(Global_1589819[PLAYER::PLAYER_ID() /*818*/].f_682, 1, 0))
 					{
-						vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-						vVar1 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+						vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+						vVar1 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 					}
 				}
 				else
@@ -27677,7 +27677,7 @@ void func_444(var uParam0, int iParam1, int iParam2, vector3 vParam3, var uParam
 			vVar0 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
 			vVar1 = { 0f, 0f, ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID()) };
 			vVar0.z = (vVar0.z + 0.4f);
-			fVar2 = CAM::_0x80EC114669DAEFF4();
+			fVar2 = CAM::GET_FINAL_RENDERED_CAM_FOV();
 		}
 		else
 		{
@@ -27866,7 +27866,7 @@ void func_450(vector3 vParam0)
 	{
 		return;
 	}
-	STREAMING::_SET_FOCUS_AREA(vParam0, 0f, 0f, 0f);
+	STREAMING::SET_FOCUS_POS_AND_VEL(vParam0, 0f, 0f, 0f);
 	NETWORK::NETWORK_SET_IN_FREE_CAM_MODE(1);
 }
 
@@ -30114,7 +30114,7 @@ void func_502(int iParam0)
 		func_499(0);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
-		GRAPHICS::_0xE1C8709406F2C41C();
+		GRAPHICS::RESET_PAUSED_RENDERPHASES();
 	}
 }
 
@@ -33113,7 +33113,7 @@ int func_616(int iParam0)
 	Var0 = { func_397(iParam0) };
 	if (MISC::IS_DURANGO_VERSION())
 	{
-		if (NETWORK::_0x72D918C99BCACC54(0))
+		if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 		{
 			if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 			{
@@ -33133,14 +33133,14 @@ int func_617(int iParam0)
 		Var0 = { func_397(iParam0) };
 		if (MISC::IS_ORBIS_VERSION() || MISC::IS_PC_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				return 0;
 			}
 		}
 		else if (MISC::IS_DURANGO_VERSION())
 		{
-			if (NETWORK::_0x72D918C99BCACC54(0))
+			if (NETWORK::NETWORK_HAVE_USER_CONTENT_PRIVILEGES(0))
 			{
 				if (NETWORK::NETWORK_CAN_VIEW_GAMER_USER_CONTENT(&Var0))
 				{
@@ -34466,7 +34466,7 @@ var func_658(int iParam0, int iParam1)
 	{
 		return func_659();
 	}
-	return NETWORK::_0x40F7E66472DF3E5C(iParam0, iParam1);
+	return NETWORK::UGC_GET_CACHED_DESCRIPTION(iParam0, iParam1);
 }
 
 char* func_659()
@@ -35078,7 +35078,7 @@ void func_687(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}

@@ -5993,7 +5993,7 @@ void func_149()
 				}
 				else if (ENTITY::IS_ENTITY_AT_COORD(NETWORK::NET_TO_PED(Local_205.f_4), Local_205.f_10, 7.5f, 7.5f, 9999.9f, false, true, 0))
 				{
-					HUD::_0xD8E694757BCEA8E9();
+					HUD::_DELETE_WAYPOINT();
 					Local_205.f_24 = 3;
 					bLocal_208 = true;
 					func_132(&uLocal_1097);
@@ -6398,7 +6398,7 @@ void func_150()
 			{
 				if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_205.f_3))
 				{
-					VEHICLE::_0xE6F13851780394DA(iLocal_1114, 1f);
+					VEHICLE::SET_HELI_TURBULENCE_SCALAR(iLocal_1114, 1f);
 					iLocal_1108 = 1;
 				}
 				else
@@ -10118,9 +10118,9 @@ void func_251()
 	
 	if (HUD::IS_WAYPOINT_ACTIVE())
 	{
-		Local_205.f_10 = { HUD::GET_BLIP_INFO_ID_COORD(HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_BLIP_INFO_ID_ITERATOR())) };
-		Local_205.f_10.f_2 = PATHFIND::_0x8ABE8608576D9CE3((Local_205.f_10 - 25f), (Local_205.f_10.f_1 - 25f), (Local_205.f_10 + 25f), (Local_205.f_10.f_1 + 25f));
-		fVar0 = PATHFIND::_0x3599D741C9AC6310((Local_205.f_10 - 25f), (Local_205.f_10.f_1 - 25f), (Local_205.f_10 + 25f), (Local_205.f_10.f_1 + 25f));
+		Local_205.f_10 = { HUD::GET_BLIP_INFO_ID_COORD(HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_WAYPOINT_BLIP_SPRITE())) };
+		Local_205.f_10.f_2 = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA((Local_205.f_10 - 25f), (Local_205.f_10.f_1 - 25f), (Local_205.f_10 + 25f), (Local_205.f_10.f_1 + 25f));
+		fVar0 = PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_AREA((Local_205.f_10 - 25f), (Local_205.f_10.f_1 - 25f), (Local_205.f_10 + 25f), (Local_205.f_10.f_1 + 25f));
 		if ((Local_205.f_10.f_2 - fVar0) < 20f)
 		{
 			Local_205.f_10.f_2 = (Local_205.f_10.f_2 + 10f);
@@ -10427,7 +10427,7 @@ void func_265()
 	
 	MISC::CLEAR_BIT(&(Local_205.f_1), 9);
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 		{
@@ -10504,7 +10504,7 @@ void func_265()
 								MISC::CLEAR_BIT(&(Local_205.f_1), 12);
 								if (HUD::IS_WAYPOINT_ACTIVE())
 								{
-									HUD::_0xD8E694757BCEA8E9();
+									HUD::_DELETE_WAYPOINT();
 								}
 							}
 						}
@@ -11020,8 +11020,8 @@ int func_288(bool bParam0)
 					}
 					VEHICLE::SET_HELI_BLADES_FULL_SPEED(iLocal_1114);
 					VEHICLE::SET_VEHICLE_ENGINE_CAN_DEGRADE(iLocal_1114, false);
-					VEHICLE::_0x25367DE49D64CF16(iLocal_1114, 1);
-					VEHICLE::_0xE6F13851780394DA(iLocal_1114, 0f);
+					VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_1114, 1);
+					VEHICLE::SET_HELI_TURBULENCE_SCALAR(iLocal_1114, 0f);
 					if (DECORATOR::DECOR_IS_REGISTERED_AS_TYPE("HeliTaxi", 2))
 					{
 						DECORATOR::DECOR_SET_BOOL(iLocal_1114, "HeliTaxi", 1);
@@ -11510,7 +11510,7 @@ void func_307(var uParam0, var uParam1, bool bParam2)
 	{
 		*uParam0 = { Local_205.f_6 };
 		*uParam1 = Local_205.f_9;
-		fVar0 = PATHFIND::_0x8ABE8608576D9CE3(*uParam0, uParam0->f_1, *uParam0, uParam0->f_1);
+		fVar0 = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA(*uParam0, uParam0->f_1, *uParam0, uParam0->f_1);
 		if (fVar0 < (Local_205.f_6.f_2 + 100f))
 		{
 			fVar0 = (Local_205.f_6.f_2 + 100f);
@@ -11521,7 +11521,7 @@ void func_307(var uParam0, var uParam1, bool bParam2)
 	{
 		*uParam0 = { func_308(Local_205.f_6, 140f, 180f, (200f / 2f)) };
 		*uParam1 = MISC::GET_HEADING_FROM_VECTOR_2D((Local_205.f_6 - *uParam0), (Local_205.f_6.f_1 - uParam0->f_1));
-		fVar1 = PATHFIND::_0x8ABE8608576D9CE3((*uParam0 - 180f), (uParam0->f_1 - 180f), (*uParam0 + 180f), (uParam0->f_1 + 180f));
+		fVar1 = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA((*uParam0 - 180f), (uParam0->f_1 - 180f), (*uParam0 + 180f), (uParam0->f_1 + 180f));
 		if (fVar1 < (Local_205.f_6.f_2 + 100f))
 		{
 			fVar1 = (Local_205.f_6.f_2 + 100f);
@@ -13230,7 +13230,7 @@ void func_354(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -15095,7 +15095,7 @@ void func_368(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_369(0);
@@ -18639,7 +18639,7 @@ void func_448()
 	}
 	if (!func_139(Local_205.f_4) && !func_140(iLocal_1114))
 	{
-		if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_205.f_4) || (!NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(Local_205.f_4) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
+		if (NETWORK::NETWORK_HAS_CONTROL_OF_NETWORK_ID(Local_205.f_4) || (!NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(Local_205.f_4) && NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT()))
 		{
 			func_466();
 			func_465();

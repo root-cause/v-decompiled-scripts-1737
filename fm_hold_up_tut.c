@@ -4116,7 +4116,7 @@ void func_89(var uParam0)
 					{
 						if (!HUD::DOES_BLIP_EXIST(uParam0->f_5))
 						{
-							PATHFIND::_0x1FC289A0C3FF470F(1);
+							PATHFIND::_SET_IGNORE_SECONDARY_ROUTE_NODES(1);
 							uParam0->f_5 = HUD::ADD_BLIP_FOR_COORD(vVar1);
 							HUD::SET_BLIP_SPRITE(uParam0->f_5, 52);
 							HUD::SET_BLIP_SCALE(uParam0->f_5, 1f);
@@ -9091,7 +9091,7 @@ int func_286(int iParam0)
 
 void func_287()
 {
-	PATHFIND::_0x1FC289A0C3FF470F(0);
+	PATHFIND::_SET_IGNORE_SECONDARY_ROUTE_NODES(0);
 	func_25();
 	func_24(8, 0);
 	NETWORK::NETWORK_SET_FRIENDLY_FIRE_OPTION(true);

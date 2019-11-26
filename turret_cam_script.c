@@ -186,7 +186,7 @@ void func_3(var uParam0, var uParam1)
 	vector3 vVar2;
 	
 	func_9();
-	vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+	vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 	if ((((HUD::IS_PAUSE_MENU_ACTIVE() || func_8()) || PAD::IS_CONTROL_JUST_PRESSED(2, 199)) || PAD::IS_CONTROL_PRESSED(2, 199)) || PAD::IS_CONTROL_JUST_RELEASED(2, 199))
 	{
 		HUD::_SET_PLAYER_BLIP_POSITION_THIS_FRAME(vVar0.x, vVar0.y);
@@ -209,7 +209,7 @@ void func_3(var uParam0, var uParam1)
 	{
 		CAM::_0x661B5C8654ADD825(iVar1, 1);
 	}
-	vVar2 = { CAM::_GET_GAMEPLAY_CAM_ROT(0) };
+	vVar2 = { CAM::GET_FINAL_RENDERED_CAM_ROT(0) };
 	vVar2 = { func_7(vVar2) };
 	if (!HUD::DOES_BLIP_EXIST(*uParam0))
 	{
@@ -1754,7 +1754,7 @@ Vector3 func_60(vector3 vParam0, float fParam1)
 	vector3 vVar0;
 	vector3 vVar1;
 	
-	vVar0 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+	vVar0 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 	vVar1 = { func_7(vVar0) };
 	return vParam0 + Vector(fParam1, fParam1, fParam1) * vVar1;
 }
@@ -2852,7 +2852,7 @@ void func_104(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);

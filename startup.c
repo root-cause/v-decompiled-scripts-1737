@@ -105,7 +105,7 @@ void __EntryFunction__()
 	{
 		SCRIPT::_0xB1577667C3708F9B();
 	}
-	MISC::_USE_FREEMODE_MAP_BEHAVIOR(0);
+	MISC::SET_INSTANCE_PRIORITY_MODE(0);
 	func_39(joaat("mp_registration"), 1424);
 	SCRIPT::SET_SCRIPT_WITH_NAME_HASH_AS_NO_LONGER_NEEDED(joaat("mp_registration"));
 	func_39(joaat("mp_fm_registration"), 1424);

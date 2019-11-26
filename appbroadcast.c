@@ -130,13 +130,13 @@ void func_3()
 		{
 			if (Global_2458538)
 			{
-				NETWORK::_NETWORK_CHAT_MUTE(0);
+				NETWORK::NETWORK_OVERRIDE_SEND_RESTRICTIONS_ALL(0);
 				func_9(220270007, func_10(1, 1));
 				Global_2458538 = 0;
 			}
 			else
 			{
-				NETWORK::_NETWORK_CHAT_MUTE(1);
+				NETWORK::NETWORK_OVERRIDE_SEND_RESTRICTIONS_ALL(1);
 				func_9(1992047087, func_10(1, 1));
 				Global_2458538 = 1;
 			}

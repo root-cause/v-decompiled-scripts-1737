@@ -7446,7 +7446,7 @@ int func_227(int iParam0, var uParam1, int iParam2)
 			{
 				if (!ENTITY::IS_ENTITY_DEAD(iParam0, 0))
 				{
-					if (!PED::_0xCC6E3B6BB69501F1(iLocal_70))
+					if (!PED::_DOES_RELATIONSHIP_GROUP_EXIST(iLocal_70))
 					{
 						PED::ADD_RELATIONSHIP_GROUP("BootyCall", &iLocal_70);
 					}
@@ -9308,7 +9308,7 @@ void func_290()
 				TASK::TASK_WANDER_STANDARD(iLocal_271[0], 1193033728, 0);
 			}
 			PED::SET_PED_KEEP_TASK(iLocal_271[0], true);
-			if (!PED::_0xCC6E3B6BB69501F1(iLocal_70))
+			if (!PED::_DOES_RELATIONSHIP_GROUP_EXIST(iLocal_70))
 			{
 				PED::ADD_RELATIONSHIP_GROUP("BootyCall", &iLocal_70);
 			}

@@ -632,8 +632,8 @@ void __EntryFunction__()
 	iLocal_40 = 65;
 	iLocal_41 = 49;
 	iLocal_42 = 64;
-	iLocal_71 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_72 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_71 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_72 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	vLocal_77 = { 500f, 500f, 500f };
 	bLocal_594 = true;
 	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(67))
@@ -6953,9 +6953,9 @@ float func_214(vector3 vParam0, bool bParam1)
 	
 	if (bParam1)
 	{
-		if (PATHFIND::_0x869DAACBBE9FA006())
+		if (PATHFIND::GET_GPS_BLIP_ROUTE_FOUND())
 		{
-			iVar0 = PATHFIND::_0xBBB45C3CF5C8AA85();
+			iVar0 = PATHFIND::GET_GPS_BLIP_ROUTE_LENGTH();
 		}
 		else
 		{
@@ -9259,7 +9259,7 @@ bool func_278(int iParam0)
 	
 	PATHFIND::GET_NTH_CLOSEST_VEHICLE_NODE(ENTITY::GET_ENTITY_COORDS(iParam0, true), 1, &vVar0, 1, 3f, 0f);
 	PATHFIND::GET_NTH_CLOSEST_VEHICLE_NODE(ENTITY::GET_ENTITY_COORDS(iParam0, true), 2, &vVar1, 1, 3f, 0f);
-	PATHFIND::_GET_POINT_OFF_ROAD_WITH_DIRECTION(vVar0, -1, &vVar2);
+	PATHFIND::_GET_POINT_ON_ROAD_SIDE(vVar0, -1, &vVar2);
 	fVar9 = SYSTEM::VMAG(vVar2 - vVar0);
 	vVar3 = { func_282((vVar1.x - vVar0.x), (vVar1.y - vVar0.y), 0f) };
 	vVar4 = { func_281(vVar3, 0) * Vector(fVar9, fVar9, fVar9) };

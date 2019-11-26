@@ -361,8 +361,8 @@ void __EntryFunction__()
 	iLocal_42 = 49;
 	iLocal_43 = 64;
 	fLocal_45 = -1f;
-	iLocal_49 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_50 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_49 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_50 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	vLocal_71 = { -1034.6f, 4918.6f, 205.9f };
 	iLocal_104 = -1;
 	StringCopy(&Local_117, "", 24);
@@ -3604,7 +3604,7 @@ void func_70()
 							if (TASK::GET_SCRIPT_TASK_STATUS(iLocal_73[0], 355471868) != 1 && TASK::GET_SCRIPT_TASK_STATUS(iLocal_73[0], 355471868) != 0)
 							{
 								VEHICLE::SET_VEHICLE_ENGINE_HEALTH(iLocal_74, 5f);
-								VEHICLE::_0x25367DE49D64CF16(iLocal_74, 1);
+								VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_74, 1);
 								TASK::OPEN_SEQUENCE_TASK(&iLocal_79);
 								TASK::TASK_VEHICLE_MISSION_COORS_TARGET(0, iLocal_74, -1016.152f, -1352.855f, 4.4854f, 4, 50f, 262144, -1f, 100f, 1);
 								TASK::TASK_VEHICLE_MISSION_COORS_TARGET(0, iLocal_74, -1005.757f, -1353.806f, 4.4756f, 4, 50f, 262144, -1f, 100f, 1);
@@ -3627,7 +3627,7 @@ void func_70()
 					{
 						if (PED::IS_PED_SITTING_IN_VEHICLE(iLocal_73[0], iLocal_74) && PED::IS_PED_SITTING_IN_VEHICLE(iLocal_73[1], iLocal_74))
 						{
-							VEHICLE::_0x25367DE49D64CF16(iLocal_74, 1);
+							VEHICLE::SET_DISABLE_PRETEND_OCCUPANTS(iLocal_74, 1);
 							TASK::CLEAR_PED_TASKS(iLocal_73[1]);
 							TASK::TASK_STAND_STILL(iLocal_73[1], -1);
 							PED::SET_PED_KEEP_TASK(iLocal_73[1], true);
@@ -10620,7 +10620,7 @@ int func_234()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

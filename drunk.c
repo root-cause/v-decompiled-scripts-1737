@@ -771,7 +771,7 @@ void func_12(char* sParam0, var uParam1, char* sParam2)
 					if (!uParam1->f_32)
 					{
 						fVar21 = 1.5f;
-						vVar22 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+						vVar22 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 						vVar23 = { PED::GET_PED_BONE_COORDS(PLAYER::PLAYER_PED_ID(), 31086, 0f, 0f, 0f) };
 						fVar24 = MISC::GET_DISTANCE_BETWEEN_COORDS(vVar22, vVar23, true);
 						fVar21 = func_21(fVar21, 0.001f, (fVar24 - 0.75f));
@@ -794,7 +794,7 @@ void func_12(char* sParam0, var uParam1, char* sParam2)
 						}
 						if (uParam1->f_57 == 999f)
 						{
-							vVar27 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+							vVar27 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 							fVar28 = ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID());
 							fVar29 = vVar27.z;
 							fVar30 = fVar28;
@@ -814,7 +814,7 @@ void func_12(char* sParam0, var uParam1, char* sParam2)
 						CAM::SET_GAMEPLAY_CAM_RELATIVE_HEADING(fVar26);
 						CAM::_SET_GAMEPLAY_CAM_RAW_PITCH(fVar25);
 						CAM::_SET_GAMEPLAY_CAM_RAW_YAW(fVar26);
-						vVar31 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+						vVar31 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 						vVar32 = { CAM::GET_GAMEPLAY_CAM_COORD() };
 						fVar33 = MISC::GET_DISTANCE_BETWEEN_COORDS(vVar31, vVar32, true);
 						iVar34 = SYSTEM::ROUND((fVar33 * 1000f));
@@ -852,7 +852,7 @@ void func_12(char* sParam0, var uParam1, char* sParam2)
 								}
 								if (uParam1->f_31 == 999f)
 								{
-									vVar37 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+									vVar37 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 									fVar38 = ENTITY::GET_ENTITY_HEADING(PLAYER::PLAYER_PED_ID());
 									fVar39 = vVar37.z;
 									fVar40 = fVar38;
@@ -870,7 +870,7 @@ void func_12(char* sParam0, var uParam1, char* sParam2)
 								fVar36 = uParam1->f_31;
 								CAM::SET_GAMEPLAY_CAM_RELATIVE_PITCH(fVar35, 1065353216);
 								CAM::SET_GAMEPLAY_CAM_RELATIVE_HEADING(fVar36);
-								vVar41 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+								vVar41 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 								vVar42 = { CAM::GET_GAMEPLAY_CAM_COORD() };
 								fVar43 = MISC::GET_DISTANCE_BETWEEN_COORDS(vVar41, vVar42, true);
 								iVar44 = SYSTEM::ROUND((fVar43 * 1000f));
@@ -1011,18 +1011,18 @@ int func_16(var uParam0, bool bParam1, bool bParam2, bool bParam3, bool bParam4,
 			if (!ENTITY::IS_ENTITY_DEAD(uParam0->f_5, 0))
 			{
 				func_14(uParam0);
-				vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
+				vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
 				if (bParam1)
 				{
 					vVar0 = { vVar0 + ENTITY::GET_ENTITY_VELOCITY(uParam0->f_5) * FtoV(MISC::GET_FRAME_TIME()) };
 				}
 				vVar1 = { ENTITY::GET_OFFSET_FROM_ENTITY_GIVEN_WORLD_COORDS(uParam0->f_5, vVar0) };
-				vVar2 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+				vVar2 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 				vVar3 = { vVar2 + uParam0->f_9 };
 				vVar4 = { vVar3 - ENTITY::GET_ENTITY_ROTATION(uParam0->f_5, 2) };
 				vVar5 = { (-SYSTEM::SIN(vVar3.z) * SYSTEM::COS(vVar3.x)), (SYSTEM::COS(vVar3.z) * SYSTEM::COS(vVar3.x)), SYSTEM::SIN(vVar3.x) };
 				vVar6 = { (-SYSTEM::SIN(vVar4.z) * SYSTEM::COS(vVar4.x)), (SYSTEM::COS(vVar4.z) * SYSTEM::COS(vVar4.x)), SYSTEM::SIN(vVar4.x) };
-				fVar7 = CAM::_0x80EC114669DAEFF4();
+				fVar7 = CAM::GET_FINAL_RENDERED_CAM_FOV();
 				if (uParam0->f_17 > 0 || iParam6 != 0)
 				{
 					uParam0->f_3 = CAM::CREATE_CAMERA(1775630800, 0);
@@ -2689,7 +2689,7 @@ void func_85(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}

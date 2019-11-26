@@ -478,8 +478,8 @@ void __EntryFunction__()
 	iLocal_41 = 65;
 	iLocal_42 = 49;
 	iLocal_43 = 64;
-	iLocal_47 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_48 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_47 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_48 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	fLocal_50 = -1f;
 	iLocal_218 = 1;
 	iLocal_227 = -1;
@@ -1165,7 +1165,7 @@ int func_1(int iParam0, struct<5> Param1, var uParam2, var uParam3, var uParam4,
 		case 2:
 			if (((((!ENTITY::IS_ENTITY_DEAD(iLocal_257, 0) && !ENTITY::IS_ENTITY_DEAD(iLocal_259[0], 0)) && !ENTITY::IS_ENTITY_DEAD(iLocal_259[2], 0)) && !ENTITY::IS_ENTITY_DEAD(iLocal_259[3], 0)) && !ENTITY::IS_ENTITY_DEAD((*uParam6)[0], 0)) && !ENTITY::IS_ENTITY_DEAD((*uParam6)[1], 0))
 			{
-				if (((((PED::_0x7350823473013C02(iLocal_257) && PED::_0x7350823473013C02(iLocal_259[0])) && PED::_0x7350823473013C02(iLocal_259[2])) && PED::_0x7350823473013C02(iLocal_259[3])) && PED::_0x7350823473013C02((*uParam6)[0])) && PED::_0x7350823473013C02((*uParam6)[1]))
+				if (((((PED::_HAS_STREAMED_PED_ASSETS_LOADED(iLocal_257) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iLocal_259[0])) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iLocal_259[2])) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iLocal_259[3])) && PED::_HAS_STREAMED_PED_ASSETS_LOADED((*uParam6)[0])) && PED::_HAS_STREAMED_PED_ASSETS_LOADED((*uParam6)[1]))
 				{
 					STREAMING::REQUEST_ANIM_DICT("random@getawaydriver@thugs");
 					STREAMING::REQUEST_ANIM_DICT("combat@gestures@pistol@halt");
@@ -6803,7 +6803,7 @@ int func_95()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{

@@ -3577,7 +3577,7 @@ int func_47()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -5824,7 +5824,7 @@ int func_104(int iParam0, vector3 vParam1, float fParam2, bool bParam3)
 		}
 		if (fVar23 >= 0f)
 		{
-			VEHICLE::_0xE6F13851780394DA(Local_48[iParam0 /*4*/], fVar23);
+			VEHICLE::SET_HELI_TURBULENCE_SCALAR(Local_48[iParam0 /*4*/], fVar23);
 		}
 		if (iVar3 != 0)
 		{

@@ -4459,7 +4459,7 @@ void func_120(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -4962,7 +4962,7 @@ int func_134()
 	}
 	if (!PED::IS_PED_INJURED(iLocal_182))
 	{
-		if (!PED::_0x7350823473013C02(iLocal_182))
+		if (!PED::_HAS_STREAMED_PED_ASSETS_LOADED(iLocal_182))
 		{
 			return 0;
 		}
@@ -6006,7 +6006,7 @@ int func_181()
 	}
 	if (!PED::IS_PED_INJURED(iLocal_183))
 	{
-		if (!PED::_0x7350823473013C02(iLocal_183))
+		if (!PED::_HAS_STREAMED_PED_ASSETS_LOADED(iLocal_183))
 		{
 			return 0;
 		}

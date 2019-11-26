@@ -860,11 +860,11 @@ int func_14(var uParam0, var uParam1)
 			{
 				Local_103.f_3 = NETWORK::NETWORK_ADD_ENTITY_AREA(vVar0, vVar1);
 			}
-			else if (NETWORK::_0xE64A3CA08DFA37A9(Local_103.f_3))
+			else if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Local_103.f_3))
 			{
 				if (NETWORK::_0x4DF7CFFF471A7FB1(Local_103.f_3))
 				{
-					if (!NETWORK::_0x4A2D4E8BF4265B0F(Local_103.f_3))
+					if (!NETWORK::NETWORK_ENTITY_AREA_IS_OCCUPIED(Local_103.f_3))
 					{
 						if (!func_15(vVar2, 1084227584, 1, 1, 1123024896, 0, -1, 0, 0))
 						{
@@ -5238,7 +5238,7 @@ void func_157(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -5324,7 +5324,7 @@ void func_160(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -10113,7 +10113,7 @@ int func_350(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -10734,7 +10734,7 @@ bool func_366()
 
 int func_367(int iParam0)
 {
-	if (NETWORK::_NETWORK_CAN_NETWORK_ID_BE_SEEN(iParam0))
+	if (NETWORK::IS_NETWORK_ID_OWNED_BY_PARTICIPANT(iParam0))
 	{
 		return 1;
 	}
@@ -10800,7 +10800,7 @@ void func_372()
 	{
 		if (NETWORK::NETWORK_IS_HOST_OF_THIS_SCRIPT())
 		{
-			if (NETWORK::_0xE64A3CA08DFA37A9(Local_103.f_3))
+			if (NETWORK::NETWORK_ENTITY_AREA_DOES_EXIST(Local_103.f_3))
 			{
 				NETWORK::NETWORK_REMOVE_ENTITY_AREA(Local_103.f_3);
 			}

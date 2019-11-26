@@ -1460,8 +1460,8 @@ void __EntryFunction__()
 	iLocal_41 = 49;
 	iLocal_42 = 64;
 	vLocal_45 = { 500f, 500f, 500f };
-	iLocal_52 = HUD::_0x4A9923385BDB9DAD();
-	iLocal_53 = HUD::_GET_BLIP_INFO_ID_ITERATOR();
+	iLocal_52 = HUD::_GET_LEVEL_BLIP_SPRITE();
+	iLocal_53 = HUD::_GET_WAYPOINT_BLIP_SPRITE();
 	iLocal_228 = -1;
 	fLocal_230 = 1f;
 	iLocal_337 = 100;
@@ -7004,7 +7004,7 @@ void func_142(int iParam0)
 					TASK::TASK_LEAVE_ANY_VEHICLE(0, 0, 0);
 					if (PED::IS_PED_INJURED(iLocal_939) && !func_44(func_143(), vVar4, 0))
 					{
-						TASK::TASK_GO_TO_COORD_WHILE_AIMING_AT_COORD(0, vVar4, func_123(), 2f, false, 0.5f, 4f, 1, 0, 0, -957453492);
+						TASK::TASK_GO_TO_COORD_WHILE_AIMING_AT_COORD(0, vVar4, func_123(), 2f, false, 0.5f, 4f, true, 0, 0, -957453492);
 						TASK::TASK_PUT_PED_DIRECTLY_INTO_COVER(0, vVar4, -1, false, 0.25f, false, 0, 0, 1);
 					}
 					else
@@ -14307,10 +14307,10 @@ void func_316(int iParam0, bool bParam1)
 			iVar2 = 0;
 			while (iVar2 <= (8 - 1))
 			{
-				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_0xA13E93403F26C812(iVar2);
+				Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] = HUD::_HUD_WEAPON_WHEEL_GET_SLOT_HASH(iVar2);
 				if (bParam1)
 				{
-					iVar1 = HUD::_0xA48931185F0536FE();
+					iVar1 = HUD::_HUD_WEAPON_WHEEL_GET_SELECTED_HASH();
 					if (Global_106565.f_2357.f_539.f_1730[iVar2 /*4*/][iVar0] == iVar1)
 					{
 						Global_106565.f_2357.f_539.f_1763 = iVar2;
@@ -22824,7 +22824,7 @@ int func_470()
 	
 	if (NETWORK::NETWORK_IS_SIGNED_IN())
 	{
-		if (NETWORK::_NETWORK_ARE_ROS_AVAILABLE())
+		if (NETWORK::NETWORK_HAVE_JUST_UPLOAD_LATER())
 		{
 			if (NETWORK::_NETWORK_GET_ROS_PRIVILEGE_24())
 			{
@@ -24122,10 +24122,10 @@ void func_489(int iParam0, var uParam1, bool bParam2, bool bParam3)
 		}
 		if (uParam1->f_66 == joaat("NIGHTSHARK"))
 		{
-			VEHICLE::_0x1087BC8EC540DAEB(iParam0, 0);
+			VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 0);
 			if (VEHICLE::GET_VEHICLE_MOD(iParam0, 5) != -1)
 			{
-				VEHICLE::_0x1087BC8EC540DAEB(iParam0, 1);
+				VEHICLE::_SET_DISABLE_VEHICLE_WINDOW_COLLISIONS(iParam0, 1);
 			}
 		}
 		if (MISC::IS_BIT_SET(uParam1->f_77, 13))

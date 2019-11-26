@@ -1363,7 +1363,7 @@ void func_59()
 				{
 					if (func_67(NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(false, 0) + 1, 0, 1))
 					{
-						NETWORK::RESERVE_NETWORK_MISSION_PEDS(NETWORK::_0xCB215C4B56A7FAE7(0) + 1);
+						NETWORK::RESERVE_NETWORK_MISSION_PEDS(NETWORK::GET_NUM_CREATED_MISSION_PEDS(0) + 1);
 						MISC::SET_BIT(&(Local_117.f_5), 6);
 					}
 				}
@@ -3909,8 +3909,8 @@ void func_153()
 		{
 			if (Local_117.f_159 == 2)
 			{
-				vVar0 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-				vVar1 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+				vVar0 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+				vVar1 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 				vVar2 = { (-SYSTEM::SIN(vVar1.z) * SYSTEM::COS(vVar1.x)), (SYSTEM::COS(vVar1.z) * SYSTEM::COS(vVar1.x)), SYSTEM::SIN(vVar1.x) };
 				vVar3 = { 10f, 10f, 10f };
 				vVar4 = { vVar0 + vVar2 * vVar3 };
@@ -4249,8 +4249,8 @@ void func_168()
 			switch (Local_117.f_12)
 			{
 				case 0:
-					vVar1 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-					vVar2 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+					vVar1 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+					vVar2 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 					vVar3 = { (-SYSTEM::SIN(vVar2.z) * SYSTEM::COS(vVar2.x)), (SYSTEM::COS(vVar2.z) * SYSTEM::COS(vVar2.x)), SYSTEM::SIN(vVar2.x) };
 					vVar4 = { 10f, 10f, 10f };
 					if (func_8())
@@ -4512,8 +4512,8 @@ void func_176()
 					if (func_20())
 					{
 						vVar6 = { Local_117.f_105 };
-						vVar1 = { CAM::_GET_GAMEPLAY_CAM_COORDS() };
-						vVar2 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+						vVar1 = { CAM::GET_FINAL_RENDERED_CAM_COORD() };
+						vVar2 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 						vVar3 = { (-SYSTEM::SIN(vVar2.z) * SYSTEM::COS(vVar2.x)), (SYSTEM::COS(vVar2.z) * SYSTEM::COS(vVar2.x)), SYSTEM::SIN(vVar2.x) };
 						vVar4 = { 0.9f, 0.9f, 0.9f };
 						vVar7 = { vVar1 + vVar3 * vVar4 };
@@ -6706,13 +6706,13 @@ void func_229()
 				HUD::SET_BLIP_COORDS(Local_117.f_121, Local_117.f_105);
 				if (((func_8() || func_22()) && HUD::IS_PAUSE_MENU_ACTIVE()) && NETWORK::NETWORK_IS_ACTIVITY_SESSION())
 				{
-					if (!HUD::_0x9049FE339D5F6F6F())
+					if (!HUD::_IS_MINIMAP_IN_INTERIOR())
 					{
 						fVar1 = -323.1f;
 						fVar2 = -1970.9f;
 						HUD::SET_BLIP_COORDS(Local_117.f_121, fVar1, fVar2, 0f);
 						HUD::_SET_PLAYER_BLIP_POSITION_THIS_FRAME(fVar1, fVar2);
-						HUD::_0x20FE7FDFEEAD38C0();
+						HUD::HIDE_MINIMAP_INTERIOR_MAP_THIS_FRAME();
 					}
 				}
 				HUD::LOCK_MINIMAP_POSITION(fVar1, fVar2);
@@ -7074,7 +7074,7 @@ void func_245(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -7738,7 +7738,7 @@ void func_268(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -8725,7 +8725,7 @@ void func_292()
 			{
 				if (!MISC::IS_BIT_SET(Local_117.f_5, 8))
 				{
-					HUD::_0x20FE7FDFEEAD38C0();
+					HUD::HIDE_MINIMAP_INTERIOR_MAP_THIS_FRAME();
 				}
 				HUD::SET_RADAR_AS_EXTERIOR_THIS_FRAME();
 			}
@@ -9029,8 +9029,8 @@ void func_307()
 					{
 						CAM::SET_CAM_ROT(Local_117.f_119, func_314() - Vector(0f, -180f, 180f), 2);
 					}
-					PED::_0xD8C3BE3EE94CAF2D(Local_117.f_105, 100f, 200f);
-					STREAMING::_SET_FOCUS_AREA(Local_117.f_105, CAM::GET_CAM_ROT(Local_117.f_119, 2));
+					PED::SET_POP_CONTROL_SPHERE_THIS_FRAME(Local_117.f_105, 100f, 200f);
+					STREAMING::SET_FOCUS_POS_AND_VEL(Local_117.f_105, CAM::GET_CAM_ROT(Local_117.f_119, 2));
 					ENTITY::SET_ENTITY_INVINCIBLE(NETWORK::NET_TO_OBJ(Local_117.f_110), false);
 					func_313();
 					if (AUDIO::HAS_SOUND_FINISHED(Local_117.f_37))
@@ -9351,7 +9351,7 @@ void func_321()
 					{
 						if (!MISC::IS_BIT_SET(Local_117.f_5, 30))
 						{
-							NETWORK::_0x797F9C5E661D920E(NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(false, 1) + 1);
+							NETWORK::_RESERVE_NETWORK_LOCAL_OBJECTS(NETWORK::GET_NUM_RESERVED_MISSION_OBJECTS(false, 1) + 1);
 							MISC::SET_BIT(&(Local_117.f_5), 30);
 						}
 						if (NETWORK::CAN_REGISTER_MISSION_OBJECTS(1))
@@ -9396,8 +9396,8 @@ void func_321()
 								ENTITY::SET_ENTITY_INVINCIBLE(NETWORK::NET_TO_OBJ(Local_117.f_110), true);
 								NETWORK::SET_NETWORK_ID_CAN_MIGRATE(Local_117.f_110, false);
 								ENTITY::SET_ENTITY_RECORDS_COLLISIONS(NETWORK::NET_TO_ENT(Local_117.f_110), 1);
-								PED::_0xD8C3BE3EE94CAF2D(Local_117.f_93, 100f, 200f);
-								STREAMING::_SET_FOCUS_AREA(ENTITY::GET_ENTITY_COORDS(NETWORK::NET_TO_ENT(Local_117.f_110), true), ENTITY::GET_ENTITY_ROTATION(NETWORK::NET_TO_ENT(Local_117.f_110), 2));
+								PED::SET_POP_CONTROL_SPHERE_THIS_FRAME(Local_117.f_93, 100f, 200f);
+								STREAMING::SET_FOCUS_POS_AND_VEL(ENTITY::GET_ENTITY_COORDS(NETWORK::NET_TO_ENT(Local_117.f_110), true), ENTITY::GET_ENTITY_ROTATION(NETWORK::NET_TO_ENT(Local_117.f_110), 2));
 								STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(Local_117.f_156);
 								STREAMING::SET_MODEL_AS_NO_LONGER_NEEDED(iVar0);
 							}
@@ -10646,7 +10646,7 @@ void func_381()
 			if (func_18(func_278()))
 			{
 				vVar0 = { ENTITY::GET_ENTITY_COORDS(func_278(), true) };
-				PED::_0xD8C3BE3EE94CAF2D(vVar0, 200f, 200f);
+				PED::SET_POP_CONTROL_SPHERE_THIS_FRAME(vVar0, 200f, 200f);
 				PED::SET_SCENARIO_PEDS_SPAWN_IN_SPHERE_AREA(Local_117.f_105, 500f, 30);
 			}
 		}
@@ -10659,9 +10659,9 @@ void func_381()
 			{
 				if (func_382(2))
 				{
-					PED::_0xD8C3BE3EE94CAF2D(Local_117.f_105, 200f, 200f);
+					PED::SET_POP_CONTROL_SPHERE_THIS_FRAME(Local_117.f_105, 200f, 200f);
 					INTERIOR::_0x483ACA1176CA93F1();
-					STREAMING::_SET_FOCUS_AREA(Local_117.f_105, CAM::GET_CAM_ROT(Local_117.f_119, 2));
+					STREAMING::SET_FOCUS_POS_AND_VEL(Local_117.f_105, CAM::GET_CAM_ROT(Local_117.f_119, 2));
 					if ((MISC::GET_FRAME_COUNT() % 120) == 0)
 					{
 						PED::SET_SCENARIO_PEDS_SPAWN_IN_SPHERE_AREA(Local_117.f_105, 500f, 30);

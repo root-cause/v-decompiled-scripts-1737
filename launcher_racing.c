@@ -2647,7 +2647,7 @@ void func_65(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -4486,7 +4486,7 @@ void func_78(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam4
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_80(0);
@@ -7477,10 +7477,10 @@ void func_160()
 					{
 						iLocal_57 = VEHICLE::CREATE_VEHICLE(iLocal_71, vLocal_59, fLocal_60, true, true, false);
 						VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(iLocal_57, 1084227584);
-						VEHICLE::_SET_BOAT_ANCHOR_BUOYANCY_COEFFICIENT(iLocal_57, 0f);
+						VEHICLE::_SET_BOAT_MOVEMENT_RESISTANCE(iLocal_57, 0f);
 						VEHICLE::_SET_BOAT_FROZEN_WHEN_ANCHORED(iLocal_57, 0);
 						VEHICLE::_0xB28B1FE5BFADD7F5(iLocal_57, 0);
-						if (VEHICLE::_CAN_BOAT_BE_ANCHORED(iLocal_57))
+						if (VEHICLE::CAN_ANCHOR_BOAT_HERE(iLocal_57))
 						{
 							VEHICLE::SET_BOAT_ANCHOR(iLocal_57, true);
 						}
@@ -7514,10 +7514,10 @@ void func_160()
 					{
 						iLocal_68[iVar2] = VEHICLE::CREATE_VEHICLE(iLocal_71, vLocal_64[iVar2 /*3*/], fLocal_65[iVar2], true, true, false);
 						VEHICLE::SET_VEHICLE_ON_GROUND_PROPERLY(iLocal_68[iVar2], 1084227584);
-						VEHICLE::_SET_BOAT_ANCHOR_BUOYANCY_COEFFICIENT(iLocal_68[iVar2], 0f);
+						VEHICLE::_SET_BOAT_MOVEMENT_RESISTANCE(iLocal_68[iVar2], 0f);
 						VEHICLE::_SET_BOAT_FROZEN_WHEN_ANCHORED(iLocal_68[iVar2], 1);
 						VEHICLE::_0xB28B1FE5BFADD7F5(iLocal_68[iVar2], 1);
-						if (VEHICLE::_CAN_BOAT_BE_ANCHORED(iLocal_68[iVar2]))
+						if (VEHICLE::CAN_ANCHOR_BOAT_HERE(iLocal_68[iVar2]))
 						{
 							VEHICLE::SET_BOAT_ANCHOR(iLocal_68[iVar2], true);
 						}

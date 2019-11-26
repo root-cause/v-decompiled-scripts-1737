@@ -1123,7 +1123,7 @@ int func_21(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -2076,7 +2076,7 @@ void func_66(int iParam0, var uParam1, vector3 vParam2, float fParam3)
 	{
 		if (!NETWORK::NETWORK_DOES_NETWORK_ID_EXIST(Local_95.f_10[iParam0 /*7*/]))
 		{
-			if (NETWORK::_0xCB215C4B56A7FAE7(0) < NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 0))
+			if (NETWORK::GET_NUM_CREATED_MISSION_PEDS(0) < NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 0))
 			{
 				if (NETWORK::CAN_REGISTER_MISSION_PEDS(1))
 				{
@@ -4631,7 +4631,7 @@ int func_124(var uParam0, var uParam1, var uParam2, bool bParam3)
 	{
 		if (uParam1->f_5 && !bParam3)
 		{
-			switch (NETWORK::_0x3C891A251567DFCE(&(Global_2405071.f_2479.f_1)))
+			switch (NETWORK::NETWORK_QUERY_RESPAWN_RESULTS(&(Global_2405071.f_2479.f_1)))
 			{
 				case 0:
 					func_193(uParam1, uParam2);
@@ -4767,7 +4767,7 @@ int func_124(var uParam0, var uParam1, var uParam2, bool bParam3)
 					}
 					if (uParam1->f_5 && !bParam3)
 					{
-						iVar3 = NETWORK::_0x6C34F1208B8923FD(iVar2);
+						iVar3 = NETWORK::NETWORK_GET_RESPAWN_RESULT_FLAGS(iVar2);
 					}
 					else
 					{
@@ -6314,7 +6314,7 @@ int func_153(int iParam0)
 			return 1;
 			break;
 	}
-	if (PED::_0xCC6E3B6BB69501F1(Global_1574954[PLAYER::PLAYER_ID()]))
+	if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574954[PLAYER::PLAYER_ID()]))
 	{
 		switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574954[PLAYER::PLAYER_ID()]))
 		{
@@ -6329,7 +6329,7 @@ int func_153(int iParam0)
 		iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 		if (iVar1 > -1 && iVar1 < 4)
 		{
-			if (PED::_0xCC6E3B6BB69501F1(Global_1574664[iVar1]))
+			if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574664[iVar1]))
 			{
 				switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574664[iVar1]))
 				{
@@ -8700,7 +8700,7 @@ Vector3 func_218(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -9370,7 +9370,7 @@ int func_241()
 		}
 		else if (func_6(iLocal_103, 1, 1))
 		{
-			if (NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 0) - NETWORK::_0xCB215C4B56A7FAE7(0)) >= func_469(iLocal_101)
+			if (NETWORK::GET_NUM_RESERVED_MISSION_PEDS(false, 0) - NETWORK::GET_NUM_CREATED_MISSION_PEDS(0)) >= func_469(iLocal_101)
 			{
 				if (NETWORK::CAN_REGISTER_MISSION_PEDS(func_469(iLocal_101)))
 				{
@@ -11449,7 +11449,7 @@ void func_300(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -11513,7 +11513,7 @@ void func_302(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -18223,7 +18223,7 @@ void func_521()
 	{
 		if (func_529(Local_95.f_45, 0, 1))
 		{
-			if (NETWORK::_0xCB215C4B56A7FAE7(0) <= Local_95.f_45)
+			if (NETWORK::GET_NUM_CREATED_MISSION_PEDS(0) <= Local_95.f_45)
 			{
 				NETWORK::RESERVE_NETWORK_MISSION_PEDS(Local_95.f_45);
 			}
@@ -18233,7 +18233,7 @@ void func_521()
 	{
 		if (func_528(Local_95.f_45, 0, 1))
 		{
-			if (NETWORK::_0x0CD9AB83489430EA(0) <= Local_95.f_46)
+			if (NETWORK::GET_NUM_CREATED_MISSION_VEHICLES(0) <= Local_95.f_46)
 			{
 				NETWORK::RESERVE_NETWORK_MISSION_VEHICLES(Local_95.f_46);
 			}
@@ -18243,7 +18243,7 @@ void func_521()
 	{
 		if (func_522(Local_95.f_45, 0, 1))
 		{
-			if (NETWORK::_0x12B6281B6C6706C0(0) <= Local_95.f_47)
+			if (NETWORK::GET_NUM_CREATED_MISSION_OBJECTS(0) <= Local_95.f_47)
 			{
 				NETWORK::RESERVE_NETWORK_MISSION_OBJECTS(Local_95.f_47);
 			}

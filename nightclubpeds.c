@@ -8308,15 +8308,15 @@ void func_7(var uParam0, int iParam1, var uParam2)
 	func_501(iParam1);
 	if (Global_1316753 == 3 || Global_1316753 == 4)
 	{
-		if ((((((!uParam0->f_7945 && func_500(PLAYER::PLAYER_PED_ID())) || (!uParam0->f_7945 && func_499(PLAYER::PLAYER_PED_ID()))) || (!uParam0->f_7945 && func_498(PLAYER::PLAYER_PED_ID()))) || (uParam0->f_7945 && func_497(CAM::_GET_GAMEPLAY_CAM_COORDS()))) || (uParam0->f_7945 && func_496(CAM::_GET_GAMEPLAY_CAM_COORDS()))) || (uParam0->f_7945 && func_495(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+		if ((((((!uParam0->f_7945 && func_500(PLAYER::PLAYER_PED_ID())) || (!uParam0->f_7945 && func_499(PLAYER::PLAYER_PED_ID()))) || (!uParam0->f_7945 && func_498(PLAYER::PLAYER_PED_ID()))) || (uParam0->f_7945 && func_497(CAM::GET_FINAL_RENDERED_CAM_COORD()))) || (uParam0->f_7945 && func_496(CAM::GET_FINAL_RENDERED_CAM_COORD()))) || (uParam0->f_7945 && func_495(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 		{
 			bVar5 = true;
 		}
-		else if ((((!uParam0->f_7945 && func_494(PLAYER::PLAYER_PED_ID())) || (!uParam0->f_7945 && func_493(PLAYER::PLAYER_PED_ID()))) || (uParam0->f_7945 && func_492(CAM::_GET_GAMEPLAY_CAM_COORDS()))) || (uParam0->f_7945 && func_491(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+		else if ((((!uParam0->f_7945 && func_494(PLAYER::PLAYER_PED_ID())) || (!uParam0->f_7945 && func_493(PLAYER::PLAYER_PED_ID()))) || (uParam0->f_7945 && func_492(CAM::GET_FINAL_RENDERED_CAM_COORD()))) || (uParam0->f_7945 && func_491(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 		{
 			bVar6 = true;
 		}
-		if ((!uParam0->f_7945 && func_490(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_489(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+		if ((!uParam0->f_7945 && func_490(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_489(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 		{
 			bVar7 = true;
 		}
@@ -14217,7 +14217,7 @@ void func_21(var uParam0)
 	if (Global_1316774 == 4)
 	{
 		iVar3 = 0;
-		while (iVar3 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar3 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar3)))
 			{
@@ -26492,7 +26492,7 @@ void func_249(var uParam0)
 								ENTITY::FREEZE_ENTITY_POSITION(uParam0->f_7906.f_6[iVar0], true);
 							}
 						}
-						else if (!ENTITY::IS_ENTITY_DEAD(uParam0->f_7906.f_6[iVar0], 0) && !PED::_0x7350823473013C02(uParam0->f_7906.f_6[iVar0]))
+						else if (!ENTITY::IS_ENTITY_DEAD(uParam0->f_7906.f_6[iVar0], 0) && !PED::_HAS_STREAMED_PED_ASSETS_LOADED(uParam0->f_7906.f_6[iVar0]))
 						{
 							return;
 						}
@@ -27670,7 +27670,7 @@ void func_286(int iParam0, bool bParam1, int iParam2, int iParam3)
 				PED::SET_PED_CAN_BE_TARGETTED(iVar25, true);
 				PLAYER::SET_PLAYER_INVINCIBLE(iParam0, 0);
 				PLAYER::_SET_PLAYER_INVINCIBLE_KEEP_RAGDOLL_ENABLED(iParam0, 0);
-				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_0x7350823473013C02(iVar25))
+				if (PED::HAS_PED_HEAD_BLEND_FINISHED(iVar25) && PED::_HAS_STREAMED_PED_ASSETS_LOADED(iVar25))
 				{
 					PED::_0x4668D80430D6C299(iVar25);
 				}
@@ -43381,7 +43381,7 @@ int func_417(int iParam0, int iParam1, int iParam2, int iParam3)
 	int iVar3;
 	
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 		{
@@ -50791,7 +50791,7 @@ void func_454(var uParam0)
 {
 	if (uParam0->f_7905 == 5)
 	{
-		if ((!uParam0->f_7945 && func_490(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_489(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+		if ((!uParam0->f_7945 && func_490(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_489(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 		{
 			MISC::SET_BIT(&(uParam0->f_7418), 6);
 		}
@@ -50842,35 +50842,35 @@ void func_455(var uParam0)
 	switch ((uParam0->f_7905 - 0))
 	{
 		case 0:
-			if ((!uParam0->f_7945 && func_500(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_497(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+			if ((!uParam0->f_7945 && func_500(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_497(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 			{
 				MISC::SET_BIT(&(uParam0->f_7418), 4);
 			}
 			break;
 		
 		case 1:
-			if ((!uParam0->f_7945 && func_499(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_496(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+			if ((!uParam0->f_7945 && func_499(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_496(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 			{
 				MISC::SET_BIT(&(uParam0->f_7418), 4);
 			}
 			break;
 		
 		case 2:
-			if ((!uParam0->f_7945 && func_498(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_495(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+			if ((!uParam0->f_7945 && func_498(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_495(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 			{
 				MISC::SET_BIT(&(uParam0->f_7418), 4);
 			}
 			break;
 		
 		case 3:
-			if ((!uParam0->f_7945 && func_494(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_492(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+			if ((!uParam0->f_7945 && func_494(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_492(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 			{
 				MISC::SET_BIT(&(uParam0->f_7418), 5);
 			}
 			break;
 		
 		case 4:
-			if ((!uParam0->f_7945 && func_493(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_491(CAM::_GET_GAMEPLAY_CAM_COORDS())))
+			if ((!uParam0->f_7945 && func_493(PLAYER::PLAYER_PED_ID())) || (uParam0->f_7945 && func_491(CAM::GET_FINAL_RENDERED_CAM_COORD())))
 			{
 				MISC::SET_BIT(&(uParam0->f_7418), 5);
 			}

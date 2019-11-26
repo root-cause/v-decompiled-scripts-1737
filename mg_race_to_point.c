@@ -360,7 +360,7 @@ void func_3()
 		case 0:
 			if (func_8())
 			{
-				HUD::_0xD8E694757BCEA8E9();
+				HUD::_DELETE_WAYPOINT();
 				func_4(Local_107.f_4, NETWORK::_0x638A3A81733086DB(), func_5(PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID()), 300));
 				Local_107.f_22 = 1;
 			}
@@ -627,8 +627,8 @@ Vector3 func_11()
 		case 0:
 			if (HUD::IS_WAYPOINT_ACTIVE())
 			{
-				vVar0 = { HUD::GET_BLIP_INFO_ID_COORD(HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_BLIP_INFO_ID_ITERATOR())) };
-				vVar0.z = PATHFIND::_0x8ABE8608576D9CE3((vVar0.x - 5f), (vVar0.y - 5f), (vVar0.x + 5f), (vVar0.y + 5f));
+				vVar0 = { HUD::GET_BLIP_INFO_ID_COORD(HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_WAYPOINT_BLIP_SPRITE())) };
+				vVar0.z = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA((vVar0.x - 5f), (vVar0.y - 5f), (vVar0.x + 5f), (vVar0.y + 5f));
 				if (MISC::GET_DISTANCE_BETWEEN_COORDS(Local_107.f_4, vVar0, true) > 1000f)
 				{
 					if (!MISC::IS_BIT_SET(Local_107.f_1, 7))
@@ -916,7 +916,7 @@ void func_17()
 		iLocal_109 = 0;
 	}
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 		{
@@ -1263,7 +1263,7 @@ void func_27()
 						MONEY::NETWORK_PAY_MATCH_ENTRY_FEE(Local_111[NETWORK::PARTICIPANT_ID_TO_INT() /*4*/].f_2, "RaceToPoint", false, false);
 					}
 				}
-				HUD::_0xD8E694757BCEA8E9();
+				HUD::_DELETE_WAYPOINT();
 				func_202(1);
 				func_201(1);
 				vLocal_132 = { ENTITY::GET_ENTITY_COORDS(PLAYER::PLAYER_PED_ID(), true) };
@@ -4246,7 +4246,7 @@ void func_138(int iParam0)
 	
 	iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		iVar4 = PLAYER::INT_TO_PARTICIPANTINDEX(iVar0);
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar4))
@@ -4332,7 +4332,7 @@ void func_141(bool bParam0, int iParam1)
 	if (bParam0)
 	{
 		iVar0 = 0;
-		while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+		while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 		{
 			iVar3 = iVar0;
 			if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(iVar3))
@@ -5202,7 +5202,7 @@ void func_197(bool bParam0)
 				PED::SET_PED_CONFIG_FLAG(PLAYER::PLAYER_PED_ID(), 122, false);
 			}
 			PLAYER::SET_PLAYER_VEHICLE_DEFENSE_MODIFIER(PLAYER::PLAYER_ID(), 1f);
-			NETWORK::_0x1B857666604B1A74(0);
+			NETWORK::NETWORK_SET_PLAYER_IS_PASSIVE(0);
 			NETWORK::NETWORK_SET_FRIENDLY_FIRE_OPTION(true);
 			if (Global_1312417.f_1 == 0 || Global_1312417.f_2 == 1)
 			{
@@ -5227,7 +5227,7 @@ void func_197(bool bParam0)
 					NETWORK::USE_PLAYER_COLOUR_INSTEAD_OF_TEAM_COLOUR(1, 0);
 				}
 			}
-			NETWORK::_0x1B857666604B1A74(1);
+			NETWORK::NETWORK_SET_PLAYER_IS_PASSIVE(1);
 			NETWORK::NETWORK_SET_FRIENDLY_FIRE_OPTION(false);
 		}
 	}
@@ -5312,7 +5312,7 @@ void func_202(int iParam0)
 	int iVar1;
 	
 	iVar0 = 0;
-	while (iVar0 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar0 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar0)))
 		{
@@ -5942,7 +5942,7 @@ void func_218(bool bParam0, int iParam1)
 		HUD::RESET_HUD_COMPONENT_VALUES(15);
 		Global_17411.f_8353 = 0;
 	}
-	HUD::_CLEAR_NOTIFICATIONS_POS(0f);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(0f);
 	if (Global_17411.f_5628[iVar0])
 	{
 		HUD::CLEAR_ADDITIONAL_TEXT(9, false);
@@ -6271,7 +6271,7 @@ void func_225(int iParam0)
 	{
 		if (!PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()))
 		{
-			vVar2 = { CAM::_GET_GAMEPLAY_CAM_ROT(2) };
+			vVar2 = { CAM::GET_FINAL_RENDERED_CAM_ROT(2) };
 			fVar0 = func_226(vVar2.z, 0f, 360f);
 			if ((iParam0->f_1 == 0f || (iParam0->f_1 - fVar0) > fVar1) || (iParam0->f_1 - fVar0) < -fVar1)
 			{
@@ -7798,7 +7798,7 @@ void func_227(bool bParam0, int iParam1, bool bParam2, bool bParam3, bool bParam
 	}
 	Global_17411.f_5876 = fVar49;
 	Global_17411.f_5878 = MISC::GET_GAME_TIMER();
-	HUD::_CLEAR_NOTIFICATIONS_POS(Global_17411.f_5876);
+	HUD::THEFEED_SET_SCRIPTED_MENU_HEIGHT(Global_17411.f_5876);
 	if (!Global_17411.f_8318)
 	{
 		func_501(0);
@@ -9351,7 +9351,7 @@ void func_273()
 	{
 		if (MISC::IS_BIT_SET(Local_107.f_1, 8))
 		{
-			Local_107.f_7.f_2 = (PATHFIND::_0x3599D741C9AC6310((Local_107.f_7 - 7f), (Local_107.f_7.f_1 - 7f), (Local_107.f_7 + 7f), (Local_107.f_7.f_1 + 7f)) + 5f);
+			Local_107.f_7.f_2 = (PATHFIND::_GET_HEIGHTMAP_BOTTOM_Z_FOR_AREA((Local_107.f_7 - 7f), (Local_107.f_7.f_1 - 7f), (Local_107.f_7 + 7f), (Local_107.f_7.f_1 + 7f)) + 5f);
 			vVar1 = { Local_107.f_7 };
 			Var2.f_5 = 1115815936;
 			Var2.f_13 = 2;
@@ -9363,7 +9363,7 @@ void func_273()
 			Var2.f_6 = 1;
 			if (((WATER::GET_WATER_HEIGHT_NO_WAVES(vVar1, &uVar0) && !func_429(vVar1)) || func_428()) || func_274(vVar1, 100f, &(Local_107.f_7), &uVar0, &Var2))
 			{
-				HUD::_0xD8E694757BCEA8E9();
+				HUD::_DELETE_WAYPOINT();
 				Local_107.f_10 = { Local_107.f_7 };
 				iLocal_116 = 1;
 				MISC::SET_BIT(&(Local_107.f_1), 9);
@@ -9386,8 +9386,8 @@ void func_273()
 	}
 	else if (!MISC::IS_BIT_SET(iLocal_112, 2))
 	{
-		vVar3 = { HUD::GET_BLIP_INFO_ID_COORD(HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_BLIP_INFO_ID_ITERATOR())) };
-		vVar3.z = PATHFIND::_0x8ABE8608576D9CE3((vVar3.x - 5f), (vVar3.y - 5f), (vVar3.x + 5f), (vVar3.y + 5f));
+		vVar3 = { HUD::GET_BLIP_INFO_ID_COORD(HUD::GET_FIRST_BLIP_INFO_ID(HUD::_GET_WAYPOINT_BLIP_SPRITE())) };
+		vVar3.z = PATHFIND::_GET_HEIGHTMAP_TOP_Z_FOR_AREA((vVar3.x - 5f), (vVar3.y - 5f), (vVar3.x + 5f), (vVar3.y + 5f));
 		if (MISC::GET_DISTANCE_BETWEEN_COORDS(Local_107.f_4, vVar3, true) > 1000f)
 		{
 			func_13();
@@ -11762,7 +11762,7 @@ int func_324(var uParam0, var uParam1, var uParam2, bool bParam3)
 	{
 		if (uParam1->f_5 && !bParam3)
 		{
-			switch (NETWORK::_0x3C891A251567DFCE(&(Global_2405071.f_2479.f_1)))
+			switch (NETWORK::NETWORK_QUERY_RESPAWN_RESULTS(&(Global_2405071.f_2479.f_1)))
 			{
 				case 0:
 					func_386(uParam1, uParam2);
@@ -11898,7 +11898,7 @@ int func_324(var uParam0, var uParam1, var uParam2, bool bParam3)
 					}
 					if (uParam1->f_5 && !bParam3)
 					{
-						iVar3 = NETWORK::_0x6C34F1208B8923FD(iVar2);
+						iVar3 = NETWORK::NETWORK_GET_RESPAWN_RESULT_FLAGS(iVar2);
 					}
 					else
 					{
@@ -13295,7 +13295,7 @@ int func_348(int iParam0)
 			return 1;
 			break;
 	}
-	if (PED::_0xCC6E3B6BB69501F1(Global_1574954[PLAYER::PLAYER_ID()]))
+	if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574954[PLAYER::PLAYER_ID()]))
 	{
 		switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574954[PLAYER::PLAYER_ID()]))
 		{
@@ -13310,7 +13310,7 @@ int func_348(int iParam0)
 		iVar1 = PLAYER::GET_PLAYER_TEAM(PLAYER::PLAYER_ID());
 		if (iVar1 > -1 && iVar1 < 4)
 		{
-			if (PED::_0xCC6E3B6BB69501F1(Global_1574664[iVar1]))
+			if (PED::_DOES_RELATIONSHIP_GROUP_EXIST(Global_1574664[iVar1]))
 			{
 				switch (PED::GET_RELATIONSHIP_BETWEEN_GROUPS(iVar0, Global_1574664[iVar1]))
 				{
@@ -15588,7 +15588,7 @@ Vector3 func_408(vector3 vParam0, float fParam1, int iParam2, bool bParam3, vect
 	vVar0 = { OBJECT::_GET_OBJECT_OFFSET_FROM_COORDS(vParam0, *fParam1, fVar7, 0f, 0f) };
 	if (bParam3)
 	{
-		if (PATHFIND::_GET_POINT_OFF_ROAD_WITH_HEADING(vParam0, *fParam1, &vVar11))
+		if (PATHFIND::_GET_ROAD_SIDE_POINT_WITH_HEADING(vParam0, *fParam1, &vVar11))
 		{
 			vVar12 = { vVar11 - vParam0 };
 			if (!iParam7 == 0)
@@ -18691,7 +18691,7 @@ int func_493(int iParam0)
 	int iVar2;
 	
 	iVar1 = 0;
-	while (iVar1 < NETWORK::_NETWORK_GET_NUM_PARTICIPANTS_HOST())
+	while (iVar1 < NETWORK::NETWORK_GET_MAX_NUM_PARTICIPANTS())
 	{
 		if (NETWORK::NETWORK_IS_PARTICIPANT_ACTIVE(PLAYER::INT_TO_PARTICIPANTINDEX(iVar1)))
 		{
@@ -18745,7 +18745,7 @@ void func_495()
 				HUD::SET_BLIP_SCALE(iLocal_113, 1.2f);
 				HUD::SET_BLIP_PRIORITY(iLocal_113, 5);
 				HUD::SET_BLIP_NAME_FROM_TEXT_FILE(iLocal_113, "R2P_BLIP");
-				PATHFIND::_0x1FC289A0C3FF470F(1);
+				PATHFIND::_SET_IGNORE_SECONDARY_ROUTE_NODES(1);
 				HUD::SET_BLIP_ROUTE(iLocal_113, true);
 				iLocal_114 = GRAPHICS::CREATE_CHECKPOINT(9, vVar0 + Vector(4f, 0f, 0f), vVar0, 10f, iVar1, iVar2, iVar3, 75, 0);
 				GRAPHICS::SET_CHECKPOINT_CYLINDER_HEIGHT(iLocal_114, 7.5f, 7.5f, 100f);
@@ -19060,7 +19060,7 @@ void func_513(int iParam0)
 		func_510(0);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
 		GRAPHICS::TOGGLE_PAUSED_RENDERPHASES(1);
-		GRAPHICS::_0xE1C8709406F2C41C();
+		GRAPHICS::RESET_PAUSED_RENDERPHASES();
 	}
 }
 
@@ -19874,7 +19874,7 @@ void func_556()
 		HUD::CLEAR_HELP(1);
 	}
 	func_13();
-	PATHFIND::_0x1FC289A0C3FF470F(0);
+	PATHFIND::_SET_IGNORE_SECONDARY_ROUTE_NODES(0);
 	PED::_0xFEE4A5459472A9F8();
 	HUD::SET_MINIMAP_BLOCK_WAYPOINT(0);
 	if (NETWORK::NETWORK_IS_GAME_IN_PROGRESS())
